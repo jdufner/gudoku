@@ -1,0 +1,12 @@
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN' 'http://java.sun.com/dtd/web-app_2_3.dtd'>
+<web-app>
+  <servlet>
+    <servlet-name>PrintServlet</servlet-name>
+    <servlet-class>de.jdufner.sudoku.web.PrintServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PrintServlet</servlet-name>
+    <url-pattern>/print</url-pattern>
+  </servlet-mapping>
+</web-app>

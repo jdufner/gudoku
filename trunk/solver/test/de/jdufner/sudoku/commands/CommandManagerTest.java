@@ -1,0 +1,102 @@
+// $Id: CommandManagerTest.java,v 1.4 2009/12/06 21:02:22 jdufner Exp $
+
+/*
+ * Gudoku (http://sourceforge.net/projects/gudoku)
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit 
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * gespeichert.
+ * 
+ * Copyright (C) 2008 Jürgen Dufner
+ *
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * GNU General Public License, wie von der Free Software Foundation 
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ *
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
+ *
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
+ *
+ */
+package de.jdufner.sudoku.commands;
+
+import junit.framework.TestCase;
+
+import org.apache.log4j.Logger;
+
+import de.jdufner.sudoku.common.board.Cell;
+import de.jdufner.sudoku.common.board.Literal;
+import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.factory.SudokuFactory;
+import de.jdufner.sudoku.common.misc.Examples;
+
+/**
+ * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @since 0.1
+ * @version $Revision: 1.4 $
+ */
+public class CommandManagerTest extends TestCase {
+
+  private static final Logger LOG = Logger.getLogger(CommandManagerTest.class);
+
+  private Sudoku sudoku;
+  private CommandManager commandManager;
+
+  @Override
+  public void setUp() throws Exception {
+    sudoku = SudokuFactory.buildSudoku(Examples.ING_DIBA);
+    commandManager = new CommandManager();
+  }
+
+  @Deprecated
+  public void execute(Command command) {
+    commandManager.doCommand(sudoku, command);
+  }
+
+  @Deprecated
+  public void undo() {
+    if (commandManager.isUndoPossible()) {
+      commandManager.undoCommand(sudoku);
+    }
+  }
+
+  @Deprecated
+  public void redo() {
+    if (commandManager.isRedoPossible()) {
+      commandManager.redoCommand(sudoku);
+    }
+  }
+
+  public void testSetValueCommand() {
+    sudoku.resetAndClearCandidatesOfNonFixed();
+    Cell cell1 = sudoku.getCell(1, 1);
+    LOG.debug("1) " + cell1.toString());
+    Command cmd1 = CommandFactory.buildSetValueCommand(this.getClass().getSimpleName(), cell1, Literal.getInstance(3));
+    execute(cmd1);
+    LOG.debug("2) " + cell1.toString());
+    undo();
+    LOG.debug("3) " + cell1.toString());
+    redo();
+    LOG.debug("4) " + cell1.toString());
+  }
+
+  public void testRemoveCandidatesCommand() {
+    sudoku.resetAndClearCandidatesOfNonFixed();
+    Cell cell1 = sudoku.getCell(1, 1);
+    LOG.debug("1) " + cell1.toString());
+    Command cmd1 = CommandFactory.buildRemoveCandidatesCommand(this.getClass().getSimpleName(), cell1, Literal
+        .getInstance(1));
+    execute(cmd1);
+    LOG.debug("2) " + cell1.toString());
+    undo();
+    LOG.debug("3) " + cell1.toString());
+    redo();
+    LOG.debug("4) " + cell1.toString());
+  }
+
+}
