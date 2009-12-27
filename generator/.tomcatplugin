@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir>/</rootDir>
+    <exportSource>false</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>true</redirectLogger>
+    <updateXml>true</updateXml>
+    <warLocation>C:\Dokumente und Einstellungen\Jürgen\Eigene Dateien\java\workspaces\privat\sudoku\sudoku.war</warLocation>
+    <extraInfo></extraInfo>
+    <webPath>/sudoku</webPath>
+</tomcatProjectProperties>

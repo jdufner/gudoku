@@ -1,0 +1,41 @@
+## $Id: sudokus.vm,v 1.2 2009/12/11 21:09:53 jdufner Exp $
+##
+##
+##
+#macro(pagebreak)
+#if(${velocityCount} >= 7) page-break-before:always; #end
+#end
+###############################################################################
+##
+## Hauptteil
+##
+###############################################################################
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <meta name="author" content="J&uuml;rgen Dufner">
+    <meta name="keywords" content="Sudoku">
+    <!--meta http-equiv="content-type" content="text/html; charset=ISO-8559-15"-->
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+  </head>
+  <body>
+  <!-- ${sudokus.size()} Sudokus -->
+#foreach($sudoku in ${sudokus})
+#if(${velocityCount} % 6 == 1)
+  <table style="#pagebreak()">
+#end
+#if(${velocityCount} % 2 == 1)
+    <tr>
+#end
+      <td>
+#sudokuboard($sudoku)
+      </td>
+#if(${velocityCount} % 2 == 0)
+    </tr>
+#end
+#if(${velocityCount} % 6 == 0)
+  </table>
+#end
+#end
+  </body>
+</html>

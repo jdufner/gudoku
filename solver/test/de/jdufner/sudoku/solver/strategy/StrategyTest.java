@@ -1,0 +1,130 @@
+// $Id: StrategyTest.java,v 1.10 2009/11/26 21:54:32 jdufner Exp $
+
+/*
+ * Gudoku (http://sourceforge.net/projects/gudoku)
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit 
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * gespeichert.
+ * 
+ * Copyright (C) 2008 Jürgen Dufner
+ *
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * GNU General Public License, wie von der Free Software Foundation 
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ *
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
+ *
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
+ *
+ */
+package de.jdufner.sudoku.solver.strategy;
+
+import junit.framework.TestCase;
+
+import org.apache.log4j.Logger;
+
+import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.factory.SudokuFactory;
+import de.jdufner.sudoku.common.misc.Examples;
+import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.solver.service.ExtendedSolver;
+
+/**
+ * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @since 0.1
+ * @version $Revision: 1.10 $
+ */
+public class StrategyTest extends TestCase {
+  private static final Logger LOG = Logger.getLogger(StrategyTest.class);
+  private static final boolean SHORT_TEST = true;
+
+  private ExtendedSolver solver;
+
+  public StrategyTest(String name) {
+    super(name);
+  }
+
+  @Override
+  public void setUp() throws Exception {
+    solver = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
+  }
+
+  public void testStrategySolver() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku("9:0,0,0,0,0,4,0,0,7,2,0,0,0,0,0,8,0,6,0,0,0,0,0,3,0,0,0,0,3,0,0,0,0,0,5,0,0,0,4,0,8,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,9,6,0,2,0,0,1,4,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0");
+    solver = SolverServiceFactory.getInstance().getStrategySolver();
+    Sudoku result = solver.solve(sudoku);
+    if (LOG.isDebugEnabled()) {
+      LOG.debug(result.toString());
+    }
+    assertFalse(sudoku.isSolved());
+    // Solution solution = solver.getSolution2(sudoku);
+    // if (LOG.isDebugEnabled()) {
+    // LOG.debug(solution);
+    // }
+    // assertEquals(Level.SEHR_SCHWER, solution.getLevel());
+  }
+
+  public void testStrategySolver1() {
+    Sudoku sudoku = SudokuFactory.buildSudoku(Examples.SCHWER);
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    assertTrue(solver.isSolvable(sudoku));
+    assertTrue(solver.isUnique(sudoku));
+  }
+
+  public void testStrategySolver2() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku("9:7,0,0,1,0,8,0,0,0,0,9,0,0,0,0,0,3,2,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,1,0,0,9,6,0,0,2,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,1,0,0,0,3,2,0,0,0,0,0,0,6");
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    assertTrue(solver.isSolvable(sudoku));
+    assertTrue(solver.isUnique(sudoku));
+  }
+
+  public void testStrategySolver3() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku("9:0,8,2,0,1,0,0,0,0,7,0,0,0,0,0,0,3,0,0,0,0,0,0,6,0,0,5,0,0,0,0,0,0,0,8,0,3,0,0,7,0,0,0,0,0,0,0,0,0,0,0,1,0,4,4,0,1,0,0,0,0,0,6,0,0,0,0,5,0,0,0,0,0,0,0,8,0,0,0,0,0");
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    assertTrue(solver.isSolvable(sudoku));
+    assertTrue(solver.isUnique(sudoku));
+  }
+
+  public void testStrategySolver4() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku("9:9,0,0,1,0,0,3,0,0,4,0,0,0,0,0,0,5,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,4,0,0,6,8,0,0,0,0,0,0,0,0,0,0,0,0,6,7,8,3,2,0,0,7,0,0,0,0,0,0,0,0,0,0,1,0,0");
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    assertTrue(solver.isSolvable(sudoku));
+    assertTrue(solver.isUnique(sudoku));
+  }
+
+  public void testStrategySolver5() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku("9:9,2,1,6,8,3,0,5,0,5,8,6,9,7,4,1,3,2,3,4,7,5,0,0,9,6,8,7,1,8,4,5,6,2,9,3,4,6,0,0,0,0,8,0,5,2,0,5,8,0,0,0,0,0,8,0,4,0,6,0,5,2,1,6,5,2,1,0,8,0,4,0,1,7,0,2,4,5,0,8,0");
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    assertTrue(solver.isSolvable(sudoku));
+    assertTrue(solver.isUnique(sudoku));
+  }
+
+  public void testStrategySolver6() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku("9:8,0,0,0,0,3,9,6,2,0,6,2,8,0,0,7,0,0,0,9,0,0,0,0,5,0,8,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,9,0,0,5,1,8,0,6,2,0,3,0,0,4,0,9");
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    if (!SHORT_TEST) {
+      assertTrue(solver.isSolvable(sudoku));
+      assertFalse(solver.isUnique(sudoku));
+    }
+  }
+
+}
+

@@ -1,0 +1,8 @@
+*.class
+bin
+build
+derby
+derby.log
+dist
+hsqldb
+velocity.log
