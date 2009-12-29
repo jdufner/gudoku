@@ -203,5 +203,11 @@ public final class BacktrackingTest extends TestCase {
     }
   }
 
+  public void testFirstSolutionOfShuffled() {
+    Sudoku underDeterminedSudoku = SudokuFactory.buildShuffled(SudokuSize.DEFAULT);
+    LOG.debug(underDeterminedSudoku);
+    Backtracking backtracking = new Backtracking(underDeterminedSudoku, 1);
+    Sudoku firstSolution = backtracking.firstSolution();
+    LOG.debug(firstSolution);
+  }
 }
-

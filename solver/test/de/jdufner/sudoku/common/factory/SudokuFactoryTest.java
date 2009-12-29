@@ -31,7 +31,6 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
-import de.jdufner.sudoku.common.factory.SudokuFactory;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -39,6 +38,7 @@ import de.jdufner.sudoku.common.factory.SudokuFactory;
  * @version $Revision: 1.1 $
  */
 public final class SudokuFactoryTest extends TestCase {
+
   private static final Logger LOG = Logger.getLogger(SudokuFactoryTest.class);
 
   public void testBuildFilledNeun() {
@@ -76,5 +76,8 @@ public final class SudokuFactoryTest extends TestCase {
     assertEquals(8, sudoku.getCell(5, 8).getValue().getValue());
   }
 
+  public void testBuildShuffled() {
+    Sudoku sudoku = SudokuFactory.buildShuffled(SudokuSize.NEUN);
+    LOG.debug(sudoku);
+  }
 }
-
