@@ -28,6 +28,8 @@ package de.jdufner.sudoku.common.factory;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.math.random.RandomData;
+import org.apache.commons.math.random.RandomDataImpl;
 import org.apache.commons.pool.PoolableObjectFactory;
 
 import de.jdufner.sudoku.common.board.Literal;
@@ -123,6 +125,19 @@ public class SudokuFactory implements PoolableObjectFactory {
         }
         sudoku.getCell(i, column).setValue(Literal.getInstance(j + 1));
       }
+    }
+    return sudoku;
+  }
+
+  public static Sudoku buildShuffled(final SudokuSize sudokuSize) {
+    final Sudoku sudoku = buildEmpty(sudokuSize);
+    // TODO RandomData mittels Spring erzeugen
+    RandomData randomData = new RandomDataImpl();
+    int[] literal = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
+    int[] columnIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
+    int[] rowIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
+    for (int i = 0; i < sudokuSize.getUnitSize(); i++) {
+      sudoku.getCell(rowIndex[i], columnIndex[i]).setValue(Literal.getInstance(literal[i] + 1));
     }
     return sudoku;
   }
