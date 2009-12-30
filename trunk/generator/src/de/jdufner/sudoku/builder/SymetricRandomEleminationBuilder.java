@@ -28,7 +28,6 @@ package de.jdufner.sudoku.builder;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.solver.service.Solution;
 
 /**
@@ -41,10 +40,6 @@ public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
 
   public SymetricRandomEleminationBuilder() {
     super();
-  }
-
-  public SymetricRandomEleminationBuilder(Sudoku sudoku, int stackSize) {
-    super(sudoku, stackSize);
   }
 
   public Cell symetricCell(Cell cell) {

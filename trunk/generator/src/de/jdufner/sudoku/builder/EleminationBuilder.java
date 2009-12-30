@@ -48,19 +48,16 @@ import de.jdufner.sudoku.solver.service.Solution;
  * @version $Revision: 1.12 $
  */
 public abstract class EleminationBuilder extends AbstractBuilder {
+
   private static final Logger LOG = Logger.getLogger(EleminationBuilder.class);
   private static final int NUMBER_TRANSFORMATIONS = 123;
+
   protected Map<Level, Sudoku> level2SudokuMap = new HashMap<Level, Sudoku>();
   private int cellCounter = 0;
   private int eleminatedCellCounter = 0;
 
   public EleminationBuilder() {
     super();
-  }
-
-  public EleminationBuilder(Sudoku sudoku, int stackSize) {
-    this.sudoku = sudoku;
-    this.stackSize = stackSize;
   }
 
   @Override
@@ -72,6 +69,7 @@ public abstract class EleminationBuilder extends AbstractBuilder {
     if (sudoku == null) {
       setSize(SudokuSize.DEFAULT);
     }
+    // TODO Soll das noch gemacht werden?
     sudoku = TransformationUtil.arbitraryTransformation(sudoku, NUMBER_TRANSFORMATIONS);
     if (LOG.isDebugEnabled()) {
       LOG.debug(sudoku.toShortString());

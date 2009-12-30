@@ -129,17 +129,26 @@ public class SudokuFactory implements PoolableObjectFactory {
     return sudoku;
   }
 
-  public static Sudoku buildShuffled(final SudokuSize sudokuSize) {
+  public static Sudoku buildShuffled(final SudokuSize sudokuSize, final RandomData randomData) {
     final Sudoku sudoku = buildEmpty(sudokuSize);
-    // TODO RandomData mittels Spring erzeugen
-    RandomData randomData = new RandomDataImpl();
-    int[] literal = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
-    int[] columnIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
-    int[] rowIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
+    final int[] literal = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
+    final int[] columnIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
+    final int[] rowIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
     for (int i = 0; i < sudokuSize.getUnitSize(); i++) {
       sudoku.getCell(rowIndex[i], columnIndex[i]).setValue(Literal.getInstance(literal[i] + 1));
     }
     return sudoku;
+  }
+
+  /**
+   * Nur für Tests verwenden, weil hier RandomDataImpl immer neu erzeugt wird.
+   * 
+   * @param sudokuSize
+   * @return
+   */
+  public static Sudoku buildShuffled(final SudokuSize sudokuSize) {
+    // TODO Aus Factory Singleton machen und RandomDataImpl halten
+    return buildShuffled(sudokuSize, new RandomDataImpl());
   }
 
   @Override

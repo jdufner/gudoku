@@ -24,10 +24,11 @@
 		</property> </bean
 	-->
 
-	<!--
-		bean id="velocityEngine"
-		class="org.springframework.ui.velocity.VelocityEngineFactory"> </bean
-	-->
+  <bean id="randomGenerator" class="org.apache.commons.math.random.JDKRandomGenerator"/>
+
+  <bean id="randomData" class="org.apache.commons.math.random.RandomDataImpl">
+    <constructor-arg ref="randomGenerator"/>
+  </bean>
 
 	<bean id="cacheManager"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
