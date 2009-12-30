@@ -25,6 +25,8 @@
  */
 package de.jdufner.sudoku.builder;
 
+import org.apache.commons.math.random.RandomData;
+
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
@@ -38,23 +40,36 @@ import de.jdufner.sudoku.solver.service.ExtendedSolver;
 public abstract class AbstractBuilder implements Builder {
 
   protected Sudoku sudoku;
-  protected int stackSize;
-
   protected ExtendedSolver strategySolverWithBacktracking;
+  protected RandomData randomData;
 
   public AbstractBuilder() {
-    stackSize = 1;
   }
 
-  public void setSize(SudokuSize sudokusize) {
-    sudoku = SudokuFactory.buildEmpty(sudokusize);
+  public void setSize(SudokuSize sudokuSize) {
+    //    sudoku = SudokuFactory.buildEmpty(sudokusize);
+    Sudoku underDeterminedSudoku = SudokuFactory.buildShuffled(sudokuSize, getRandomData());
+    sudoku = getStrategySolverWithBacktracking().solve(underDeterminedSudoku);
   }
 
   //
   // Spring Wiring
   //
-  public void setStrategySolverWithBacktracking(ExtendedSolver solver) {
-    this.strategySolverWithBacktracking = solver;
+
+  public ExtendedSolver getStrategySolverWithBacktracking() {
+    return strategySolverWithBacktracking;
+  }
+
+  public void setStrategySolverWithBacktracking(ExtendedSolver strategySolverWithBacktracking) {
+    this.strategySolverWithBacktracking = strategySolverWithBacktracking;
+  }
+
+  public RandomData getRandomData() {
+    return randomData;
+  }
+
+  public void setRandomData(RandomData randomData) {
+    this.randomData = randomData;
   }
 
 }

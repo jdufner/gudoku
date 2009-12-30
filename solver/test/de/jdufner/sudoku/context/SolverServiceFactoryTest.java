@@ -114,7 +114,13 @@ public final class SolverServiceFactoryTest extends TestCase {
     Log.SUDOKU.warn("SSUUDDOOKKUU__WWAARRNN");
     Log.SUDOKU.error("SSUUDDOOKKUU__EERROORRRR");
     Log.SUDOKU.fatal("SSUUDDOOKKUU__FFAATTAALL");
+  }
 
+  public void testRandomData() {
+    int i = SolverServiceFactory.getInstance().getRandomData().nextInt(1, 100);
+    LOG.debug(i);
+    assertTrue(i >= 1);
+    assertTrue(i <= 100);
   }
 
 }

@@ -29,6 +29,9 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.builder.AbstractBuilder;
+import de.jdufner.sudoku.builder.Builder;
+
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -61,15 +64,27 @@ public final class ServiceFactoryTest extends TestCase {
   }
 
   public void testGetLiteralEleminationBuilder() throws Exception {
-    GeneratorServiceFactory.getInstance().getLiteralEleminationBuilder();
+    Builder builder = GeneratorServiceFactory.getInstance().getLiteralEleminationBuilder();
+    assertNotNull(builder);
+    AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
+    assertNotNull(abstractBuilder.getRandomData());
+    assertNotNull(abstractBuilder.getStrategySolverWithBacktracking());
   }
 
   public void testGetRandomEleminationBuilder() throws Exception {
-    GeneratorServiceFactory.getInstance().getRandomEleminationBuilder();
+    Builder builder = GeneratorServiceFactory.getInstance().getRandomEleminationBuilder();
+    assertNotNull(builder);
+    AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
+    assertNotNull(abstractBuilder.getRandomData());
+    assertNotNull(abstractBuilder.getStrategySolverWithBacktracking());
   }
 
   public void testGetSymetricRandomEleminationBuilder() throws Exception {
-    GeneratorServiceFactory.getInstance().getSymetricRandomEleminationBuilder();
+    Builder builder = GeneratorServiceFactory.getInstance().getSymetricRandomEleminationBuilder();
+    assertNotNull(builder);
+    AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
+    assertNotNull(abstractBuilder.getRandomData());
+    assertNotNull(abstractBuilder.getStrategySolverWithBacktracking());
   }
 
   public void testGetSudokuDao() throws Exception {

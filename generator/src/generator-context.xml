@@ -26,18 +26,22 @@
 		</property> </bean
 	-->
 
-	<bean id="randomEleminationBuilder" class="de.jdufner.sudoku.builder.RandomEleminationBuilder"
+  <bean id="abstractBuilder" abstract="true" class="de.jdufner.sudoku.builder.AbstractBuilder">
+    <property name="randomData" ref="randomData"/>
+  </bean> 
+
+	<bean id="randomEleminationBuilder" class="de.jdufner.sudoku.builder.RandomEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
 		<property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
 	</bean>
 
 	<bean id="symetricRandomEleminationBuilder"
-		class="de.jdufner.sudoku.builder.SymetricRandomEleminationBuilder"
+		class="de.jdufner.sudoku.builder.SymetricRandomEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
 		<property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
 	</bean>
 
-	<bean id="literalEleminationBuilder" class="de.jdufner.sudoku.builder.LiteralEleminationBuilder"
+	<bean id="literalEleminationBuilder" class="de.jdufner.sudoku.builder.LiteralEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
 		<property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
 	</bean>

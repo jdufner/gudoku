@@ -25,6 +25,7 @@
  */
 package de.jdufner.sudoku.context;
 
+import org.apache.commons.math.random.RandomData;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -85,4 +86,9 @@ public final class SolverServiceFactory {
   public SudokuValidator getSudokuValidator() {
     return (SudokuValidator) applicationContext.getBean("sudokuValidator");
   }
+
+  public RandomData getRandomData() {
+    return (RandomData) applicationContext.getBean("randomData");
+  }
+
 }
