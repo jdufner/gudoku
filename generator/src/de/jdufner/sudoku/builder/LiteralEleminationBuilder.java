@@ -42,6 +42,7 @@ import de.jdufner.sudoku.common.board.Literal;
  * @version $Revision$
  */
 public final class LiteralEleminationBuilder extends EleminationBuilder {
+
   private static final Logger LOG = Logger.getLogger(LiteralEleminationBuilder.class);
 
   public LiteralEleminationBuilder() {

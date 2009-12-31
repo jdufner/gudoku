@@ -36,7 +36,8 @@ import de.jdufner.sudoku.solver.service.Solution;
  * @version $Revision$
  */
 public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
-  private static final Logger log = Logger.getLogger(SymetricRandomEleminationBuilder.class);
+
+  private static final Logger LOG = Logger.getLogger(SymetricRandomEleminationBuilder.class);
 
   public SymetricRandomEleminationBuilder() {
     super();
@@ -55,8 +56,8 @@ public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
     for (Cell cell : buildRandomPermutationOfFixedOfFirstHalf()) {
       Cell cellCandidate1 = (Cell) cell.clone();
       Cell cellCandidate2 = (Cell) symetricCell(cell).clone();
-      if (log.isDebugEnabled()) {
-        log.debug("Leere Zellen " + cell + " und " + symetricCell(cell));
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("Leere Zellen " + cell + " und " + symetricCell(cell));
       }
       sudoku.getCell(cellCandidate1.getRowIndex(), cellCandidate1.getColumnIndex()).reset();
       cellCounter++;
@@ -72,8 +73,8 @@ public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
         if (!cellCandidate1.equals(cellCandidate2)) {
           eleminatedCellCounter++;
         }
-        if (log.isInfoEnabled()) {
-          log.info("(" + eleminatedCellCounter + "/" + cellCounter + ") Zellen " + cellCandidate1 + " und "
+        if (LOG.isInfoEnabled()) {
+          LOG.info("(" + eleminatedCellCounter + "/" + cellCounter + ") Zellen " + cellCandidate1 + " und "
               + cellCandidate2 + " erfolgreich geleert. Neues Sudoku: " + sudoku.toShortString());
         }
       } else {
@@ -83,8 +84,8 @@ public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
           sudoku.getCell(cellCandidate2.getRowIndex(), cellCandidate2.getColumnIndex()).setValue(
               cellCandidate2.getValue());
         }
-        if (log.isInfoEnabled()) {
-          log.info("(" + eleminatedCellCounter + "/" + cellCounter + ") Zelle " + cellCandidate1 + " und "
+        if (LOG.isInfoEnabled()) {
+          LOG.info("(" + eleminatedCellCounter + "/" + cellCounter + ") Zelle " + cellCandidate1 + " und "
               + cellCandidate2 + " konnten nicht geleert werden, setze deshalb zurück und mache weiter.");
         }
       }

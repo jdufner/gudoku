@@ -23,15 +23,14 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.builder.utils;
+package de.jdufner.sudoku.dao;
 
 import junit.framework.TestCase;
 
-import org.apache.commons.math.random.RandomData;
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.builder.utils.NachbarschaftUtils;
 import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.context.SolverServiceFactory;
@@ -40,34 +39,40 @@ import de.jdufner.sudoku.solver.service.Solver;
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2009-12-28
+ * @since 31.12.2009
  * @version $Revision$
  */
-public class NachbarschaftUtilsTest extends TestCase {
+public final class SudokuDaoCheckNachbarschaftTest extends TestCase {
 
-  private static final Logger LOG = Logger.getLogger(NachbarschaftUtilsTest.class);
+  private static final Logger LOG = Logger.getLogger(SudokuDaoCheckNachbarschaftTest.class);
 
-  private RandomData randomData = null;
+  private SudokuDao sudokuDao = null;
   private Solver solver = null;
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
+    sudokuDao = GeneratorServiceFactory.getInstance().getSudokuDao();
     solver = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
-    randomData = GeneratorServiceFactory.getInstance().getRandomData();
   }
 
-  public void testCheckNachbarschaft1() {
-    Sudoku sudoku = SudokuFactory.buildFilled(SudokuSize.DEFAULT);
-    LOG.debug(sudoku);
-    assertFalse(NachbarschaftUtils.checkNachbarschaft(sudoku));
+  @Override
+  protected void tearDown() throws Exception {
+    super.tearDown();
   }
 
-  public void testCheckNachbachschaft2() {
-    Sudoku underDeterminedSudoku = SudokuFactory.buildShuffled(SudokuSize.DEFAULT, randomData);
-    Sudoku sudoku = solver.solve(underDeterminedSudoku);
-    LOG.debug(sudoku);
-    assertTrue(NachbarschaftUtils.checkNachbarschaft(sudoku));
+  public void testCheckNachbarschaftGespeicherterSudokus() {
+    for (int i = 0; i < 27000; i++) {
+      SudokuData sudokuData = sudokuDao.loadSudoku(i);
+      if (sudokuData != null) {
+        Sudoku sudoku = solver.solve(SudokuFactory.buildSudoku(sudokuData.getSudokuAsString()));
+        if (NachbarschaftUtils.checkNachbarschaft(sudoku)) {
+          LOG.info("Sudoku " + sudokuData.getId() + " ist OK.");
+        } else {
+          LOG.warn("Sudoku " + sudokuData.getId() + " ist NOK.");
+          sudokuDao.deleteSudoku(sudokuData.getId());
+        }
+      }
+    }
   }
-
 }

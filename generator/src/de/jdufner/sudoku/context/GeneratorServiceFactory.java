@@ -27,6 +27,7 @@ package de.jdufner.sudoku.context;
 
 import java.util.Properties;
 
+import org.apache.commons.math.random.RandomData;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -103,6 +104,10 @@ public final class GeneratorServiceFactory {
 
   public ApproachPrinter getApproachPrinter() {
     return (ApproachPrinter) applicationContext.getBean("approachPrinter");
+  }
+
+  public RandomData getRandomData() {
+    return (RandomData) applicationContext.getBean("randomData");
   }
 
 }
