@@ -1,4 +1,4 @@
-// $Id: SolverClock.java,v 1.5 2009/11/22 12:33:01 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -32,7 +32,7 @@ import org.apache.log4j.Logger;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.5 $
+ * @version $Revision$
  */
 public final class SolverClock implements MethodInterceptor {
 

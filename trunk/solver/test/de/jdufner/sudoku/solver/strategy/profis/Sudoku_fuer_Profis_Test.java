@@ -1,4 +1,4 @@
-// $Id: Sudoku_fuer_Profis_Test.java,v 1.7 2009/11/26 21:54:33 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -37,7 +37,7 @@ import de.jdufner.sudoku.solver.service.StrategySolver;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.7 $
+ * @version $Revision$
  */
 public final class Sudoku_fuer_Profis_Test extends TestCase {
   private static final Logger LOG = Logger.getLogger(Sudoku_fuer_Profis_Test.class);

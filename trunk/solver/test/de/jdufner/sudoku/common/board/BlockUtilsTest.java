@@ -1,4 +1,4 @@
-// $Id: BlockUtilsTest.java,v 1.1 2009/12/21 22:20:19 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -31,7 +31,7 @@ import junit.framework.TestCase;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 21.12.2009
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class BlockUtilsTest extends TestCase {
 

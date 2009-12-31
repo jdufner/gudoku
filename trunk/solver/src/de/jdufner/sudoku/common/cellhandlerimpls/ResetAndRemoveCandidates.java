@@ -1,4 +1,4 @@
-// $Id: ResetAndRemoveCandidates.java,v 1.7 2009/12/17 22:17:40 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
  * @see Cell#removeCandidatesAndSetIfOnlyOneRemains(java.util.Collection)
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.7 $
+ * @version $Revision$
  */
 public final class ResetAndRemoveCandidates implements CellHandler {
   // TODO Die besetzten Zellen der Blöcke, Spalten und Zeilen zwischenspeichern.

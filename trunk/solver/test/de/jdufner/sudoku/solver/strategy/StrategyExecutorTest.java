@@ -1,4 +1,4 @@
-// $Id: StrategyExecutorTest.java,v 1.9 2009/12/19 21:22:46 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyThreadingEnum;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.9 $
+ * @version $Revision$
  */
 public class StrategyExecutorTest extends TestCase {
 

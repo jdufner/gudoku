@@ -1,4 +1,4 @@
-// $Id: Backtracking.java,v 1.10 2009/12/17 22:17:37 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -39,7 +39,7 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.10 $
+ * @version $Revision$
  */
 public final class Backtracking {
 

@@ -1,4 +1,4 @@
-// $Id: SimpleBlockStrategy.java,v 1.14 2009/12/13 20:31:37 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.14 $
+ * @version $Revision$
  */
 public final class SimpleBlockStrategy extends AbstractSimpleStrategy implements BlockHandler,
     Callable<Collection<Command>> {

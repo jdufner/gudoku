@@ -1,4 +1,4 @@
-// $Id: Candidates.java,v 1.3 2009/12/05 22:16:16 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -42,7 +42,7 @@ import de.jdufner.sudoku.common.collections.SortedCandidates;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public final class Candidates<T extends Comparable<? super T>> extends ArrayList<T> implements Cloneable {
 

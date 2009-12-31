@@ -1,4 +1,4 @@
-// $Id: Hidden.java,v 1.1 2009/11/09 22:28:25 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -31,7 +31,7 @@ package de.jdufner.sudoku.solver.strategy.hidden;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.2
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public interface Hidden {
 

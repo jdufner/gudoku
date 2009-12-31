@@ -1,4 +1,4 @@
-// $Id: ExtendedSolverTest.java,v 1.3 2009/12/20 19:27:22 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -37,7 +37,7 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2009-12-14
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public final class ExtendedSolverTest extends TestCase {
 

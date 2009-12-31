@@ -1,4 +1,4 @@
-// $Id: PropertiesLoader.java,v 1.4 2009/11/14 22:12:44 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -35,7 +35,7 @@ import org.apache.log4j.Logger;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.4 $
+ * @version $Revision$
  * 
  */
 public final class PropertiesLoader {

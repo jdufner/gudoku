@@ -1,4 +1,4 @@
-// $Id: AbstractCommand.java,v 1.15 2009/12/17 22:17:40 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.15 $
+ * @version $Revision$
  */
 public abstract class AbstractCommand implements Command {
 

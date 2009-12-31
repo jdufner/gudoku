@@ -1,4 +1,4 @@
-// $Id: AbstractSerialStrategy.java,v 1.6 2009/12/05 23:27:47 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -35,7 +35,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since
- * @version $Revision: 1.6 $
+ * @version $Revision$
  */
 public abstract class AbstractSerialStrategy extends AbstractStrategy {
 

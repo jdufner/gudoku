@@ -1,4 +1,4 @@
-// $Id: SolverCache.java,v 1.8 2009/11/24 22:26:43 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.8 $
+ * @version $Revision$
  */
 public final class SolverCache implements MethodInterceptor, InitializingBean {
 

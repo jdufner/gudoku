@@ -1,4 +1,4 @@
-// $Id: CommandFactory.java,v 1.3 2009/12/06 21:02:23 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -37,7 +37,7 @@ import de.jdufner.sudoku.common.board.Literal;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public final class CommandFactory {
 

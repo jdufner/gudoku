@@ -1,4 +1,4 @@
-// $Id: NakedUnit.java,v 1.1 2009/11/17 22:42:04 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -29,7 +29,7 @@ package de.jdufner.sudoku.solver.strategy.naked;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public interface NakedUnit extends Naked {
 

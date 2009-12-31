@@ -1,4 +1,4 @@
-// $Id: Kombination.java,v 1.1 2009/11/14 20:18:59 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -40,7 +40,7 @@ import java.util.Set;
  *          Eine Klasse die das Interface {@link Comparable} implementiert.
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class Kombination<T extends Comparable<? super T>> {
   // TODO Iterator implementieren!

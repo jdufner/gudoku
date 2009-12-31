@@ -1,4 +1,4 @@
-// $Id: SudokuFactoryTest.java,v 1.1 2009/11/22 22:36:59 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -35,7 +35,7 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class SudokuFactoryTest extends TestCase {
 

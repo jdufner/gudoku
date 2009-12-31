@@ -1,4 +1,4 @@
-// $Id: SudokuPerformanceTest.java,v 1.6 2009/11/17 20:34:32 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -42,7 +42,7 @@ import de.jdufner.sudoku.common.validator.impl.SerialSudokuValidator;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.6 $
+ * @version $Revision$
  */
 public final class SudokuPerformanceTest extends TestCase {
   private static final Logger LOG = Logger.getLogger(SudokuPerformanceTest.class);

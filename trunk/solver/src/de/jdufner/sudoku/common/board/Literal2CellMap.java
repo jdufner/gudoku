@@ -1,4 +1,4 @@
-// $Id: Literal2CellMap.java,v 1.1 2009/11/17 20:34:32 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import java.util.TreeSet;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class Literal2CellMap {
 

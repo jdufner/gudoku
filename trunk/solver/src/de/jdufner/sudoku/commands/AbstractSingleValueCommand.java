@@ -1,4 +1,4 @@
-// $Id: AbstractSingleValueCommand.java,v 1.9 2009/12/06 21:30:16 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -31,7 +31,7 @@ package de.jdufner.sudoku.commands;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.9 $
+ * @version $Revision$
  */
 public abstract class AbstractSingleValueCommand extends AbstractCommand {
 

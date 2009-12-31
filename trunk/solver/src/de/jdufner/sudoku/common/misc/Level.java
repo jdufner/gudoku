@@ -1,4 +1,4 @@
-// $Id: Level.java,v 1.3 2009/12/21 21:18:31 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -30,7 +30,7 @@ package de.jdufner.sudoku.common.misc;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public enum Level implements Comparable<Level> {
 

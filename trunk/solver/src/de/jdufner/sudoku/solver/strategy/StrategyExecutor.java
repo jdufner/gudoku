@@ -1,4 +1,4 @@
-// $Id: StrategyExecutor.java,v 1.32 2009/12/26 23:08:00 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -65,7 +65,7 @@ import de.jdufner.sudoku.solver.strategy.xwing.XWingSerialStrategy;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.32 $
+ * @version $Revision$
  */
 public final class StrategyExecutor {
 
