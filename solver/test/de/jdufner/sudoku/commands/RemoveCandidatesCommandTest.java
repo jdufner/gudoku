@@ -1,4 +1,4 @@
-// $Id: RemoveCandidatesCommandTest.java,v 1.9 2009/12/14 20:47:49 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -40,7 +40,7 @@ import de.jdufner.sudoku.common.misc.Examples;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since
- * @version $Revision: 1.9 $
+ * @version $Revision$
  */
 public final class RemoveCandidatesCommandTest extends TestCase {
 

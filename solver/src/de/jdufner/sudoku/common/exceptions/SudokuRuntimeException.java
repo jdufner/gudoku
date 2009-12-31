@@ -1,4 +1,4 @@
-// $Id: SudokuRuntimeException.java,v 1.3 2009/11/13 23:46:48 jdufner Exp $
+// $Id$
 package de.jdufner.sudoku.common.exceptions;
 
 public class SudokuRuntimeException extends RuntimeException {

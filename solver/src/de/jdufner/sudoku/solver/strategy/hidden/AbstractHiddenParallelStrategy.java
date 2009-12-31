@@ -1,4 +1,4 @@
-// $Id: AbstractHiddenParallelStrategy.java,v 1.7 2009/11/17 20:34:33 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -40,7 +40,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.2
- * @version $Revision: 1.7 $
+ * @version $Revision$
  */
 public abstract class AbstractHiddenParallelStrategy extends AbstractParallelStrategy implements Hidden {
 

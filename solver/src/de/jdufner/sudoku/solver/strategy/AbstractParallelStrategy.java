@@ -1,4 +1,4 @@
-// $Id: AbstractParallelStrategy.java,v 1.9 2009/12/05 23:27:47 jdufner Exp $
+// $Id$
 package de.jdufner.sudoku.solver.strategy;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.2
- * @version $Revision: 1.9 $
+ * @version $Revision$
  */
 public abstract class AbstractParallelStrategy extends AbstractStrategy {
 

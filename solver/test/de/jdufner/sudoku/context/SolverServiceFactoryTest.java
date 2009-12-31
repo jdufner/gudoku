@@ -1,4 +1,4 @@
-// $Id: SolverServiceFactoryTest.java,v 1.9 2009/12/26 23:08:00 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -41,7 +41,7 @@ import de.jdufner.sudoku.common.misc.Log;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.9 $
+ * @version $Revision$
  */
 public final class SolverServiceFactoryTest extends TestCase {
 

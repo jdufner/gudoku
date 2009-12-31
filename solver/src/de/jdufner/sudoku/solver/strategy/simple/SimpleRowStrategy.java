@@ -1,4 +1,4 @@
-// $Id: SimpleRowStrategy.java,v 1.14 2009/12/05 23:27:47 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -37,7 +37,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.14 $
+ * @version $Revision$
  */
 public final class SimpleRowStrategy extends AbstractSimpleStrategy implements RowHandler,
     Callable<Collection<Command>> {

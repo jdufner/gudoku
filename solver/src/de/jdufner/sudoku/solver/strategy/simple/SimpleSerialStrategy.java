@@ -1,4 +1,4 @@
-// $Id: SimpleSerialStrategy.java,v 1.4 2009/12/05 23:27:47 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractSerialStrategy;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since
- * @version $Revision: 1.4 $
+ * @version $Revision$
  */
 public final class SimpleSerialStrategy extends AbstractSerialStrategy {
 

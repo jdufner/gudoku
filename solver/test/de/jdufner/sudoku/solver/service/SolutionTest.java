@@ -1,4 +1,4 @@
-// $Id: SolutionTest.java,v 1.1 2009/12/19 21:22:45 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)

@@ -1,4 +1,4 @@
-// $Id: ShortString.java,v 1.8 2009/11/22 23:54:36 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -33,7 +33,7 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.8 $
+ * @version $Revision$
  */
 public final class ShortString implements CellHandler {
 

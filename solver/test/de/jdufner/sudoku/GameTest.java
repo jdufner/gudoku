@@ -1,4 +1,4 @@
-// $Id: GameTest.java,v 1.11 2009/12/05 23:27:48 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -37,7 +37,7 @@ import de.jdufner.sudoku.common.board.Literal;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.11 $
+ * @version $Revision$
  */
 public final class GameTest extends TestCase {
   private static final Logger LOG = Logger.getLogger(GameTest.class);

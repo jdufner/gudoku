@@ -1,4 +1,4 @@
-// $Id: CellByValue.java,v 1.5 2009/11/17 20:34:33 jdufner Exp $
+// $Id$
 package de.jdufner.sudoku.common.cellhandlerimpls;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import de.jdufner.sudoku.common.board.Literal;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.5 $
+ * @version $Revision$
  */
 public final class CellByValue implements CellHandler {
 

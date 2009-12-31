@@ -1,4 +1,4 @@
-// $Id: StrategyTest.java,v 1.10 2009/11/26 21:54:32 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import de.jdufner.sudoku.solver.service.ExtendedSolver;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.10 $
+ * @version $Revision$
  */
 public class StrategyTest extends TestCase {
   private static final Logger LOG = Logger.getLogger(StrategyTest.class);

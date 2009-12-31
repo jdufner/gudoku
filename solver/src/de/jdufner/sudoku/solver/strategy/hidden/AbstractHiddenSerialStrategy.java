@@ -1,4 +1,4 @@
-// $Id: AbstractHiddenSerialStrategy.java,v 1.1 2009/11/20 19:55:09 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -40,7 +40,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractSerialStrategy;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.2
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public abstract class AbstractHiddenSerialStrategy extends AbstractSerialStrategy implements Hidden {
 

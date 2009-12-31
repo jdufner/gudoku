@@ -1,4 +1,4 @@
-// $Id: Sudoku.java,v 1.4 2009/12/19 21:22:46 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -50,7 +50,7 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.4 $
+ * @version $Revision$
  */
 public class Sudoku implements Cloneable {
 

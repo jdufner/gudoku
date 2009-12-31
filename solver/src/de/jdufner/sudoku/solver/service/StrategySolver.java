@@ -1,4 +1,4 @@
-// $Id: StrategySolver.java,v 1.5 2009/12/14 20:47:36 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -38,7 +38,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyThreadingEnum;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.5 $
+ * @version $Revision$
  */
 public final class StrategySolver implements ExtendedSolver {
 

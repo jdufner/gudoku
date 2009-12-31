@@ -1,4 +1,4 @@
-// $Id: AbstractNakedStrategy.java,v 1.17 2009/11/27 21:53:42 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -49,7 +49,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since
- * @version $Revision: 1.17 $
+ * @version $Revision$
  */
 public abstract class AbstractNakedStrategy extends AbstractStrategy implements NakedUnit, UnitHandler {
 

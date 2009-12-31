@@ -1,4 +1,4 @@
-// $Id: CommandManager.java,v 1.3 2009/12/05 23:27:48 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -34,7 +34,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public class CommandManager {
 

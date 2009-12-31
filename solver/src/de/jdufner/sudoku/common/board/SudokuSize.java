@@ -1,4 +1,4 @@
-// $Id: SudokuSize.java,v 1.2 2009/12/21 22:19:56 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -28,7 +28,7 @@ package de.jdufner.sudoku.common.board;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.2 $
+ * @version $Revision$
  */
 public enum SudokuSize {
 

@@ -1,4 +1,4 @@
-// $Id: AbstractHiddenStrategy.java,v 1.18 2009/12/05 23:27:47 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -49,7 +49,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.18 $
+ * @version $Revision$
  */
 public abstract class AbstractHiddenStrategy extends AbstractStrategy implements HiddenUnit, UnitHandler,
     Callable<Collection<Command>> {

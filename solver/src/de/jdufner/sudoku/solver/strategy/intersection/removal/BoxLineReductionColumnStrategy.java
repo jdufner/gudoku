@@ -1,4 +1,4 @@
-// $Id: BoxLineReductionColumnStrategy.java,v 1.16 2009/12/17 22:17:37 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -46,7 +46,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.16 $
+ * @version $Revision$
  */
 public final class BoxLineReductionColumnStrategy extends AbstractStrategy implements ColumnHandler,
     Callable<Collection<Command>> {

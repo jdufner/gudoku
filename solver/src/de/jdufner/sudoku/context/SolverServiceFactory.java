@@ -1,4 +1,4 @@
-// $Id: SolverServiceFactory.java,v 1.8 2009/11/26 21:54:32 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -39,7 +39,7 @@ import de.jdufner.sudoku.solver.service.Solver;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.8 $
+ * @version $Revision$
  */
 public final class SolverServiceFactory {
   private static final Logger LOG = Logger.getLogger(SolverServiceFactory.class);

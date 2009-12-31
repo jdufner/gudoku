@@ -1,4 +1,4 @@
-// $Id: StrategyConfiguration.java,v 1.1 2009/11/24 20:58:55 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -40,7 +40,7 @@ import java.util.Set;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2009-11-24
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class StrategyConfiguration {
 

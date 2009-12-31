@@ -1,4 +1,4 @@
-// $Id: Log.java,v 1.1 2009/12/26 23:08:00 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 26.12.2009
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class Log { // NOPMD by Jürgen on 27.12.09 22:16
 

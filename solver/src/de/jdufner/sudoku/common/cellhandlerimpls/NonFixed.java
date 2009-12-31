@@ -1,4 +1,4 @@
-// $Id: NonFixed.java,v 1.6 2009/11/17 20:34:33 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -36,7 +36,7 @@ import de.jdufner.sudoku.common.board.CellHandler;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.6 $
+ * @version $Revision$
  */
 public final class NonFixed implements CellHandler {
 

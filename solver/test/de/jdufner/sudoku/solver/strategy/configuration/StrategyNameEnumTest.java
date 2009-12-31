@@ -1,4 +1,4 @@
-// $Id: StrategyNameEnumTest.java,v 1.1 2009/11/24 20:58:54 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since
- * @version $Revision: 1.1 $
+ * @version $Revision$
  * 
  */
 public final class StrategyNameEnumTest extends TestCase {

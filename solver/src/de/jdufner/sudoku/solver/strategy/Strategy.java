@@ -1,4 +1,4 @@
-// $Id: Strategy.java,v 1.10 2009/11/28 00:25:12 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -33,7 +33,7 @@ import de.jdufner.sudoku.common.misc.Level;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since
- * @version $Revision: 1.10 $
+ * @version $Revision$
  */
 public interface Strategy {
 

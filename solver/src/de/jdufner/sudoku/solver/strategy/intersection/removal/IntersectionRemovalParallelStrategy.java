@@ -1,4 +1,4 @@
-// $Id: IntersectionRemovalParallelStrategy.java,v 1.1 2009/11/20 20:40:21 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -32,7 +32,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class IntersectionRemovalParallelStrategy extends AbstractParallelStrategy {
 
