@@ -1,4 +1,4 @@
-// $Id: PdfGeneratorTest.java,v 1.1 2009/12/20 21:59:21 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -37,7 +37,7 @@ import de.jdufner.sudoku.context.GeneratorServiceFactory;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2009-12-20
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class PdfGeneratorTest extends TestCase {
 

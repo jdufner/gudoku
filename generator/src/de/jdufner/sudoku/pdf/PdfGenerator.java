@@ -1,4 +1,4 @@
-// $Id: PdfGenerator.java,v 1.3 2009/12/21 22:21:27 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -46,7 +46,7 @@ import de.jdufner.sudoku.solver.service.ExtendedSolver;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2009-12-20
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public final class PdfGenerator {
 

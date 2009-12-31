@@ -1,4 +1,4 @@
-// $Id: SudokuDaoTest.java,v 1.8 2009/12/26 23:06:47 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -41,7 +41,7 @@ import de.jdufner.sudoku.context.GeneratorServiceFactory;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.8 $
+ * @version $Revision$
  */
 public final class SudokuDaoTest extends TestCase {
 

@@ -1,4 +1,4 @@
-// $Id: SudokuGeneratorTest.java,v 1.6 2009/12/20 19:34:49 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.6 $
+ * @version $Revision$
  * 
  */
 public class SudokuGeneratorTest extends TestCase {

@@ -1,4 +1,4 @@
-// $Id: EleminationBuilder.java,v 1.12 2009/12/20 19:34:49 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -45,7 +45,7 @@ import de.jdufner.sudoku.solver.service.Solution;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.12 $
+ * @version $Revision$
  */
 public abstract class EleminationBuilder extends AbstractBuilder {
 

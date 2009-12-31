@@ -1,4 +1,4 @@
-// $Id: GeneratorServiceFactory.java,v 1.5 2009/12/26 23:06:47 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -41,7 +41,7 @@ import de.jdufner.sudoku.text.ApproachPrinter;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.5 $
+ * @version $Revision$
  */
 public final class GeneratorServiceFactory {
   private static final Logger LOG = Logger.getLogger(GeneratorServiceFactory.class);

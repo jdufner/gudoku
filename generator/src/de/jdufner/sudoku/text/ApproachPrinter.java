@@ -1,4 +1,4 @@
-// $Id: ApproachPrinter.java,v 1.2 2009/12/26 23:20:45 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -39,7 +39,7 @@ import de.jdufner.sudoku.solver.service.Solution;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 22.12.2009
- * @version $Revision: 1.2 $
+ * @version $Revision$
  */
 public final class ApproachPrinter {
 

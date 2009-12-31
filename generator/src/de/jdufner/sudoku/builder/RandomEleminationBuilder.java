@@ -1,4 +1,4 @@
-// $Id: RandomEleminationBuilder.java,v 1.5 2009/12/13 20:29:57 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -30,7 +30,7 @@ import de.jdufner.sudoku.common.board.Cell;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.5 $
+ * @version $Revision$
  */
 public final class RandomEleminationBuilder extends EleminationBuilder {
   // private static final Logger LOG = Logger.getLogger(RandomEleminationBuilder.class);
