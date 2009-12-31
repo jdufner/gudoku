@@ -68,8 +68,8 @@ public final class SudokuData {
   private int size;
   @Column(name = "SDKS_GENERATED_AT", nullable = false)
   private Date generatedAt = new Date();
-  @Column(name = "SDKS_PRINTED_AT", nullable = false)
-  private Date printedAt = new Date();
+  @Column(name = "SDKS_PRINTED_AT", nullable = true)
+  private Date printedAt;
 
   public int getId() {
     return id;

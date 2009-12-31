@@ -25,6 +25,7 @@
  */
 package de.jdufner.sudoku.dao;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -48,6 +49,13 @@ public final class SudokuDaoImpl implements SudokuDao {
   private HibernateTemplate hibernateTemplate;
 
   @Override
+  public SudokuData deleteSudoku(int id) {
+    SudokuData sudokuData = (SudokuData) hibernateTemplate.get(SudokuData.class, id);
+    hibernateTemplate.delete(sudokuData);
+    return sudokuData;
+  }
+
+  @Override
   public List<SudokuData> findSudokus(SudokuSize size, Level level, int number, Boolean printed) {
     hibernateTemplate.setFetchSize(number);
     hibernateTemplate.setMaxResults(number);
@@ -66,6 +74,7 @@ public final class SudokuDaoImpl implements SudokuDao {
     return sudokuDataList;
   }
 
+  @Override
   public Sudoku loadSudokuOfDay() {
     hibernateTemplate.setFetchSize(1);
     hibernateTemplate.setMaxResults(1);
@@ -79,16 +88,21 @@ public final class SudokuDaoImpl implements SudokuDao {
     return (SudokuData) hibernateTemplate.get(SudokuData.class, id);
   }
 
-  public void saveSudoku(Sudoku sudoku) {
+  @Override
+  public SudokuData saveSudoku(Sudoku sudoku) {
     if (LOG.isDebugEnabled()) {
       LOG.debug("Save Sudoku.");
     }
-    hibernateTemplate.save(SudokuMapper.map(sudoku));
+    SudokuData sudokuData = SudokuMapper.map(sudoku);
+    Serializable serializable = hibernateTemplate.save(sudokuData);
     if (LOG.isInfoEnabled()) {
       LOG.info("Sudoku saved.");
     }
+    sudokuData.setId(((Integer) serializable).intValue());
+    return sudokuData;
   }
 
+  @Override
   public void updatePrintedAt(int id, Date printedAt) {
     hibernateTemplate.setFetchSize(1);
     hibernateTemplate.setMaxResults(1);
