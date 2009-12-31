@@ -1,4 +1,4 @@
-// $Id: SudokuMapper.java,v 1.4 2009/12/11 20:49:41 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -32,7 +32,7 @@ import de.jdufner.sudoku.common.factory.SudokuFactory;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.4 $
+ * @version $Revision$
  * 
  */
 public final class SudokuMapper {

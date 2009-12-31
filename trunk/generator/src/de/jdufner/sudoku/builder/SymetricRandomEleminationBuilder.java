@@ -1,4 +1,4 @@
-// $Id: SymetricRandomEleminationBuilder.java,v 1.8 2009/12/20 19:34:49 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -33,7 +33,7 @@ import de.jdufner.sudoku.solver.service.Solution;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.8 $
+ * @version $Revision$
  */
 public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
   private static final Logger log = Logger.getLogger(SymetricRandomEleminationBuilder.class);

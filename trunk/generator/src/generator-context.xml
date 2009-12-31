@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<!--
-		$Id: generator-context.xml,v 1.11 2009/12/26 23:06:47 jdufner Exp $
+		$Id$
 	-->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	   xmlns:aop="http://www.springframework.org/schema/aop"
-	   xmlns:tx="http://www.springframework.org/schema/tx" 
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx" 
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:util="http://www.springframework.org/schema/util"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
@@ -28,22 +28,20 @@
 
   <bean id="abstractBuilder" abstract="true" class="de.jdufner.sudoku.builder.AbstractBuilder">
     <property name="randomData" ref="randomData"/>
+    <property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
   </bean> 
 
 	<bean id="randomEleminationBuilder" class="de.jdufner.sudoku.builder.RandomEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
-		<property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
 	</bean>
 
 	<bean id="symetricRandomEleminationBuilder"
 		class="de.jdufner.sudoku.builder.SymetricRandomEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
-		<property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
 	</bean>
 
 	<bean id="literalEleminationBuilder" class="de.jdufner.sudoku.builder.LiteralEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
-		<property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
 	</bean>
 
 	<bean id="pdfPrinter" class="de.jdufner.sudoku.pdf.PdfPrinterImpl" >

@@ -1,4 +1,4 @@
-// $Id: PropertiesLoaderTest.java,v 1.2 2009/12/11 20:49:42 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.2 $
+ * @version $Revision$
  *
  */
 public final class PropertiesLoaderTest extends TestCase {

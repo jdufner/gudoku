@@ -1,4 +1,4 @@
-// $Id: ApproachPrinterTest.java,v 1.1 2009/12/26 23:06:47 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -35,7 +35,7 @@ import de.jdufner.sudoku.context.GeneratorServiceFactory;
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 22.12.2009
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public final class ApproachPrinterTest extends TestCase {
 

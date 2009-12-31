@@ -1,4 +1,4 @@
-// $Id: PrintServlet.java,v 1.7 2009/12/11 20:49:41 jdufner Exp $
+// $Id$
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -42,7 +42,7 @@ import de.jdufner.sudoku.common.misc.Examples;
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
- * @version $Revision: 1.7 $
+ * @version $Revision$
  */
 public class PrintServlet extends HttpServlet {
   private static final Logger LOG = Logger.getLogger(PrintServlet.class);
