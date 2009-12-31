@@ -54,9 +54,12 @@ public final class SudokuDaoTest extends TestCase {
     sudokuDao = GeneratorServiceFactory.getInstance().getSudokuDao();
   }
 
-  public void testSaveSudoku() {
+  public void testSaveAndDeleteSudoku() {
     Sudoku sudoku = SudokuFactory.buildSudoku(Examples.ING_DIBA);
-    sudokuDao.saveSudoku(sudoku);
+    LOG.debug(sudoku);
+    SudokuData sudokuData = sudokuDao.saveSudoku(sudoku);
+    assertTrue(sudokuData.getId() > 0);
+    sudokuDao.deleteSudoku(sudokuData.getId());
   }
 
   public void testLoadSudokuOfDay() {

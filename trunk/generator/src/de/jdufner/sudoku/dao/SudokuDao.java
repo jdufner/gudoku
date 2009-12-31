@@ -42,6 +42,14 @@ import de.jdufner.sudoku.common.misc.Level;
 public interface SudokuDao {
 
   /**
+   * Löscht ein Sudoku in der Datenbank.
+   * 
+   * @param id
+   *          Die ID des Sudoku.
+   */
+  SudokuData deleteSudoku(int id);
+
+  /**
    * 
    * @param size
    *          Größe der zu findenden Sudokus.
@@ -74,7 +82,7 @@ public interface SudokuDao {
    * @param sudoku
    *          Das übergebene Sudoku.
    */
-  void saveSudoku(Sudoku sudoku);
+  SudokuData saveSudoku(Sudoku sudoku);
 
   /**
    * 
