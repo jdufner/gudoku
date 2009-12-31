@@ -54,7 +54,7 @@ public final class NachbarschaftUtils {
    * @return <code>true</code>, wenn eine Nachbarschaft maximal 2-mal im Sudoku existiert, sonst <code>false</code>.
    */
   public static boolean checkNachbarschaft(final Sudoku sudoku) {
-    final int maxAllowedSimilarNeighbors = 2;
+    final int maxAllowedSimilarNeighbors = 6;
     return checkColumnNachbarschaft(sudoku, maxAllowedSimilarNeighbors)
         && checkRowNachbarschaft(sudoku, maxAllowedSimilarNeighbors);
   }

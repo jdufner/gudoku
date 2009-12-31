@@ -33,7 +33,8 @@ import de.jdufner.sudoku.common.board.Cell;
  * @version $Revision$
  */
 public final class RandomEleminationBuilder extends EleminationBuilder {
-  // private static final Logger LOG = Logger.getLogger(RandomEleminationBuilder.class);
+
+  //  private static final Logger LOG = Logger.getLogger(RandomEleminationBuilder.class);
 
   public RandomEleminationBuilder() {
     super();

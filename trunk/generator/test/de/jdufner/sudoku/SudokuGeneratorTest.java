@@ -37,12 +37,13 @@ import org.apache.log4j.Logger;
  * 
  */
 public class SudokuGeneratorTest extends TestCase {
+
   private static final Logger LOG = Logger.getLogger(SudokuGeneratorTest.class);
 
   public void testGetSudoku() throws Exception {
     LOG.debug("Start Test");
     SudokuGenerator generator = new SudokuGenerator();
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 10; i++)
       generator.generate();
     LOG.debug("End Test");
   }
