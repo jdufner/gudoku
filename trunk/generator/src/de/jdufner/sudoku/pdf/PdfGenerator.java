@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.pdf;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,6 +41,7 @@ import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.dao.SudokuDao;
 import de.jdufner.sudoku.dao.SudokuData;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
+import de.jdufner.sudoku.text.ApproachPrinter;
 
 /**
  * 
@@ -54,9 +55,10 @@ public final class PdfGenerator {
 
   private SudokuDao sudokuDao;
   private PdfPrinter pdfPrinter;
+  private ApproachPrinter approachPrinter;
   private ExtendedSolver solver;
 
-  public void generate() throws FileNotFoundException, DocumentException {
+  public void generate() throws DocumentException, IOException {
     final List<SudokuData> allSudokuQuests = new ArrayList<SudokuData>();
     for (Level level : Level.values()) {
       List<SudokuData> sudokus = getSudokuDao().findSudokus(SudokuSize.DEFAULT, level, 6, Boolean.FALSE);
@@ -70,6 +72,7 @@ public final class PdfGenerator {
       sudokuData2.setLevel(sudokuData.getLevel());
       sudokuData2.setSize(sudokuData.getSize());
       sudokuData2.setSudokuAsString(result.toString());
+      approachPrinter.print(sudokuData.getId());
       allSudokuResults.add(sudokuData2);
     }
 
@@ -111,6 +114,14 @@ public final class PdfGenerator {
 
   public void setSolver(ExtendedSolver solver) {
     this.solver = solver;
+  }
+
+  public ApproachPrinter getApproachPrinter() {
+    return approachPrinter;
+  }
+
+  public void setApproachPrinter(ApproachPrinter approachPrinter) {
+    this.approachPrinter = approachPrinter;
   }
 
 }

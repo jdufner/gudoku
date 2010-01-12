@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.pdf;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import junit.framework.TestCase;
 
@@ -49,7 +49,7 @@ public final class PdfGeneratorTest extends TestCase {
     pdfGenerator = GeneratorServiceFactory.getInstance().getPdfGenerator();
   }
 
-  public void testGenerate() throws FileNotFoundException, DocumentException {
+  public void testGenerate() throws DocumentException, IOException {
     pdfGenerator.generate();
   }
 
