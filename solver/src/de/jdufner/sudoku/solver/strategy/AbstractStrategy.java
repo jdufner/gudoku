@@ -104,7 +104,7 @@ public abstract class AbstractStrategy implements Strategy {
     if (LOG.isInfoEnabled()) {
       LOG.info("Führe " + getClass().getSimpleName() + " aus.");
     }
-    Log.APPROACH.info("Führe " + getClass().getSimpleName() + " aus.");
+    Log.log("Führe " + getClass().getSimpleName() + " aus.");
     //strategyResult.storeStateBefore(getSudoku());
     strategyResult.start();
     setCommands(executeStrategy());
@@ -115,7 +115,7 @@ public abstract class AbstractStrategy implements Strategy {
     if (LOG.isInfoEnabled()) {
       LOG.info(getClass().getSimpleName() + " hat " + getCommands().size() + " Commands erzeugt.");
     }
-    Log.APPROACH.info(getClass().getSimpleName() + " hat " + getCommands().size() + " Commands erzeugt.");
+    Log.log(getClass().getSimpleName() + " hat " + getCommands().size() + " Commands erzeugt.");
     if (LOG.isDebugEnabled()) {
       LOG.info("Ausführungsdauer von " + getClass().getSimpleName() + " war " + strategyResult.getDurationInMillis()
           + " ms.");

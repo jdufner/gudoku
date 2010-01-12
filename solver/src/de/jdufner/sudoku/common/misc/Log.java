@@ -38,4 +38,27 @@ public final class Log { // NOPMD by Jürgen on 27.12.09 22:16
   public static final Logger APPROACH = Logger.getLogger("approach");
   public static final Logger SUDOKU = Logger.getLogger("sudoku");
 
+  private static StringBuilder sb = null;
+  private static final String NEWLINE = System.getProperty("line.separator");
+
+  public static void log(final String message) {
+    APPROACH.info(message);
+    if (sb != null) {
+      sb.append(message).append(NEWLINE);
+    }
+  }
+
+  public static void startRecording() {
+    sb = new StringBuilder();
+  }
+
+  public static String getMessagesAndStopRecording() {
+    if (sb != null) {
+      final String msg = sb.toString();
+      sb = null;
+      return msg;
+    }
+    return "";
+  }
+
 }
