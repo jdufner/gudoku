@@ -23,28 +23,58 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku;
+package de.jdufner.sudoku.text;
 
-import junit.framework.TestCase;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.zip.GZIPOutputStream;
 
 import org.apache.log4j.Logger;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 0.1
+ * @since 2010-01-11
  * @version $Revision$
- * 
  */
-public class SudokuGeneratorTest extends TestCase {
+public final class ApproachFilePrinterImpl implements ApproachFilePrinter {
 
-  private static final Logger LOG = Logger.getLogger(SudokuGeneratorTest.class);
+  private static final Logger LOG = Logger.getLogger(ApproachFilePrinterImpl.class);
+  // TODO In Konfiguration auslagern
+  private static final String DIR = "C:\\tmp";
 
-  public void testGetSudoku() throws Exception {
-    LOG.debug("Start Test");
-    SudokuGenerator generator = new SudokuGenerator();
-    for (int i = 0; i < 1000; i++)
-      generator.generate();
-    LOG.debug("End Test");
+  private PrintWriter pw;
+
+  @Override
+  public void closeAndCompressFile() {
+    if (pw != null) {
+      //    pw.flush();
+      pw.close();
+    }
   }
+
+  @Override
+  public void openFile(final int sudokuId) throws IOException {
+    final File file = new File(DIR, sudokuId + ".txt.gz");
+    final FileOutputStream fos = new FileOutputStream(file);
+    final GZIPOutputStream gos = new GZIPOutputStream(fos);
+    pw = new PrintWriter(gos);
+  }
+
+  @Override
+  public void print(final String message) {
+    if (pw != null) {
+      pw.print(message);
+    }
+  }
+
+  @Override
+  public void println(final String message) {
+    if (pw != null) {
+      pw.println(message);
+    }
+  }
+
 }

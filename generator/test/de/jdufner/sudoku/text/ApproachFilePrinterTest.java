@@ -23,28 +23,24 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku;
+package de.jdufner.sudoku.text;
+
+import java.io.IOException;
 
 import junit.framework.TestCase;
-
-import org.apache.log4j.Logger;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 0.1
+ * @since 2010-01-12
  * @version $Revision$
- * 
  */
-public class SudokuGeneratorTest extends TestCase {
+public final class ApproachFilePrinterTest extends TestCase {
 
-  private static final Logger LOG = Logger.getLogger(SudokuGeneratorTest.class);
-
-  public void testGetSudoku() throws Exception {
-    LOG.debug("Start Test");
-    SudokuGenerator generator = new SudokuGenerator();
-    for (int i = 0; i < 1000; i++)
-      generator.generate();
-    LOG.debug("End Test");
+  public void testOpenFileWriteCloseAndCompressFile() throws IOException {
+    ApproachFilePrinter sp = new ApproachFilePrinterImpl();
+    sp.openFile(123);
+    sp.println("123456789456789123789123456234567891567891234891234567345678912678912345912345678");
+    sp.closeAndCompressFile();
   }
 }

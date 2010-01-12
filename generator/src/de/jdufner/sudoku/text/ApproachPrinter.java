@@ -25,6 +25,8 @@
  */
 package de.jdufner.sudoku.text;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
@@ -45,23 +47,28 @@ public final class ApproachPrinter {
 
   private static final Logger LOG = Logger.getLogger(ApproachPrinter.class);
 
+  private ApproachFilePrinter approachFilePrinter;
   private SudokuDao sudokuDao;
   private ExtendedSolver extendedSolver;
 
-  public void print(int id) {
+  public void print(int sudokuId) throws IOException {
     LOG.info("Start!");
-    Log.APPROACH.info("");
-    Log.APPROACH.info("START Sudoku " + id);
-    SudokuData sudokuData = getSudokuDao().loadSudoku(id);
+    approachFilePrinter.openFile(sudokuId);
+    Log.startRecording();
+    Log.log("");
+    Log.log("START Sudoku " + sudokuId);
+    SudokuData sudokuData = getSudokuDao().loadSudoku(sudokuId);
     Sudoku sudoku = SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
     Solution solution = getExtendedSolver().getSolution(sudoku);
-    Log.APPROACH.info("Zusammenfassung");
-    Log.APPROACH.info("            Rätsel: " + solution.getQuest());
-    Log.APPROACH.info("            Lösung: " + solution.getResult());
-    Log.APPROACH.info("     Eindeutigkeit: " + solution.getLevel());
-    Log.APPROACH.info("Schwierigkeitsgrad: " + solution.isUnique());
-    Log.APPROACH.info("ENDE Sudoku " + id);
-    Log.APPROACH.info("");
+    Log.log("Zusammenfassung");
+    Log.log("            Rätsel: " + solution.getQuest());
+    Log.log("            Lösung: " + solution.getResult());
+    Log.log("     Eindeutigkeit: " + solution.getLevel());
+    Log.log("Schwierigkeitsgrad: " + solution.isUnique());
+    Log.log("ENDE Sudoku " + sudokuId);
+    Log.log("");
+    approachFilePrinter.print(Log.getMessagesAndStopRecording());
+    approachFilePrinter.closeAndCompressFile();
     LOG.info("Ende!");
   }
 
@@ -83,6 +90,14 @@ public final class ApproachPrinter {
 
   public void setExtendedSolver(ExtendedSolver extendedSolver) {
     this.extendedSolver = extendedSolver;
+  }
+
+  public ApproachFilePrinter getApproachFilePrinter() {
+    return approachFilePrinter;
+  }
+
+  public void setApproachFilePrinter(ApproachFilePrinter solutionPrinter) {
+    this.approachFilePrinter = solutionPrinter;
   }
 
 }
