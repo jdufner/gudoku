@@ -30,67 +30,6 @@
     <constructor-arg ref="randomGenerator"/>
   </bean>
 
-	<bean id="cacheManager"
-		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
-
-	<bean id="solverStrategyCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-		<property name="cacheManager">
-			<ref local="cacheManager" />
-		</property>
-		<!--
-			property name="cacheName"> <value>
-			de.jdufner.sudoku.builder.SymetricBacktrackingEleminationBuilder
-			</value> </property
-		-->
-		<property name="maxElementsInMemory">
-			<value>100000</value>
-		</property>
-		<property name="eternal">
-			<value>false</value>
-		</property>
-		<property name="timeToIdle">
-			<value>3600</value>
-		</property>
-		<property name="timeToLive">
-			<value>3600</value>
-		</property>
-		<property name="overflowToDisk">
-			<value>false</value>
-		</property>
-	</bean>
-
-	<bean id="cacheStrategyInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverCache">
-		<property name="cache">
-			<ref local="solverStrategyCache" />
-		</property>
-	</bean>
-
-	<bean id="solverBacktrackingCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-		<property name="cacheManager">
-			<ref local="cacheManager" />
-		</property>
-		<!--
-			property name="cacheName"> <value>
-			de.jdufner.sudoku.builder.SymetricBacktrackingEleminationBuilder
-			</value> </property
-		-->
-		<property name="maxElementsInMemory">
-			<value>100000</value>
-		</property>
-		<property name="eternal">
-			<value>false</value>
-		</property>
-		<property name="timeToIdle">
-			<value>3600</value>
-		</property>
-		<property name="timeToLive">
-			<value>3600</value>
-		</property>
-		<property name="overflowToDisk">
-			<value>false</value>
-		</property>
-	</bean>
-
 	<bean id="objectPool" class="org.apache.commons.pool.impl.GenericObjectPool">
 		<!--
 			constructor-arg> <bean class="de.jdufner.sudoku.common.SudokuFactory"
@@ -128,12 +67,6 @@
 		<property name="objectPool" ref="objectPool" />
 	</bean>
 
-	<bean id="cacheBacktrackingInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverCache">
-		<property name="cache">
-			<ref local="solverBacktrackingCache" />
-		</property>
-	</bean>
-
 	<bean id="clockInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverClock" />
 
 	<bean id="loggerInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverLogger" />
@@ -150,7 +83,6 @@
 			<list>
 				<value>clockInterceptor</value>
 				<value>loggerInterceptor</value>
-				<!--value>cacheStrategyInterceptor</value-->
 			</list>
 		</property>
 	</bean>
@@ -167,7 +99,6 @@
 			<list>
 				<value>clockInterceptor</value>
 				<value>loggerInterceptor</value>
-				<!--value>cacheStrategyInterceptor</value-->
 			</list>
 		</property>
 	</bean>
@@ -183,7 +114,6 @@
 			<list>
 				<value>clockInterceptor</value>
 				<value>loggerInterceptor</value>
-				<!--value>cacheBacktrackingInterceptor</value-->
 			</list>
 		</property>
 	</bean>

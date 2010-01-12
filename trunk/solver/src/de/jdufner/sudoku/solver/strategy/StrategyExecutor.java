@@ -90,9 +90,9 @@ public final class StrategyExecutor {
     boolean doExecute = true;
     while (doExecute) {
       zaehler += 1;
-      Log.APPROACH.info("Starte Iteration " + zaehler);
+      Log.log("Starte Iteration " + zaehler);
       LOG.info("Starte Iteration " + zaehler);
-      Log.APPROACH.info("Sudoku " + getSudoku() //
+      Log.log("Sudoku " + getSudoku() //
           + " (" + getSudoku().getNumberOfFixed() + " Zellen gesetzt, " //
           + getSudoku().getNumberOfCandidates() + " Kandidaten )");
       LOG.info("Sudoku " + getSudoku() //
@@ -101,7 +101,7 @@ public final class StrategyExecutor {
       //LOG.info("Sudoku vor Iteration " + zaehler + ": " + getSudoku());
       final StrategyResult strategyResult = executeStrategy();
       if (strategyResult == null) {
-        Log.APPROACH.info("Keinen weiteren Lösungschrift gefunden. Sudoku nicht gelöst!");
+        Log.log("Keinen weiteren Lösungschrift gefunden. Sudoku nicht gelöst!");
         LOG.info("Keinen weiteren Lösungschrift gefunden. Sudoku nicht gelöst!");
         doExecute = false;
       } else {
@@ -109,15 +109,15 @@ public final class StrategyExecutor {
       }
       if (getSudoku().isSolved()) {
         if (getSudoku().isValid() && getSudoku().isSolvedByCheckSum()) {
-          Log.APPROACH.info("Sudoku gelöst! " + getSudoku());
+          Log.log("Sudoku gelöst! " + getSudoku());
           LOG.debug("Sudoku gelöst! " + getSudoku());
           doExecute = false;
         } else {
-          Log.APPROACH.info("Sudoku scheint gelöst zu sein, aber irgendwas ist schief gelaufen.");
+          Log.log("Sudoku scheint gelöst zu sein, aber irgendwas ist schief gelaufen.");
           LOG.warn("Sudoku scheint gelöst zu sein, aber irgendwas ist schief gelaufen.");
         }
       } else {
-        Log.APPROACH.info("Sudoku noch nicht gelöst, weitermachen.");
+        Log.log("Sudoku noch nicht gelöst, weitermachen.");
         LOG.debug("Sudoku noch nicht gelöst, weitermachen.");
       }
     }
@@ -146,15 +146,15 @@ public final class StrategyExecutor {
         executeCommands(strategyResult.getCommands());
         strategyResult.storeStateAfter(getSudoku());
         if (strategyResult.getNumberEleminatedCandidates() > 0) {
-          Log.APPROACH.info(strategy + " entfernte " + strategyResult.getNumberEleminatedCandidates()
-              + " Kandidaten und setzte " + strategyResult.getNumberNewlyFixedCells() + " Zellen.");
+          Log.log(strategy + " entfernte " + strategyResult.getNumberEleminatedCandidates() + " Kandidaten und setzte "
+              + strategyResult.getNumberNewlyFixedCells() + " Zellen.");
           if (LOG.isInfoEnabled()) {
             LOG.info(strategy + " entfernte " + strategyResult.getNumberEleminatedCandidates()
                 + " Kandidaten und setzte " + strategyResult.getNumberNewlyFixedCells() + " Zellen.");
           }
           return strategyResult;
         } else {
-          Log.APPROACH.info(strategy + " hat keinen Kandidat entfernt und keine Zelle gesetzt");
+          Log.log(strategy + " hat keinen Kandidat entfernt und keine Zelle gesetzt");
           if (LOG.isInfoEnabled()) {
             LOG.info(strategy + " hat keinen Kandidat entfernt und keine Zelle gesetzt");
           }

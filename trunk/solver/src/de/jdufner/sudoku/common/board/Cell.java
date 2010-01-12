@@ -97,9 +97,9 @@ public final class Cell implements Cloneable, Comparable<Cell> {
     }
     final boolean candidatesRemoved = candidates.removeAll(values);
     if (candidatesRemoved) {
-      Log.APPROACH.info("Entfernte " + values.size() + " Kandidaten " + values + " aus " + this);
+      Log.log("Entfernte " + values.size() + " Kandidaten " + values + " aus " + this);
       if (LOG.isInfoEnabled()) {
-        LOG.info("Removed " + values.size() + " candidates " + values + " from " + this);
+        LOG.info("Entfernte " + values.size() + " Kandidaten " + values + " aus " + this);
       }
     }
     if (candidates.size() == 1) {
@@ -153,7 +153,7 @@ public final class Cell implements Cloneable, Comparable<Cell> {
       }
     }
     if (isInitialized) {
-      Log.APPROACH.info("Setzte " + value + " in " + this);
+      Log.log("Setzte " + value + " in " + this);
     }
     assert isValid();
   }
