@@ -50,6 +50,7 @@
 
 	<bean id="pdfGenerator" class="de.jdufner.sudoku.pdf.PdfGenerator">
 		<property name="pdfPrinter" ref="pdfPrinter" />
+		<property name="approachPrinter" ref="approachPrinter" />
 		<property name="sudokuDao" ref="sudokuDao" />
 		<property name="solver" ref="strategySolverWithBacktracking" />
 	</bean>
