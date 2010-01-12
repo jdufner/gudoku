@@ -110,4 +110,17 @@ public final class GeneratorServiceFactory {
     return (RandomData) applicationContext.getBean("randomData");
   }
 
+  public Object getBean(Class clazz) {
+    String[] beanNames = applicationContext.getBeanNamesForType(clazz);
+    if (beanNames.length == 0) {
+      throw new IllegalStateException("Klasse " + clazz + " existiert im Kontext "
+          + applicationContext.getDisplayName() + " nicht.");
+    }
+    if (beanNames.length > 1) {
+      throw new IllegalStateException("Klasse " + clazz + " existiert im Kontext "
+          + applicationContext.getDisplayName() + " mehrfach und ist nicht eindeutig.");
+    }
+    return applicationContext.getBean(beanNames[0]);
+  }
+
 }

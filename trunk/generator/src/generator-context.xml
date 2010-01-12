@@ -54,9 +54,14 @@
 		<property name="solver" ref="strategySolverWithBacktracking" />
 	</bean>
 	
+  <!-- scope="prototype" -->
+  <bean id="approachFilePrinter" class="de.jdufner.sudoku.text.ApproachFilePrinterImpl">
+  </bean>
+
 	<bean id="approachPrinter" class="de.jdufner.sudoku.text.ApproachPrinter">
-        <property name="sudokuDao" ref="sudokuDao" />
-        <property name="extendedSolver" ref="strategySolverWithBacktracking" />
+	  <property name="approachFilePrinter" ref="approachFilePrinter" />
+    <property name="sudokuDao" ref="sudokuDao" />
+    <property name="extendedSolver" ref="strategySolverWithBacktracking" />
 	</bean>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"

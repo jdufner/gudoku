@@ -25,6 +25,8 @@
  */
 package de.jdufner.sudoku.text;
 
+import java.io.IOException;
+
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
@@ -49,8 +51,8 @@ public final class ApproachPrinterTest extends TestCase {
     approachPrinter = GeneratorServiceFactory.getInstance().getApproachPrinter();
   }
 
-  public void testasommerf() {
-    int[] ids = { 1419, 1580, 1875, 2502, 2505, 2752 };
+  public void testasommerf() throws IOException {
+    int[] ids = { 48383 };
     for (int id : ids) {
       LOG.info("#");
       LOG.info("# " + id);
