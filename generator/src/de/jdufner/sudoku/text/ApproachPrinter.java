@@ -63,8 +63,8 @@ public final class ApproachPrinter {
     Log.log("Zusammenfassung");
     Log.log("            Rätsel: " + solution.getQuest());
     Log.log("            Lösung: " + solution.getResult());
-    Log.log("     Eindeutigkeit: " + solution.getLevel());
-    Log.log("Schwierigkeitsgrad: " + solution.isUnique());
+    Log.log("     Eindeutigkeit: " + solution.isUnique());
+    Log.log("Schwierigkeitsgrad: " + solution.getLevel());
     Log.log("ENDE Sudoku " + sudokuId);
     Log.log("");
     approachFilePrinter.print(Log.getMessagesAndStopRecording());
