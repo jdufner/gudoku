@@ -33,7 +33,6 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-
 /**
  * A Unit contains each {@link Literal} one time.
  * 
@@ -229,6 +228,13 @@ public abstract class Unit implements Comparable<Unit> {
   @Override
   public int hashCode() {
     return this.index;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder(super.toString());
+    sb.append(" ").append(getCells());
+    return sb.toString();
   }
 
   @Override
