@@ -63,8 +63,8 @@ public final class RetainCandidatesCommand extends AbstractCommand {
    */
   protected RetainCandidatesCommand(final String creator, final Cell cell, final Collection<Literal> candidates) {
     super(creator);
-    this.row = cell.getRowIndex();
-    this.column = cell.getColumnIndex();
+    this.rowIndex = cell.getRowIndex();
+    this.columnIndex = cell.getColumnIndex();
     this.candidates = candidates;
     for (Literal candidate : candidates) {
       if (!cell.getCandidates().contains(candidate)) {
@@ -95,7 +95,7 @@ public final class RetainCandidatesCommand extends AbstractCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Behalte Kandidaten " + candidates + " in Zelle (" + row + ", " + column + ")";
+    return getCreator() + ": Behalte Kandidaten " + candidates + " in Zelle (" + rowIndex + ", " + columnIndex + ")";
   }
 
   @Override
@@ -113,7 +113,7 @@ public final class RetainCandidatesCommand extends AbstractCommand {
     }
     if (other instanceof RetainCandidatesCommand) {
       final RetainCandidatesCommand that = (RetainCandidatesCommand) other;
-      if (this.row == that.row && this.column == that.column && this.candidates.containsAll(that.candidates)
+      if (this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex && this.candidates.containsAll(that.candidates)
           && that.candidates.containsAll(this.candidates)) {
         return true;
       }
@@ -123,7 +123,7 @@ public final class RetainCandidatesCommand extends AbstractCommand {
 
   @Override
   public int hashCode() {
-    return row;
+    return rowIndex;
   }
 
 }

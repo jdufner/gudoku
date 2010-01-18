@@ -46,33 +46,33 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
 
   protected SetValueCommand(final String creator, final int row, final int column, final Literal value) {
     super(creator);
-    this.row = row;
-    this.column = column;
+    this.rowIndex = row;
+    this.columnIndex = column;
     this.value = value;
   }
 
   protected SetValueCommand(final String creator, final Cell cell, final Literal value) {
     super(creator);
-    this.row = cell.getRowIndex();
-    this.column = cell.getColumnIndex();
+    this.rowIndex = cell.getRowIndex();
+    this.columnIndex = cell.getColumnIndex();
     this.value = value;
   }
 
   @Override
   public void executeCommand(final Sudoku sudoku) {
-    if (sudoku.getCell(row, column).isFixed()) {
+    if (sudoku.getCell(rowIndex, columnIndex).isFixed()) {
       successfully = false;
     } else {
       candidates = (Candidates<Literal>) getCell(sudoku).getCandidates().clone();
-      sudoku.getCell(row, column).setValue(value);
+      sudoku.getCell(rowIndex, columnIndex).setValue(value);
       successfully = true;
     }
   }
 
   @Override
   public void unexecuteCommand(final Sudoku sudoku) {
-    sudoku.getCell(row, column).setValue(Literal.EMPTY);
-    sudoku.getCell(row, column).setCandidates(candidates);
+    sudoku.getCell(rowIndex, columnIndex).setValue(Literal.EMPTY);
+    sudoku.getCell(rowIndex, columnIndex).setCandidates(candidates);
   }
 
   @Override
@@ -82,7 +82,7 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Setze Wert " + value + " in Zelle (" + row + ", " + column + ")";
+    return getCreator() + ": Setze Wert " + value + " in Zelle (" + rowIndex + ", " + columnIndex + ")";
   }
 
   @Override
@@ -100,7 +100,7 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
     }
     if (other instanceof SetValueCommand) {
       final SetValueCommand that = (SetValueCommand) other;
-      if (this.value.equals(that.value) && this.row == that.row && this.column == that.column) {
+      if (this.value.equals(that.value) && this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex) {
         return true;
       }
     }
@@ -109,7 +109,7 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
 
   @Override
   public int hashCode() {
-    return row;
+    return rowIndex;
   }
 
 }

@@ -47,7 +47,7 @@ public abstract class AbstractCommand implements Command {
   private final transient String creator;
   private transient String frozenString = null;
 
-  protected transient int row, column;
+  protected transient int rowIndex, columnIndex;
   protected transient Literal value;
   protected transient boolean successfully = false;
 
@@ -130,12 +130,12 @@ public abstract class AbstractCommand implements Command {
 
   @Override
   public int getColumnIndex() {
-    return column;
+    return columnIndex;
   }
 
   @Override
   public int getRowIndex() {
-    return row;
+    return rowIndex;
   }
 
   protected Cell getCell(Sudoku sudoku) {
