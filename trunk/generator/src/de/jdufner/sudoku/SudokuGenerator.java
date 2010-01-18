@@ -59,8 +59,10 @@ public final class SudokuGenerator {
     Builder builder = GeneratorServiceFactory.getInstance().getLiteralEleminationBuilder();
     Map<Level, Sudoku> map = builder.buildSudokus();
     for (Level l : map.keySet()) {
-      dao.saveSudoku(map.get(l));
-      SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
+      if (map.get(l).getNumberOfFixed() <= 30) {
+        dao.saveSudoku(map.get(l));
+        SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
+      }
     }
   }
 
