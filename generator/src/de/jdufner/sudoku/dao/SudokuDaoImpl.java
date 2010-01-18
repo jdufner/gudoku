@@ -68,7 +68,7 @@ public final class SudokuDaoImpl implements SudokuDao {
         sb.append("and s.printedAt is null ");
       }
     }
-    sb.append("order by s.generatedAt asc");
+    sb.append("order by s.fixed asc, s.generatedAt asc");
     List<SudokuData> sudokuDataList = hibernateTemplate.find(sb.toString(), new Object[] { size.getUnitSize(),
         level.getValue() });
     return sudokuDataList;
