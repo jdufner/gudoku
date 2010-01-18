@@ -37,19 +37,19 @@ public final class SetCandidateCommand extends AbstractSingleValueCommand {
 
   protected SetCandidateCommand(final String creator, final int row, final int column, final Literal value) {
     super(creator);
-    this.row = row;
-    this.column = column;
+    this.rowIndex = row;
+    this.columnIndex = column;
     this.value = value;
   }
 
   @Override
   public void executeCommand(final Sudoku sudoku) {
-    successfully = sudoku.getCell(row, column).getCandidates().add(value);
+    successfully = sudoku.getCell(rowIndex, columnIndex).getCandidates().add(value);
   }
 
   @Override
   public void unexecuteCommand(final Sudoku sudoku) {
-    sudoku.getCell(row, column).getCandidates().remove(value);
+    sudoku.getCell(rowIndex, columnIndex).getCandidates().remove(value);
   }
 
   @Override
@@ -59,7 +59,7 @@ public final class SetCandidateCommand extends AbstractSingleValueCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Setze Kandidat " + value + " in Zelle (" + row + ", " + column + ")";
+    return getCreator() + ": Setze Kandidat " + value + " in Zelle (" + rowIndex + ", " + columnIndex + ")";
   }
 
   @Override

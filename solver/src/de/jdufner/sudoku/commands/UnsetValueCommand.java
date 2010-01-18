@@ -37,15 +37,15 @@ public final class UnsetValueCommand extends AbstractSingleValueCommand {
 
   protected UnsetValueCommand(final String creator, final int row, final int column, final Literal value) {
     super(creator);
-    this.row = row;
-    this.column = column;
+    this.rowIndex = row;
+    this.columnIndex = column;
     this.value = value;
   }
 
   @Override
   public void executeCommand(final Sudoku sudoku) {
-    if (sudoku.getCell(row, column).isFixed()) {
-      sudoku.getCell(row, column).setValue(Literal.EMPTY);
+    if (sudoku.getCell(rowIndex, columnIndex).isFixed()) {
+      sudoku.getCell(rowIndex, columnIndex).setValue(Literal.EMPTY);
       successfully = true;
     } else {
       successfully = false;
@@ -54,7 +54,7 @@ public final class UnsetValueCommand extends AbstractSingleValueCommand {
 
   @Override
   public void unexecuteCommand(final Sudoku sudoku) {
-    sudoku.getCell(row, column).setValue(value);
+    sudoku.getCell(rowIndex, columnIndex).setValue(value);
   }
 
   @Override
@@ -64,7 +64,7 @@ public final class UnsetValueCommand extends AbstractSingleValueCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Entferne Wert " + value + " aus Zelle (" + row + ", " + column + ")";
+    return getCreator() + ": Entferne Wert " + value + " aus Zelle (" + rowIndex + ", " + columnIndex + ")";
   }
 
   @Override

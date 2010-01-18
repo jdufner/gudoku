@@ -78,8 +78,8 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
   }
 
   private void init(final Cell cell, final Candidates<Literal> candidatesToRemove) {
-    row = cell.getRowIndex();
-    column = cell.getColumnIndex();
+    rowIndex = cell.getRowIndex();
+    columnIndex = cell.getColumnIndex();
     candidates = candidatesToRemove;
   }
 
@@ -106,7 +106,7 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Entferne Kandidaten " + candidates + " in Zelle (" + row + ", " + column + ")";
+    return getCreator() + ": Entferne Kandidaten " + candidates + " in Zelle (" + rowIndex + ", " + columnIndex + ")";
   }
 
   @Override
@@ -124,7 +124,7 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
     }
     if (other instanceof RemoveCandidatesCommand) {
       final RemoveCandidatesCommand that = (RemoveCandidatesCommand) other;
-      if (this.row == that.row && this.column == that.column && this.candidates.isEquals(that.candidates)) {
+      if (this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex && this.candidates.isEquals(that.candidates)) {
         return true;
       }
     }
@@ -133,7 +133,7 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
 
   @Override
   public int hashCode() {
-    return row;
+    return rowIndex;
   }
 
 }
