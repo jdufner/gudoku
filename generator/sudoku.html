@@ -6,6 +6,9 @@
 * {
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+table#board.solved {
+  border: #00ff00 solid 2px;
+}
 td.fixed {
   font-size: 15px;
   font-weight: bold;
@@ -46,21 +49,33 @@ td.original {
 td.conflict {
   border: #ff0000 solid 1px;
 }
-td.highlight1, td.highlight2 {
-  background-color: #ffff00;
+/* Kandidaten per Knopf hervorheben */
+td.highlight1 {
+  background-color: #ffff99; /* gelb */
+}
+/* Kandidaten onmouseover / onmouseout */
+td.highlight2 {
+  background-color: #ff9999; /* rot */
+}
+/* Fixed / Zellen */
+td.highlight3 {
+  background-color: #99ff99; /* gruen */
+}
+td.hide {
+  visibility: hidden;
 }
 div.candidateButtonOff {
   margin: 2px;
   padding: 2px;
   border: 2px #999999 outset;
-  background-color: #ffff00;
+  background-color: #ffff99;
   cursor: default;
 }
 div.candidateButtonOn {
   margin: 2px;
   padding: 2px;
   border: 2px #999999 inset;
-  background-color: #cccc00;
+  background-color: #cccc99;
   cursor: default;
 }
 -->
@@ -104,9 +119,22 @@ div.candidateButtonOn {
         <option value="...26.9.78.........5..8...4...32..1..........1.8..6.49....18......7...2...1...35.">53933 sehr leicht</option>
       </select>
       <input type="button" value="Laden" onclick="copyAndLoadSudoku()"/><br/>
-      <input id="sudokuAsString" type="text" value="1382.5.7.2.783415.....1723838.5....1....2.58..5...8....2..8.3..913.5.84.876.4.9.5"/>
-      <input type="button" value="Laden" onclick="loadSudoku()"/><br/>
-      <input type="button" value="Kandidaten entfernen" onclick="removeAllCandidates()"/><input type="button" value="Reset" onclick="resetAllCandidates()"/><input type="button" value="Leeren" onclick="emptyCandidates()"/>
+      <input id="sudokuAsString" type="text" value="1382.5.7.2.783415.....1723838.5....1....2.58..5...8....2..8.3..913.5.84.876.4.9.5" maxlength="81" size="81"/>
+      <input type="button" value="Laden" onclick="loadSudoku()"/><input type="button" value="Speichern" onclick="saveSudoku()"/><br/>
+      <input type="button" value="Kandidaten entfernen" onclick="removeAllCandidates()"/><input type="button" value="Reset" onclick="resetAllCandidates()"/><input type="button" value="Leeren" onclick="emptyCandidates()"/><input id="hideButton" type="button" value="Ausblenden" onclick="hideCandidates()"/><br/>
+      <fieldset>
+        <legend>Zellen</legend>
+        <input id="highlightFixed" type="checkbox" checked="true">Zellen hervorheben</input><br/>
+        <input id="highlightAllFixed" type="checkbox">Auch andere Zellen hervorheben</input><br/>
+        <input id="highlightAllFixedAndCandidates" type="checkbox">Auch andere Kandidaten hervorheben</input><br/>
+      </fieldset>
+      <fieldset>
+        <legend>Kandidaten</legend>
+        <input id="highlightCandidates" type="checkbox" checked="true">Kandidaten hervorheben</input><br/>
+        <input id="highlightAllCandidates" type="checkbox">Auch andere Kandidaten hervorheben</input><br/>
+        <input id="highlightAllCandidatesAndFixed" type="checkbox">Auch andere Zellen hervorheben</input><br/>
+      </fieldset>
+      Nach resetFixed sind noch die Kandidaten der zuvor gesetzten Zelle an.
     </div>
   </body>
   <script language="javascript">
@@ -215,7 +243,9 @@ function buildBoard() {
 
 function buildCandidates(cellId) {
   cell = getCell(cellId);
+  cell.className = removeStyle(cell.className, "original")
   cell.className = removeStyle(cell.className, "conflict")
+  cell.className = removeStyle(cell.className, "highlight3")
   cell.onmouseover = null;
   cell.onmouseout = null;
   cell.onclick = null;
@@ -235,6 +265,9 @@ function buildCandidates(cellId) {
     candidatesCell = document.createElement("td");
     candidatesCell.id = getCandidateId(cellId, i);
     candidatesCell.className = "candidate";
+    if (document.getElementById("candidateButton" + i).className.match(/candidateButtonOn/g)) {
+      candidatesCell.className = addStyle(candidatesCell.className, "highlight1");
+    }
     candidatesCell.onmouseover = enterCandidate;
     candidatesCell.onmouseout = exitCandidate;
     candidatesCell.onclick = removeCandidate;
@@ -248,6 +281,7 @@ function buildCandidates(cellId) {
 
 function buildFixed(cellNumber, value) {
   cell = getCell(getCellId(cellNumber));
+  cell.className = removeStyle(cell.className, "conflict")
   cell.onmouseover = enterFixed;
   cell.onmouseout = exitFixed;
   if (isInOriginal(cellNumber)) {
@@ -255,12 +289,12 @@ function buildFixed(cellNumber, value) {
   } else {
     cell.className = removeStyle(cell.className, "original");
   }
-  cellText = document.createTextNode(value);
+  var cellText = document.createTextNode(value);
   cell.replaceChild(cellText, cell.firstChild);
 }
 
 function loadSudoku() {
-  if (document.getElementById("sudokuAsString").value.match(/[0-9\.]{81}/)) {
+  if (document.getElementById("sudokuAsString").value.match(/^[0-9\.]{81}$/)) {
    original = document.getElementById("sudokuAsString").value;
    for (var i = 1; i <= size * size; i++) {
      value = original.substr(i - 1, 1);
@@ -269,6 +303,9 @@ function loadSudoku() {
      } else {
        buildFixed(i, value);
      }
+   }
+   for (var i = 1; i <= size * size; i++) {
+    checkConflict(i);
    }
   } else {
     alert("Sudoku ist ungültig!");
@@ -292,19 +329,21 @@ function collectFixed(cellNumber) {
     fixed[i] = false;
   }
   for (var i = 1; i <= size * size; i++) {
-    if (getRowNumber(i) == getRowNumber(cellNumber)) {
-      if (isCellFixed(i)) {
-        fixed[getFixedValue(i)] = true;
+    if (i != cellNumber) {
+      if (getRowNumber(i) == getRowNumber(cellNumber)) {
+        if (isCellFixed(i)) {
+          fixed[getFixedValue(i)] = true;
+        }
       }
-    }
-    if (getColumnNumber(i) == getColumnNumber(cellNumber)) {
-      if (isCellFixed(i)) {
-        fixed[getFixedValue(i)] = true;
+      if (getColumnNumber(i) == getColumnNumber(cellNumber)) {
+        if (isCellFixed(i)) {
+          fixed[getFixedValue(i)] = true;
+        }
       }
-    }
-    if (getBlockNumber(i) == getBlockNumber(cellNumber)) {
-      if (isCellFixed(i)) {
-        fixed[getFixedValue(i)] = true;
+      if (getBlockNumber(i) == getBlockNumber(cellNumber)) {
+        if (isCellFixed(i)) {
+          fixed[getFixedValue(i)] = true;
+        }
       }
     }
   }
@@ -326,20 +365,78 @@ function conflictsCandidate(cellNumber, c) {
   return collectFixed(cellNumber)[c];
 }
 
+function highlightFixedOn(value) {
+  for (var i = 1; i <= size * size; i++) {
+    if (isCellFixed(i)) {
+      var cell = getCell(getCellId(i));
+      if (value == getValue(cell)) {
+        cell.className = addStyle(cell.className, "highlight3");
+      }
+    }
+  }
+}
+
+function highlightFixedOff(value) {
+  for (var i = 1; i <= size * size; i++) {
+    if (isCellFixed(i)) {
+      var cell = getCell(getCellId(i));
+      if (value == getValue(cell)) {
+        cell.className = removeStyle(cell.className, "highlight3");
+      }
+    }
+  }
+}
+
 function enterFixed() {
-  this.className = addStyle(this.className, "highlight1");
+  var value = getValue(this);
+  if (document.getElementById("highlightFixed").checked) {
+    this.className = addStyle(this.className, "highlight3");
+  }
+  if (document.getElementById("highlightAllFixed").checked) {
+    highlightFixedOn(value);
+  }
+  if (document.getElementById("highlightAllFixedAndCandidates").checked) {
+    highlightCandidateOn(value, "highlight2");
+  }
 }
 
 function exitFixed() {
-  this.className = removeStyle(this.className, "highlight1");
+  var value = getValue(this);
+  if (document.getElementById("highlightFixed").checked) {
+    this.className = removeStyle(this.className, "highlight3");
+  }
+  if (document.getElementById("highlightAllFixed").checked) {
+    highlightFixedOff(value);
+  }
+  if (document.getElementById("highlightAllFixedAndCandidates").checked) {
+    highlightCandidateOff(value, "highlight2");
+  }
 }
 
 function enterCandidate() {
-  this.className = addStyle(this.className, "highlight1");
+  var value = getValue(this);
+  if (document.getElementById("highlightCandidates").checked) {
+    this.className = addStyle(this.className, "highlight2");
+  }
+  if (document.getElementById("highlightAllCandidates").checked) {
+    highlightCandidateOn(value, "highlight2");
+  }
+  if (document.getElementById("highlightAllCandidatesAndFixed").checked) {
+    highlightFixedOn(value);
+  }
 }
 
 function exitCandidate() {
-  this.className = removeStyle(this.className, "highlight1");
+  var value = getValue(this);
+  if (document.getElementById("highlightCandidates").checked) {
+    this.className = removeStyle(this.className, "highlight2");
+  }
+  if (document.getElementById("highlightAllCandidates").checked) {
+    highlightCandidateOff(value, "highlight2");
+  }
+  if (document.getElementById("highlightAllCandidatesAndFixed").checked) {
+    highlightFixedOff(value);
+  }
 }
 
 function removeCandidateDo(candidateId) {
@@ -374,7 +471,7 @@ function createCandidateDo(candidateId) {
   var re = candidateId.match(/candidate(\d+)/g);
   var value = RegExp.$1;
   if (isCandidateButtonOn(value)) {
-    candidate.className = addStyle(candidate.className, "highlight2");
+    candidate.className = addStyle(candidate.className, "highlight1");
   }
   candidateText = document.createTextNode(value);
   candidate.appendChild(candidateText);
@@ -395,6 +492,7 @@ function promoteCandidateDo(candidateId) {
   if (re.test(candidateId)) {
     var cellNumber = parseInt(RegExp.$1);
     var candidateNumber = parseInt(RegExp.$2);
+    buildFixed(cellNumber, candidateNumber);
     var cellId = getCellId(cellNumber)
     var cell = document.getElementById(cellId);
     if (conflictsCandidate(cellNumber, candidateNumber)) {
@@ -402,6 +500,11 @@ function promoteCandidateDo(candidateId) {
     }
     cell.replaceChild(document.createTextNode(candidateNumber), cell.firstChild);
     cell.onclick = resetFixed;
+    checkAllConflicts(cellNumber);
+  }
+  if (isSolved()) {
+    var board = document.getElementById("board");
+    board.className = addStyle(board.className, "solved");
   }
 }
 
@@ -438,36 +541,44 @@ function buildCandidateButtons() {
   }
 }
 
+function highlightCandidateOn(candidate, cssClassName) {
+  for (var i = 1; i <= size * size; i++) {
+    if (!isCellFixed(i)) {
+      for (var k = 1; k <= size; k++) {
+        var candidateNode = getCandidate(i, k);
+        if (candidateNode.childNodes.length > 0 && candidateNode.firstChild.data.length > 0) {
+          if (k == candidate) {
+            candidateNode.className = addStyle(candidateNode.className, cssClassName);
+          }
+        }
+      }
+    }
+  }
+}
+
+function highlightCandidateOff(candidate, cssClassName) {
+  for (var i = 1; i <= size * size; i++) {
+    if (!isCellFixed(i)) {
+      for (var k = 1; k <= size; k++) {
+        var candidateNode = getCandidate(i, k);
+        if (candidateNode.childNodes.length > 0 && candidateNode.firstChild.data.length > 0) {
+          if (k == candidate) {
+            candidateNode.className = removeStyle(candidateNode.className, cssClassName);
+          }
+        }
+      }
+    }
+  }
+}
+
 function highlightCandidates() {
   var candidate = parseInt(this.id.match(/\d+/g)[0]);
   if (this.className == "candidateButtonOff") {
     this.className = "candidateButtonOn";
-    for (var i = 1; i <= size * size; i++) {
-      if (!isCellFixed(i)) {
-        for (var k = 1; k <= size; k++) {
-          var candidateNode = getCandidate(i, k);
-          if (candidateNode.childNodes.length > 0 && candidateNode.firstChild.data.length > 0) {
-            if (k == candidate) {
-              candidateNode.className = addStyle(candidateNode.className, "highlight2");
-            }
-          }
-        }
-      }
-    }
+    highlightCandidateOn(candidate, "highlight1");
   } else {
     this.className = "candidateButtonOff";
-    for (var i = 1; i <= size * size; i++) {
-      if (!isCellFixed(i)) {
-        for (var k = 1; k <= size; k++) {
-          var candidateNode = getCandidate(i, k);
-          if (candidateNode.childNodes.length > 0 && candidateNode.firstChild.data.length > 0) {
-            if (k == candidate) {
-              candidateNode.className = removeStyle(candidateNode.className, "highlight2");
-            }
-          }
-        }
-      }
-    }
+    highlightCandidateOff(candidate, "highlight1");
   }
 }
 
@@ -482,11 +593,20 @@ function isCandidateButtonOn(value) {
 }
 
 function resetFixed() {
-  if (isInOriginal(this.id.match(/\d+/g)[0])) {
+  var cellNumber = parseInt(this.id.match(/\d+/g)[0]);
+  var value = getValue(this);
+  highlightFixedOff(value);
+  highlightCandidateOff(value, "highlight2");
+  if (isInOriginal(cellNumber)) {
     // Nix machen
   } else {
     // Reset
     buildCandidates(this.id);
+    checkAllConflicts(cellNumber);
+  }
+  if (!isSolved()) {
+    var board = document.getElementById("board");
+    board.className = removeStyle(board.className, "solved");
   }
 }
 
@@ -517,11 +637,109 @@ function emptyCandidates() {
 }
 
 function copyAndLoadSudoku() {
-  //document.getElementById("sudokuAsString").value = document.getElementById("quests");
   var quests = document.getElementById("quests")
   var quest = document.getElementById("quests").value;
   document.getElementById("sudokuAsString").value = document.getElementById("quests").value;
   loadSudoku();
+}
+
+function checkAllConflicts(cellNumber) {
+  for (var i = 1; i <= size * size; i++) {
+    if (getRowNumber(i) == getRowNumber(cellNumber)) {
+      if (isCellFixed(i)) {
+        checkConflict(i);
+      }
+    }
+    if (getColumnNumber(i) == getColumnNumber(cellNumber)) {
+      if (isCellFixed(i)) {
+        checkConflict(i);
+      }
+    }
+    if (getBlockNumber(i) == getBlockNumber(cellNumber)) {
+      if (isCellFixed(i)) {
+        checkConflict(i);
+      }
+    }
+  }
+}
+
+function checkConflict(cellNumber) {
+  var cellId = getCellId(cellNumber);
+  var cell = document.getElementById(cellId);
+  if (conflictsCandidate(cellNumber, getFixedValue(cellNumber))) {
+    cell.className = addStyle(cell.className, "conflict");
+  } else {
+    cell.className = removeStyle(cell.className, "conflict");
+  }
+}
+
+function hideCandidates() {
+  var hideButton = document.getElementById("hideButton");
+  if (hideButton.value == "Ausblenden") {
+    //var stylesheets = document.styleSheets;
+    for (var i = 1; i <= size * size; i++) {
+      if (!isCellFixed(i)) {
+        for (var k = 1; k <= size; k++) {
+          var candidate = getCandidate(i, k);
+          candidate.className = addStyle(candidate.className, "hide");
+        }
+      }
+    }
+    hideButton.value = "Einblenden";
+  } else {
+    for (var i = 1; i <= size * size; i++) {
+      if (!isCellFixed(i)) {
+        for (var k = 1; k <= size; k++) {
+          var candidate = getCandidate(i, k);
+          candidate.className = removeStyle(candidate.className, "hide");
+        }
+      }
+    }
+    hideButton.value = "Ausblenden";
+  }
+}
+
+function saveSudoku() {
+  var sudokuAsString = "";
+  for (var i = 1; i <= size * size; i++) {
+    if (isCellFixed(i)) {
+      sudokuAsString = sudokuAsString + getFixedValue(i);
+    } else {
+      sudokuAsString = sudokuAsString + ".";
+    }
+  }
+  document.getElementById("sudokuAsString").value = sudokuAsString;
+}
+
+function isSolved() {
+  var sum = (size * (size + 1)) / 2;
+  var rowSum = new Array();
+  var columnSum = new Array();
+  var blockSum = new Array();
+  for (var i = 1; i <= size; i++) {
+    rowSum[i] = 0;
+    columnSum[i] = 0;
+    blockSum[i] = 0;
+  }
+  for (var i = 1; i <= size * size; i++) {
+    if (isCellFixed(i)) {
+      rowSum[getRowNumber(i)] = rowSum[getRowNumber(i)] + getFixedValue(i);
+      columnSum[getColumnNumber(i)] = columnSum[getColumnNumber(i)] + getFixedValue(i);
+      blockSum[getBlockNumber(i)] = blockSum[getBlockNumber(i)] + getFixedValue(i);
+    }
+  }
+  for (var i = 1; i <= size; i++) {
+    if (rowSum[i] != sum) {
+      return false;
+    }
+    if (columnSum[i] != sum) {
+      return false;
+    }
+    if (blockSum[i] != sum) {
+      return false;
+    }
+  }
+  return true;
 }
 
 main();
