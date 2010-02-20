@@ -30,6 +30,7 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * Ein Befehl ist eine Aktion, die auf einem Sudoku ausgeführt werden kann. Es sind mehrere Aktionen auf einem Sudoku
@@ -44,7 +45,7 @@ public abstract class AbstractCommand implements Command {
 
   private static final Logger LOG = Logger.getLogger(AbstractCommand.class);
 
-  private final transient String creator;
+  private transient String strategyName = null;
   private transient String frozenString = null;
 
   protected transient int rowIndex, columnIndex;
@@ -54,11 +55,13 @@ public abstract class AbstractCommand implements Command {
   /**
    * Konstrukter mit Information über den Erzeuger.
    * 
-   * @param creator
+   * @param strategyName
    *          Der Erzeuger des Befehls.
    */
-  protected AbstractCommand(final String creator) {
-    this.creator = creator;
+  protected AbstractCommand(final StrategyNameEnum strategyNameEnum) {
+    if (strategyNameEnum != null) {
+      this.strategyName = strategyNameEnum.name();
+    }
   }
 
   @Override
@@ -100,13 +103,9 @@ public abstract class AbstractCommand implements Command {
     return successfully;
   }
 
-  /**
-   * Gibt den Erzeuger an. Ist im allgemeinen der Name einer Strategie oder der Client.
-   * 
-   * @return Der Erzeuger des Befehls.
-   */
-  protected String getCreator() {
-    return creator;
+  @Override
+  public String getStrategyName() {
+    return strategyName;
   }
 
   /**

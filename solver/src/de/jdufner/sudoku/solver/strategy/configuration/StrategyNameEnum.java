@@ -39,9 +39,13 @@ public enum StrategyNameEnum {
   HIDDEN_SINGLE(), //
   NAKED_PAIR(), NAKED_TRIPLE(), NAKED_QUAD(), //
   HIDDEN_PAIR(), HIDDEN_TRIPLE(), HIDDEN_QUAD, //
+  //POINTING_PAIR(), // Pointing Pair ist eine Unterform von Intersection Removal
+  //BOX_LINE_REDUCTION(), // Box Line Reduction ist eine Unterform von Intersection Removal
   INTERSECTION_REMOVAL(), //
+  YWING(), //
   XWING(), //
   SWORDFISH(), //
+  JELLYFISH(), //
   BACKTRACKING();
 
 }

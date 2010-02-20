@@ -43,6 +43,7 @@ import de.jdufner.sudoku.common.board.Row;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -119,7 +120,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
     for (Cell cell : column.getNonFixed()) {
       if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block)) {
         getCommands().add(
-            CommandFactory.buildRemoveCandidatesCommand(this.getClass().getSimpleName(), cell, testCandidate));
+            CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.INTERSECTION_REMOVAL, cell, testCandidate));
       }
     }
   }
@@ -161,7 +162,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
     for (Cell cell : row.getNonFixed()) {
       if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block)) {
         getCommands().add(
-            CommandFactory.buildRemoveCandidatesCommand(this.getClass().getSimpleName(), cell, testCandidate));
+            CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.INTERSECTION_REMOVAL, cell, testCandidate));
       }
     }
   }

@@ -32,6 +32,7 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * 
@@ -43,49 +44,54 @@ public final class CommandFactory {
 
   private final static Logger LOG = Logger.getLogger(CommandFactory.class);
 
-  public static Command buildRemoveCandidatesCommand(final String creator, final Cell cell,
+  private CommandFactory() {
+  }
+
+  public static Command buildRemoveCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Literal candidateToRemove) {
-    final RemoveCandidatesCommand rcc = new RemoveCandidatesCommand(creator, cell, candidateToRemove);
+    final RemoveCandidatesCommand rcc = new RemoveCandidatesCommand(strategyNameEnum, cell, candidateToRemove);
     return rcc;
   }
 
-  public static Command buildRemoveCandidatesCommand(final String creator, final Cell cell,
+  public static Command buildRemoveCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Candidates<Literal> candidatesToRemove) {
-    final RemoveCandidatesCommand rcc = new RemoveCandidatesCommand(creator, cell, candidatesToRemove);
+    final RemoveCandidatesCommand rcc = new RemoveCandidatesCommand(strategyNameEnum, cell, candidatesToRemove);
     return rcc;
   }
 
-  public static Command buildRetainCandidatesCommand(final String creator, final Cell cell,
+  public static Command buildRetainCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Collection<Literal> candidates) {
-    final RetainCandidatesCommand rcc = new RetainCandidatesCommand(creator, cell, candidates);
+    final RetainCandidatesCommand rcc = new RetainCandidatesCommand(strategyNameEnum, cell, candidates);
     return rcc;
   }
 
-  public static Command buildSetCandidateCommand(final String creator, final int row, final int column,
-      final Literal value) {
-    final SetCandidateCommand scc = new SetCandidateCommand(creator, row, column, value);
+  public static Command buildSetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row,
+      final int column, final Literal value) {
+    final SetCandidateCommand scc = new SetCandidateCommand(strategyNameEnum, row, column, value);
     return scc;
   }
 
-  public static Command buildSetValueCommand(final String creator, final Cell cell, final Literal value) {
-    final SetValueCommand svc = new SetValueCommand(creator, cell, value);
-    return svc;
-  }
-
-  public static Command buildSetValueCommand(final String creator, final int row, final int column, final Literal value) {
-    final SetValueCommand svc = new SetValueCommand(creator, row, column, value);
-    return svc;
-  }
-
-  public static Command buildUnsetCandidateCommand(final String creator, final int row, final int column,
+  public static Command buildSetValueCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Literal value) {
-    final UnsetCandidateCommand ucc = new UnsetCandidateCommand(creator, row, column, value);
+    final SetValueCommand svc = new SetValueCommand(strategyNameEnum, cell, value);
+    return svc;
+  }
+
+  public static Command buildSetValueCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column,
+      final Literal value) {
+    final SetValueCommand svc = new SetValueCommand(strategyNameEnum, row, column, value);
+    return svc;
+  }
+
+  public static Command buildUnsetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row,
+      final int column, final Literal value) {
+    final UnsetCandidateCommand ucc = new UnsetCandidateCommand(strategyNameEnum, row, column, value);
     return ucc;
   }
 
-  public static Command buildUnsetValueCommand(final String creator, final int row, final int column,
-      final Literal value) {
-    final UnsetValueCommand uvc = new UnsetValueCommand(creator, row, column, value);
+  public static Command buildUnsetValueCommand(final StrategyNameEnum strategyNameEnum, final int row,
+      final int column, final Literal value) {
+    final UnsetValueCommand uvc = new UnsetValueCommand(strategyNameEnum, row, column, value);
     return uvc;
   }
 

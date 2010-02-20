@@ -50,8 +50,7 @@ public final class SetCandidateCommandTest extends TestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Command scc = CommandFactory
-        .buildSetCandidateCommand(this.getClass().getSimpleName(), 0, 2, Literal.getInstance(2));
+    Command scc = CommandFactory.buildSetCandidateCommand(null, 0, 2, Literal.getInstance(2));
     LOG.debug(scc.getFrozenString());
     assertEquals(null, scc.getFrozenString());
     scc.execute(sudoku);

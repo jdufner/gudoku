@@ -29,6 +29,7 @@ import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * Entfernt einen oder mehrere {@link Literal} aus der Liste der {@link Candidates}.
@@ -48,15 +49,16 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
    * Konstruktor eines Befehls. Ist ein vereinfachter Konstruktor für
    * {@link #RemoveCandidatesCommand(String, Cell, Candidates)}
    * 
-   * @param creator
+   * @param strategyNameEnum
    *          Der Erzeuger des Befehls.
    * @param cell
    *          Die Zelle auf welcher der Befehl ausgeführt werden soll.
    * @param candidateToRemove
    *          Der Kandidat, welcher entfernt werden soll.
    */
-  protected RemoveCandidatesCommand(final String creator, final Cell cell, final Literal candidateToRemove) {
-    super(creator);
+  protected RemoveCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
+      final Literal candidateToRemove) {
+    super(strategyNameEnum);
     final Candidates<Literal> candidatesToRemove = new Candidates<Literal>();
     candidatesToRemove.add(candidateToRemove);
     init(cell, candidatesToRemove);
@@ -65,15 +67,16 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
   /**
    * Konstruktor eines Befehls.
    * 
-   * @param creator
+   * @param strategyNameEnum
    *          Der Erzeuger des Befehls.
    * @param cell
    *          Die Zelle auf welcher der Befehl ausgeführt werden soll.
    * @param candidatesToRemove
    *          Die Kandidaten, welche entfernt werden sollen.
    */
-  public RemoveCandidatesCommand(final String creator, final Cell cell, final Candidates<Literal> candidatesToRemove) {
-    super(creator);
+  public RemoveCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
+      final Candidates<Literal> candidatesToRemove) {
+    super(strategyNameEnum);
     init(cell, candidatesToRemove);
   }
 
@@ -106,12 +109,13 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Entferne Kandidaten " + candidates + " in Zelle (" + rowIndex + ", " + columnIndex + ")";
+    return getStrategyName() + ": Entferne Kandidaten " + candidates + " in Zelle (" + rowIndex + ", " + columnIndex
+        + ")";
   }
 
   @Override
   protected String toString(Sudoku sudoku) {
-    return getCreator() + ": Entferne Kandidaten " + candidates + " in Zelle " + getCell(sudoku);
+    return getStrategyName() + ": Entferne Kandidaten " + candidates + " in Zelle " + getCell(sudoku);
   }
 
   @Override
@@ -124,7 +128,8 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
     }
     if (other instanceof RemoveCandidatesCommand) {
       final RemoveCandidatesCommand that = (RemoveCandidatesCommand) other;
-      if (this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex && this.candidates.isEquals(that.candidates)) {
+      if (this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex
+          && this.candidates.isEquals(that.candidates)) {
         return true;
       }
     }

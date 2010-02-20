@@ -47,6 +47,7 @@ import de.jdufner.sudoku.common.board.RowHandler;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -139,7 +140,7 @@ public final class BoxLineReductionStrategy extends AbstractStrategy implements 
     for (Cell cell : block.getNonFixed()) {
       if (!getSudoku().getColumn(cell.getColumnIndex()).equals(column)) {
         getCommands().add(
-            CommandFactory.buildRemoveCandidatesCommand(this.getClass().getSimpleName(), cell, testCandidate));
+            CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.INTERSECTION_REMOVAL, cell, testCandidate));
       }
     }
   }
@@ -148,7 +149,7 @@ public final class BoxLineReductionStrategy extends AbstractStrategy implements 
     for (Cell cell : block.getNonFixed()) {
       if (!getSudoku().getRow(cell.getRowIndex()).equals(row)) {
         getCommands().add(
-            CommandFactory.buildRemoveCandidatesCommand(this.getClass().getSimpleName(), cell, testCandidate));
+            CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.INTERSECTION_REMOVAL, cell, testCandidate));
       }
     }
   }

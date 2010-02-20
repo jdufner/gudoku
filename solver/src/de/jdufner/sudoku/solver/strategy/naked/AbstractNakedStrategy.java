@@ -44,6 +44,7 @@ import de.jdufner.sudoku.common.board.UnitHandler;
 import de.jdufner.sudoku.common.collections.SortedCandidates;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * 
@@ -168,9 +169,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
       final List<Cell> excludedCells, final Unit unit) {
     for (Cell cell : unit.getNonFixed()) {
       if (!excludedCells.contains(cell)) {
-        // cell.removeCandidatesAndSetIfOnlyOneRemains(candidates);
-        // sudoku.addCommand(new RemoveCandidatesCommand(cell, candidates));
-        getCommands().add(new RemoveCandidatesCommand(this.getClass().getSimpleName(), cell, candidates));
+        getCommands().add(new RemoveCandidatesCommand(StrategyNameEnum.NAKED_PAIR, cell, candidates));
       }
     }
   }

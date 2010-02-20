@@ -25,6 +25,7 @@
  */
 package de.jdufner.sudoku.commands;
 
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * Dieser Befehl stellt sicher, dass eine Zelle im Befehl gesetzt ist.
@@ -37,8 +38,8 @@ public abstract class AbstractSingleValueCommand extends AbstractCommand {
 
   //  private static final Logger LOG = Logger.getLogger(AbstractSingleValueCommand.class);
 
-  public AbstractSingleValueCommand(final String creator) {
-    super(creator);
+  public AbstractSingleValueCommand(final StrategyNameEnum strategyNameEnum) {
+    super(strategyNameEnum);
   }
 
 }

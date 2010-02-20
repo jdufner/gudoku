@@ -76,7 +76,7 @@ public class CommandManagerTest extends TestCase {
     sudoku.resetAndClearCandidatesOfNonFixed();
     Cell cell1 = sudoku.getCell(1, 1);
     LOG.debug("1) " + cell1.toString());
-    Command cmd1 = CommandFactory.buildSetValueCommand(this.getClass().getSimpleName(), cell1, Literal.getInstance(3));
+    Command cmd1 = CommandFactory.buildSetValueCommand(null, cell1, Literal.getInstance(3));
     execute(cmd1);
     LOG.debug("2) " + cell1.toString());
     undo();
@@ -89,8 +89,7 @@ public class CommandManagerTest extends TestCase {
     sudoku.resetAndClearCandidatesOfNonFixed();
     Cell cell1 = sudoku.getCell(1, 1);
     LOG.debug("1) " + cell1.toString());
-    Command cmd1 = CommandFactory.buildRemoveCandidatesCommand(this.getClass().getSimpleName(), cell1, Literal
-        .getInstance(1));
+    Command cmd1 = CommandFactory.buildRemoveCandidatesCommand(null, cell1, Literal.getInstance(1));
     execute(cmd1);
     LOG.debug("2) " + cell1.toString());
     undo();

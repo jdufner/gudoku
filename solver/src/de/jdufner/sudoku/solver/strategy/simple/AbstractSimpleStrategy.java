@@ -36,6 +36,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.Unit;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * 
@@ -61,7 +62,7 @@ public abstract class AbstractSimpleStrategy extends AbstractStrategy {
     final Candidates<Literal> fixed = new Candidates<Literal>();
     fixed.addAll(unit.getFixedAsLiteral());
     for (Cell cell : unit.getNonFixed()) {
-      final AbstractCommand cmd = new RemoveCandidatesCommand(this.getClass().getSimpleName(), cell, fixed); // NOPMD by Jürgen on 16.11.09 21:56
+      final AbstractCommand cmd = new RemoveCandidatesCommand(StrategyNameEnum.SIMPLE, cell, fixed); // NOPMD by Jürgen on 16.11.09 21:56
       if (LOG.isDebugEnabled()) {
         LOG.debug(cmd);
       }

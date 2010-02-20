@@ -55,7 +55,7 @@ public final class RetainCandidatesCommandTest extends TestCase {
     candidates1.add(Literal.getInstance(2));
     candidates1.add(Literal.getInstance(6));
 
-    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(this.getClass().getSimpleName(), cell, candidates1);
+    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates1);
     assertNull(rcc1.getFrozenString());
     rcc1.execute(sudoku);
     assertTrue(rcc1.isSuccessfully());
@@ -78,7 +78,7 @@ public final class RetainCandidatesCommandTest extends TestCase {
 
     Candidates<Literal> candidates1 = new Candidates<Literal>();
 
-    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(this.getClass().getSimpleName(), cell, candidates1);
+    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates1);
     assertNull(rcc1.getFrozenString());
     rcc1.execute(sudoku);
     assertTrue(rcc1.isSuccessfully());
@@ -107,7 +107,7 @@ public final class RetainCandidatesCommandTest extends TestCase {
     candidates1.add(Literal.getInstance(8));
     candidates1.add(Literal.getInstance(9));
 
-    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(this.getClass().getSimpleName(), cell, candidates1);
+    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates1);
     assertNull(rcc1.getFrozenString());
     rcc1.execute(sudoku);
     assertFalse(rcc1.isSuccessfully());
@@ -132,7 +132,7 @@ public final class RetainCandidatesCommandTest extends TestCase {
     candidates1.add(Literal.getInstance(2));
     candidates1.add(Literal.getInstance(6));
 
-    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(this.getClass().getSimpleName(), cell, candidates1);
+    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates1);
     rcc1.execute(sudoku);
     assertTrue(rcc1.isSuccessfully());
 
@@ -140,7 +140,7 @@ public final class RetainCandidatesCommandTest extends TestCase {
     candidates2.add(Literal.getInstance(2));
     candidates2.add(Literal.getInstance(6));
 
-    Command rcc2 = CommandFactory.buildRetainCandidatesCommand(this.getClass().getSimpleName(), cell, candidates2);
+    Command rcc2 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates2);
     rcc2.execute(sudoku);
     assertFalse(rcc2.isSuccessfully());
 

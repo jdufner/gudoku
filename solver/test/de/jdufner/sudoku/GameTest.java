@@ -50,8 +50,7 @@ public final class GameTest extends TestCase {
     assertFalse(game.getQuest().isSolved());
     assertTrue(game.getSolution().isValid());
     assertTrue(game.getSolution().isSolved());
-    Command command = CommandFactory
-        .buildSetValueCommand(this.getClass().getSimpleName(), 5, 6, Literal.getInstance(8));
+    Command command = CommandFactory.buildSetValueCommand(null, 5, 6, Literal.getInstance(8));
     game.doCommand(command);
     assertTrue(game.isCorrect(5, 6));
     assertTrue(game.isUndoPossible());

@@ -50,7 +50,7 @@ public final class UnsetValueCommandTest extends TestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Command ucc = CommandFactory.buildUnsetValueCommand(this.getClass().getSimpleName(), 0, 2, Literal.getInstance(2));
+    Command ucc = CommandFactory.buildUnsetValueCommand(null, 0, 2, Literal.getInstance(2));
     LOG.debug(ucc.getFrozenString());
     assertEquals(null, ucc.getFrozenString());
     ucc.execute(sudoku);

@@ -42,6 +42,7 @@ import de.jdufner.sudoku.common.board.UnitHandler;
 import de.jdufner.sudoku.common.collections.Kombination;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * Abstrakte Superklasse der <a href="http://www.sudopedia.org/wiki/Hidden_Subset">Hidden Subsets</a>. Hier ist die
@@ -120,7 +121,7 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
           if (LOG.isDebugEnabled()) { // NOPMD by Jürgen on 08.11.09 00:23
             LOG.debug("Remove other candidates than " + kombination + " in cell " + cell);
           }
-          final Command cmd = CommandFactory.buildRetainCandidatesCommand(this.getClass().getSimpleName(), cell,
+          final Command cmd = CommandFactory.buildRetainCandidatesCommand(StrategyNameEnum.HIDDEN_PAIR, cell,
               kombination); // NOPMD by Jürgen on 08.11.09 22:39
           getCommands().add(cmd);
         }

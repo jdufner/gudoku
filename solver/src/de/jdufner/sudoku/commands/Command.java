@@ -76,6 +76,13 @@ public interface Command {
   String getFrozenString();
 
   /**
+   * Gibt den Erzeuger an. Ist im allgemeinen der Name einer Strategie oder der Client.
+   * 
+   * @return Der Erzeuger des Befehls.
+   */
+  String getStrategyName();
+
+  /**
    * TODO Dokumentieren!
    * 
    * @return

@@ -25,14 +25,19 @@
  */
 package de.jdufner.sudoku.solver.service;
 
+import java.util.List;
+
+import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.solver.strategy.StrategyResult;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
- * Diese Klasse beschreibt eine Lösung eines Sudokus. Eine Lösung setzt sich aus mehreren Einzelschritten
- * {@link SolutionStepImpl} zusammen. Eine vorhandene Lösung ist eine nur eine Lösung, möglicherweise existieren weitere
- * Lösungen, sowohl in dem Sinne, dass dieselbe Lösung anders erzeugt werden kann durch andere Lösungsschritte als auch,
- * dass möglicherweise das Sudoku unterbestimmt ist und weitere Lösungen existieren.
+ * Diese Klasse beschreibt eine Lösung eines Sudokus. Eine Lösung setzt sich aus mehreren Einzelschritten zusammen. Eine
+ * vorhandene Lösung ist eine nur eine Lösung, möglicherweise existieren weitere Lösungen, sowohl in dem Sinne, dass
+ * dieselbe Lösung anders erzeugt werden kann durch andere Lösungsschritte als auch, dass möglicherweise das Sudoku
+ * unterbestimmt ist und weitere Lösungen existieren.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -44,6 +49,7 @@ public class Solution {
   private transient Sudoku result;
   private transient boolean unique;
   private transient Level level;
+  private transient List<StrategyResult> results;
 
   /**
    * @param quest
@@ -51,6 +57,18 @@ public class Solution {
    */
   public Solution(final Sudoku quest) {
     this.quest = quest;
+  }
+
+  public int getNumberSuccessfulCommand(final StrategyNameEnum strategyNameEnum) {
+    int number = 0;
+    for (StrategyResult result : results) {
+      for (Command command : result.getCommands()) {
+        if (command.isSuccessfully() && command.getStrategyName().equals(strategyNameEnum.name())) {
+          number++;
+        }
+      }
+    }
+    return number;
   }
 
   public Sudoku getQuest() {
@@ -81,13 +99,22 @@ public class Solution {
     this.level = level;
   }
 
+  public List<StrategyResult> getResults() {
+    return results;
+  }
+
+  public void setResults(final List<StrategyResult> results) {
+    this.results = results;
+  }
+
   @Override
   public String toString() {
+    final String lineSeparator = System.getProperty("line.separator");
     final StringBuilder sb = new StringBuilder(super.toString());
-    sb.append(System.getProperty("line.separator")).append("Quest: ").append(getQuest());
-    sb.append(System.getProperty("line.separator")).append("Result: ").append(getResult());
-    sb.append(System.getProperty("line.separator")).append("Unique: ").append(isUnique());
-    sb.append(System.getProperty("line.separator")).append("Level: ").append(getLevel());
+    sb.append(lineSeparator).append("Quest: ").append(getQuest());
+    sb.append(lineSeparator).append("Result: ").append(getResult());
+    sb.append(lineSeparator).append("Unique: ").append(isUnique());
+    sb.append(lineSeparator).append("Level: ").append(getLevel());
     return sb.toString();
   }
 
