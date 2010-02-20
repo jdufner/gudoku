@@ -44,7 +44,7 @@ public final class StrategyNameEnumTest extends TestCase {
     for (StrategyNameEnum strategyName : StrategyNameEnum.values()) {
       LOG.debug(strategyName);
     }
-    assertEquals(12, StrategyNameEnum.values().length);
+    assertEquals(14, StrategyNameEnum.values().length);
   }
 
 }

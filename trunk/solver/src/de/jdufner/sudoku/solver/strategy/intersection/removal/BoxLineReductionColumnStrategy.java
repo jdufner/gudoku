@@ -40,8 +40,6 @@ import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Literal2CellMap;
 import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.misc.Level;
-import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -49,17 +47,12 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * @since 0.1
  * @version $Revision$
  */
-public final class BoxLineReductionColumnStrategy extends AbstractStrategy implements ColumnHandler,
+public final class BoxLineReductionColumnStrategy extends AbstractBoxLineReductionStrategy implements ColumnHandler,
     Callable<Collection<Command>> {
   private static final Logger LOG = Logger.getLogger(BoxLineReductionColumnStrategy.class);
 
   public BoxLineReductionColumnStrategy(final Sudoku sudoku) {
     super(sudoku);
-  }
-
-  @Override
-  public Level getLevel() {
-    return Level.SCHWER;
   }
 
   @Override
@@ -97,18 +90,18 @@ public final class BoxLineReductionColumnStrategy extends AbstractStrategy imple
   }
 
   // TODO Funktioniert diese Methode richtig?
-  private boolean areCellsInSameBlock(final Collection<Cell> cells) {
-    Block block = null;
-    for (Cell cell : cells) {
-      if (block == null) {
-        block = getSudoku().getBlock(cell.getBlockIndex());
-      }
-      if (!block.equals(getSudoku().getBlock(cell.getBlockIndex()))) {
-        return false;
-      }
-    }
-    return true;
-  }
+  //  private boolean areCellsInSameBlock(final Collection<Cell> cells) {
+  //    Block block = null;
+  //    for (Cell cell : cells) {
+  //      if (block == null) {
+  //        block = getSudoku().getBlock(cell.getBlockIndex());
+  //      }
+  //      if (!block.equals(getSudoku().getBlock(cell.getBlockIndex()))) {
+  //        return false;
+  //      }
+  //    }
+  //    return true;
+  //  }
 
   private void removeCandidateInBlockExceptInColumn(final Literal testCandidate, final Block block, final Column column) {
     for (Cell cell : block.getNonFixed()) {

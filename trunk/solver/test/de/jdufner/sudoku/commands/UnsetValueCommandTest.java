@@ -57,8 +57,7 @@ public final class UnsetValueCommandTest extends TestCase {
     assertFalse(ucc.isSuccessfully());
     LOG.debug(ucc.getFrozenString());
     LOG.debug(cell);
-    assertEquals("UnsetValueCommandTest: Entferne Wert 2 aus Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", ucc
-        .getFrozenString());
+    assertEquals("null: Entferne Wert 2 aus Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", ucc.getFrozenString());
 
     assertFalse(cell.isFixed());
     assertEquals(9, cell.getCandidates().size());

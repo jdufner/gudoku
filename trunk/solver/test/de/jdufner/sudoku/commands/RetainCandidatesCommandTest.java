@@ -61,9 +61,8 @@ public final class RetainCandidatesCommandTest extends TestCase {
     assertTrue(rcc1.isSuccessfully());
     assertTrue(cell.isValid());
     LOG.debug(rcc1.getFrozenString());
-    assertEquals(
-        "RetainCandidatesCommandTest: Behalte Kandidaten [2, 6] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
-            .getFrozenString());
+    assertEquals("null: Behalte Kandidaten [2, 6] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
+        .getFrozenString());
 
     assertEquals(2, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));
@@ -84,8 +83,7 @@ public final class RetainCandidatesCommandTest extends TestCase {
     assertTrue(rcc1.isSuccessfully());
     assertFalse(cell.isValid());
     LOG.debug(rcc1.getFrozenString());
-    assertEquals("RetainCandidatesCommandTest: Behalte Kandidaten [] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]",
-        rcc1.getFrozenString());
+    assertEquals("null: Behalte Kandidaten [] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1.getFrozenString());
 
     assertEquals(0, cell.getCandidates().size());
     assertFalse(cell.isFixed());
@@ -114,8 +112,8 @@ public final class RetainCandidatesCommandTest extends TestCase {
     assertTrue(cell.isValid());
     LOG.debug(rcc1.getFrozenString());
     assertEquals(
-        "RetainCandidatesCommandTest: Behalte Kandidaten [1, 2, 3, 4, 5, 6, 7, 8, 9] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]",
-        rcc1.getFrozenString());
+        "null: Behalte Kandidaten [1, 2, 3, 4, 5, 6, 7, 8, 9] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
+            .getFrozenString());
 
     assertEquals(9, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));

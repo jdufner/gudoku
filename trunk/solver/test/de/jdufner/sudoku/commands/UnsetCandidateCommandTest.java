@@ -56,8 +56,7 @@ public final class UnsetCandidateCommandTest extends TestCase {
     ucc.execute(sudoku);
     assertTrue(ucc.isSuccessfully());
     LOG.debug(ucc.getFrozenString());
-    assertEquals("UnsetCandidateCommandTest: Entferne Kandidat 1 aus Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]",
-        ucc.getFrozenString());
+    assertEquals("null: Entferne Kandidat 1 aus Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", ucc.getFrozenString());
 
     assertFalse(cell.isFixed());
     assertFalse(cell.getCandidates().contains(Literal.getInstance(1)));

@@ -65,9 +65,8 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     assertTrue(cell.isValid());
     assertTrue(rcc1.reversible());
     LOG.debug(rcc1.getFrozenString());
-    assertEquals(
-        "RemoveCandidatesCommandTest: Entferne Kandidaten [9] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
-            .getFrozenString());
+    assertEquals("null: Entferne Kandidaten [9] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
+        .getFrozenString());
 
     assertEquals(8, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(1)));
@@ -90,9 +89,8 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     rcc2.execute(sudoku);
     assertTrue(rcc2.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals(
-        "RemoveCandidatesCommandTest: Entferne Kandidaten [5, 1, 8] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8]",
-        rcc2.getFrozenString());
+    assertEquals("null: Entferne Kandidaten [5, 1, 8] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8]", rcc2
+        .getFrozenString());
 
     assertEquals(5, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));
@@ -112,8 +110,7 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     rcc3.execute(sudoku);
     assertTrue(rcc3.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("RemoveCandidatesCommandTest: Entferne Kandidaten [4, 5, 3] in Zelle 0 (0, 2, 0) [2, 3, 4, 6, 7]",
-        rcc3.getFrozenString());
+    assertEquals("null: Entferne Kandidaten [4, 5, 3] in Zelle 0 (0, 2, 0) [2, 3, 4, 6, 7]", rcc3.getFrozenString());
 
     assertEquals(3, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));
@@ -134,8 +131,7 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     rcc4.execute(sudoku);
     assertTrue(rcc4.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("RemoveCandidatesCommandTest: Entferne Kandidaten [9, 5, 8, 4, 7] in Zelle 0 (0, 2, 0) [2, 6, 7]",
-        rcc4.getFrozenString());
+    assertEquals("null: Entferne Kandidaten [9, 5, 8, 4, 7] in Zelle 0 (0, 2, 0) [2, 6, 7]", rcc4.getFrozenString());
 
     assertEquals(2, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));
@@ -148,8 +144,7 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     rcc6.execute(sudoku);
     assertFalse(rcc6.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("RemoveCandidatesCommandTest: Entferne Kandidaten [1] in Zelle 0 (0, 2, 0) [2, 6]", rcc6
-        .getFrozenString());
+    assertEquals("null: Entferne Kandidaten [1] in Zelle 0 (0, 2, 0) [2, 6]", rcc6.getFrozenString());
 
     // Entferne mehrere bereits entfernen Kandidaten
     Candidates<Literal> candidates4 = new Candidates<Literal>();
@@ -160,8 +155,7 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     rcc7.execute(sudoku);
     assertFalse(rcc7.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("RemoveCandidatesCommandTest: Entferne Kandidaten [1, 3] in Zelle 0 (0, 2, 0) [2, 6]", rcc7
-        .getFrozenString());
+    assertEquals("null: Entferne Kandidaten [1, 3] in Zelle 0 (0, 2, 0) [2, 6]", rcc7.getFrozenString());
 
     // Entferne einen weiteren beliebigen Kandidaten und erwarte automatisches Setzen des verbleibenden Kandidaten
     Command rcc5 = CommandFactory.buildRemoveCandidatesCommand(null, cell, Literal.getInstance(2));
@@ -169,8 +163,7 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     rcc5.execute(sudoku);
     assertTrue(rcc5.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("RemoveCandidatesCommandTest: Entferne Kandidaten [2] in Zelle 0 (0, 2, 0) [2, 6]", rcc5
-        .getFrozenString());
+    assertEquals("null: Entferne Kandidaten [2] in Zelle 0 (0, 2, 0) [2, 6]", rcc5.getFrozenString());
     assertEquals(0, cell.getCandidates().size());
     assertTrue(cell.isFixed());
   }
@@ -199,8 +192,8 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     assertTrue(rcc1.reversible());
     LOG.debug(rcc1.getFrozenString());
     assertEquals(
-        "RemoveCandidatesCommandTest: Entferne Kandidaten [1, 2, 3, 4, 5, 6, 7, 8, 9] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]",
-        rcc1.getFrozenString());
+        "null: Entferne Kandidaten [1, 2, 3, 4, 5, 6, 7, 8, 9] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
+            .getFrozenString());
     assertEquals(0, cell.getCandidates().size());
 
     rcc1.unexecute(sudoku);
@@ -222,9 +215,8 @@ public final class RemoveCandidatesCommandTest extends TestCase {
     assertTrue(cell.isValid());
     assertTrue(rcc1.reversible());
     LOG.debug(rcc1.getFrozenString());
-    assertEquals(
-        "RemoveCandidatesCommandTest: Entferne Kandidaten [] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
-            .getFrozenString());
+    assertEquals("null: Entferne Kandidaten [] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
+        .getFrozenString());
     assertEquals(9, cell.getCandidates().size());
 
     rcc1.unexecute(sudoku);
