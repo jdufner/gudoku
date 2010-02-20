@@ -23,44 +23,48 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.commands;
+package de.jdufner.sudoku.solver.strategy.intersection.removal;
 
-import junit.framework.TestCase;
+import java.util.Collection;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.common.board.Block;
 import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.common.misc.Examples;
+import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 
-public final class SetCandidateCommandTest extends TestCase {
+/**
+ * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @since 0.1
+ * @version $Revision$
+ */
+public abstract class AbstractBoxLineReductionStrategy extends AbstractStrategy {
 
-  private static final Logger LOG = Logger.getLogger(SetCandidateCommandTest.class);
+  private static final Logger LOG = Logger.getLogger(AbstractBoxLineReductionStrategy.class);
 
-  private Sudoku sudoku = SudokuFactory.buildSudoku(Examples.ING_DIBA);
-
-  protected void setUp() throws Exception {
-    LOG.debug(sudoku);
+  protected AbstractBoxLineReductionStrategy(final Sudoku sudoku) {
+    super(sudoku);
   }
 
-  public void testSetCandidateCommand() {
-    Cell cell = sudoku.getCell(0, 2);
+  @Override
+  public Level getLevel() {
+    return Level.MITTEL;
+  }
 
-    assertEquals(9, cell.getCandidates().size());
-
-    Command scc = CommandFactory.buildSetCandidateCommand(null, 0, 2, Literal.getInstance(2));
-    LOG.debug(scc.getFrozenString());
-    assertEquals(null, scc.getFrozenString());
-    scc.execute(sudoku);
-    assertFalse(scc.isSuccessfully());
-    LOG.debug(scc.getFrozenString());
-    assertEquals("null: Setze Kandidat 2 in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", scc.getFrozenString());
-
-    assertFalse(cell.isFixed());
-    assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));
-    assertEquals(9, cell.getCandidates().size());
+  // TODO Funktioniert diese Methode richtig?
+  protected boolean areCellsInSameBlock(final Collection<Cell> cells) {
+    Block block = null;
+    for (Cell cell : cells) {
+      if (block == null) {
+        block = getSudoku().getBlock(cell.getBlockIndex());
+      }
+      if (!block.equals(getSudoku().getBlock(cell.getBlockIndex()))) {
+        return false;
+      }
+    }
+    return true;
   }
 
 }

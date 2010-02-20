@@ -40,8 +40,6 @@ import de.jdufner.sudoku.common.board.Literal2CellMap;
 import de.jdufner.sudoku.common.board.Row;
 import de.jdufner.sudoku.common.board.RowHandler;
 import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.misc.Level;
-import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -49,17 +47,12 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * @since 0.1
  * @version $Revision$
  */
-public final class BoxLineReductionRowStrategy extends AbstractStrategy implements RowHandler,
+public final class BoxLineReductionRowStrategy extends AbstractBoxLineReductionStrategy implements RowHandler,
     Callable<Collection<Command>> {
   private static final Logger LOG = Logger.getLogger(BoxLineReductionRowStrategy.class);
 
   public BoxLineReductionRowStrategy(final Sudoku sudoku) {
     super(sudoku);
-  }
-
-  @Override
-  public Level getLevel() {
-    return Level.SCHWER;
   }
 
   @Override
@@ -97,18 +90,18 @@ public final class BoxLineReductionRowStrategy extends AbstractStrategy implemen
   }
 
   // TODO Funktioniert diese Methode richtig?
-  private boolean areCellsInSameBlock(final Collection<Cell> cells) {
-    Block block = null;
-    for (Cell cell : cells) {
-      if (block == null) {
-        block = getSudoku().getBlock(cell.getBlockIndex());
-      }
-      if (!block.equals(getSudoku().getBlock(cell.getBlockIndex()))) {
-        return false;
-      }
-    }
-    return true;
-  }
+  //  private boolean areCellsInSameBlock(final Collection<Cell> cells) {
+  //    Block block = null;
+  //    for (Cell cell : cells) {
+  //      if (block == null) {
+  //        block = getSudoku().getBlock(cell.getBlockIndex());
+  //      }
+  //      if (!block.equals(getSudoku().getBlock(cell.getBlockIndex()))) {
+  //        return false;
+  //      }
+  //    }
+  //    return true;
+  //  }
 
   private void removeCandidateInBlockExceptInRow(final Literal testCandidate, final Block block, final Row row) {
     for (Cell cell : block.getNonFixed()) {

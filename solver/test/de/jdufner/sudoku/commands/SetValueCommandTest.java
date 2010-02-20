@@ -57,8 +57,7 @@ public class SetValueCommandTest extends TestCase {
     assertTrue(scc1.isSuccessfully());
     LOG.debug(scc1.getFrozenString());
     LOG.debug(cell);
-    assertEquals("SetValueCommandTest: Setze Wert 2 in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", scc1
-        .getFrozenString());
+    assertEquals("null: Setze Wert 2 in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", scc1.getFrozenString());
 
     assertTrue(cell.isFixed());
     assertEquals(0, cell.getCandidates().size());
@@ -70,7 +69,7 @@ public class SetValueCommandTest extends TestCase {
     assertFalse(scc2.isSuccessfully());
     LOG.debug(scc2.getFrozenString());
     LOG.debug(cell);
-    assertEquals("SetValueCommandTest: Setze Wert 6 in Zelle 2 (0, 2, 0) []", scc2.getFrozenString());
+    assertEquals("null: Setze Wert 6 in Zelle 2 (0, 2, 0) []", scc2.getFrozenString());
 
     assertTrue(cell.isFixed());
     assertEquals(0, cell.getCandidates().size());
