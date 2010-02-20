@@ -89,20 +89,6 @@ public final class BoxLineReductionRowStrategy extends AbstractBoxLineReductionS
     return executeStrategy();
   }
 
-  // TODO Funktioniert diese Methode richtig?
-  //  private boolean areCellsInSameBlock(final Collection<Cell> cells) {
-  //    Block block = null;
-  //    for (Cell cell : cells) {
-  //      if (block == null) {
-  //        block = getSudoku().getBlock(cell.getBlockIndex());
-  //      }
-  //      if (!block.equals(getSudoku().getBlock(cell.getBlockIndex()))) {
-  //        return false;
-  //      }
-  //    }
-  //    return true;
-  //  }
-
   private void removeCandidateInBlockExceptInRow(final Literal testCandidate, final Block block, final Row row) {
     for (Cell cell : block.getNonFixed()) {
       if (!getSudoku().getRow(cell.getRowIndex()).equals(row)) {

@@ -53,7 +53,13 @@ public abstract class AbstractBoxLineReductionStrategy extends AbstractStrategy 
     return Level.MITTEL;
   }
 
-  // TODO Funktioniert diese Methode richtig?
+  /**
+   * Achtung funktioniert nur korrekt für 1 oder 2 Elemente. Wenn mehr Elemente in der Sammlung sind, dann wird das 2.
+   * und 3. Element nicht miteinander verglichen.
+   * 
+   * @param cells
+   * @return
+   */
   protected boolean areCellsInSameBlock(final Collection<Cell> cells) {
     Block block = null;
     for (Cell cell : cells) {
