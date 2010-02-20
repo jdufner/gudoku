@@ -53,27 +53,26 @@ public final class SudokuMapper {
   /**
    * Transformiert einen Befehl {@link Command} von Client- in Server-Repräsentation.
    * 
+   * TODO Muss ich einen separaten Strategyname einführen?
+   * 
    * @param command
    *          Befehl in Client-Repräsentation.
    * @return Befehl in Server-Repräsentation.
    */
   public static AbstractCommand mapClient2Server(Command command) {
     if (Command.SET_VALUE.equals(command.getCommand())) {
-      return (AbstractCommand) CommandFactory.buildSetValueCommand(SudokuMapper.class.getSimpleName(), Cell
-          .mapClientRow2ServerRow(command.getRow()), Cell.mapClientColumn2ServerColumn(command.getColumn()), Literal
-          .getInstance(command.getValue()));
+      return (AbstractCommand) CommandFactory.buildSetValueCommand(null, Cell.mapClientRow2ServerRow(command.getRow()),
+          Cell.mapClientColumn2ServerColumn(command.getColumn()), Literal.getInstance(command.getValue()));
     } else if (Command.UNSET_VALUE.equals(command.getCommand())) {
-      return (AbstractCommand) CommandFactory.buildUnsetValueCommand(SudokuMapper.class.getSimpleName(), Cell
+      return (AbstractCommand) CommandFactory.buildUnsetValueCommand(null, Cell
           .mapClientRow2ServerRow(command.getRow()), Cell.mapClientColumn2ServerColumn(command.getColumn()), Literal
           .getInstance(command.getValue()));
     } else if (Command.SET_CANDIDATE.equals(command.getCommand())) {
-      return (AbstractCommand) CommandFactory.buildSetCandidateCommand(SudokuMapper.class.getSimpleName(), Cell
-          .mapClientRow2ServerRow(command.getRow()), Cell.mapClientColumn2ServerColumn(command.getColumn()), Literal
-          .getInstance(command.getValue()));
+      return (AbstractCommand) CommandFactory.buildSetCandidateCommand(null, Cell.mapClientRow2ServerRow(command
+          .getRow()), Cell.mapClientColumn2ServerColumn(command.getColumn()), Literal.getInstance(command.getValue()));
     } else if (Command.UNSET_CANDIDATE.equals(command.getCommand())) {
-      return (AbstractCommand) CommandFactory.buildUnsetCandidateCommand(SudokuMapper.class.getSimpleName(), Cell
-          .mapClientRow2ServerRow(command.getRow()), Cell.mapClientColumn2ServerColumn(command.getColumn()), Literal
-          .getInstance(command.getValue()));
+      return (AbstractCommand) CommandFactory.buildUnsetCandidateCommand(null, Cell.mapClientRow2ServerRow(command
+          .getRow()), Cell.mapClientColumn2ServerColumn(command.getColumn()), Literal.getInstance(command.getValue()));
     } else {
       throw new IllegalArgumentException("Illegal Command Type!");
     }
@@ -165,12 +164,10 @@ public final class SudokuMapper {
 
 }
 /*
- * $Log: SudokuMapper.java,v $
- * Revision 1.15  2009/12/05 23:27:44  jdufner
- * Umstellung von AbstractCommand auf Command-Interface
- * Revision 1.14 2009/12/05 21:38:50 jdufner Commands überarbeitet Revision 1.13 2009/11/27
- * 21:53:37 jdufner Command erweitert und StrategyResult ergänzt Revision 1.12 2009/11/17 20:34:23 jdufner Refactoring:
- * Klassen verschoben
+ * $Log: SudokuMapper.java,v $ Revision 1.15 2009/12/05 23:27:44 jdufner Umstellung von AbstractCommand auf
+ * Command-Interface Revision 1.14 2009/12/05 21:38:50 jdufner Commands überarbeitet Revision 1.13 2009/11/27 21:53:37
+ * jdufner Command erweitert und StrategyResult ergänzt Revision 1.12 2009/11/17 20:34:23 jdufner Refactoring: Klassen
+ * verschoben
  * 
  * Revision 1.11 2009/11/15 22:29:31 jdufner Refactoring: Klassen verschoben
  * 
