@@ -42,6 +42,7 @@ import de.jdufner.sudoku.common.board.Unit;
 import de.jdufner.sudoku.common.board.UnitHandler;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * Wird diese Klasse überhaupt benötigt? Dieser Fall tritt ein, wenn nur ein Kandidat, der in keiner anderen Zelle in
@@ -82,7 +83,7 @@ public final class HiddenSingleStrategy extends AbstractStrategy implements Unit
         fixed.addAll(getSudoku().getColumn(cell.getColumnIndex()).getFixedAsLiteral());
         fixed.addAll(getSudoku().getRow(cell.getRowIndex()).getFixedAsLiteral());
         if (!fixed.contains(single)) {
-          getCommands().add(CommandFactory.buildSetValueCommand(this.getClass().getSimpleName(), cell, single));
+          getCommands().add(CommandFactory.buildSetValueCommand(StrategyNameEnum.HIDDEN_SINGLE, cell, single));
         }
       }
     }

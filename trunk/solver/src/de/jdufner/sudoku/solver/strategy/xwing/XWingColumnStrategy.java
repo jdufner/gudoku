@@ -45,6 +45,7 @@ import de.jdufner.sudoku.common.board.Row;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -107,7 +108,7 @@ public final class XWingColumnStrategy extends AbstractStrategy implements Colum
   private void eleminateCandidatesInRowWithoutColumns(final Literal value, final Row row, final List<Column> columns) {
     for (Cell cell : row.getCells()) {
       if (!columns.contains(getSudoku().getColumn(cell.getColumnIndex()))) {
-        getCommands().add(CommandFactory.buildRemoveCandidatesCommand(this.getClass().getSimpleName(), cell, value));
+        getCommands().add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.XWING, cell, value));
       }
     }
   }

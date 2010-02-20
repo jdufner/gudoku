@@ -49,6 +49,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.collections.Kombination;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -114,8 +115,7 @@ public final class SwordFishRowStrategy extends AbstractStrategy implements RowH
           if (LOG.isDebugEnabled()) {
             LOG.debug("Create new Remove-Command!");
           }
-          getCommands()
-              .add(CommandFactory.buildRemoveCandidatesCommand(this.getClass().getSimpleName(), cell, literal));
+          getCommands().add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SWORDFISH, cell, literal));
         }
       }
     }

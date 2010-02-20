@@ -81,6 +81,7 @@ public final class StrategySolver implements ExtendedSolver {
       solution.setResult(sudokuResult);
       solution.setUnique(isSudokuUnique(results));
       solution.setLevel(getMaxLevel(results));
+      solution.setResults(results);
     }
     return solution;
   }

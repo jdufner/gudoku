@@ -50,7 +50,7 @@ public class SetValueCommandTest extends TestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Command scc1 = CommandFactory.buildSetValueCommand(this.getClass().getSimpleName(), 0, 2, Literal.getInstance(2));
+    Command scc1 = CommandFactory.buildSetValueCommand(null, 0, 2, Literal.getInstance(2));
     LOG.debug(scc1.getFrozenString());
     assertNull(scc1.getFrozenString());
     scc1.execute(sudoku);
@@ -63,7 +63,7 @@ public class SetValueCommandTest extends TestCase {
     assertTrue(cell.isFixed());
     assertEquals(0, cell.getCandidates().size());
 
-    Command scc2 = CommandFactory.buildSetValueCommand(this.getClass().getSimpleName(), cell, Literal.getInstance(6));
+    Command scc2 = CommandFactory.buildSetValueCommand(null, cell, Literal.getInstance(6));
     LOG.debug(scc2.getFrozenString());
     assertNull(scc2.getFrozenString());
     scc2.execute(sudoku);

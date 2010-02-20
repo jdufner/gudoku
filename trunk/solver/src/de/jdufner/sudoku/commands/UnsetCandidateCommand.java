@@ -27,6 +27,7 @@ package de.jdufner.sudoku.commands;
 
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -35,8 +36,9 @@ import de.jdufner.sudoku.common.board.Sudoku;
  */
 public final class UnsetCandidateCommand extends AbstractSingleValueCommand {
 
-  protected UnsetCandidateCommand(final String creator, final int row, final int column, final Literal value) {
-    super(creator);
+  protected UnsetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column,
+      final Literal value) {
+    super(strategyNameEnum);
     this.rowIndex = row;
     this.columnIndex = column;
     this.value = value;
@@ -59,12 +61,12 @@ public final class UnsetCandidateCommand extends AbstractSingleValueCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Entferne Kandidat " + value + " aus Zelle (" + rowIndex + ", " + columnIndex + ")";
+    return getStrategyName() + ": Entferne Kandidat " + value + " aus Zelle (" + rowIndex + ", " + columnIndex + ")";
   }
 
   @Override
   protected String toString(Sudoku sudoku) {
-    return getCreator() + ": Entferne Kandidat " + value + " aus Zelle " + getCell(sudoku);
+    return getStrategyName() + ": Entferne Kandidat " + value + " aus Zelle " + getCell(sudoku);
   }
 
 }

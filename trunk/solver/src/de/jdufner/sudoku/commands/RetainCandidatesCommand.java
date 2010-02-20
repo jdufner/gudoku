@@ -31,6 +31,7 @@ import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * Entfernt alle Kandidaten {@link Candidates} von einer Zelle, außer die übergebenen Kandidaten auf der {@link Cell}.
@@ -54,15 +55,16 @@ public final class RetainCandidatesCommand extends AbstractCommand {
   /**
    * Konstruktor eines Befehls, welcher alle anderen Kandiaten entfernt, außer die übergebenen.
    * 
-   * @param creator
+   * @param strategyNameEnum
    *          Der Erzeuger des Befehls.
    * @param cell
    *          Die Zelle auf welcher der Befehl ausgeführt werden soll.
    * @param candidates
    *          Die Kandidaten, welche beibehalten werden sollen.
    */
-  protected RetainCandidatesCommand(final String creator, final Cell cell, final Collection<Literal> candidates) {
-    super(creator);
+  protected RetainCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
+      final Collection<Literal> candidates) {
+    super(strategyNameEnum);
     this.rowIndex = cell.getRowIndex();
     this.columnIndex = cell.getColumnIndex();
     this.candidates = candidates;
@@ -95,12 +97,13 @@ public final class RetainCandidatesCommand extends AbstractCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Behalte Kandidaten " + candidates + " in Zelle (" + rowIndex + ", " + columnIndex + ")";
+    return getStrategyName() + ": Behalte Kandidaten " + candidates + " in Zelle (" + rowIndex + ", " + columnIndex
+        + ")";
   }
 
   @Override
   protected String toString(Sudoku sudoku) {
-    return getCreator() + ": Behalte Kandidaten " + candidates + " in Zelle " + getCell(sudoku);
+    return getStrategyName() + ": Behalte Kandidaten " + candidates + " in Zelle " + getCell(sudoku);
   }
 
   @Override
@@ -113,8 +116,8 @@ public final class RetainCandidatesCommand extends AbstractCommand {
     }
     if (other instanceof RetainCandidatesCommand) {
       final RetainCandidatesCommand that = (RetainCandidatesCommand) other;
-      if (this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex && this.candidates.containsAll(that.candidates)
-          && that.candidates.containsAll(this.candidates)) {
+      if (this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex
+          && this.candidates.containsAll(that.candidates) && that.candidates.containsAll(this.candidates)) {
         return true;
       }
     }

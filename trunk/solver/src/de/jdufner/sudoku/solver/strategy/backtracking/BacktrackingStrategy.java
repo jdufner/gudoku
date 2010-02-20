@@ -37,6 +37,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.backtracking.Backtracking;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -83,7 +84,7 @@ public final class BacktrackingStrategy extends AbstractStrategy implements Cell
   public void handleCell(final Cell cell) {
     if (!cell.isFixed()) {
       getCommands().add(
-          CommandFactory.buildSetValueCommand(this.getClass().getSimpleName(), cell, result.getCell(cell.getNumber())
+          CommandFactory.buildSetValueCommand(StrategyNameEnum.BACKTRACKING, cell, result.getCell(cell.getNumber())
               .getValue()));
     }
   }

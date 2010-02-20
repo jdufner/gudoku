@@ -29,6 +29,7 @@ import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * Dieser Befehl setzt mittels {@link Cell#setValue(Literal)} einen festen Wert {@link Literal} in eine {@link Cell}.
@@ -44,15 +45,16 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
    */
   private transient Candidates<Literal> candidates;
 
-  protected SetValueCommand(final String creator, final int row, final int column, final Literal value) {
-    super(creator);
+  protected SetValueCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column,
+      final Literal value) {
+    super(strategyNameEnum);
     this.rowIndex = row;
     this.columnIndex = column;
     this.value = value;
   }
 
-  protected SetValueCommand(final String creator, final Cell cell, final Literal value) {
-    super(creator);
+  protected SetValueCommand(final StrategyNameEnum strategyNameEnum, final Cell cell, final Literal value) {
+    super(strategyNameEnum);
     this.rowIndex = cell.getRowIndex();
     this.columnIndex = cell.getColumnIndex();
     this.value = value;
@@ -82,12 +84,12 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
 
   @Override
   public String toString() {
-    return getCreator() + ": Setze Wert " + value + " in Zelle (" + rowIndex + ", " + columnIndex + ")";
+    return getStrategyName() + ": Setze Wert " + value + " in Zelle (" + rowIndex + ", " + columnIndex + ")";
   }
 
   @Override
   protected String toString(Sudoku sudoku) {
-    return getCreator() + ": Setze Wert " + value + " in Zelle " + getCell(sudoku);
+    return getStrategyName() + ": Setze Wert " + value + " in Zelle " + getCell(sudoku);
   }
 
   @Override
