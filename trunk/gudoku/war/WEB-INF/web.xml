@@ -9,17 +9,6 @@
   
   <!-- Servlets -->
   <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>net.sf.gudoku.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/gudoku/greet</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Servlets -->
-  <servlet>
     <servlet-name>SudokuService</servlet-name>
     <servlet-class>net.sf.gudoku.server.service.SudokuServiceImpl</servlet-class>
   </servlet>
