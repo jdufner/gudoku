@@ -27,6 +27,8 @@ package de.jdufner.sudoku.dao;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
+import de.jdufner.sudoku.solver.service.Solution;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * 
@@ -37,18 +39,38 @@ import de.jdufner.sudoku.common.factory.SudokuFactory;
  */
 public final class SudokuMapper {
 
+  private SudokuMapper() {
+  }
+
   public static Sudoku map(SudokuData sudokuData) {
     return SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
   }
 
-  public static SudokuData map(Sudoku sudoku) {
+  public static SudokuData map(Solution solution) {
     SudokuData sudokuData = new SudokuData();
-    sudokuData.setFixed(sudoku.getNumberOfFixed());
-    sudokuData.setLevel(sudoku.getLevel().getValue());
-    sudokuData.setSize(sudoku.getSize().getUnitSize());
-    sudokuData.setSudokuAsString(sudoku.toShortString());
+    sudokuData.setFixed(solution.getQuest().getNumberOfFixed());
+    sudokuData.setLevel(solution.getLevel().getValue());
+    sudokuData.setSize(solution.getQuest().getSize().getUnitSize());
+    sudokuData.setSudokuAsString(solution.getQuest().toShortString());
+    sudokuData.setStrategySimple(solution.getNumberSuccessfulCommand(StrategyNameEnum.SIMPLE));
+    sudokuData.setStrategyHiddenSingle(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_SINGLE));
+    sudokuData.setStrategyNakedPair(solution.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_PAIR));
+    sudokuData.setStrategyNakedTriple(solution.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_TRIPLE));
+    sudokuData.setStrategyNakedQuad(solution.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_QUAD));
+    sudokuData.setStrategyHiddenPair(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_PAIR));
+    sudokuData.setStrategyHiddenTriple(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_TRIPLE));
+    sudokuData.setStrategyHiddenQuad(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_QUAD));
+    sudokuData.setStrategyIntersectionRemoval(solution
+        .getNumberSuccessfulCommand(StrategyNameEnum.INTERSECTION_REMOVAL));
+    // TODO Y-Wing
+    //sudokuData.setStrategy(solution.getNumberSuccessfulCommand(StrategyNameEnum.YWING));
+    sudokuData.setStrategyXwing(solution.getNumberSuccessfulCommand(StrategyNameEnum.XWING));
+    // TODO Swordfish
+    //sudokuData.setStrategy(solution.getNumberSuccessfulCommand(StrategyNameEnum.SWORDFISH));
+    // TODO Jellyfish
+    //sudokuData.setStrategy(solution.getNumberSuccessfulCommand(StrategyNameEnum.JELLYFISH));
+    // TODO Backtracking
+    //sudokuData.setStrategy(solution.getNumberSuccessfulCommand(StrategyNameEnum.BACKTRACKING));
     return sudokuData;
   }
-
 }
-

@@ -51,7 +51,7 @@ public abstract class EleminationBuilder extends AbstractBuilder {
   private static final Logger LOG = Logger.getLogger(EleminationBuilder.class);
   private static final int NUMBER_TRANSFORMATIONS = 123;
 
-  protected Map<Level, Sudoku> level2SudokuMap = new HashMap<Level, Sudoku>();
+  protected Map<Level, Solution> level2SudokuMap = new HashMap<Level, Solution>();
   private int cellCounter = 0;
   private int eleminatedCellCounter = 0;
 
@@ -115,8 +115,7 @@ public abstract class EleminationBuilder extends AbstractBuilder {
     cellCounter++;
     Solution solution = strategySolverWithBacktracking.getSolution(sudoku);
     if (solution.isUnique()) {
-      solution.getQuest().setLevel(solution.getLevel());
-      level2SudokuMap.put(solution.getLevel(), solution.getQuest());
+      level2SudokuMap.put(solution.getLevel(), solution);
       eleminatedCellCounter++;
       if (LOG.isInfoEnabled()) {
         LOG.info("(" + eleminatedCellCounter + "/" + cellCounter + ") Zelle " + cellCandidate
@@ -142,7 +141,7 @@ public abstract class EleminationBuilder extends AbstractBuilder {
     return sudoku;
   }
 
-  public Map<Level, Sudoku> buildSudokus() {
+  public Map<Level, Solution> buildSudokus() {
     shuffleSudoku();
     executeBuilder();
     return level2SudokuMap;

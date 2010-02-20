@@ -122,6 +122,11 @@ div.candidateButtonOn {
       <input id="sudokuAsString" type="text" value="1382.5.7.2.783415.....1723838.5....1....2.58..5...8....2..8.3..913.5.84.876.4.9.5" maxlength="81" size="81"/>
       <input type="button" value="Laden" onclick="loadSudoku()"/><input type="button" value="Speichern" onclick="saveSudoku()"/><br/>
       <input type="button" value="Kandidaten entfernen" onclick="removeAllCandidates()"/><input type="button" value="Reset" onclick="resetAllCandidates()"/><input type="button" value="Leeren" onclick="emptyCandidates()"/><input id="hideButton" type="button" value="Ausblenden" onclick="hideCandidates()"/><br/>
+      <input type="button" value="Aus Cookie laden" onclick="loadSudokuFromCookie()"/><input type="button" value="In Cookie speichern" onclick="saveSudokuInCookie()"/><br/>
+      <fieldset>
+        <legend>Spielhilfe</legend>
+        <input id="showConflicts" type="checkbox" check="true">Fehler zeigen (funktioniert noch nicht)</input><br/>
+      </fieldset>
       <fieldset>
         <legend>Zellen</legend>
         <input id="highlightFixed" type="checkbox" checked="true">Zellen hervorheben</input><br/>
@@ -134,7 +139,7 @@ div.candidateButtonOn {
         <input id="highlightAllCandidates" type="checkbox">Auch andere Kandidaten hervorheben</input><br/>
         <input id="highlightAllCandidatesAndFixed" type="checkbox">Auch andere Zellen hervorheben</input><br/>
       </fieldset>
-      Nach resetFixed sind noch die Kandidaten der zuvor gesetzten Zelle an.
+      Kandidaten und andere Kandidaten hervorheben: Nach setzen einer Zelle, werden die anderen Zellen nicht zurückgesetzt.
     </div>
   </body>
   <script language="javascript">
@@ -402,15 +407,15 @@ function enterFixed() {
 
 function exitFixed() {
   var value = getValue(this);
-  if (document.getElementById("highlightFixed").checked) {
+  //if (document.getElementById("highlightFixed").checked) {
     this.className = removeStyle(this.className, "highlight3");
-  }
-  if (document.getElementById("highlightAllFixed").checked) {
+  //}
+  //if (document.getElementById("highlightAllFixed").checked) {
     highlightFixedOff(value);
-  }
-  if (document.getElementById("highlightAllFixedAndCandidates").checked) {
+  //}
+  //if (document.getElementById("highlightAllFixedAndCandidates").checked) {
     highlightCandidateOff(value, "highlight2");
-  }
+  //}
 }
 
 function enterCandidate() {
@@ -428,15 +433,15 @@ function enterCandidate() {
 
 function exitCandidate() {
   var value = getValue(this);
-  if (document.getElementById("highlightCandidates").checked) {
+  //if (document.getElementById("highlightCandidates").checked) {
     this.className = removeStyle(this.className, "highlight2");
-  }
-  if (document.getElementById("highlightAllCandidates").checked) {
+  //}
+  //if (document.getElementById("highlightAllCandidates").checked) {
     highlightCandidateOff(value, "highlight2");
-  }
-  if (document.getElementById("highlightAllCandidatesAndFixed").checked) {
+  //}
+  //if (document.getElementById("highlightAllCandidatesAndFixed").checked) {
     highlightFixedOff(value);
-  }
+  //}
 }
 
 function removeCandidateDo(candidateId) {
@@ -740,6 +745,123 @@ function isSolved() {
     }
   }
   return true;
+}
+
+function eraseCookie() {
+  var name = "SudokuAsString";
+  var domain = null; //"jdufner.de";
+  var expires = new Date((new Date()).getTime() - 1000*3600*24).toGMTString();
+  var path = null;
+  //var secure = null;
+  var cook = name + "=";
+  cook += (domain) ? "; domain=" + domain : "";
+  cook += (expires) ? "; expires=" + expires : "";
+  cook += (path) ? "; path=" + path : "";
+  //cook += (secure) ? "; secure" : "";
+  document.cookie = cook;
+}
+
+function setCookie(wert) {
+  var name = "SudokuAsString";
+  var domain = null; //"jdufner.de";
+  var expires = new Date((new Date()).getTime() + 1000*3600*24*7).toGMTString();
+  var path = null;
+  //var secure = null;
+  var cook = name + "=" + unescape(wert);
+  cook += (domain) ? "; domain=" + domain : "";
+  cook += (expires) ? "; expires=" + expires : "";
+  cook += (path) ? "; path=" + path : "";
+  //cook += (secure) ? "; secure" : "";
+  document.cookie = cook;
+  //alert(document.cookie);
+}
+
+function getCookie() {
+  var name = "SudokuAsString";
+  var i=0;  //Suchposition im Cookie
+  var suche = name + "=";
+  while (i < document.cookie.length) {
+    if (document.cookie.substring(i, i + suche.length) == suche) {
+      var ende = document.cookie.indexOf(";", i + suche.length);
+      if (ende <= -1) {
+        ende = document.cookie.length;
+      }
+      var cook = document.cookie.substring(i + suche.length, ende);
+      return unescape(cook);
+    }
+    i++;
+  }
+  return "";
+}
+
+function saveSudokuInCookie() {
+  var sudoku = new Array();
+  var sudokuAsString = "";
+  var firstCell = true;
+  for (var i = 1; i <= size * size; i++) {
+    if (!firstCell) {
+      sudokuAsString = sudokuAsString + ",";
+    }
+    if (isCellFixed(i)) {
+      sudoku[i] = getFixedValue(i);
+      sudokuAsString = sudokuAsString + getFixedValue(i);
+    } else {
+      var candidates = "";
+      var firstCandidate = true;
+      for (var k = 1; k <= size; k++) {
+        var candidate = getCandidate(i, k);
+        if (candidate.firstChild != null && candidate.firstChild.nodeType == 3) {
+          if (!firstCandidate) {
+            candidates = candidates + "-";
+          }
+          candidates = candidates + getValue(candidate);
+          firstCandidate = false;
+        }
+      }
+      sudoku[i] = candidates;
+      sudokuAsString = sudokuAsString + candidates;
+    }
+    firstCell = false;
+  }
+  if (sudokuAsString.length > 4000) {
+    alert("Sudoku kann nicht gespeichert werden");
+  }
+  setCookie(sudokuAsString);
+  alert(getCookie());
+}
+
+function loadSudokuFromCookie() {
+  var sudokuAsString = getCookie();
+  var sudoku = sudokuAsString.split(",");
+  original = "";
+  for (var i = 1; i <= size * size; i++) {
+    if (sudoku[i-1].match(/^(\d+)$/)) {
+      // fixed
+      original += parseInt(RegExp.$1);
+    } else {
+      // candidates
+      original += ".";
+    }
+  }
+  for (var i = 1; i <= size * size; i++) {
+    if (sudoku[i-1].match(/^(\d+)$/)) {
+      // fixed
+      buildFixed(i, parseInt(RegExp.$1));
+    } else {
+      // candidates
+      var candidates = sudoku[i-1].split("-");
+      var cellId = getCellId(i);
+      buildCandidates(cellId);
+      var candidate = parseInt(candidates.shift());
+      for (var k = 1; k <= size; k++) {
+        if (k != candidate) {
+          removeCandidateDo(getCandidateId(cellId, k));
+        } else {
+          candidate = parseInt(candidates.shift());
+        }
+      }
+    }
+  }
 }
 
 main();

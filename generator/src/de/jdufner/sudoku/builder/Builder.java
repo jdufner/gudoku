@@ -30,6 +30,7 @@ import java.util.Map;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -56,8 +57,9 @@ public interface Builder {
    * {@link Level} kein Sudoku gefunden, wird dafür eben auch keins zurückgegeben, mit anderen Worten es werden also
    * maximal soviele {@link Sudoku} zurückgegeben, wie es {@link Level} gibt.
    * 
-   * @return Eine Map, bestehend aus dem {@link Level} und dem letzen zu diesem {@link Level} gefundenen {@link Sudoku}.
+   * @return Eine Map, bestehend aus dem {@link Level} und dem letzen zu diesem {@link Level} gefundenen
+   *         {@link Solution} inkl. {@link Sudoku}.
    */
-  public Map<Level, Sudoku> buildSudokus();
+  public Map<Level, Solution> buildSudokus();
 
 }

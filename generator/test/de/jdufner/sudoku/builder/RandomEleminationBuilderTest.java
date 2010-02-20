@@ -36,6 +36,7 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -62,13 +63,13 @@ public final class RandomEleminationBuilderTest extends TestCase {
   }
 
   public void testBuildSudokus() throws Exception {
-    Map<Level, Sudoku> map = builder.buildSudokus();
+    Map<Level, Solution> map = builder.buildSudokus();
     assertTrue(map.size() >= 1);
     LOG.debug(map.size() + " Sudokus gefunden.");
     for (Level level : map.keySet()) {
       if (level.equals(Level.SEHR_SCHWER)) {
         Sudoku result = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking().solve(
-            map.get(level));
+            map.get(level).getQuest());
         assertTrue(result.isSolved());
         assertTrue(result.isSolvedByCheckSum());
         assertTrue(result.isValid());
@@ -76,7 +77,7 @@ public final class RandomEleminationBuilderTest extends TestCase {
         assertTrue(Level.UNBEKANNT.compareTo(map.get(level).getLevel()) < 0);
       } else {
         Sudoku result = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking().solve(
-            map.get(level));
+            map.get(level).getQuest());
         assertTrue(result.isSolved());
         assertTrue(result.isSolvedByCheckSum());
         assertTrue(result.isValid());

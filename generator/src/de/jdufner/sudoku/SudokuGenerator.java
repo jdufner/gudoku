@@ -31,10 +31,10 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.builder.Builder;
-import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.dao.SudokuDao;
+import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * Erzeugt mindestens ein Sudoku und speichert es in der Datenbank ab.
@@ -57,10 +57,10 @@ public final class SudokuGenerator {
   public void generateLiteralEleminationBuilder() {
     SudokuDao dao = GeneratorServiceFactory.getInstance().getSudokuDao();
     Builder builder = GeneratorServiceFactory.getInstance().getLiteralEleminationBuilder();
-    Map<Level, Sudoku> map = builder.buildSudokus();
+    Map<Level, Solution> map = builder.buildSudokus();
     for (Level l : map.keySet()) {
-      if (map.get(l).getNumberOfFixed() <= 30) {
-        dao.saveSudoku(map.get(l));
+      if (map.get(l).getQuest().getNumberOfFixed() <= 30) {
+        dao.saveSolution(map.get(l));
         SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
       }
     }
@@ -69,18 +69,20 @@ public final class SudokuGenerator {
   public void generateRandomEleminationBuilder() {
     SudokuDao dao = GeneratorServiceFactory.getInstance().getSudokuDao();
     Builder builder = GeneratorServiceFactory.getInstance().getRandomEleminationBuilder();
-    Map<Level, Sudoku> map = builder.buildSudokus();
+    Map<Level, Solution> map = builder.buildSudokus();
     for (Level l : map.keySet()) {
-      dao.saveSudoku(map.get(l));
+      dao.saveSolution(map.get(l));
+      SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
     }
   }
 
   public void generateSymetricRandomEleminationBuilder() {
     SudokuDao dao = GeneratorServiceFactory.getInstance().getSudokuDao();
     Builder builder = GeneratorServiceFactory.getInstance().getSymetricRandomEleminationBuilder();
-    Map<Level, Sudoku> map = builder.buildSudokus();
+    Map<Level, Solution> map = builder.buildSudokus();
     for (Level l : map.keySet()) {
-      dao.saveSudoku(map.get(l));
+      dao.saveSolution(map.get(l));
+      SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
     }
   }
 
