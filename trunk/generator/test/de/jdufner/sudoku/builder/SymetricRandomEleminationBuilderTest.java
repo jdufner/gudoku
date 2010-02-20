@@ -36,6 +36,7 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.solver.service.Solution;
 import de.jdufner.sudoku.solver.service.Solver;
 
 /**
@@ -67,19 +68,19 @@ public final class SymetricRandomEleminationBuilderTest extends TestCase {
   }
 
   public void testBuildSudokus() throws Exception {
-    Map<Level, Sudoku> map = builder.buildSudokus();
+    Map<Level, Solution> map = builder.buildSudokus();
     assertTrue(map.size() >= 1);
     LOG.debug(map.size() + " Sudokus gefunden.");
     for (Level level : map.keySet()) {
       if (level.equals(Level.SEHR_SCHWER)) {
-        Sudoku result = strategySolverWithBacktracking.solve(map.get(level));
+        Sudoku result = strategySolverWithBacktracking.solve(map.get(level).getQuest());
         assertTrue(result.isSolved());
         assertTrue(result.isSolvedByCheckSum());
         assertTrue(result.isValid());
         assertNotNull(map.get(level).getLevel());
         assertTrue(Level.UNBEKANNT.compareTo(map.get(level).getLevel()) < 0);
       } else {
-        Sudoku result = strategySolver.solve(map.get(level));
+        Sudoku result = strategySolver.solve(map.get(level).getQuest());
         assertTrue(result.isSolved());
         assertTrue(result.isSolvedByCheckSum());
         assertTrue(result.isValid());

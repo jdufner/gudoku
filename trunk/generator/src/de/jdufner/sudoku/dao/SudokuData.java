@@ -70,6 +70,30 @@ public final class SudokuData {
   private Date generatedAt = new Date();
   @Column(name = "SDKS_PRINTED_AT", nullable = true)
   private Date printedAt;
+  @Column(name = "SDKS_X_SDK", nullable = true)
+  private String xSudoku = "N";
+  @Column(name = "SDKS_STRGY_SIMPLE", nullable = true)
+  private int strategySimple;
+  @Column(name = "SDKS_STRGY_HIDDEN_SINGLE", nullable = true)
+  private int strategyHiddenSingle;
+  @Column(name = "SDKS_STRGY_NAKED_PAIR", nullable = true)
+  private int strategyNakedPair;
+  @Column(name = "SDKS_STRGY_NAKED_TRIPLE", nullable = true)
+  private int strategyNakedTriple;
+  @Column(name = "SDKS_STRGY_NAKED_QUAD", nullable = true)
+  private int strategyNakedQuad;
+  @Column(name = "SDKS_STRGY_HIDDEN_PAIR", nullable = true)
+  private int strategyHiddenPair;
+  @Column(name = "SDKS_STRGY_HIDDEN_TRIPLE", nullable = true)
+  private int strategyHiddenTriple;
+  @Column(name = "SDKS_STRGY_HIDDEN_QUAD", nullable = true)
+  private int strategyHiddenQuad;
+  @Column(name = "SDKS_STRGY_INTERSECTION_REMOVAL", nullable = true)
+  private int strategyIntersectionRemoval;
+  @Column(name = "SDKS_STRGY_XWING", nullable = true)
+  private int strategyXwing;
+  @Column(name = "SDKS_STRGY_SWORDFISH", nullable = true)
+  private int strategySwordfish;
 
   public int getId() {
     return id;
@@ -125,6 +149,102 @@ public final class SudokuData {
 
   public void setPrintedAt(Date printedAt) {
     this.printedAt = printedAt;
+  }
+
+  public String getxSudoku() {
+    return xSudoku;
+  }
+
+  public void setxSudoku(String xSudoku) {
+    this.xSudoku = xSudoku;
+  }
+
+  public int getStrategySimple() {
+    return strategySimple;
+  }
+
+  public void setStrategySimple(int strategySimple) {
+    this.strategySimple = strategySimple;
+  }
+
+  public int getStrategyHiddenSingle() {
+    return strategyHiddenSingle;
+  }
+
+  public void setStrategyHiddenSingle(int strategyHiddenSingle) {
+    this.strategyHiddenSingle = strategyHiddenSingle;
+  }
+
+  public int getStrategyNakedPair() {
+    return strategyNakedPair;
+  }
+
+  public void setStrategyNakedPair(int strategyNakedPair) {
+    this.strategyNakedPair = strategyNakedPair;
+  }
+
+  public int getStrategyNakedTriple() {
+    return strategyNakedTriple;
+  }
+
+  public void setStrategyNakedTriple(int strategyNakedTriple) {
+    this.strategyNakedTriple = strategyNakedTriple;
+  }
+
+  public int getStrategyNakedQuad() {
+    return strategyNakedQuad;
+  }
+
+  public void setStrategyNakedQuad(int strategyNakedQuad) {
+    this.strategyNakedQuad = strategyNakedQuad;
+  }
+
+  public int getStrategyHiddenPair() {
+    return strategyHiddenPair;
+  }
+
+  public void setStrategyHiddenPair(int strategyHiddenPair) {
+    this.strategyHiddenPair = strategyHiddenPair;
+  }
+
+  public int getStrategyHiddenTriple() {
+    return strategyHiddenTriple;
+  }
+
+  public void setStrategyHiddenTriple(int strategyHiddenTriple) {
+    this.strategyHiddenTriple = strategyHiddenTriple;
+  }
+
+  public int getStrategyHiddenQuad() {
+    return strategyHiddenQuad;
+  }
+
+  public void setStrategyHiddenQuad(int strategyHiddenQuad) {
+    this.strategyHiddenQuad = strategyHiddenQuad;
+  }
+
+  public int getStrategyIntersectionRemoval() {
+    return strategyIntersectionRemoval;
+  }
+
+  public void setStrategyIntersectionRemoval(int strategyIntersectionRemoval) {
+    this.strategyIntersectionRemoval = strategyIntersectionRemoval;
+  }
+
+  public int getStrategyXwing() {
+    return strategyXwing;
+  }
+
+  public void setStrategyXwing(int strategyXwing) {
+    this.strategyXwing = strategyXwing;
+  }
+
+  public int getStrategySwordfish() {
+    return strategySwordfish;
+  }
+
+  public void setStrategySwordfish(int strategySwordfish) {
+    this.strategySwordfish = strategySwordfish;
   }
 
   @Override

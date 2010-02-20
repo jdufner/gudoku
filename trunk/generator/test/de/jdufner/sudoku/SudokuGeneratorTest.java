@@ -43,8 +43,8 @@ public class SudokuGeneratorTest extends TestCase {
   public void testGetSudoku() throws Exception {
     LOG.debug("Start Test");
     SudokuGenerator generator = new SudokuGenerator();
-    for (int i = 0; i < 1000; i++)
-      generator.generate();
+    //    for (int i = 0; i < 1000; i++)
+    generator.generate();
     LOG.debug("End Test");
   }
 }

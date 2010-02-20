@@ -31,6 +31,7 @@ import java.util.List;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * Das <code>SudokuDao</code> stellt Dienste zum Lesen und Schreiben von Sudokus in die Datenbank zur Verfügung.
@@ -77,12 +78,13 @@ public interface SudokuDao {
   SudokuData loadSudoku(int id);
 
   /**
-   * Speichert das übergebene Sudoku.
+   * Speichert das übergebene Sudoku samt einiger Kennzahlen.
    * 
-   * @param sudoku
-   *          Das übergebene Sudoku.
+   * @param solution
+   *          Das Sudoku inkl. einiger Kennzahlen.
+   * @return Das gespeicherte Sudoku.
    */
-  SudokuData saveSudoku(Sudoku sudoku);
+  SudokuData saveSolution(Solution solution);
 
   /**
    * 

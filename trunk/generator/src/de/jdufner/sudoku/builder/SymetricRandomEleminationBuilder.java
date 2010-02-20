@@ -67,8 +67,7 @@ public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
       }
       Solution solution = strategySolverWithBacktracking.getSolution(sudoku);
       if (solution.isUnique()) {
-        solution.getQuest().setLevel(solution.getLevel());
-        level2SudokuMap.put(solution.getLevel(), solution.getQuest());
+        level2SudokuMap.put(solution.getLevel(), solution);
         eleminatedCellCounter++;
         if (!cellCandidate1.equals(cellCandidate2)) {
           eleminatedCellCounter++;

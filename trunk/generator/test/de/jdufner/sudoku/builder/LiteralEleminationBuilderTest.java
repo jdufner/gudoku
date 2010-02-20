@@ -36,6 +36,7 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -64,7 +65,7 @@ public final class LiteralEleminationBuilderTest extends TestCase {
   }
 
   public void testBuildSudokus() {
-    Map<Level, Sudoku> map = builder.buildSudokus();
+    Map<Level, Solution> map = builder.buildSudokus();
   }
 
 }

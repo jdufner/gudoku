@@ -36,6 +36,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -89,14 +90,14 @@ public final class SudokuDaoImpl implements SudokuDao {
   }
 
   @Override
-  public SudokuData saveSudoku(Sudoku sudoku) {
+  public SudokuData saveSolution(Solution solution) {
     if (LOG.isDebugEnabled()) {
-      LOG.debug("Save Sudoku.");
+      LOG.debug("Save Solution");
     }
-    SudokuData sudokuData = SudokuMapper.map(sudoku);
+    SudokuData sudokuData = SudokuMapper.map(solution);
     Serializable serializable = hibernateTemplate.save(sudokuData);
     if (LOG.isInfoEnabled()) {
-      LOG.info("Sudoku saved.");
+      LOG.info("Solution saved");
     }
     sudokuData.setId(((Integer) serializable).intValue());
     return sudokuData;

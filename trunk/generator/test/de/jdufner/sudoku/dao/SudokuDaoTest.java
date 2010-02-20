@@ -33,8 +33,6 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
-import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.common.misc.Examples;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 
@@ -52,14 +50,6 @@ public final class SudokuDaoTest extends TestCase {
   @Override
   public void setUp() {
     sudokuDao = GeneratorServiceFactory.getInstance().getSudokuDao();
-  }
-
-  public void testSaveAndDeleteSudoku() {
-    Sudoku sudoku = SudokuFactory.buildSudoku(Examples.ING_DIBA);
-    LOG.debug(sudoku);
-    SudokuData sudokuData = sudokuDao.saveSudoku(sudoku);
-    assertTrue(sudokuData.getId() > 0);
-    sudokuDao.deleteSudoku(sudokuData.getId());
   }
 
   public void testLoadSudokuOfDay() {
