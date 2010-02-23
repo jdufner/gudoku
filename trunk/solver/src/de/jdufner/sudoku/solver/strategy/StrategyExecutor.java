@@ -60,6 +60,7 @@ import de.jdufner.sudoku.solver.strategy.simple.SimpleParallelStrategy;
 import de.jdufner.sudoku.solver.strategy.swordfish.SwordFishParallelStrategy;
 import de.jdufner.sudoku.solver.strategy.xwing.XWingParallelStrategy;
 import de.jdufner.sudoku.solver.strategy.xwing.XWingSerialStrategy;
+import de.jdufner.sudoku.solver.strategy.ywing.YWingSerialStrategy;
 
 /**
  * 
@@ -256,6 +257,9 @@ public final class StrategyExecutor {
       if (getConfiguration().getStrategies().contains(StrategyNameEnum.INTERSECTION_REMOVAL)) {
         strategies.add(IntersectionRemovalSerialStrategy.class);
       }
+      if (getConfiguration().getStrategies().contains(StrategyNameEnum.YWING)) {
+        strategies.add(YWingSerialStrategy.class);
+      }
       if (getConfiguration().getStrategies().contains(StrategyNameEnum.XWING)) {
         strategies.add(XWingSerialStrategy.class);
       }
@@ -292,6 +296,9 @@ public final class StrategyExecutor {
       }
       if (getConfiguration().getStrategies().contains(StrategyNameEnum.INTERSECTION_REMOVAL)) {
         strategies.add(IntersectionRemovalParallelStrategy.class);
+      }
+      if (getConfiguration().getStrategies().contains(StrategyNameEnum.YWING)) {
+        strategies.add(YWingSerialStrategy.class);
       }
       if (getConfiguration().getStrategies().contains(StrategyNameEnum.XWING)) {
         strategies.add(XWingParallelStrategy.class);

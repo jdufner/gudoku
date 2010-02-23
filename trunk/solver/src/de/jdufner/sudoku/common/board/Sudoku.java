@@ -157,6 +157,40 @@ public class Sudoku implements Cloneable {
     return board[rowIndex][columnIndex];
   }
 
+  public Collection<Cell> getCellByRowAndBlock(final int rowIndex, final int blockIndex) {
+    assert rowIndex >= 0 : "Zeilenindex muss größer als oder gleich 0 sein, ist aber " + rowIndex;
+    assert rowIndex < size.getUnitSize() : "Zeilenindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
+        + rowIndex;
+    assert blockIndex >= 0 : "Blockindex muss größer als oder gleich 0 sein, ist aber " + blockIndex;
+    assert blockIndex < size.getUnitSize() : "Blockindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
+        + blockIndex;
+    Collection<Cell> result = new ArrayList<Cell>();
+    for (int i = 0; i < size.getUnitSize(); i++) {
+      Cell cell = board[rowIndex][i];
+      if (cell.getBlockIndex() == blockIndex) {
+        result.add(cell);
+      }
+    }
+    return result;
+  }
+
+  public Collection<Cell> getCellByColumnAndBlock(final int columnIndex, final int blockIndex) {
+    assert columnIndex >= 0 : "Spaltenindex muss größer als oder gleich 0 sein, ist aber " + columnIndex;
+    assert columnIndex < size.getUnitSize() : "Spaltenindex muss kleiner als " + size.getUnitSize()
+        + " sein, ist aber " + columnIndex;
+    assert blockIndex >= 0 : "Blockindex muss größer als oder gleich 0 sein, ist aber " + blockIndex;
+    assert blockIndex < size.getUnitSize() : "Blockindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
+        + blockIndex;
+    Collection<Cell> result = new ArrayList<Cell>();
+    for (int i = 0; i < size.getUnitSize(); i++) {
+      Cell cell = board[i][columnIndex];
+      if (cell.getBlockIndex() == blockIndex) {
+        result.add(cell);
+      }
+    }
+    return result;
+  }
+
   /**
    * @param number
    *          Die Nummer der Zelle. Rechnet die Nummer in Spalte und Zeile um und rufe {@link #getCell(int, int)} auf.

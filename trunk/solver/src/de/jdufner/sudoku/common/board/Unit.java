@@ -125,6 +125,21 @@ public abstract class Unit implements Comparable<Unit> {
   }
 
   /**
+   * @param numberCandidates
+   *          Die Anzahl der Kandidaten in einer Zelle.
+   * @return Die noch nicht gesetzen Zellen mit der übergebenen Anzahl an Kandidaten.
+   */
+  public SortedSet<Cell> getNonFixed(final int numberCandidates) {
+    final SortedSet<Cell> nonFixedCells = new TreeSet<Cell>();
+    for (Cell cell : cells) {
+      if (!cell.isFixed() && cell.getCandidates().size() == numberCandidates) {
+        nonFixedCells.add(cell);
+      }
+    }
+    return nonFixedCells;
+  }
+
+  /**
    * @return The candidates of the unit.
    */
   public SortedSet<Literal> getCandidates() {

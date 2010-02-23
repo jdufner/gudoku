@@ -78,8 +78,6 @@ public abstract class AbstractStrategy implements Strategy {
   }
 
   /*
-   * (non-Javadoc)
-   * 
    * @see de.jdufner.sudoku.solver.strategy.Strategy#getLevel()
    */
   public abstract Level getLevel();
