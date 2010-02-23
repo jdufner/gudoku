@@ -247,7 +247,7 @@ public abstract class Unit implements Comparable<Unit> {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder(super.toString());
+    final StringBuilder sb = new StringBuilder(super.toString());
     sb.append(" ").append(getCells());
     return sb.toString();
   }
