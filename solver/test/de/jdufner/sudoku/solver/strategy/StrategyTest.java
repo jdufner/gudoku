@@ -52,7 +52,7 @@ public class StrategyTest extends TestCase {
 
   @Override
   public void setUp() throws Exception {
-    solver = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
+    solver = SolverServiceFactory.getInstance().getStrategySolver();
   }
 
   public void testStrategySolver() {
@@ -126,5 +126,37 @@ public class StrategyTest extends TestCase {
     }
   }
 
-}
+  public void testStrategySolver7() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku(".8...97...1..8.9..49..53.28.2.5.738.83.92.547.7.83.2...6.415892249378.5.158692473");
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    if (!SHORT_TEST) {
+      assertTrue(solver.isSolvable(sudoku));
+      assertFalse(solver.isUnique(sudoku));
+    }
+  }
 
+  public void testStrategySolver8() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku("7.4..9.125.9..1.8782176....152347968697...134483196725245913876.16.7.25..78652..1");
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    if (!SHORT_TEST) {
+      assertTrue(solver.isSolvable(sudoku));
+      assertFalse(solver.isUnique(sudoku));
+    }
+  }
+
+  public void testStrategySolver9() {
+    Sudoku sudoku = SudokuFactory
+        .buildSudoku("3.152..644.5...32.26.3.4851714239586.264.5.135..16.24.15..436.2..2...4..64...21..");
+    Sudoku result = solver.solve(sudoku);
+    LOG.debug(result);
+    if (!SHORT_TEST) {
+      assertTrue(solver.isSolvable(sudoku));
+      assertFalse(solver.isUnique(sudoku));
+    }
+  }
+
+}
