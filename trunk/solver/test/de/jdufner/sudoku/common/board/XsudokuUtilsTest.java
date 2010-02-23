@@ -46,6 +46,7 @@ public final class XsudokuUtilsTest extends TestCase {
         .buildSudoku("1.......2.3.....4...5...6.....7.8.......9.......1.2.....3...4...5.....6.7.......8");
     MainDiagonal mainDiagonal = XsudokuUtils.buildMainDiagonal(sudoku);
     LOG.debug(mainDiagonal);
+    assertTrue(mainDiagonal.isSolved());
     assertTrue(mainDiagonal.isValid());
   }
 
@@ -54,6 +55,7 @@ public final class XsudokuUtilsTest extends TestCase {
         .buildSudoku("1.......2.3.....4...5...6.....7.8.......9.......1.2.....3...4...5.....6.7.......8");
     SecondaryDiagonal secondaryDiagonal = XsudokuUtils.buildSecondaryDiagonal(sudoku);
     LOG.debug(secondaryDiagonal);
+    assertTrue(secondaryDiagonal.isSolved());
     assertTrue(secondaryDiagonal.isValid());
   }
 

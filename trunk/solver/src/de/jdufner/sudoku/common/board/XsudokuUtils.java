@@ -55,4 +55,15 @@ public final class XsudokuUtils {
     return new SecondaryDiagonal(sudoku.getSize(), 0, cells);
   }
 
+  public static boolean isXsudoku(final Sudoku sudoku) {
+    final MainDiagonal mainDiagonal = buildMainDiagonal(sudoku);
+    if (!mainDiagonal.isSolved() || !mainDiagonal.isValid()) {
+      return false;
+    }
+    final SecondaryDiagonal secondaryDiagonal = buildSecondaryDiagonal(sudoku);
+    if (!secondaryDiagonal.isSolved() || !secondaryDiagonal.isValid()) {
+      return false;
+    }
+    return true;
+  }
 }

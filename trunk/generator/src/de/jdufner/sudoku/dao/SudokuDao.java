@@ -25,6 +25,7 @@
  */
 package de.jdufner.sudoku.dao;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -51,6 +52,18 @@ public interface SudokuDao {
   SudokuData deleteSudoku(int id);
 
   /**
+   * Liefert eine Liste der Sudokus zurück. Mit dieser Methoden können über alle Sudokus in der Datenbank iteriert
+   * werden.
+   * 
+   * @param index
+   *          Der Index des ersten Objekts, beginnend mit 0.
+   * @param number
+   *          Anzahl der maximal zu liefernden Objekte.
+   * @return
+   */
+  List<SudokuData> findSudokus(int index, int number);
+
+  /**
    * 
    * @param size
    *          Größe der zu findenden Sudokus.
@@ -63,12 +76,6 @@ public interface SudokuDao {
   List<SudokuData> findSudokus(SudokuSize size, Level level, int number, Boolean printed);
 
   /**
-   * 
-   * @return Gibt das aktuellste Sudoku zurück.
-   */
-  Sudoku loadSudokuOfDay();
-
-  /**
    * Lädt ein Sudoku aus der Datenbank.
    * 
    * @param id
@@ -78,6 +85,12 @@ public interface SudokuDao {
   SudokuData loadSudoku(int id);
 
   /**
+   * 
+   * @return Gibt das aktuellste Sudoku zurück.
+   */
+  Sudoku loadSudokuOfDay();
+
+  /**
    * Speichert das übergebene Sudoku samt einiger Kennzahlen.
    * 
    * @param solution
@@ -85,6 +98,15 @@ public interface SudokuDao {
    * @return Das gespeicherte Sudoku.
    */
   SudokuData saveSolution(Solution solution);
+
+  /**
+   * Aktualisiert eine Sammlung von {@link SudokuData} Objekten. Wird in Zusammenarbeit mit
+   * {@link #findSudokus(int, int)} verwendet.
+   * 
+   * @param collection
+   *          Sammlung von {@link SudokuData}
+   */
+  void update(Collection<SudokuData> collection);
 
   /**
    * 

@@ -26,11 +26,17 @@
 package de.jdufner.sudoku.dao;
 
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import de.jdufner.sudoku.common.board.Sudoku;
@@ -57,6 +63,20 @@ public final class SudokuDaoImpl implements SudokuDao {
   }
 
   @Override
+  public List<SudokuData> findSudokus(final int index, final int number) {
+    hibernateTemplate.setFetchSize(number);
+    return (List<SudokuData>) hibernateTemplate.executeFind(new HibernateCallback() {
+      @Override
+      public Object doInHibernate(Session session) throws HibernateException, SQLException {
+        Query query = session.createQuery("from SudokuData");
+        query.setFirstResult(index);
+        query.setMaxResults(number);
+        return (List<SudokuData>) query.list();
+      }
+    });
+  }
+
+  @Override
   public List<SudokuData> findSudokus(SudokuSize size, Level level, int number, Boolean printed) {
     hibernateTemplate.setFetchSize(number);
     hibernateTemplate.setMaxResults(number);
@@ -76,17 +96,17 @@ public final class SudokuDaoImpl implements SudokuDao {
   }
 
   @Override
+  public SudokuData loadSudoku(int id) {
+    return (SudokuData) hibernateTemplate.get(SudokuData.class, id);
+  }
+
+  @Override
   public Sudoku loadSudokuOfDay() {
     hibernateTemplate.setFetchSize(1);
     hibernateTemplate.setMaxResults(1);
     List<SudokuData> sudokus = hibernateTemplate
         .find("from SudokuData s where s.size = 9 order by s.generatedAt desc, s.level desc, s.fixed desc");
     return SudokuMapper.map(sudokus.get(0));
-  }
-
-  @Override
-  public SudokuData loadSudoku(int id) {
-    return (SudokuData) hibernateTemplate.get(SudokuData.class, id);
   }
 
   @Override
@@ -101,6 +121,11 @@ public final class SudokuDaoImpl implements SudokuDao {
     }
     sudokuData.setId(((Integer) serializable).intValue());
     return sudokuData;
+  }
+
+  @Override
+  public void update(Collection<SudokuData> collection) {
+    hibernateTemplate.saveOrUpdateAll(collection);
   }
 
   @Override
