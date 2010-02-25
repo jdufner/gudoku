@@ -30,9 +30,10 @@ import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.builder.Builder;
+import de.jdufner.sudoku.builder.LiteralEleminationBuilder;
+import de.jdufner.sudoku.builder.RandomEleminationBuilder;
+import de.jdufner.sudoku.builder.SymetricRandomEleminationBuilder;
 import de.jdufner.sudoku.common.misc.Level;
-import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.dao.SudokuDao;
 import de.jdufner.sudoku.solver.service.Solution;
 
@@ -48,6 +49,11 @@ public final class SudokuGenerator {
   private static final Logger LOG = Logger.getLogger(SudokuGenerator.class);
   private static final Logger SUDOKU = Logger.getLogger("sudoku");
 
+  private SudokuDao sudokuDao;
+  private LiteralEleminationBuilder literalEleminationBuilder;
+  private RandomEleminationBuilder randomEleminationBuilder;
+  private SymetricRandomEleminationBuilder symetricRandomEleminationBuilder;
+
   public void generate() {
     generateLiteralEleminationBuilder();
     generateRandomEleminationBuilder();
@@ -55,35 +61,65 @@ public final class SudokuGenerator {
   }
 
   public void generateLiteralEleminationBuilder() {
-    SudokuDao dao = GeneratorServiceFactory.getInstance().getSudokuDao();
-    Builder builder = GeneratorServiceFactory.getInstance().getLiteralEleminationBuilder();
-    Map<Level, Solution> map = builder.buildSudokus();
+    Map<Level, Solution> map = literalEleminationBuilder.buildSudokus();
     for (Level l : map.keySet()) {
       if (map.get(l).getQuest().getNumberOfFixed() <= 30) {
-        dao.saveSolution(map.get(l));
+        sudokuDao.saveSolution(map.get(l));
         SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
       }
     }
   }
 
   public void generateRandomEleminationBuilder() {
-    SudokuDao dao = GeneratorServiceFactory.getInstance().getSudokuDao();
-    Builder builder = GeneratorServiceFactory.getInstance().getRandomEleminationBuilder();
-    Map<Level, Solution> map = builder.buildSudokus();
+    Map<Level, Solution> map = randomEleminationBuilder.buildSudokus();
     for (Level l : map.keySet()) {
-      dao.saveSolution(map.get(l));
+      sudokuDao.saveSolution(map.get(l));
       SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
     }
   }
 
   public void generateSymetricRandomEleminationBuilder() {
-    SudokuDao dao = GeneratorServiceFactory.getInstance().getSudokuDao();
-    Builder builder = GeneratorServiceFactory.getInstance().getSymetricRandomEleminationBuilder();
-    Map<Level, Solution> map = builder.buildSudokus();
+    Map<Level, Solution> map = symetricRandomEleminationBuilder.buildSudokus();
     for (Level l : map.keySet()) {
-      dao.saveSolution(map.get(l));
+      sudokuDao.saveSolution(map.get(l));
       SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
     }
+  }
+
+  //
+  // Spring Wiring
+  //
+
+  public SudokuDao getSudokuDao() {
+    return sudokuDao;
+  }
+
+  public void setSudokuDao(SudokuDao sudokuDao) {
+    this.sudokuDao = sudokuDao;
+  }
+
+  public LiteralEleminationBuilder getLiteralEleminationBuilder() {
+    return literalEleminationBuilder;
+  }
+
+  public void setLiteralEleminationBuilder(LiteralEleminationBuilder literalEleminationBuilder) {
+    this.literalEleminationBuilder = literalEleminationBuilder;
+  }
+
+  public RandomEleminationBuilder getRandomEleminationBuilder() {
+    return randomEleminationBuilder;
+  }
+
+  public void setRandomEleminationBuilder(RandomEleminationBuilder randomEleminationBuilder) {
+    this.randomEleminationBuilder = randomEleminationBuilder;
+  }
+
+  public SymetricRandomEleminationBuilder getSymetricRandomEleminationBuilder() {
+    return symetricRandomEleminationBuilder;
+  }
+
+  public void setSymetricRandomEleminationBuilder(SymetricRandomEleminationBuilder symetricRandomEleminationBuilder) {
+    this.symetricRandomEleminationBuilder = symetricRandomEleminationBuilder;
   }
 
 }

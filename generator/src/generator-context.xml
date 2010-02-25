@@ -43,6 +43,13 @@
 	<bean id="literalEleminationBuilder" class="de.jdufner.sudoku.builder.LiteralEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
 	</bean>
+	
+	<bean id="sudokuGenerator" class="de.jdufner.sudoku.SudokuGenerator">
+    <property name="literalEleminationBuilder" ref="literalEleminationBuilder"/>
+    <property name="randomEleminationBuilder" ref="randomEleminationBuilder"/>
+    <property name="symetricRandomEleminationBuilder" ref="symetricRandomEleminationBuilder"/>
+    <property name="sudokuDao" ref="sudokuDao"/>
+	</bean>
 
 	<bean id="pdfPrinter" class="de.jdufner.sudoku.pdf.PdfPrinterImpl" >
 	    <property name="pdfStyle" ref="pdfStyle"/>

@@ -50,7 +50,7 @@ public final class RandomEleminationBuilderTest extends TestCase {
 
   @Override
   public void setUp() {
-    builder = GeneratorServiceFactory.getInstance().getRandomEleminationBuilder();
+    builder = (RandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(RandomEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
   }
 
