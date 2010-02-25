@@ -119,25 +119,31 @@ div.candidateButtonOn {
         <option value="...26.9.78.........5..8...4...32..1..........1.8..6.49....18......7...2...1...35.">53933 sehr leicht</option>
       </select>
       <input type="button" value="Laden" onclick="copyAndLoadSudoku()"/><br/>
-      <input id="sudokuAsString" type="text" value="1382.5.7.2.783415.....1723838.5....1....2.58..5...8....2..8.3..913.5.84.876.4.9.5" maxlength="81" size="81"/>
-      <input type="button" value="Laden" onclick="loadSudoku()"/><input type="button" value="Speichern" onclick="saveSudoku()"/><br/>
+      <input id="sudokuAsString" type="text" value="1382.5.7.2.783415.....1723838.5....1....2.58..5...8....2..8.3..913.5.84.876.4.9.5" size="81"/>
+      <input id="incloseCandidates" type="checkbox">inkl. Kandidaten</input><input type="button" value="Laden" onclick="loadSudoku()"/><input type="button" value="Speichern" onclick="saveSudoku()"/><br/>
       <input type="button" value="Kandidaten entfernen" onclick="removeAllCandidates()"/><input type="button" value="Reset" onclick="resetAllCandidates()"/><input type="button" value="Leeren" onclick="emptyCandidates()"/><input id="hideButton" type="button" value="Ausblenden" onclick="hideCandidates()"/><br/>
       <input type="button" value="Aus Cookie laden" onclick="loadSudokuFromCookie()"/><input type="button" value="In Cookie speichern" onclick="saveSudokuInCookie()"/><br/>
       <fieldset>
-        <legend>Spielhilfe</legend>
-        <input id="showConflicts" type="checkbox" check="true">Fehler zeigen (funktioniert noch nicht)</input><br/>
+        <legend>Spielhilfe (<span id="configHelp" style="cursor:default;" onclick="switchVisibility('configHelp');">+</span>)</legend>
+        <div id="configHelpBlock" style="visibility:hidden; display:none;">
+          <input id="showConflicts" type="checkbox" checked="true">Fehler zeigen (funktioniert noch nicht)</input><br/>
+        </div>
       </fieldset>
       <fieldset>
-        <legend>Zellen</legend>
-        <input id="highlightFixed" type="checkbox" checked="true">Zellen hervorheben</input><br/>
-        <input id="highlightAllFixed" type="checkbox">Auch andere Zellen hervorheben</input><br/>
-        <input id="highlightAllFixedAndCandidates" type="checkbox">Auch andere Kandidaten hervorheben</input><br/>
+        <legend>Zellen (<span id="configCellHighlight" style="cursor:default;" onclick="switchVisibility('configCellHighlight');">+</span>)</legend>
+        <div id="configCellHighlightBlock" style="visibility:hidden; display:none;">
+          <input id="highlightFixed" type="checkbox" checked="true">Zellen hervorheben</input><br/>
+          <input id="highlightAllFixed" type="checkbox">Auch andere Zellen hervorheben</input><br/>
+          <input id="highlightAllFixedAndCandidates" type="checkbox">Auch andere Kandidaten hervorheben</input><br/>
+        </div>
       </fieldset>
       <fieldset>
-        <legend>Kandidaten</legend>
-        <input id="highlightCandidates" type="checkbox" checked="true">Kandidaten hervorheben</input><br/>
-        <input id="highlightAllCandidates" type="checkbox">Auch andere Kandidaten hervorheben</input><br/>
-        <input id="highlightAllCandidatesAndFixed" type="checkbox">Auch andere Zellen hervorheben</input><br/>
+        <legend>Kandidaten (<span id="configCandidateHighlight" style="cursor:default;" onclick="switchVisibility('configCandidateHighlight');">+</span>)</legend>
+        <div id="configCandidateHighlightBlock" style="visibility:hidden; display:none;">
+          <input id="highlightCandidates" type="checkbox" checked="true">Kandidaten hervorheben</input><br/>
+          <input id="highlightAllCandidates" type="checkbox">Auch andere Kandidaten hervorheben</input><br/>
+          <input id="highlightAllCandidatesAndFixed" type="checkbox">Auch andere Zellen hervorheben</input><br/>
+        </div>
       </fieldset>
       Kandidaten und andere Kandidaten hervorheben: Nach setzen einer Zelle, werden die anderen Zellen nicht zurückgesetzt.
     </div>
@@ -151,6 +157,21 @@ var original;
 function main() {
   buildBoard();
   buildCandidateButtons();
+}
+
+function switchVisibility(switchId) {
+  var configSwitch = document.getElementById(switchId);
+  var configSwitchBlock = document.getElementById(configSwitch.id + "Block");
+  var content = configSwitch.firstChild.data;
+  if (configSwitch.firstChild.data.match(/^\+$/)) {
+    configSwitch.replaceChild(document.createTextNode("-"), configSwitch.firstChild);
+    configSwitchBlock.style.visibility = "visible";
+    configSwitchBlock.style.display = "block";
+  } else {
+    configSwitch.replaceChild(document.createTextNode("+"), configSwitch.firstChild);
+    configSwitchBlock.style.visibility = "hidden";
+    configSwitchBlock.style.display = "none";
+  }
 }
 
 function addStyle(style, newStyle) {
@@ -313,7 +334,9 @@ function loadSudoku() {
     checkConflict(i);
    }
   } else {
-    alert("Sudoku ist ungültig!");
+    if (!parseSudokuString(document.getElementById("sudokuAsString").value)) {
+      alert("Sudoku ist ungültig!");
+    }
   }
 }
 
@@ -705,14 +728,7 @@ function hideCandidates() {
 }
 
 function saveSudoku() {
-  var sudokuAsString = "";
-  for (var i = 1; i <= size * size; i++) {
-    if (isCellFixed(i)) {
-      sudokuAsString = sudokuAsString + getFixedValue(i);
-    } else {
-      sudokuAsString = sudokuAsString + ".";
-    }
-  }
+  var sudokuAsString = buildSudokuString(false);
   document.getElementById("sudokuAsString").value = sudokuAsString;
 }
 
@@ -773,7 +789,6 @@ function setCookie(wert) {
   cook += (path) ? "; path=" + path : "";
   //cook += (secure) ? "; secure" : "";
   document.cookie = cook;
-  //alert(document.cookie);
 }
 
 function getCookie() {
@@ -794,45 +809,54 @@ function getCookie() {
   return "";
 }
 
-function saveSudokuInCookie() {
-  var sudoku = new Array();
+function buildCandidateString(cellNumber) {
+  var candidateString = "";
+  var firstCandidate = true;
+  for (var k = 1; k <= size; k++) {
+    var candidate = getCandidate(cellNumber, k);
+    if (candidate.firstChild != null && candidate.firstChild.nodeType == 3) {
+      if (!firstCandidate) {
+        candidateString += "-";
+      }
+      candidateString += getValue(candidate);
+      firstCandidate = false;
+    }
+  }
+  return candidateString;
+}
+
+function buildSudokuString(forceIncloseCandidates) {
   var sudokuAsString = "";
   var firstCell = true;
+  var incloseCandidates = document.getElementById("incloseCandidates").checked;
   for (var i = 1; i <= size * size; i++) {
-    if (!firstCell) {
+    if (!firstCell && (forceIncloseCandidates || incloseCandidates)) {
       sudokuAsString = sudokuAsString + ",";
     }
     if (isCellFixed(i)) {
-      sudoku[i] = getFixedValue(i);
       sudokuAsString = sudokuAsString + getFixedValue(i);
     } else {
-      var candidates = "";
-      var firstCandidate = true;
-      for (var k = 1; k <= size; k++) {
-        var candidate = getCandidate(i, k);
-        if (candidate.firstChild != null && candidate.firstChild.nodeType == 3) {
-          if (!firstCandidate) {
-            candidates = candidates + "-";
-          }
-          candidates = candidates + getValue(candidate);
-          firstCandidate = false;
-        }
+      if (forceIncloseCandidates || incloseCandidates) {
+        sudokuAsString += buildCandidateString(i);
+      } else {
+        sudokuAsString += ".";
       }
-      sudoku[i] = candidates;
-      sudokuAsString = sudokuAsString + candidates;
     }
     firstCell = false;
   }
-  if (sudokuAsString.length > 4000) {
-    alert("Sudoku kann nicht gespeichert werden");
-  }
-  setCookie(sudokuAsString);
-  alert(getCookie());
+  return sudokuAsString
 }
 
-function loadSudokuFromCookie() {
-  var sudokuAsString = getCookie();
-  var sudoku = sudokuAsString.split(",");
+function saveSudokuInCookie() {
+  var sudokuString = buildSudokuString(true);
+  if (sudokuString.length > 4000) {
+    alert("Sudoku kann nicht gespeichert werden");
+  }
+  setCookie(sudokuString);
+}
+
+function parseSudokuString(sudokuString) {
+  var sudoku = sudokuString.split(",");
   original = "";
   for (var i = 1; i <= size * size; i++) {
     if (sudoku[i-1].match(/^(\d+)$/)) {
@@ -849,19 +873,29 @@ function loadSudokuFromCookie() {
       buildFixed(i, parseInt(RegExp.$1));
     } else {
       // candidates
-      var candidates = sudoku[i-1].split("-");
-      var cellId = getCellId(i);
-      buildCandidates(cellId);
-      var candidate = parseInt(candidates.shift());
-      for (var k = 1; k <= size; k++) {
-        if (k != candidate) {
-          removeCandidateDo(getCandidateId(cellId, k));
-        } else {
-          candidate = parseInt(candidates.shift());
+      if (sudoku[i-1].match(/^([0-9\-]+)$/)) {
+        var candidates = sudoku[i-1].split("-");
+        var cellId = getCellId(i);
+        buildCandidates(cellId);
+        var candidate = parseInt(candidates.shift());
+        for (var k = 1; k <= size; k++) {
+          if (k != candidate) {
+            removeCandidateDo(getCandidateId(cellId, k));
+          } else {
+            candidate = parseInt(candidates.shift());
+          }
         }
+      } else {
+        return false;
       }
     }
   }
+  return true;
+}
+
+function loadSudokuFromCookie() {
+  var sudokuString = getCookie();
+  parseSudokuString(sudokuString);
 }
 
 main();

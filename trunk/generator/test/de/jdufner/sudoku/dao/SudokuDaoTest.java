@@ -33,8 +33,6 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
-import de.jdufner.sudoku.common.board.XsudokuUtils;
-import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.context.SolverServiceFactory;
@@ -54,7 +52,7 @@ public final class SudokuDaoTest extends TestCase {
 
   @Override
   public void setUp() {
-    sudokuDao = GeneratorServiceFactory.getInstance().getSudokuDao();
+    sudokuDao = (SudokuDao) GeneratorServiceFactory.getInstance().getBean(SudokuDao.class);
     solver = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
   }
 
@@ -91,27 +89,28 @@ public final class SudokuDaoTest extends TestCase {
     assertTrue(anzahlObjekteGesamt > 25000);
   }
 
+  // TODO Das ist kein Test
   public void testXsudoku() {
-    boolean weitereObjekteVorhanden = true;
-    int index = 0;
-    int number = 1000;
-    do {
-      List<SudokuData> sudokuDataList = sudokuDao.findSudokus(index, number);
-      for (SudokuData sudokuData : sudokuDataList) {
-        Sudoku sudoku = SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
-        sudoku = solver.solve(sudoku);
-        if (XsudokuUtils.isXsudoku(sudoku)) {
-          LOG.info("X-Sudoku gefunden: " + sudoku);
-          sudokuData.setxSudoku("J");
-        }
-      }
-      index += sudokuDataList.size();
-      LOG.debug("Index: " + index);
-      if (sudokuDataList.size() < number) {
-        weitereObjekteVorhanden = false;
-      }
-      sudokuDao.update(sudokuDataList);
-    } while (weitereObjekteVorhanden);
+    //    boolean weitereObjekteVorhanden = true;
+    //    int index = 0;
+    //    int number = 1000;
+    //    do {
+    //      List<SudokuData> sudokuDataList = sudokuDao.findSudokus(index, number);
+    //      for (SudokuData sudokuData : sudokuDataList) {
+    //        Sudoku sudoku = SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
+    //        sudoku = solver.solve(sudoku);
+    //        if (XsudokuUtils.isXsudoku(sudoku)) {
+    //          LOG.info("X-Sudoku gefunden: " + sudoku);
+    //          sudokuData.setxSudoku("J");
+    //        }
+    //      }
+    //      index += sudokuDataList.size();
+    //      LOG.debug("Index: " + index);
+    //      if (sudokuDataList.size() < number) {
+    //        weitereObjekteVorhanden = false;
+    //      }
+    //      sudokuDao.update(sudokuDataList);
+    //    } while (weitereObjekteVorhanden);
   }
 
 }

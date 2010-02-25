@@ -31,15 +31,19 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.builder.AbstractBuilder;
 import de.jdufner.sudoku.builder.Builder;
+import de.jdufner.sudoku.builder.LiteralEleminationBuilder;
+import de.jdufner.sudoku.builder.RandomEleminationBuilder;
+import de.jdufner.sudoku.builder.SymetricRandomEleminationBuilder;
+import de.jdufner.sudoku.dao.SudokuDao;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class ServiceFactoryTest extends TestCase {
+public final class GeneratorServiceFactoryTest extends TestCase {
 
-  private static final Logger LOG = Logger.getLogger(ServiceFactoryTest.class);
+  private static final Logger LOG = Logger.getLogger(GeneratorServiceFactoryTest.class);
 
   @Override
   public void setUp() throws Exception {
@@ -64,7 +68,8 @@ public final class ServiceFactoryTest extends TestCase {
   }
 
   public void testGetLiteralEleminationBuilder() throws Exception {
-    Builder builder = GeneratorServiceFactory.getInstance().getLiteralEleminationBuilder();
+    Builder builder = (LiteralEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
+        LiteralEleminationBuilder.class);
     assertNotNull(builder);
     AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
     assertNotNull(abstractBuilder.getRandomData());
@@ -72,7 +77,8 @@ public final class ServiceFactoryTest extends TestCase {
   }
 
   public void testGetRandomEleminationBuilder() throws Exception {
-    Builder builder = GeneratorServiceFactory.getInstance().getRandomEleminationBuilder();
+    Builder builder = (RandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
+        RandomEleminationBuilder.class);
     assertNotNull(builder);
     AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
     assertNotNull(abstractBuilder.getRandomData());
@@ -80,7 +86,8 @@ public final class ServiceFactoryTest extends TestCase {
   }
 
   public void testGetSymetricRandomEleminationBuilder() throws Exception {
-    Builder builder = GeneratorServiceFactory.getInstance().getSymetricRandomEleminationBuilder();
+    Builder builder = (SymetricRandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
+        SymetricRandomEleminationBuilder.class);
     assertNotNull(builder);
     AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
     assertNotNull(abstractBuilder.getRandomData());
@@ -88,7 +95,8 @@ public final class ServiceFactoryTest extends TestCase {
   }
 
   public void testGetSudokuDao() throws Exception {
-    GeneratorServiceFactory.getInstance().getSudokuDao();
+    SudokuDao sudokuDao = (SudokuDao) GeneratorServiceFactory.getInstance().getBean(SudokuDao.class);
+    assertTrue(sudokuDao instanceof SudokuDao);
   }
 
   public void testGetPdfStyle() {

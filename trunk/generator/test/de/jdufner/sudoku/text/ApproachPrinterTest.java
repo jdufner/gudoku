@@ -48,7 +48,7 @@ public final class ApproachPrinterTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    approachPrinter = GeneratorServiceFactory.getInstance().getApproachPrinter();
+    approachPrinter = (ApproachPrinter) GeneratorServiceFactory.getInstance().getBean(ApproachPrinter.class);
   }
 
   public void testasommerf() throws IOException {

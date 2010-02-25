@@ -51,7 +51,8 @@ public final class LiteralEleminationBuilderTest extends TestCase {
 
   @Override
   public void setUp() throws Exception {
-    builder = GeneratorServiceFactory.getInstance().getLiteralEleminationBuilder();
+    builder = (LiteralEleminationBuilder) GeneratorServiceFactory.getInstance()
+        .getBean(LiteralEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
   }
 

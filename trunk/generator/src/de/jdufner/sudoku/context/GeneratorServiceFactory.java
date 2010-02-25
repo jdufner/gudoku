@@ -27,17 +27,10 @@ package de.jdufner.sudoku.context;
 
 import java.util.Properties;
 
-import org.apache.commons.math.random.RandomData;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.Log4jConfigurer;
-
-import de.jdufner.sudoku.builder.Builder;
-import de.jdufner.sudoku.dao.SudokuDao;
-import de.jdufner.sudoku.pdf.PdfGenerator;
-import de.jdufner.sudoku.pdf.PdfPrinter;
-import de.jdufner.sudoku.text.ApproachPrinter;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -46,14 +39,6 @@ import de.jdufner.sudoku.text.ApproachPrinter;
  */
 public final class GeneratorServiceFactory {
   private static final Logger LOG = Logger.getLogger(GeneratorServiceFactory.class);
-
-  private static final String RANDOM_ELEMINATION_BUILDER = "randomEleminationBuilder";
-  private static final String SYMETRIC_RANDOM_ELEMINATION_BUILDER = "symetricRandomEleminationBuilder";
-  private static final String LITERAL_ELEMINATION_BUILDER = "literalEleminationBuilder";
-
-  private static final String SUDOKU_DAO = "sudokuDao";
-
-  private static final String PDF_GENERATOR = "pdfGenerator";
 
   private ApplicationContext applicationContext;
 
@@ -74,40 +59,8 @@ public final class GeneratorServiceFactory {
     return SingletonHolder.instance;
   }
 
-  public Builder getRandomEleminationBuilder() {
-    return (Builder) applicationContext.getBean(RANDOM_ELEMINATION_BUILDER);
-  }
-
-  public Builder getSymetricRandomEleminationBuilder() {
-    return (Builder) applicationContext.getBean(SYMETRIC_RANDOM_ELEMINATION_BUILDER);
-  }
-
-  public Builder getLiteralEleminationBuilder() {
-    return (Builder) applicationContext.getBean(LITERAL_ELEMINATION_BUILDER);
-  }
-
-  public SudokuDao getSudokuDao() {
-    return (SudokuDao) applicationContext.getBean(SUDOKU_DAO);
-  }
-
-  public PdfGenerator getPdfGenerator() {
-    return (PdfGenerator) applicationContext.getBean(PDF_GENERATOR);
-  }
-
-  public PdfPrinter getPdfPrinter() {
-    return (PdfPrinter) applicationContext.getBean("pdfPrinter");
-  }
-
   public Properties getPdfStyle() {
     return (Properties) applicationContext.getBean("pdfStyle");
-  }
-
-  public ApproachPrinter getApproachPrinter() {
-    return (ApproachPrinter) applicationContext.getBean("approachPrinter");
-  }
-
-  public RandomData getRandomData() {
-    return (RandomData) applicationContext.getBean("randomData");
   }
 
   public Object getBean(Class clazz) {

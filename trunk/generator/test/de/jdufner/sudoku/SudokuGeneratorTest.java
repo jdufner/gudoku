@@ -29,6 +29,8 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.context.GeneratorServiceFactory;
+
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -40,11 +42,19 @@ public class SudokuGeneratorTest extends TestCase {
 
   private static final Logger LOG = Logger.getLogger(SudokuGeneratorTest.class);
 
+  private SudokuGenerator sudokuGenerator;
+
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    sudokuGenerator = (SudokuGenerator) GeneratorServiceFactory.getInstance().getBean(SudokuGenerator.class);
+  }
+
+  // TODO Das ist kein Test
   public void testGetSudoku() throws Exception {
     LOG.debug("Start Test");
-    SudokuGenerator generator = new SudokuGenerator();
-    for (int i = 0; i < 1000; i++)
-      generator.generate();
+    //    for (int i = 0; i < 1000; i++)
+    sudokuGenerator.generate();
     LOG.debug("End Test");
   }
 }

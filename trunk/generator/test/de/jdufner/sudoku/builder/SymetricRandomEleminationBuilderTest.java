@@ -53,7 +53,8 @@ public final class SymetricRandomEleminationBuilderTest extends TestCase {
 
   @Override
   public void setUp() {
-    builder = GeneratorServiceFactory.getInstance().getSymetricRandomEleminationBuilder();
+    builder = (SymetricRandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
+        SymetricRandomEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
     strategySolver = SolverServiceFactory.getInstance().getStrategySolver();
     strategySolverWithBacktracking = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();

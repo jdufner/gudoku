@@ -54,7 +54,7 @@ public class NachbarschaftUtilsTest extends TestCase {
   protected void setUp() throws Exception {
     super.setUp();
     solver = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
-    randomData = GeneratorServiceFactory.getInstance().getRandomData();
+    randomData = (RandomData) GeneratorServiceFactory.getInstance().getBean(RandomData.class);
   }
 
   public void testCheckNachbarschaft1() {
