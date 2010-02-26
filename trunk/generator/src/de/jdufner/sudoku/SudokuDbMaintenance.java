@@ -23,68 +23,51 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.dao;
+package de.jdufner.sudoku;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.SudokuSize;
-import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.common.board.XsudokuUtils;
+import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
+import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.dao.SudokuDao;
+import de.jdufner.sudoku.dao.SudokuData;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
-import de.jdufner.sudoku.test.AbstractGeneratorTestCase;
 
-/**
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 0.1
- * @version $Revision$
- */
-public final class SudokuDaoTest extends AbstractGeneratorTestCase {
+public final class SudokuDbMaintenance {
 
-  private static final Logger LOG = Logger.getLogger(SudokuDaoTest.class);
+  private static final Logger LOG = Logger.getLogger(SudokuDbMaintenance.class);
 
-  private SudokuDao sudokuDao;
-  private ExtendedSolver solver;
-
-  @Override
-  public void setUp() {
-    sudokuDao = (SudokuDao) GeneratorServiceFactory.getInstance().getBean(SudokuDao.class);
-    solver = getStrategySolverWithBacktracking();
-  }
-
-  public void testLoadSudoku() {
-    SudokuData sudokuData = sudokuDao.loadSudoku(2505);
-    LOG.debug(sudokuData);
-  }
-
-  public void testLoadSudokuOfDay() {
-    Sudoku sudoku = sudokuDao.loadSudokuOfDay();
-    LOG.debug(sudoku.toString());
-  }
-
-  public void testFindSudokus1() {
-    List<SudokuData> sudokuDataList = sudokuDao.findSudokus(SudokuSize.DEFAULT, Level.LEICHT, 3, Boolean.FALSE);
-    LOG.debug(sudokuDataList);
-    assertEquals(3, sudokuDataList.size());
-  }
-
-  public void testFindSudokus2() {
+  /**
+   * @param args
+   */
+  public static void main(String[] args) {
+    SudokuDao sudokuDao = (SudokuDao) GeneratorServiceFactory.getInstance().getBean(SudokuDao.class);
+    ExtendedSolver solver = (ExtendedSolver) SolverServiceFactory.getInstance().getBean(
+        SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
     boolean weitereObjekteVorhanden = true;
-    int anzahlObjekteGesamt = 0;
     int index = 0;
     int number = 1000;
     do {
       List<SudokuData> sudokuDataList = sudokuDao.findSudokus(index, number);
-      anzahlObjekteGesamt += sudokuDataList.size();
+      for (SudokuData sudokuData : sudokuDataList) {
+        Sudoku sudoku = SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
+        sudoku = solver.solve(sudoku);
+        if (XsudokuUtils.isXsudoku(sudoku)) {
+          LOG.info("X-Sudoku gefunden: " + sudoku);
+          sudokuData.setxSudoku("J");
+        }
+      }
       index += sudokuDataList.size();
+      LOG.debug("Index: " + index);
       if (sudokuDataList.size() < number) {
         weitereObjekteVorhanden = false;
       }
+      sudokuDao.update(sudokuDataList);
     } while (weitereObjekteVorhanden);
-    LOG.debug(anzahlObjekteGesamt);
-    assertTrue(anzahlObjekteGesamt > 25000);
   }
-
 }

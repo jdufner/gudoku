@@ -25,9 +25,9 @@
  */
 package de.jdufner.sudoku.file;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
+
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * 
@@ -36,7 +36,7 @@ import org.apache.log4j.Logger;
  * @version $Revision$
  * 
  */
-public final class PropertiesLoaderTest extends TestCase {
+public final class PropertiesLoaderTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(PropertiesLoaderTest.class);
 
   public void testGetSudokuAsString() {
@@ -47,5 +47,3 @@ public final class PropertiesLoaderTest extends TestCase {
   }
 
 }
-
-

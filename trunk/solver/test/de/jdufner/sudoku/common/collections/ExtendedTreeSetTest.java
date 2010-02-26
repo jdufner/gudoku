@@ -25,15 +25,14 @@
  */
 package de.jdufner.sudoku.common.collections;
 
-import de.jdufner.sudoku.common.collections.ExtendedTreeSet;
-import junit.framework.TestCase;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public class ExtendedTreeSetTest extends TestCase {
+public class ExtendedTreeSetTest extends AbstractSolverTestCase {
 
   ExtendedTreeSet<Integer> set = new ExtendedTreeSet<Integer>();
 

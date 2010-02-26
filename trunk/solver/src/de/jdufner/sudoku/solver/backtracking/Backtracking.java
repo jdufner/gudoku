@@ -34,6 +34,7 @@ import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.factory.SudokuPool;
 import de.jdufner.sudoku.context.SolverServiceFactory;
 
 /**
@@ -45,6 +46,8 @@ public final class Backtracking {
 
   private static final Logger LOG = Logger.getLogger(Backtracking.class);
   private static final int MAX_SOLUTION_COUNTER = 10;
+
+  private static SudokuPool sudokuPool = null;
 
   /**
    * Die vorige Instanz aus dem Stapel von {@link Backtracking}, wie das in Backtracking üblich ist, wird ein Stapel von
@@ -179,7 +182,7 @@ public final class Backtracking {
       for (Literal candidate : cell.getCandidates()) {
         Sudoku nextSudoku = null;
         Cell nextCell = null;
-        nextSudoku = SolverServiceFactory.getInstance().getSudokuPool().borrowSudoku(sudoku);
+        nextSudoku = getSudokuPool().borrowSudoku(sudoku);
         nextCell = nextSudoku.getCell(cell.getNumber());
         nextCell.setValue(candidate);
         if (removeCandidate(nextSudoku, nextCell, candidate) && nextSudoku.isValid()) {
@@ -194,7 +197,7 @@ public final class Backtracking {
             increaseSolutionCounter();
             addSolutions(solution);
             if (getSolutionCounter() >= getSolutionLimit()) {
-              SolverServiceFactory.getInstance().getSudokuPool().returnSudoku(nextSudoku);
+              getSudokuPool().returnSudoku(nextSudoku);
               return solution;
             }
           } else {
@@ -215,7 +218,7 @@ public final class Backtracking {
                 assert solution.isSolved() : "Sudoku muss gelöst sein!";
                 assert solution.isSolvedByCheckSum() : "Sudoku muss gelöst sein!";
                 LOG.debug("Eine Lösung gefunden.");
-                SolverServiceFactory.getInstance().getSudokuPool().returnSudoku(nextSudoku);
+                getSudokuPool().returnSudoku(nextSudoku);
                 return solution;
               }
             }
@@ -224,7 +227,7 @@ public final class Backtracking {
           // nextSudoku verwerfen, Instanz zurück in Pool legen
           LOG.debug(nextSudoku.isValid());
         }
-        SolverServiceFactory.getInstance().getSudokuPool().returnSudoku(nextSudoku);
+        getSudokuPool().returnSudoku(nextSudoku);
       }
     }
     return solution;
@@ -355,6 +358,13 @@ public final class Backtracking {
       return;
     }
     previousInstance.addSolutions(mySolution);
+  }
+
+  private SudokuPool getSudokuPool() {
+    if (sudokuPool == null) {
+      sudokuPool = (SudokuPool) SolverServiceFactory.getInstance().getBean(SudokuPool.class);
+    }
+    return sudokuPool;
   }
 
 }

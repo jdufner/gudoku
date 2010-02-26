@@ -25,24 +25,22 @@
  */
 package de.jdufner.sudoku.solver.strategy;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.context.SolverServiceFactory;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
 import de.jdufner.sudoku.solver.service.Solution;
 import de.jdufner.sudoku.solver.service.Solver;
 import de.jdufner.sudoku.solver.service.StrategySolver;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class HandelsblattSudokuTest extends TestCase {
+public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(HandelsblattSudokuTest.class);
 
   public HandelsblattSudokuTest(String name) {
@@ -100,13 +98,13 @@ public final class HandelsblattSudokuTest extends TestCase {
     Solver solver = null;
 
     // ohne Backtracking
-    solver = SolverServiceFactory.getInstance().getStrategySolver();
+    solver = getStrategySolver();
     Sudoku result1 = solver.solve(sudoku);
     LOG.debug(result1.toString());
     assertTrue(result1.isSolved());
 
     // mit Backtracking
-    solver = SolverServiceFactory.getInstance().getStrategySolver();
+    solver = getStrategySolver();
     Sudoku result2 = solver.solve(sudoku);
     LOG.debug(result2.toString());
     assertTrue(result2.isSolved());
@@ -124,11 +122,10 @@ public final class HandelsblattSudokuTest extends TestCase {
         "0,1,0,0,4,0,0,0,6," + //
         "0,0,0,3,0,0,5,0,0"; //
     Sudoku sudoku = SudokuFactory.buildSudoku(mySudoku);
-    ExtendedSolver extendedSolver = SolverServiceFactory.getInstance().getStrategySolver();
+    ExtendedSolver extendedSolver = getStrategySolver();
     Solution solution = extendedSolver.getSolution(sudoku);
     LOG.debug(solution.toString());
     assertTrue(solution.getResult().isSolved());
   }
 
 }
-

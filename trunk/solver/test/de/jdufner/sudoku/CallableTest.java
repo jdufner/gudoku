@@ -32,16 +32,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
+
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class CallableTest extends TestCase {
+public final class CallableTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(CallableTest.class);
   private static final ExecutorService ES = Executors.newFixedThreadPool(3);
 
@@ -89,4 +89,3 @@ public final class CallableTest extends TestCase {
   }
 
 }
-

@@ -25,8 +25,6 @@
  */
 package de.jdufner.sudoku.common;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Block;
@@ -36,13 +34,14 @@ import de.jdufner.sudoku.common.board.Row;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class Sudoku10x10Test extends TestCase {
+public final class Sudoku10x10Test extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(Sudoku10x10Test.class);
 
   public static final String EMPTY = "10:" + //
@@ -217,4 +216,3 @@ public final class Sudoku10x10Test extends TestCase {
   }
 
 }
-

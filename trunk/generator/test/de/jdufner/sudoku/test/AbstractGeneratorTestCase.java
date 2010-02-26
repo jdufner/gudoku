@@ -23,39 +23,23 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.common.board;
-
-import org.apache.log4j.Logger;
-
-import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.test.AbstractSolverTestCase;
+package de.jdufner.sudoku.test;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2010-01-15
+ * @since 2010-02-26
  * @version $Revision$
+ * 
  */
-public final class XsudokuUtilsTest extends AbstractSolverTestCase {
+public abstract class AbstractGeneratorTestCase extends AbstractSolverTestCase {
 
-  private static final Logger LOG = Logger.getLogger(XsudokuUtilsTest.class);
-
-  public void testBuildMainDiagonal() {
-    Sudoku sudoku = SudokuFactory
-        .buildSudoku("1.......2.3.....4...5...6.....7.8.......9.......1.2.....3...4...5.....6.7.......8");
-    MainDiagonal mainDiagonal = XsudokuUtils.buildMainDiagonal(sudoku);
-    LOG.debug(mainDiagonal);
-    assertTrue(mainDiagonal.isSolved());
-    assertTrue(mainDiagonal.isValid());
+  public AbstractGeneratorTestCase() {
+    super();
   }
 
-  public void testBuildSecondaryDiagonal() {
-    Sudoku sudoku = SudokuFactory
-        .buildSudoku("1.......2.3.....4...5...6.....7.8.......9.......1.2.....3...4...5.....6.7.......8");
-    SecondaryDiagonal secondaryDiagonal = XsudokuUtils.buildSecondaryDiagonal(sudoku);
-    LOG.debug(secondaryDiagonal);
-    assertTrue(secondaryDiagonal.isSolved());
-    assertTrue(secondaryDiagonal.isValid());
+  public AbstractGeneratorTestCase(final String name) {
+    super(name);
   }
 
 }

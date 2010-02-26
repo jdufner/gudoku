@@ -25,16 +25,10 @@
  */
 package de.jdufner.sudoku.context;
 
-import org.apache.commons.math.random.RandomData;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.Log4jConfigurer;
-
-import de.jdufner.sudoku.common.factory.SudokuPool;
-import de.jdufner.sudoku.common.validator.SudokuValidator;
-import de.jdufner.sudoku.solver.service.ExtendedSolver;
-import de.jdufner.sudoku.solver.service.Solver;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -44,9 +38,9 @@ import de.jdufner.sudoku.solver.service.Solver;
 public final class SolverServiceFactory {
   private static final Logger LOG = Logger.getLogger(SolverServiceFactory.class);
 
-  private static final String STRATEGY_SOLVER = "strategySolver";
-  private static final String STRATEGY_SOLVER_WITH_BACKTRACKING = "strategySolverWithBacktracking";
-  private static final String BACKTRACKING_SOLVER = "backtrackingSolver";
+  public static final String BACKTRACKING_SOLVER = "backtrackingSolver";
+  public static final String STRATEGY_SOLVER = "strategySolver";
+  public static final String STRATEGY_SOLVER_WITH_BACKTRACKING = "strategySolverWithBacktracking";
 
   private final transient ApplicationContext applicationContext;
 
@@ -67,32 +61,12 @@ public final class SolverServiceFactory {
     return SingletonHolder.instance;
   }
 
-  public ExtendedSolver getStrategySolver() {
-    return (ExtendedSolver) applicationContext.getBean(STRATEGY_SOLVER);
+  public Object getBean(final String name) {
+    return applicationContext.getBean(name);
   }
 
-  public ExtendedSolver getStrategySolverWithBacktracking() {
-    return (ExtendedSolver) applicationContext.getBean(STRATEGY_SOLVER_WITH_BACKTRACKING);
-  }
-
-  public Solver getBacktrackingSolver() {
-    return (Solver) applicationContext.getBean(BACKTRACKING_SOLVER);
-  }
-
-  public SudokuPool getSudokuPool() {
-    return (SudokuPool) applicationContext.getBean("sudokuPool");
-  }
-
-  public SudokuValidator getSudokuValidator() {
-    return (SudokuValidator) applicationContext.getBean("sudokuValidator");
-  }
-
-  public RandomData getRandomData() {
-    return (RandomData) applicationContext.getBean("randomData");
-  }
-
-  public Object getBean(Class clazz) {
-    String[] beanNames = applicationContext.getBeanNamesForType(clazz);
+  public Object getBean(final Class<?> clazz) {
+    final String[] beanNames = applicationContext.getBeanNamesForType(clazz);
     if (beanNames.length == 0) {
       throw new IllegalStateException("Klasse " + clazz + " existiert im Kontext "
           + applicationContext.getDisplayName() + " nicht.");

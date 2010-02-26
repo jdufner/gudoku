@@ -27,29 +27,28 @@ package de.jdufner.sudoku.builder;
 
 import java.util.Map;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
-import de.jdufner.sudoku.context.SolverServiceFactory;
 import de.jdufner.sudoku.solver.service.Solution;
+import de.jdufner.sudoku.test.AbstractGeneratorTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class RandomEleminationBuilderTest extends TestCase {
+public final class RandomEleminationBuilderTest extends AbstractGeneratorTestCase {
   private static final Logger LOG = Logger.getLogger(RandomEleminationBuilderTest.class);
 
   private Builder builder;
 
   @Override
-  public void setUp() {
+  public void setUp() throws Exception {
+    super.setUp();
     builder = (RandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(RandomEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
   }
@@ -58,8 +57,8 @@ public final class RandomEleminationBuilderTest extends TestCase {
     Sudoku sudoku = builder.build();
     assertTrue(sudoku.isValid());
     assertFalse(sudoku.isSolved());
-    assertTrue(SolverServiceFactory.getInstance().getStrategySolverWithBacktracking().isUnique(sudoku));
-    assertTrue(SolverServiceFactory.getInstance().getStrategySolverWithBacktracking().isSolvable(sudoku));
+    assertTrue(getStrategySolverWithBacktracking().isUnique(sudoku));
+    assertTrue(getStrategySolverWithBacktracking().isSolvable(sudoku));
   }
 
   public void testBuildSudokus() throws Exception {
@@ -68,16 +67,14 @@ public final class RandomEleminationBuilderTest extends TestCase {
     LOG.debug(map.size() + " Sudokus gefunden.");
     for (Level level : map.keySet()) {
       if (level.equals(Level.SEHR_SCHWER)) {
-        Sudoku result = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking().solve(
-            map.get(level).getQuest());
+        Sudoku result = getStrategySolverWithBacktracking().solve(map.get(level).getQuest());
         assertTrue(result.isSolved());
         assertTrue(result.isSolvedByCheckSum());
         assertTrue(result.isValid());
         assertNotNull(map.get(level).getLevel());
         assertTrue(Level.UNBEKANNT.compareTo(map.get(level).getLevel()) < 0);
       } else {
-        Sudoku result = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking().solve(
-            map.get(level).getQuest());
+        Sudoku result = getStrategySolverWithBacktracking().solve(map.get(level).getQuest());
         assertTrue(result.isSolved());
         assertTrue(result.isSolvedByCheckSum());
         assertTrue(result.isValid());

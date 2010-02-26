@@ -30,6 +30,7 @@ import org.ddsteps.data.support.DataLoaderFactory;
 import org.ddsteps.testcase.support.DDStepsExcelTestCase;
 
 import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.solver.service.ExtendedSolver;
 import de.jdufner.sudoku.solver.service.Solver;
 
 /**
@@ -40,15 +41,16 @@ import de.jdufner.sudoku.solver.service.Solver;
 public abstract class AbstractSolverExcelTestCase extends DDStepsExcelTestCase {
 
   protected Solver getBacktrackingSolver() {
-    return SolverServiceFactory.getInstance().getBacktrackingSolver();
+    return (Solver) SolverServiceFactory.getInstance().getBean(SolverServiceFactory.BACKTRACKING_SOLVER);
   }
 
   protected Solver getStrategySolver() {
-    return SolverServiceFactory.getInstance().getStrategySolver();
+    return (ExtendedSolver) SolverServiceFactory.getInstance().getBean(SolverServiceFactory.STRATEGY_SOLVER);
   }
 
   protected Solver getStrategySolverWithBacktracking() {
-    return SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
+    return (ExtendedSolver) SolverServiceFactory.getInstance().getBean(
+        SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
   }
 
   @Override
@@ -57,4 +59,3 @@ public abstract class AbstractSolverExcelTestCase extends DDStepsExcelTestCase {
   }
 
 }
-

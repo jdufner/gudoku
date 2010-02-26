@@ -23,49 +23,52 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.builder.utils;
+package de.jdufner.sudoku.test;
 
-import org.apache.commons.math.random.RandomData;
-import org.apache.log4j.Logger;
-
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.SudokuSize;
-import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.context.GeneratorServiceFactory;
+import junit.framework.TestCase;
+import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.solver.service.ExtendedSolver;
 import de.jdufner.sudoku.solver.service.Solver;
-import de.jdufner.sudoku.test.AbstractGeneratorTestCase;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2009-12-28
+ * @since 2010-02-26
  * @version $Revision$
  */
-public class NachbarschaftUtilsTest extends AbstractGeneratorTestCase {
+public abstract class AbstractSolverTestCase extends TestCase {
 
-  private static final Logger LOG = Logger.getLogger(NachbarschaftUtilsTest.class);
+  protected transient Solver backtrackingSolver;
+  protected transient ExtendedSolver strategySolver;
+  protected transient ExtendedSolver strategySolverWithBacktracking;
 
-  private RandomData randomData = null;
-  private Solver solver = null;
+  public AbstractSolverTestCase() {
+    super();
+  }
+
+  public AbstractSolverTestCase(final String name) {
+    super(name);
+  }
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    solver = getStrategySolverWithBacktracking();
-    randomData = (RandomData) GeneratorServiceFactory.getInstance().getBean(RandomData.class);
+    backtrackingSolver = (Solver) SolverServiceFactory.getInstance().getBean(SolverServiceFactory.BACKTRACKING_SOLVER);
+    strategySolver = (ExtendedSolver) SolverServiceFactory.getInstance().getBean(SolverServiceFactory.STRATEGY_SOLVER);
+    strategySolverWithBacktracking = (ExtendedSolver) SolverServiceFactory.getInstance().getBean(
+        SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
   }
 
-  public void testCheckNachbarschaft1() {
-    Sudoku sudoku = SudokuFactory.buildFilled(SudokuSize.DEFAULT);
-    LOG.debug(sudoku);
-    assertFalse(NachbarschaftUtils.checkNachbarschaft(sudoku));
+  protected Solver getBacktrackingSolver() {
+    return backtrackingSolver;
   }
 
-  public void testCheckNachbachschaft2() {
-    Sudoku underDeterminedSudoku = SudokuFactory.buildShuffled(SudokuSize.DEFAULT, randomData);
-    Sudoku sudoku = solver.solve(underDeterminedSudoku);
-    LOG.debug(sudoku);
-    assertTrue(NachbarschaftUtils.checkNachbarschaft(sudoku));
+  protected ExtendedSolver getStrategySolver() {
+    return strategySolver;
+  }
+
+  protected ExtendedSolver getStrategySolverWithBacktracking() {
+    return strategySolverWithBacktracking;
   }
 
 }

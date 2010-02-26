@@ -25,15 +25,14 @@
  */
 package de.jdufner.sudoku.solver.service;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
-public class SolutionTest extends TestCase {
+public class SolutionTest extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(SolutionTest.class);
 
