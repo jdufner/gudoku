@@ -23,36 +23,43 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.generator.service;
+package de.jdufner.sudoku.generator.text;
 
 import java.io.IOException;
 
 import junit.framework.TestCase;
 
-import com.lowagie.text.DocumentException;
+import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
-import de.jdufner.sudoku.generator.service.PdfGeneratorService;
+import de.jdufner.sudoku.generator.text.ApproachPrinter;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2009-12-20
+ * @since 22.12.2009
  * @version $Revision$
  */
-public final class PdfGeneratorTest extends TestCase {
+public final class ApproachPrinterTest extends TestCase {
 
-  private PdfGeneratorService pdfGenerator;
+  private static final Logger LOG = Logger.getLogger(ApproachPrinterTest.class);
+
+  private ApproachPrinter approachPrinter;
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    pdfGenerator = (PdfGeneratorService) GeneratorServiceFactory.getInstance().getBean(PdfGeneratorService.class);
+    approachPrinter = (ApproachPrinter) GeneratorServiceFactory.getInstance().getBean(ApproachPrinter.class);
   }
 
-  // TODO Das ist kein Test
-  public void testGenerate() throws DocumentException, IOException {
-    //pdfGenerator.generate();
+  public void testasommerf() throws IOException {
+    int[] ids = { 48383 };
+    for (int id : ids) {
+      LOG.info("#");
+      LOG.info("# " + id);
+      LOG.info("#");
+      approachPrinter.print(id);
+    }
   }
 
 }
