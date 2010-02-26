@@ -25,19 +25,18 @@
  */
 package de.jdufner.sudoku.solver.backtracking;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class BacktrackingPerformanceTest extends TestCase {
+public final class BacktrackingPerformanceTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(BacktrackingPerformanceTest.class);
 
   private Sudoku sudoku = null;
@@ -64,4 +63,3 @@ public final class BacktrackingPerformanceTest extends TestCase {
   }
 
 }
-

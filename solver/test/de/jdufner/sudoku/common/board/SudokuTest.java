@@ -25,19 +25,18 @@
  */
 package de.jdufner.sudoku.common.board;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class SudokuTest extends TestCase {
+public final class SudokuTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(SudokuTest.class);
 
   public SudokuTest(String name) {

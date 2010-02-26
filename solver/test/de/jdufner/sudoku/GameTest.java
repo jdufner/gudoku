@@ -25,21 +25,20 @@
  */
 package de.jdufner.sudoku;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.commands.CommandFactory;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class GameTest extends TestCase {
+public final class GameTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(GameTest.class);
 
   public void testGame() {

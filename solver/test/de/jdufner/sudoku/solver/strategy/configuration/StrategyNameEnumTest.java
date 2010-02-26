@@ -25,9 +25,9 @@
  */
 package de.jdufner.sudoku.solver.strategy.configuration;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
+
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * 
@@ -36,7 +36,7 @@ import org.apache.log4j.Logger;
  * @version $Revision$
  * 
  */
-public final class StrategyNameEnumTest extends TestCase {
+public final class StrategyNameEnumTest extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(StrategyNameEnumTest.class);
 

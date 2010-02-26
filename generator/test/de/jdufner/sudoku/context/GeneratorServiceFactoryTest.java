@@ -55,18 +55,6 @@ public final class GeneratorServiceFactoryTest extends TestCase {
     super.tearDown();
   }
 
-  public void testGetStrategySolver() throws Exception {
-    SolverServiceFactory.getInstance().getStrategySolver();
-  }
-
-  public void testGetStrategySolverWithBacktracking() throws Exception {
-    SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
-  }
-
-  public void testInstantiateBacktracktingSolver() throws Exception {
-    SolverServiceFactory.getInstance().getBacktrackingSolver();
-  }
-
   public void testGetLiteralEleminationBuilder() throws Exception {
     Builder builder = (LiteralEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
         LiteralEleminationBuilder.class);

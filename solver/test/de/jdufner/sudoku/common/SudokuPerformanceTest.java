@@ -25,8 +25,6 @@
  */
 package de.jdufner.sudoku.common;
 
-import junit.framework.TestCase;
-
 import org.apache.commons.math.MathException;
 import org.apache.commons.math.stat.inference.TTest;
 import org.apache.commons.math.stat.inference.TTestImpl;
@@ -38,13 +36,14 @@ import de.jdufner.sudoku.common.misc.Examples;
 import de.jdufner.sudoku.common.validator.SudokuValidator;
 import de.jdufner.sudoku.common.validator.impl.ParallelSudokuValidator;
 import de.jdufner.sudoku.common.validator.impl.SerialSudokuValidator;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class SudokuPerformanceTest extends TestCase {
+public final class SudokuPerformanceTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(SudokuPerformanceTest.class);
   private static final int ITERATIONS = 1000;
   private static final int TEST_ITERATIONS = 10;
@@ -131,4 +130,3 @@ public final class SudokuPerformanceTest extends TestCase {
   }
 
 }
-

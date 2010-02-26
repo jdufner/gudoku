@@ -25,22 +25,20 @@
  */
 package de.jdufner.sudoku.solver.strategy;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
-import de.jdufner.sudoku.context.SolverServiceFactory;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public class StrategyTest extends TestCase {
+public class StrategyTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(StrategyTest.class);
   private static final boolean SHORT_TEST = true;
 
@@ -52,13 +50,13 @@ public class StrategyTest extends TestCase {
 
   @Override
   public void setUp() throws Exception {
-    solver = SolverServiceFactory.getInstance().getStrategySolver();
+    super.setUp();
+    solver = getStrategySolver();
   }
 
   public void testStrategySolver() {
     Sudoku sudoku = SudokuFactory
         .buildSudoku("9:0,0,0,0,0,4,0,0,7,2,0,0,0,0,0,8,0,6,0,0,0,0,0,3,0,0,0,0,3,0,0,0,0,0,5,0,0,0,4,0,8,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,9,6,0,2,0,0,1,4,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0");
-    solver = SolverServiceFactory.getInstance().getStrategySolver();
     Sudoku result = solver.solve(sudoku);
     if (LOG.isDebugEnabled()) {
       LOG.debug(result.toString());

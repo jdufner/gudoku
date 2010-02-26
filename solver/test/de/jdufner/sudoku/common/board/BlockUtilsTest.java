@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.common.board;
 
-import junit.framework.TestCase;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * 
@@ -33,7 +33,7 @@ import junit.framework.TestCase;
  * @since 21.12.2009
  * @version $Revision$
  */
-public final class BlockUtilsTest extends TestCase {
+public final class BlockUtilsTest extends AbstractSolverTestCase {
 
   public void testIsFirstColumnInBlock() {
     assertTrue(BlockUtils.isFirstColumnInBlock(0, SudokuSize.NEUN));

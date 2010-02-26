@@ -344,7 +344,7 @@ public class Sudoku implements Cloneable {
       validator = weakReferenceValidator.get();
     }
     if (validator == null) {
-      validator = SolverServiceFactory.getInstance().getSudokuValidator();
+      validator = (SudokuValidator) SolverServiceFactory.getInstance().getBean(SudokuValidator.class);
       weakReferenceValidator = new WeakReference<SudokuValidator>(validator);
     }
     return validator.isValid(this);

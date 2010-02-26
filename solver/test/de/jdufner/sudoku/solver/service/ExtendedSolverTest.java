@@ -25,13 +25,11 @@
  */
 package de.jdufner.sudoku.solver.service;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * 
@@ -39,7 +37,7 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
  * @since 2009-12-14
  * @version $Revision$
  */
-public final class ExtendedSolverTest extends TestCase {
+public final class ExtendedSolverTest extends AbstractSolverTestCase {
 
   private final static Logger LOG = Logger.getLogger(ExtendedSolverTest.class);
 
@@ -52,7 +50,7 @@ public final class ExtendedSolverTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    extendedSolver = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
+    extendedSolver = getStrategySolverWithBacktracking();
   }
 
   @Override

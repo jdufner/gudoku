@@ -27,8 +27,6 @@ package de.jdufner.sudoku.solver.strategy;
 
 import java.util.concurrent.ExecutionException;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
@@ -36,13 +34,14 @@ import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyConfiguration;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyThreadingEnum;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public class StrategyExecutorHandleExceptionTest extends TestCase {
+public class StrategyExecutorHandleExceptionTest extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(StrategyExecutorHandleExceptionTest.class);
 

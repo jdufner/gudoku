@@ -27,24 +27,22 @@ package de.jdufner.sudoku.builder;
 
 import java.util.Map;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
-import de.jdufner.sudoku.context.SolverServiceFactory;
 import de.jdufner.sudoku.solver.service.Solution;
 import de.jdufner.sudoku.solver.service.Solver;
+import de.jdufner.sudoku.test.AbstractGeneratorTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class SymetricRandomEleminationBuilderTest extends TestCase {
+public final class SymetricRandomEleminationBuilderTest extends AbstractGeneratorTestCase {
   private static final Logger LOG = Logger.getLogger(SymetricRandomEleminationBuilderTest.class);
 
   private Builder builder;
@@ -52,12 +50,13 @@ public final class SymetricRandomEleminationBuilderTest extends TestCase {
   private Solver strategySolverWithBacktracking;
 
   @Override
-  public void setUp() {
+  public void setUp() throws Exception {
+    super.setUp();
     builder = (SymetricRandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
         SymetricRandomEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
-    strategySolver = SolverServiceFactory.getInstance().getStrategySolver();
-    strategySolverWithBacktracking = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
+    strategySolver = getStrategySolver();
+    strategySolverWithBacktracking = getStrategySolverWithBacktracking();
   }
 
   public void testBuild() throws Exception {

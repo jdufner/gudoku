@@ -32,6 +32,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.context.SolverServiceFactory;
 import de.jdufner.sudoku.file.PropertiesLoader;
+import de.jdufner.sudoku.solver.service.ExtendedSolver;
 
 /**
  * Das Spiel ({@link Game}) ist die zentrale Schnittstelle zur Steuerung des Sudokus.
@@ -55,7 +56,9 @@ public final class Game {
     final PropertiesLoader propertiesLoader = new PropertiesLoader();
     final String sudokuAsString = propertiesLoader.getSudokuAsString(id);
     quest = SudokuFactory.buildSudoku(sudokuAsString);
-    solution = SolverServiceFactory.getInstance().getStrategySolverWithBacktracking().solve(quest);
+    ExtendedSolver extendedSolver = (ExtendedSolver) SolverServiceFactory.getInstance().getBean(
+        SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
+    solution = extendedSolver.solve(quest);
 
     commandManager = new CommandManager();
   }

@@ -25,23 +25,21 @@
  */
 package de.jdufner.sudoku.solver.strategy;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.context.SolverServiceFactory;
 import de.jdufner.sudoku.solver.service.Solver;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public class FixNpeStrategyTest extends TestCase {
+public class FixNpeStrategyTest extends AbstractSolverTestCase {
+
   private static final Logger LOG = Logger.getLogger(FixNpeStrategyTest.class);
-  private static SolverServiceFactory solverServiceFactory = SolverServiceFactory.getInstance();
 
   public FixNpeStrategyTest(String name) {
     super(name);
@@ -50,7 +48,7 @@ public class FixNpeStrategyTest extends TestCase {
   public void testFirstSolution1() {
     Sudoku sudoku = SudokuFactory
         .buildSudoku("9:0,2,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,3,0,7,4,0,8,0,0,0,0,0,0,0,0,0,3,0,0,2,0,8,0,0,4,0,0,1,0,6,0,0,5,0,0,0,0,0,0,0,0,0,1,0,7,8,0,5,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,4,0");
-    Solver solver = solverServiceFactory.getStrategySolver();
+    Solver solver = getStrategySolver();
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
   }
@@ -58,7 +56,7 @@ public class FixNpeStrategyTest extends TestCase {
   public void testFirstSolution2() {
     Sudoku sudoku = SudokuFactory
         .buildSudoku("9:0,0,0,0,0,9,7,0,0,0,1,0,0,0,0,9,0,0,4,0,0,0,5,3,0,2,0,0,0,0,0,0,7,0,0,0,0,3,0,0,0,0,0,4,0,0,0,0,8,0,0,0,0,0,0,6,0,4,1,0,0,0,2,0,0,9,0,0,0,0,5,0,0,0,8,6,0,0,0,0,0");
-    Solver solver = solverServiceFactory.getStrategySolver();
+    Solver solver = getStrategySolver();
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
   }
@@ -66,10 +64,9 @@ public class FixNpeStrategyTest extends TestCase {
   public void testFirstSolutionHelper() {
     Sudoku sudoku = SudokuFactory
         .buildSudoku("9:0,2,6,0,0,0,0,0,0,0,0,0,6,0,0,0,0,3,0,7,4,0,8,0,0,0,0,0,0,0,0,0,3,0,0,2,0,8,0,0,4,0,0,1,7,6,0,0,5,0,0,0,0,0,0,0,0,0,1,0,7,8,0,5,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,4,0");
-    Solver solver = solverServiceFactory.getStrategySolver();
+    Solver solver = getStrategySolver();
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
   }
 
 }
-

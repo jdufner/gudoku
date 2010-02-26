@@ -31,6 +31,7 @@ import java.util.NoSuchElementException;
 
 import junit.framework.TestCase;
 
+import org.apache.commons.math.random.RandomData;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
@@ -47,33 +48,18 @@ public final class SolverServiceFactoryTest extends TestCase {
 
   private static final Logger LOG = Logger.getLogger(SolverServiceFactoryTest.class);
 
-  //  private static final Logger APPROACH = Logger.getLogger("approach");
-  //  private static final Logger SUDOKU = Logger.getLogger("sudoku");
-
-  public void testGetStrategySolver() {
-    SolverServiceFactory.getInstance().getStrategySolver();
-  }
-
-  public void testGetStrategySolverWithBacktracking() {
-    SolverServiceFactory.getInstance().getStrategySolverWithBacktracking();
-  }
-
-  public void testInstantiateBacktracktingSolver() {
-    SolverServiceFactory.getInstance().getBacktrackingSolver();
-  }
-
   public void testInstantiateObjectPool1() {
-    SolverServiceFactory.getInstance().getSudokuPool();
+    SolverServiceFactory.getInstance().getBean(SudokuPool.class);
   }
 
   public void testInstantiateObjectPool2() {
-    SudokuPool pool = SolverServiceFactory.getInstance().getSudokuPool();
+    SudokuPool pool = (SudokuPool) SolverServiceFactory.getInstance().getBean(SudokuPool.class);
     Sudoku s = pool.borrowSudoku();
     pool.returnSudoku(s);
   }
 
   public void testInstantiateObjectPool3() {
-    SudokuPool pool = SolverServiceFactory.getInstance().getSudokuPool();
+    SudokuPool pool = (SudokuPool) SolverServiceFactory.getInstance().getBean(SudokuPool.class);
     List<Sudoku> sudokus = new ArrayList<Sudoku>();
     try {
       for (int i = 0; i <= 100; i++) {
@@ -117,7 +103,8 @@ public final class SolverServiceFactoryTest extends TestCase {
   }
 
   public void testRandomData() {
-    int i = SolverServiceFactory.getInstance().getRandomData().nextInt(1, 100);
+    RandomData randomData = (RandomData) SolverServiceFactory.getInstance().getBean(RandomData.class);
+    int i = randomData.nextInt(1, 100);
     LOG.debug(i);
     assertTrue(i >= 1);
     assertTrue(i <= 100);

@@ -25,18 +25,15 @@
  */
 package de.jdufner.sudoku.common.board;
 
-import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
-import junit.framework.TestCase;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class CellTest extends TestCase {
+public final class CellTest extends AbstractSolverTestCase {
   // private static final Logger log = Logger.getLogger(CellTest.class);
 
   private Sudoku sudoku9x9;
@@ -492,4 +489,3 @@ public final class CellTest extends TestCase {
   }
 
 }
-

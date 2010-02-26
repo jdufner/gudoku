@@ -25,8 +25,6 @@
  */
 package de.jdufner.sudoku.commands;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Candidates;
@@ -35,8 +33,9 @@ import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
-public final class RetainCandidatesCommandTest extends TestCase {
+public final class RetainCandidatesCommandTest extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(RetainCandidatesCommandTest.class);
 

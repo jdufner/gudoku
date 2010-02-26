@@ -25,15 +25,14 @@
  */
 package de.jdufner.sudoku.common.collections;
 
-import de.jdufner.sudoku.common.collections.SortedCandidates;
-import junit.framework.TestCase;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public class SortedCandidatesTest extends TestCase {
+public class SortedCandidatesTest extends AbstractSolverTestCase {
 
   public void testCloneEmpty() {
     SortedCandidates<String> empty = new SortedCandidates<String>();

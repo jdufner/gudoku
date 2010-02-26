@@ -27,23 +27,21 @@ package de.jdufner.sudoku.builder;
 
 import java.util.Map;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
-import de.jdufner.sudoku.context.SolverServiceFactory;
 import de.jdufner.sudoku.solver.service.Solution;
+import de.jdufner.sudoku.test.AbstractGeneratorTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class LiteralEleminationBuilderTest extends TestCase {
+public final class LiteralEleminationBuilderTest extends AbstractGeneratorTestCase {
   private static final Logger LOG = Logger.getLogger(LiteralEleminationBuilderTest.class);
 
   private Builder builder;
@@ -51,6 +49,7 @@ public final class LiteralEleminationBuilderTest extends TestCase {
 
   @Override
   public void setUp() throws Exception {
+    super.setUp();
     builder = (LiteralEleminationBuilder) GeneratorServiceFactory.getInstance()
         .getBean(LiteralEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
@@ -61,7 +60,7 @@ public final class LiteralEleminationBuilderTest extends TestCase {
     LOG.debug("Prüfe Gültigkeit:");
     assertTrue(sudoku.isValid());
     LOG.debug("Prüfe Eindeutigkeit:");
-    assertTrue(SolverServiceFactory.getInstance().getStrategySolverWithBacktracking().isUnique(sudoku));
+    assertTrue(getStrategySolverWithBacktracking().isUnique(sudoku));
     LOG.debug(sudoku);
   }
 

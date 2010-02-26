@@ -25,23 +25,20 @@
  */
 package de.jdufner.sudoku.common.factory;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
-import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.common.factory.SudokuPool;
 import de.jdufner.sudoku.common.misc.Examples;
 import de.jdufner.sudoku.context.SolverServiceFactory;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public final class SudokuPoolTest extends TestCase {
+public final class SudokuPoolTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(SudokuPoolTest.class);
   private static final int POOL_SIZE = 100;
 
@@ -50,7 +47,7 @@ public final class SudokuPoolTest extends TestCase {
 
   @Override
   public void setUp() throws Exception {
-    pool = SolverServiceFactory.getInstance().getSudokuPool();
+    pool = (SudokuPool) SolverServiceFactory.getInstance().getBean(SudokuPool.class);
   }
 
   public void testBorrowSudoku1() {
@@ -133,4 +130,3 @@ public final class SudokuPoolTest extends TestCase {
   }
 
 }
-
