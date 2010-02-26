@@ -55,7 +55,7 @@
 	    <property name="pdfStyle" ref="pdfStyle"/>
 	</bean>
 
-	<bean id="pdfGenerator" class="de.jdufner.sudoku.generator.pdf.PdfGeneratorService">
+	<bean id="pdfGenerator" class="de.jdufner.sudoku.generator.service.PdfGeneratorService">
 		<property name="pdfPrinter" ref="pdfPrinter" />
 		<property name="approachPrinter" ref="approachPrinter" />
 		<property name="sudokuDao" ref="sudokuDao" />
