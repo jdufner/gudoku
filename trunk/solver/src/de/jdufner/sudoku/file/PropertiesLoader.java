@@ -31,7 +31,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 
 /**
- * TODO Singleton draus machen
+ * TODO Singleton draus machen, nein besser in Spring integrieren
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
