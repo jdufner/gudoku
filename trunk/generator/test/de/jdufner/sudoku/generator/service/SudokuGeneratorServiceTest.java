@@ -23,24 +23,37 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.text;
+package de.jdufner.sudoku.generator.service;
 
-import java.io.IOException;
+import junit.framework.TestCase;
+
+import org.apache.log4j.Logger;
+
+import de.jdufner.sudoku.context.GeneratorServiceFactory;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2009-01-11
+ * @since 0.1
  * @version $Revision$
+ * 
  */
-public interface ApproachFilePrinter {
+public class SudokuGeneratorServiceTest extends TestCase {
 
-  void openFile(int sudokuId) throws IOException;
+  private static final Logger LOG = Logger.getLogger(SudokuGeneratorServiceTest.class);
 
-  void print(String message);
+  private SudokuGeneratorService sudokuGenerator;
 
-  void println(String message);
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    sudokuGenerator = (SudokuGeneratorService) GeneratorServiceFactory.getInstance().getBean(
+        SudokuGeneratorService.class);
+  }
 
-  void closeAndCompressFile();
-
+  public void testGetSudoku() throws Exception {
+    LOG.debug("Start Test");
+    sudokuGenerator.generate();
+    LOG.debug("End Test");
+  }
 }

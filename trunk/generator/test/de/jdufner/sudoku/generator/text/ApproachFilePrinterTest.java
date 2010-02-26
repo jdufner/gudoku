@@ -23,58 +23,27 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.text;
+package de.jdufner.sudoku.generator.text;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.zip.GZIPOutputStream;
 
-import org.apache.log4j.Logger;
+import de.jdufner.sudoku.generator.text.ApproachFilePrinter;
+import de.jdufner.sudoku.generator.text.ApproachFilePrinterImpl;
+
+import junit.framework.TestCase;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2010-01-11
+ * @since 2010-01-12
  * @version $Revision$
  */
-public final class ApproachFilePrinterImpl implements ApproachFilePrinter {
+public final class ApproachFilePrinterTest extends TestCase {
 
-  private static final Logger LOG = Logger.getLogger(ApproachFilePrinterImpl.class);
-  // TODO In Konfiguration auslagern
-  private static final String DIR = "C:\\tmp";
-
-  private PrintWriter pw;
-
-  @Override
-  public void closeAndCompressFile() {
-    if (pw != null) {
-      //    pw.flush();
-      pw.close();
-    }
+  public void testOpenFileWriteCloseAndCompressFile() throws IOException {
+    ApproachFilePrinter sp = new ApproachFilePrinterImpl();
+    sp.openFile(123);
+    sp.println("123456789456789123789123456234567891567891234891234567345678912678912345912345678");
+    sp.closeAndCompressFile();
   }
-
-  @Override
-  public void openFile(final int sudokuId) throws IOException {
-    final File file = new File(DIR, sudokuId + ".txt.gz");
-    final FileOutputStream fos = new FileOutputStream(file);
-    final GZIPOutputStream gos = new GZIPOutputStream(fos);
-    pw = new PrintWriter(gos);
-  }
-
-  @Override
-  public void print(final String message) {
-    if (pw != null) {
-      pw.print(message);
-    }
-  }
-
-  @Override
-  public void println(final String message) {
-    if (pw != null) {
-      pw.println(message);
-    }
-  }
-
 }
