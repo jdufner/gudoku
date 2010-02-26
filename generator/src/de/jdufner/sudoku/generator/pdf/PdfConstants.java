@@ -23,35 +23,35 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.pdf;
-
-import java.io.IOException;
-
-import junit.framework.TestCase;
-
-import com.lowagie.text.DocumentException;
-
-import de.jdufner.sudoku.context.GeneratorServiceFactory;
+package de.jdufner.sudoku.generator.pdf;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2009-12-20
+ * @since 2009-12-07
  * @version $Revision$
  */
-public final class PdfGeneratorTest extends TestCase {
+public final class PdfConstants {
 
-  private PdfGenerator pdfGenerator;
-
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-    pdfGenerator = (PdfGenerator) GeneratorServiceFactory.getInstance().getBean(PdfGenerator.class);
-  }
-
-  // TODO Das ist kein Test
-  public void testGenerate() throws DocumentException, IOException {
-    //pdfGenerator.generate();
-  }
+  /**
+   * Farbe Linien: Schwarz
+   */
+  public static final int[] RAHMEN_FARBE = new int[] { 0x00, 0x00, 0x00 };
+  /**
+   * Keine Linie
+   */
+  public static final float RAHMEN_KEIN = 0f;
+  /**
+   * Dicke Linie
+   */
+  public static final float RAHMEN_DICK = 1.0f;
+  /**
+   * Dünner Linie
+   */
+  public static final float RAHMEN_DUENN = 0.5f;
+  /**
+   * Farbe Hintergrund: Hellgrau
+   */
+  public static final int[] HINTERGRUND_FARBE = new int[] { 0xCC, 0xCC, 0xCC };
 
 }

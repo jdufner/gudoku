@@ -23,7 +23,7 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.pdf;
+package de.jdufner.sudoku.generator.service;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -40,8 +40,9 @@ import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.dao.SudokuDao;
 import de.jdufner.sudoku.dao.SudokuData;
+import de.jdufner.sudoku.generator.pdf.PdfPrinter;
+import de.jdufner.sudoku.generator.text.ApproachPrinter;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
-import de.jdufner.sudoku.text.ApproachPrinter;
 
 /**
  * 
@@ -49,7 +50,7 @@ import de.jdufner.sudoku.text.ApproachPrinter;
  * @since 2009-12-20
  * @version $Revision$
  */
-public final class PdfGenerator {
+public final class PdfGeneratorService {
 
   private static final DateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd'T'kkmmss");
 

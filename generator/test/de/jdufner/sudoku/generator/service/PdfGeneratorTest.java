@@ -23,28 +23,36 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.file;
+package de.jdufner.sudoku.generator.service;
+
+import java.io.IOException;
 
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import com.lowagie.text.DocumentException;
+
+import de.jdufner.sudoku.context.GeneratorServiceFactory;
+import de.jdufner.sudoku.generator.service.PdfGeneratorService;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 0.1
+ * @since 2009-12-20
  * @version $Revision$
- *
  */
-public final class PropertiesLoaderTest extends TestCase {
-  private static final Logger LOG = Logger.getLogger(PropertiesLoaderTest.class);
+public final class PdfGeneratorTest extends TestCase {
 
-  public void testGetSudokuAsString() throws Exception {
-    PropertiesLoader loader = new PropertiesLoader();
-    String sudokuAsString = loader.getSudokuAsString(0);
-    assertNotNull(sudokuAsString);
-    LOG.debug(sudokuAsString);
+  private PdfGeneratorService pdfGenerator;
+
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    pdfGenerator = (PdfGeneratorService) GeneratorServiceFactory.getInstance().getBean(PdfGeneratorService.class);
+  }
+
+  // TODO Das ist kein Test
+  public void testGenerate() throws DocumentException, IOException {
+    //pdfGenerator.generate();
   }
 
 }
-

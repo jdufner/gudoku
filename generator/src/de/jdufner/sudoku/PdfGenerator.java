@@ -23,27 +23,20 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.text;
+package de.jdufner.sudoku;
 
-import java.io.IOException;
+import de.jdufner.sudoku.context.GeneratorServiceFactory;
+import de.jdufner.sudoku.generator.service.PdfGeneratorService;
 
-import de.jdufner.sudoku.generator.text.ApproachFilePrinter;
-import de.jdufner.sudoku.generator.text.ApproachFilePrinterImpl;
+public final class PdfGenerator {
 
-import junit.framework.TestCase;
-
-/**
- * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2010-01-12
- * @version $Revision$
- */
-public final class ApproachFilePrinterTest extends TestCase {
-
-  public void testOpenFileWriteCloseAndCompressFile() throws IOException {
-    ApproachFilePrinter sp = new ApproachFilePrinterImpl();
-    sp.openFile(123);
-    sp.println("123456789456789123789123456234567891567891234891234567345678912678912345912345678");
-    sp.closeAndCompressFile();
+  /**
+   * @param args
+   */
+  public static void main(String[] args) throws Exception {
+    PdfGeneratorService pdfGeneratorService = (PdfGeneratorService) GeneratorServiceFactory.getInstance().getBean(
+        PdfGeneratorService.class);
+    pdfGeneratorService.generate();
   }
+
 }

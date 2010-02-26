@@ -23,27 +23,28 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.text;
+package de.jdufner.sudoku.generator.pdf;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.List;
 
-import de.jdufner.sudoku.generator.text.ApproachFilePrinter;
-import de.jdufner.sudoku.generator.text.ApproachFilePrinterImpl;
+import com.lowagie.text.DocumentException;
 
-import junit.framework.TestCase;
+import de.jdufner.sudoku.dao.SudokuData;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2010-01-12
+ * @since 2009-12-08
  * @version $Revision$
  */
-public final class ApproachFilePrinterTest extends TestCase {
+public interface PdfPrinter {
 
-  public void testOpenFileWriteCloseAndCompressFile() throws IOException {
-    ApproachFilePrinter sp = new ApproachFilePrinterImpl();
-    sp.openFile(123);
-    sp.println("123456789456789123789123456234567891567891234891234567345678912678912345912345678");
-    sp.closeAndCompressFile();
-  }
+  /**
+   * 
+   * @param sudokus
+   * @param fileName
+   */
+  void print(List<SudokuData> sudokus, String fileName) throws DocumentException, FileNotFoundException;
+
 }

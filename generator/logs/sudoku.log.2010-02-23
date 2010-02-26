@@ -1,0 +1,2860 @@
+sehr schwer de.jdufner.sudoku.solver.service.Solution@fe0fd9
+Quest: ..8.31............13...9..6...1..4......73.9.6...5..8..16.8.5.3.5...68..8.3....4.
+Result: 568731924947265138132849756325198467481673295679452381216984573754326819893517642
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@f221f6
+Quest: ......81.....49......1.3..2.8......95...2..6169.7....5.........47.6....3.2943...7
+Result: 963572814215849736748163592184356279537928461692714385356297148471685923829431657
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@509df8
+Quest: ....7.81.....49...7..1.3..2.8......95.7.2..6169.7.4.85.....7..847.6....3.2943.6.7
+Result: 963572814215849736748163592184356279537928461692714385356297148471685923829431657
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@7efa96
+Quest: 7..58.1.2.52..16..........34.3.7.....8.....4.....2.8.98..........47..92.9.5.32..6
+Result: 746583192352941678198267453463879215289615347571324869827196534634758921915432786
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1588325
+Quest: 7..58.192.52..167.........34.3.7....28.....47....2.8.98.........347..92.915.32..6
+Result: 746583192352941678198267453463879215289615347571324869827196534634758921915432786
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@bd93cd
+Quest: .159.......78..6.....1.5.7.....5....8..27..6....6..2.879......61....689..8.3...5.
+Result: 615927384927834615348165972261458739834279561579613248793581426152746893486392157
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@94aa42
+Quest: 1.......65.643...9...5...31.4.....2.8..192..3.....4..79...5.76..53.1...2.2.9..3..
+Result: 132879456586431279794526831349765128875192643261384597918253764453617982627948315
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1bbd583
+Quest: 1.......65.6.3...9...5...31.4.....2.8..192........4..79...5.76...3.1.....2.9..3..
+Result: 132879456586431279794526831349765128875192643261384597918253764453617982627948315
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@106433d
+Quest: 1....9..65.643...9..45...31.4.....2.8.5192..3.....4..79...5.76..53.1...2.2.9..3..
+Result: 132879456586431279794526831349765128875192643261384597918253764453617982627948315
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@16b98c3
+Quest: .4.7.2..1.6..81..7...3..54......37....7...4....69......34..7...9..62..1.1..8.9.7.
+Result: 843752961569481237721396548295143786317268459486975123634517892978624315152839674
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@9b87f6
+Quest: 8437.2..1.6.481..7..13..548.....37....72684....69.....634..78..9..624.1.1..8.9674
+Result: 843752961569481237721396548295143786317268459486975123634517892978624315152839674
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@185e90f
+Quest: .1..3.7..9.7.18..38..4.....2.8..9.......8....7.3...19.....7.3.4.....6.19...8.1...
+Result: 614932785927518643835467921268159437491783256753624198189275364572346819346891572
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1f93ace
+Quest: 36...2.7...45...8.....7...3....9....8...3..4......8..257..1.62.1....74......2..1.
+Result: 361982574724563981958471263243196857897235146615748392579314628182657439436829715
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@91cf0b
+Quest: 361.82.7...45...81....7...3...19.8..8...3..4..1..483.257.31.6281.2..74...3..29.1.
+Result: 361982574724563981958471263243196857897235146615748392579314628182657439436829715
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@773d03
+Quest: ..7.....6...2.74532..6......14.5.6..9..8.2..1..2.3.78......1..53495.6...5.....9..
+Result: 437915826196287453285643197814759632973862541652134789728491365349576218561328974
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@90ed81
+Quest: ..7.....6...2.74.32..6......14.5.6..9..8.2..1..2.3.78......1..53.95.6...5.....9..
+Result: 437915826196287453285643197814759632973862541652134789728491365349576218561328974
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@19ccb73
+Quest: ..7.....61..2.74532..6...9.814.5.6..97.8.2.41..2.3.789.2...1..53495.6..85.....9..
+Result: 437915826196287453285643197814759632973862541652134789728491365349576218561328974
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@856447
+Quest: 45.9..1.2..3....4......1......5...68.....2....3..4......5.3......6...9...9..5.416
+Result: 458963172713285649269471583924517368681392754537846291145639827876124935392758416
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@3b100c
+Quest: 5.648.1...7.....38....71.96..97.2...21.8...4.35...672...5....8..2...49.7...26.3..
+Result: 536489172971625438482371596649752813217893645358146729165937284823514967794268351
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@b398da
+Quest: 5.648.....7......8.....1.96..97.2...2..8...4.35...67....5....8..2....9.7...2..3..
+Result: 536489172971625438482371596649752813217893645358146729165937284823514967794268351
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@4d6b1a
+Quest: 5.648.1...7.....38....71.96..97.2...21.8...4.35...672..65....8..2..149.7...26.3..
+Result: 536489172971625438482371596649752813217893645358146729165937284823514967794268351
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1eb8f71
+Quest: .....3741....7.5......54.2.4.921...6...4.8...1...364.8.4.58......5.6....7613.....
+Result: 598623741234871569617954823489215376376498152152736498943582617825167934761349285
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1e04861
+Quest: .....3741....7.5...1..54.2.4.921...6...4.8...1...364.8.4.58..1...5.6....7613.....
+Result: 598623741234871569617954823489215376376498152152736498943582617825167934761349285
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1af7c57
+Quest: .....1..7.6.....2.38.6.......23...4.....67..2638.5......4....8.7..8.64.....2.....
+Result: 249581367165734928387629514972318645451967832638452179594173286723896451816245793
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@304648
+Quest: .12.........3.49.........616.3.....98...51.......8..4...14...2.....7......9...63.
+Result: 912768453576314982348592761653247819824951376197683245761439528235876194489125637
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1913751
+Quest: .12.6.......3149....8...7616.3....198...51..619..83.4.7.14...2.....7......9...63.
+Result: 912768453576314982348592761653247819824951376197683245761439528235876194489125637
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@2445d7
+Quest: .5..2....9.237....6.3.....5.9..5..1.2..1.6..3.8..9..2.1.....6.9....691.8....3..4.
+Result: 758624391912375864643918275396852417275146983481793526134287659527469138869531742
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@857066
+Quest: .5..243..9.237....6.3.....539.852.1.2..1.6..3.8.793.261.....6.9....691.8..953..4.
+Result: 758624391912375864643918275396852417275146983481793526134287659527469138869531742
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1132e76
+Quest: ..1.9.638.3....7....748....5.............43......6.871....7.5..6.5......38.1.6...
+Result: 451297638832615794967483215598731462716824359243569871129378546675942183384156927
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@106121
+Quest: ..7.94238...7...5......34....8.2.3.45......26..1..68..........9.128......7.96..4.
+Result: 157694238436782951289153467768529314594318726321476895645237189912845673873961542
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@17e4cec
+Quest: ..7.942.....7...5......34....8.2.3.45......26..1...8..........9.128......7.96..4.
+Result: 157694238436782951289153467768529314594318726321476895645237189912845673873961542
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1dc6a9d
+Quest: ..7694238...7.2.5......34....852.3145...1..26..1..6895...2....9.128......7396..4.
+Result: 157694238436782951289153467768529314594318726321476895645237189912845673873961542
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@904f75
+Quest: .....9..88.62..15..9........248....3.5.4.6.9.9....184........6..62..87.53..6.....
+Result: 541769328876243159293185674624897513158436297937521846789352461462918735315674982
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@b1bed2
+Quest: .4...9..88.624.15..9.......6248....3.5.4.6.9.9....1846.......6..62.187.53..6...8.
+Result: 541769328876243159293185674624897513158436297937521846789352461462918735315674982
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@2b7bd9
+Quest: ..39..6.4..........74...15..6.43.9...2.19...67.........47..1...1..........6...57.
+Result: 513972684682514397974386152861437925425198736739625418347251869158769243296843571
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@5ac5f
+Quest: .64....1..7........8...24.5.........1...3...4...5..861....6..4.2...7.35.635..8...
+Result: 564783912972154683381692475827416539156839724493527861719365248248971356635248197
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1f33bb0
+Quest: 564.8..1.97.......38..92475......5..1...3.7.4...5.78617...6..4.2...7.35.635..8...
+Result: 564783912972154683381692475827416539156839724493527861719365248248971356635248197
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1773a14
+Quest: ..5....9..8.3..1..43.62...5...14.2.............9.86...3...98.41..2..7.5..1....9..
+Result: 265871493987354162431629875673145289548932617129786534356298741892417356714563928
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1643e4b
+Quest: ..5....9..8.3..1..43.62..75...14.2...4.....1...9.86...35..98.41..2..7.5..1....9..
+Result: 265871493987354162431629875673145289548932617129786534356298741892417356714563928
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@17ed710
+Quest: .8.........236..1..7458.2...2783...43...7...2......37.......4..........5...4.28..
+Result: 183927546592364718674581293927836154345179682816245379251698437468713925739452861
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@16ca3d5
+Quest: 4812....6........8.5.8..3..6.8.7..3..79.1.....4.68....29.136....675..2.......496.
+Result: 481253796732961458956847312628475139579312684143689527294136875367598241815724963
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1905a42
+Quest: 4.12....6........8.5....3..6.8.7..3..79.1........8.......136.....75..2.......496.
+Result: 481253796732961458956847312628475139579312684143689527294136875367598241815724963
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1033fb5
+Quest: 4812....6........8.5.8473..6.8.7..3..79.1.....4.68.5..2941368...675..2......2496.
+Result: 481253796732961458956847312628475139579312684143689527294136875367598241815724963
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@dbf79d
+Quest: .....65.42..57......1.8....75....1..19.....27..3....45....4.9......21..89.23.....
+Result: 387216594249573816561489273754632189196854327823197645618745932435921768972368451
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@652552
+Quest: ..7..65.42..57..1...148....75..3.1..19..5..27..3.9..45....459...3..21..89.23..4..
+Result: 387216594249573816561489273754632189196854327823197645618745932435921768972368451
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1860045
+Quest: 1..6....4.......58....1....5....2.....28..4.7..4..72....1.2....4.71.8..2.....49..
+Result: 129685374346279158758413629573942816692851437814367295981526743437198562265734981
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@33b503
+Quest: .2....69...5261..36....3....947...36..76....586.9.54.2..6.8..24...54..6.....76.1.
+Result: 328457691975261843641893257594728136217634985863915472756189324139542768482376519
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1e84195
+Quest: .2....69...5261..3.....3....947.......76....58.....4....6.8..2....54..6.....7..1.
+Result: 328457691975261843641893257594728136217634985863915472756189324139542768482376519
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@5b540e
+Quest: .2.4..69.9.5261..36....3...5947...36..76....586.9.54.2..6.8..24..954..6.....76.1.
+Result: 328457691975261843641893257594728136217634985863915472756189324139542768482376519
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@127e4be
+Quest: ..25....7.5.....6....72.5.4.192.7..5..4...9..5..8.462.9.1.62....6.....4.7....51..
+Result: 432516897157489362896723514619237485284651973573894621941362758365178249728945136
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@4ba66
+Quest: ..25....7.5.4...6...672.514.192.7..5..4...9..5..8.462.941.627...6...8.4.7....51..
+Result: 432516897157489362896723514619237485284651973573894621941362758365178249728945136
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@70cdd2
+Quest: ...84....7..5.....59...7.4..1.47...6.6.....5.9.8..5...8...1..7..79....34..6..4..9
+Result: 632841795784593261591627348315479826467182953928365417843916572179258634256734189
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1cc1f09
+Quest: ..57.....92.5....6.84..9....4.......1....7.63....8.7......2..1.452.6..........8..
+Result: 615732948923548176784619532547396281198257463236184759879423615452861397361975824
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@4a4e31
+Quest: 6.57....892.54..76.846.9....4..96..11..2.746323..8.7......2..1.452.61.........8..
+Result: 615732948923548176784619532547396281198257463236184759879423615452861397361975824
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@18aeabe
+Quest: 4..1...82.6.87...4...4...75.....5..6..9...7..6..7.....79...1...1...28.5.84...7..3
+Result: 473159682561872394928436175317295846259684731684713529795341268136928457842567913
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@fa385
+Quest: 4..1...82.6.87...4..84...75...2.5..6..9...7..6..7.3...79...12..1...28.5.84...7..3
+Result: 473159682561872394928436175317295846259684731684713529795341268136928457842567913
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@a30a4e
+Quest: .5......9..4....328....5....9.1....6.21.9.....6......5..9....2.........1..2.8..94
+Result: 257314869914867532836925147495138276721596483368472915149753628683249751572681394
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@934c3b
+Quest: .21...4.79..62...........5.61....53...7.......3......1..28..9.4..61.....7...9.8..
+Result: 321958467975624183468731259619472538587319642234586791152863974896147325743295816
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@194363b
+Quest: .21...4.79..62......8....5.61....53..87...6.223......11.286.9.4.961....57..29.8.6
+Result: 321958467975624183468731259619472538587319642234586791152863974896147325743295816
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@17360be
+Quest: ..63.....95...43..713.....2.7.6....4...7.1...2....8.5.1.....723..28...69.....38..
+Result: 426379185958124376713586492875632914694751238231948657189465723342817569567293841
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@2df
+Quest: ..63.....95...43.6713...4.2.7.6....4...7.1...2....8.5.1.9...7233.28...69.....38..
+Result: 426379185958124376713586492875632914694751238231948657189465723342817569567293841
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@113b44d
+Quest: ..4.178..1.68..4........2......28.3..6..3.5....7.4...2.7........21..4..54..2.1...
+Result: 294517863136892457785463219549128736862739541317645982978356124621984375453271698
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@2b6fc7
+Quest: 28.5.1.....42...1.719....8.......63.12.3.7..8.........8..13.5......2...3.5.6.8..1
+Result: 283571469564289317719463285975812634126347958438956172897134526641725893352698741
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@16affac
+Quest: 28.5.......42...1.7.9....8.......63.1..3.7..8.........8..13.5......2...3.5.6.8..1
+Result: 283571469564289317719463285975812634126347958438956172897134526641725893352698741
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@ec77cb
+Quest: 28.5.1.6...42.9.1.719....8.......63.12.3.7..8.........8.713.5.6....2...3.5.6.8.41
+Result: 283571469564289317719463285975812634126347958438956172897134526641725893352698741
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@4e76b4
+Quest: ....9.2..73....6..2.9....31..45....7..29718..5....81..94....3.6..5....84..3.4....
+Result: 456193278731284659289657431814532967362971845597468123948725316625319784173846592
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@18b70fb
+Quest: ..9.67...8...3...6.1....3.....4..7........4.8.74..82932..9.......8..39..3...4.6..
+Result: 439567821827139546516824379683492715952371468174658293245986137768213954391745682
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@14174f9
+Quest: .7.34....1....2..7...1..52..87..1.....9....8...329.6.5.6...9....3.....46....3.19.
+Result: 275346819148952367396187524587461932629573481413298675864719253931825746752634198
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@d76d1e
+Quest: .7.34....1....2..7...1..52..87..1.....9....8...32..6.5.6...9....3.....46......19.
+Result: 275346819148952367396187524587461932629573481413298675864719253931825746752634198
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@e62a39
+Quest: .7.34...91....2..739.1..52..87..1...6.9....81..32986.5.6...9...9318...46....3.19.
+Result: 275346819148952367396187524587461932629573481413298675864719253931825746752634198
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@dc93be
+Quest: 1.8...7.......9.1.7...318...2..5...73.4.7.5.85...9..2...964...3.5.9.......3...9.5
+Result: 138264759645789312792531846921458637364172598587396421279645183856913274413827965
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@944d4a
+Quest: 1.8..47.......9.1.79.5318...2..5...73.4.7.5.85...9..2...9645.83.5.9.......38..9.5
+Result: 138264759645789312792531846921458637364172598587396421279645183856913274413827965
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@3e59ca
+Quest: ....8...5....4.96.62.1.5......89..2...1....5..3..21....5.......3..9.26.......6..1
+Result: 743689215185243967629175438564897123271364859938521746456718392317952684892436571
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@b800
+Quest: 5.7.....6..3.4.....1...........342......97.4.2..8...17.7...96....9.2.1738...5....
+Result: 547381926923546781618972534785134269136297845294865317372419658459628173861753492
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@13fe849
+Quest: 5.7.....6..3.4.....1...........342......97.4.2..8....7.7....6....9.2.1738...5....
+Result: 547381926923546781618972534785134269136297845294865317372419658459628173861753492
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1ad8690
+Quest: 5.73....6..3.4.....1..7.5..7...3426.....97.4.2..8...17.7...96...59.2.1738...5....
+Result: 547381926923546781618972534785134269136297845294865317372419658459628173861753492
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@6b29e6
+Quest: .....91.21.2..6.79.3..1..5.867.9..25....7....32..5.781.1..2..4.29.3..5.85.39.....
+Result: 675489132142536879938712654867193425451278396329654781716825943294367518583941267
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1a18493
+Quest: ......1.21.2..6.79.3..1..5.8.7.9..25....7....32..5.7.1.1..2..4.29.3..5.85.3......
+Result: 675489132142536879938712654867193425451278396329654781716825943294367518583941267
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@9d3f8b
+Quest: .....91.21.2..6.79.3..12.5.867.9..25.5..7..9.32..5.781.1.82..4.29.3..5.85.39.....
+Result: 675489132142536879938712654867193425451278396329654781716825943294367518583941267
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1f5cc7d
+Quest: .2.3...5...57..4...8...2.135...6..4.2....8.714...2........7...8..3.........5.....
+Result: 621349857395781462784652913538167249269438571417925386956274138143896725872513694
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1479784
+Quest: .95...74....9...5.7.8....2...6..8395...375..6.5.1..2879.7.8...28......7....721.39
+Result: 695832741342917658718456923176248395289375416453169287937584162821693574564721839
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@f472ff
+Quest: .95...74....9...5.7.8....2...6..8395...375..6.5.1..2879.7.8...282.....7....721.39
+Result: 695832741342917658718456923176248395289375416453169287937584162821693574564721839
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@1ff88c3
+Quest: .95.........9...5.7.8....2...6..8.95...37...6.5.1..2..9.7.8...28......7.....21.39
+Result: 695832741342917658718456923176248395289375416453169287937584162821693574564721839
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@1d6e4a4
+Quest: .1..4.673......594.5.7..1..748.....5...2.8...3.....869..2..7.5.573......164.9..8.
+Result: 819542673237681594456739128748963215691258437325174869982417356573826941164395782
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@e785aa
+Quest: .1..4..73......5.4.5.7..1..74......5...2.8...3......69..2..7.5.5.3......16..9..8.
+Result: 819542673237681594456739128748963215691258437325174869982417356573826941164395782
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@125b4d
+Quest: .1..42673..7...59445.7..1.8748.....5...2.8...3.....8699.2..7.56573...9..16439..8.
+Result: 819542673237681594456739128748963215691258437325174869982417356573826941164395782
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@315e08
+Quest: ......214..1.93.....81..9.7..9.31...13.57..8.......1..41.8.....8...195..9.5.....1
+Result: 397685214241793658568142937689431725132576489754928163416857392873219546925364871
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@a450bb
+Quest: ......214..1..3.....8...9.7..9.31...13.57..8..........4..8.....8...195..9.5.....1
+Result: 397685214241793658568142937689431725132576489754928163416857392873219546925364871
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@d95bc3
+Quest: ..6..152.2..6...8...........5..39..8.7.......8...4..3....1..........89.53..764...
+Result: 486971523219653487537482691154239768973816254862547139728195346641328975395764812
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@14e1705
+Quest: ..6..152.2..65..8....4......5..397.897.....5.8...4..3....19.3.6.....89.53..7648..
+Result: 486971523219653487537482691154239768973816254862547139728195346641328975395764812
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1cfa4b2
+Quest: .7..2..8..295...7.4...7......7...9..5..294..3..1...8......3...9.8...543..5..4..2.
+Result: 176429385829513674435678291247381956568294713391756842714832569982165437653947128
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@128d900
+Quest: .7..2..8.8295..67.4...78...2.7...9..5..294..3..1...8.2...83...9.82..5437.5..4..2.
+Result: 176429385829513674435678291247381956568294713391756842714832569982165437653947128
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@17db177
+Quest: 1...3.7..7....58...5........6.....524..........21.437..4...3.......6...8...7..21.
+Result: 124938765739645821658271943861397452473526189592184376245813697917462538386759214
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1b664bb
+Quest: .52..74..1....8.7....19...89..8....4.3..4.......9.5.83..4....3.59..6..........5.2
+Result: 852637419149258376763194258975813624238746195416925783624581937597362841381479562
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@c221d7
+Quest: .52..74..1....8.7....19....9..8......3..4.......9.5.83..4....3.59..6..........5.2
+Result: 852637419149258376763194258975813624238746195416925783624581937597362841381479562
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@ffce21
+Quest: .52..741.1...58.7.7..19...89..8.3..4.3..4......69.5.83..45...3.59..6.84....4..562
+Result: 852637419149258376763194258975813624238746195416925783624581937597362841381479562
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@837311
+Quest: ......43.6.7...1.54...9.......6.17..1..479..2..62.3.......3...17.3...2.6.54......
+Result: 528716439697324185431895627342651798185479362976283514269537841713948256854162973
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1d3ce2c
+Quest: ......43.6.732.1.54...9.6.7...6517..1..479..2..6283...2.9.3...17.3.482.6.54......
+Result: 528716439697324185431895627342651798185479362976283514269537841713948256854162973
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@79e4c
+Quest: .7......5...98.7.68..65.23.6..52..4.4.....8..5.......225.7.....7..2.8............
+Result: 976132485325984716841657239687521943492376851513849672254763198739218564168495327
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1419d0
+Quest: 9.1...2.........84.2...61...3..92........183.8.7.4.....42....1.7.3....26....243..
+Result: 971485263365217984428936157536892741294761835817543692642378519783159426159624378
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@19c5ce6
+Quest: 9.1...2.........84.2...61...3..92........183.8.7.4.....4.....1.7.3.....6....243..
+Result: 971485263365217984428936157536892741294761835817543692642378519783159426159624378
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@197cf78
+Quest: 9.14..2.......7.8442...61..536.92...2.4..183.8.7.4369..423...1.7.3...426....243..
+Result: 971485263365217984428936157536892741294761835817543692642378519783159426159624378
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@d0a12d
+Quest: .....69......8.5...4739.16..9....35.7.36.48.9.15....7..36.1879...1.4......27.....
+Result: 358126947169487523247395168694871352723654819815932674436218795971543286582769431
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@12c7887
+Quest: .....69......8.5...4739.16..9....35.7..6.4..9.15....7..36.1879...1.4......27.....
+Result: 358126947169487523247395168694871352723654819815932674436218795971543286582769431
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1f111ba
+Quest: ..8..69...6..8.5..24739.16..9....35.7.36548.9.15....7..36.18795..1.4..8...27..4..
+Result: 358126947169487523247395168694871352723654819815932674436218795971543286582769431
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@b0f534
+Quest: ......5.6.4....3...7..95.1....6..49.3..94..........7..6...5.1...358.6..7..943..8.
+Result: 913284576548167329276395814851672493367948251492513768684759132135826947729431685
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@f2c499
+Quest: ....231.....71..6.....86..2.19..8.....5.....348.....7....9.7..82.....41.5...6....
+Result: 864523197352719864971486352619378245725194683483652971136947528297835416548261739
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1973271
+Quest: ....231..3.271..6..7..86..2.19..8....25.....348.....71...9.7..82....541.5...617..
+Result: 864523197352719864971486352619378245725194683483652971136947528297835416548261739
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1a2cda9
+Quest: 8.452.....2586.34........8.2......6...62.48...3......4.9........53.8642.....591.3
+Result: 814523796925867341367941582248315967176294835539678214491732658753186429682459173
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1dfacc4
+Quest: 8.452....92586.34........8.24.....6...62.48...3.....14.9........53.86429....591.3
+Result: 814523796925867341367941582248315967176294835539678214491732658753186429682459173
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@13911fe
+Quest: 7..6...4...61.9....32.......24..763....92.7..3...........7.492...3.....8.......7.
+Result: 798652341456139287132478569924817635865923714317546892581764923673291458249385176
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@26312
+Quest: 3.7.......8.4....3.....31.8..374..8..2.6..9...1......4....6.8591.........98....4.
+Result: 367218495581496273249573168953741682824635917716829534432167859175984326698352741
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@161f9da
+Quest: 3.721.4..58.4....3.4...31.8.5374..8.82.6..9..71......4....678591.........98...741
+Result: 367218495581496273249573168953741682824635917716829534432167859175984326698352741
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@7895d8
+Quest: 5...6.2....12....372.....5.2...154.............534...2.6.....949....17....3.9...8
+Result: 538964217691257843724183956276815439349672581815349672167528394982431765453796128
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@190d0d2
+Quest: 5...6.2....12....372.....5.2...154.9.........8.534...2.6.....949....17....3.9...8
+Result: 538964217691257843724183956276815439349672581815349672167528394982431765453796128
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@563d79
+Quest: ..5....6.2..4...3.1....2...4.....6...6..1..9.8.23....5...5....4.4.6..3....81.....
+Result: 785931462296458731134762589419875623563214897872396145627583914941627358358149276
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@f94dad
+Quest: ...7....5.72....8......2..4..73..4.9....241..19......33.....7.6...53....6....9...
+Result: 486713295972465381513892674267381459835924167194657823359248716721536948648179532
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b93cf8
+Quest: 4.67....5.72..5.8......2..4.673..4.9...9241..19.6.7..335.2.871672.53....6..1.9...
+Result: 486713295972465381513892674267381459835924167194657823359248716721536948648179532
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@11fa5f0
+Quest: .34....76.6.3....5..7.9....6...82.5...........8.67...3....2.7..3....8.9.27....51.
+Result: 834215976169347285527896341693182457712534869485679123956421738341758692278963514
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@63b660
+Quest: .3421..76.6.3.7..5..7.9.3.1693.82.5...2.3.8...8.67.1239.6.2.7..3..7.8.9.27..6351.
+Result: 834215976169347285527896341693182457712534869485679123956421738341758692278963514
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@4a25d5
+Quest: 1...3..9...4...1.2.285..3....28.....43..7...............3.....7.8....92..71..9.83
+Result: 156234798394786152728591346512863479439172865867945231943628517685317924271459683
+Unique: true
+Level: sehr schwer
+     mittel de.jdufner.sudoku.solver.service.Solution@1e5d16d
+Quest: 1...3..9.3.4...1.2.285..3....28.3.7.43..7...........3...3.....7.8.3..92..71..9.83
+Result: 156234798394786152728591346512863479439172865867945231943628517685317924271459683
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@1fe7b92
+Quest: .9...........735.46....4..7......1..8.....6..4...1..8...57....8....26....2....79.
+Result: 794165832281973564653284917572698143819342675436517289165739428947826351328451796
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1896415
+Quest: 79..6.8...8..735646.3..4..7......1..81..4267.43..1.28..657....8.4..26....28...796
+Result: 794165832281973564653284917572698143819342675436517289165739428947826351328451796
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1962ecd
+Quest: .5...8.364....3....6951..2.58.......9.......2.......51.9..2634....4....562.8...9.
+Result: 152948736478263519369517824581692473947351682236784951795126348813479265624835197
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1d6d22e
+Quest: ..8...5..5...1..89.4...537...21.....8...37....3.8....1.1537..9......2..83........
+Result: 678923514523714689149685372752149863861237945934856721215378496497562138386491257
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1115340
+Quest: 6.2.5.....1..67...59.1...67.856.31....7..195.1..59..7.7...4..9....718..4.6...5..1
+Result: 672859413413267589598134267985673142237481956146592378721346895359718624864925731
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@163c05b
+Quest: 6.2.5....41..6758.5981...67.856.31...37.8195.1..59..7.7...4..9....718..4.6...5..1
+Result: 672859413413267589598134267985673142237481956146592378721346895359718624864925731
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@fcc426
+Quest: 6.2.......1.......59.....67..56.31....7..19.....59..7.7......9......8..4.6...5..1
+Result: 672859413413267589598134267985673142237481956146592378721346895359718624864925731
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@106856d
+Quest: ....6.3.7....8.4.9...7..5..68...4..1.1.678.3.7..3...28..2..7...1.7.3....8.6.2....
+Result: 524961387371582469968743512683294751215678934749315628432157896197836245856429173
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@19fc023
+Quest: ....6.3.7....8.4.9..87..5..68...4..1.1.678.3.7..3...28..2..78..1.7.3....8.6.2....
+Result: 524961387371582469968743512683294751215678934749315628432157896197836245856429173
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@3af4b3
+Quest: ...4..2...382...9...9...5...4......3...9...2.9...7.84......6..9....9.754....53.8.
+Result: 517439268638215497429687531146528973873964125952371846285746319361892754794153682
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@134525e
+Quest: .26...5.4...5..2....9..8.31...8.2.....4.9..2.3..641..8.....7....634....9....36.1.
+Result: 726319584831564297459278631617852943584793126392641758945187362163425879278936415
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@17dae59
+Quest: .26...5.4...5..2....9..8.31...8.2.....4.9..2.3..64...8.....7....634....9....3..1.
+Result: 726319584831564297459278631617852943584793126392641758945187362163425879278936415
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@93b16c
+Quest: .263..5.4...5..2....9..8.316..8.294...4.9..2.3..641..8.....7.6.1634.5..92..936.1.
+Result: 726319584831564297459278631617852943584793126392641758945187362163425879278936415
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@c0d2d3
+Quest: 7.9..2.5....5.8.7....9...2....8....36.1.3.2.88....9....9...3....2.6.7....8.2..6.1
+Result: 719342856264518379358976124975821463641735298832469517496153782123687945587294631
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@b07669
+Quest: 7.9..2.5.2..5.8.7..5897..2....82...36.17352.88...69....9..5378..2.6.7..5.8.2..6.1
+Result: 719342856264518379358976124975821463641735298832469517496153782123687945587294631
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@4640e6
+Quest: ......16..8.1....5....65..9.9..1.2.81........36...8....1..9..3.8.5..3..1..4.5....
+Result: 543987162689132745721465389497316258158249673362578914216894537875623491934751826
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@a5b597
+Quest: ....6.1.3..3.4..2...4....8....9....86...7.....7.42..1..1.2..6....5.......4.....75
+Result: 987562143153748926264391587432915768691873452578426319819257634725634891346189275
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1af7aa
+Quest: ....6.1.3..3.4..2...4..1.8..3.9.57.86...7...2.7.42..1..1.25.6..7.5....9..46....75
+Result: 987562143153748926264391587432915768691873452578426319819257634725634891346189275
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1fc719b
+Quest: 9....4..2....65..47.51.2..6..8....7...23.85...9....2..2..9.16.56..25....8..6....1
+Result: 986734152321865794745192836168529473472318569593476218237981645614253987859647321
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1318953
+Quest: 9....4..2.....5..47.51.2..6..8....7...23.85...9....2..2..9.16.56..2.....8..6....1
+Result: 986734152321865794745192836168529473472318569593476218237981645614253987859647321
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@c2b8eb
+Quest: 9....41.2...865..47.51.2..6..8....7...23.85...9....2..2..9.16.56..253...8.96....1
+Result: 986734152321865794745192836168529473472318569593476218237981645614253987859647321
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@a62840
+Quest: .176..3.9.3...1..44.....7.8...37..........46..8.1....7....26..3.7....8...2..3.1..
+Result: 817642359935781624462953718691374285753298461284165937149826573376519842528437196
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@122cbaf
+Quest: .....24...2195...........5.....7.....6...5...3...9.81.87.....9.6.57.......9.4.6.1
+Result: 756812439421953768983467152598174326162385947347296815874621593615739284239548671
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@99de83
+Quest: .5...24...2195...8.8...7.52....7.....6.3.5...34.29.81.8746...9.6157.9.8...9.48671
+Result: 756812439421953768983467152598174326162385947347296815874621593615739284239548671
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1ee33f3
+Quest: ...1.4...9......8...5..94..36...5.4...48.69...5.9...71..16..5...9......6...3.8...
+Result: 673184259942567183185239467369715842714826935258943671431672598897451326526398714
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1afcfd4
+Quest: ...1.4.5.9......8.1.5..94.736...5.4...48.69...5.9...714.16..5.8.9......6.2.3.8...
+Result: 673184259942567183185239467369715842714826935258943671431672598897451326526398714
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1563a3d
+Quest: 5...........79......92..35..1........6..47.29.923....11.463...2....2.5...2....1..
+Result: 541863297236795418789214356417982635365147829892356741154638972978421563623579184
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@175deb1
+Quest: .....4.8...13..7....9.76..3...6.3....38.5.6.9......1...92......6......758...9....
+Result: 763924581421385796589176423947613258138752649256849137392567814614238975875491362
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1faa3c5
+Quest: .....4.8..213..7...89176..394.6.3..8138.5.6.9....491..3925.....6......758...9....
+Result: 763924581421385796589176423947613258138752649256849137392567814614238975875491362
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1add353
+Quest: ..5.8.1.2..86.24.......7..35....63.1.........1.29....49..3.......31.92..4.1.7.5..
+Result: 695483172738612495214597683579846321346721958182935764927354816853169247461278539
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@12a123d
+Quest: ..5.8.1.2.386.24.......7..35....63.1.........1.29....49..3.......31.924.4.1.7.5..
+Result: 695483172738612495214597683579846321346721958182935764927354816853169247461278539
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@13c72d
+Quest: 3......6..5....3.1....9.......45.1..54......8.8...1..7..5.6....8....9..36..34.5..
+Result: 398175264752684391164293875973458126541726938286931457435862719827519643619347582
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@6ef76f
+Quest: 9..7..312..4.5...8..3.....7...541.......3...........266........1.74..9..5..1.6...
+Result: 985764312714253698263819547826541739479632851351987426692375184137428965548196273
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@35fbdd
+Quest: 9..7.4312..4.5...8..3.1..47...541.......32......9.7.266....5.8.1.74..9..5..1.6..3
+Result: 985764312714253698263819547826541739479632851351987426692375184137428965548196273
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@174098f
+Quest: 7.......9.3.8.95...58.6....8..5..6..6.14.28.5..5..8..3....8.36...71.3.9.3.......4
+Result: 726351489134879526958264731843597612691432875275618943412985367567143298389726154
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@de9738
+Quest: 7.......9.3.8.95...58.6....8..5..6....14.28....5..8..3....8.36...71.3.9.3.......4
+Result: 726351489134879526958264731843597612691432875275618943412985367567143298389726154
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@19bba3
+Quest: 726.....9.3.8.95...58.6....8..5..6..6.14.28.5..5..8..3....8.36...71.3.9.3.....154
+Result: 726351489134879526958264731843597612691432875275618943412985367567143298389726154
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@7abf66
+Quest: ....4..5....7.....6....59.......4.8773.2......5.........5...7....48....2....9.365
+Result: 173942856589716423642385971291534687738269514456178239915623748364857192827491365
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@67fb9f
+Quest: .......21.....3.....5.....8..2.6...7..3..745.5..9.4......73.....7...82...6.5.9.3.
+Result: 789456321126873549435291678842365917693187452517924863954732186371648295268519734
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@e9d39c
+Quest: ...4.6.21..6..3...4.5...678..2.6...7.93..745.5..9.4.63.5.732..637...82..26.5.9.3.
+Result: 789456321126873549435291678842365917693187452517924863954732186371648295268519734
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1836525
+Quest: .4...3.95.6...9.87....7.6..9285...7....9.1....1...8539..2.9....47.3...6.59.2...4.
+Result: 147863295263159487859472613928536174735941826614728539382694751471385962596217348
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1c8092a
+Quest: .....3.95.6...9.87....7.6..9285...7....9.1....1...8539..2.9....47.3...6.59.2.....
+Result: 147863295263159487859472613928536174735941826614728539382694751471385962596217348
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@834c87
+Quest: .4...3.95.6...9.87....7.6..9285..17.7..9.1..6.14..8539..2.9....47.3...6.59.2...4.
+Result: 147863295263159487859472613928536174735941826614728539382694751471385962596217348
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@196a6ac
+Quest: ...6.7...12.3.....7...5.91.2..7.......9..45.7...19.4..9.5.....4......7.9....4....
+Result: 598617243124389675736452918243765891619824537857193462965271384481536729372948156
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@17d0e70
+Quest: .....9....917.2..8.....45..3..8.5..64.......516......29...731..23....6.........7.
+Result: 748569321591732468623184597372845916489621735165397842956273184237418659814956273
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1f948b1
+Quest: .....9....9.7.2..8.....45..3..8.5..64.......516......29...731..23....6.........7.
+Result: 748569321591732468623184597372845916489621735165397842956273184237418659814956273
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@272454
+Quest: .....9....917.2..8...1.45973.28.5..64.......516..9...29...731..23....6........27.
+Result: 748569321591732468623184597372845916489621735165397842956273184237418659814956273
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@12130d1
+Quest: ..51.7.3.9.....5...6.5......4...39856.......45839...6......5.1...2.....8.3.7.24..
+Result: 825147639974836521361529847247613985619258374583974162796485213452361798138792456
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@a21ac2
+Quest: .251.7.3.9.....5..36.5......4...398561.....745839...6......5.13..2.....8.3.7.245.
+Result: 825147639974836521361529847247613985619258374583974162796485213452361798138792456
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@aafcb8
+Quest: ......1.6..184.9....3.....5.457.981..9.5.....3....1.9....15.4..8..3...5..1.9.....
+Result: 457293186621845937983617245245769813198532674376481592732158469869324751514976328
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@190d40e
+Quest: ......1.6...84.9....3.....5.457.98...9.5.....3....1.9....15.4..8..3...5..1.9.....
+Result: 457293186621845937983617245245769813198532674376481592732158469869324751514976328
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@19ab1bf
+Quest: .39.....8...5..26.6.2...1..9...5.6.......2..7.5.6...2....8.......49...313..7.1.8.
+Result: 539216478841579263672438195928357614463192857157684329715823946284965731396741582
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@10faed3
+Quest: 539.....8...5.926.672...1..9...5.6.......2..7.5.6...2....8...4...49...313..741.8.
+Result: 539216478841579263672438195928357614463192857157684329715823946284965731396741582
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@b3c884
+Quest: ..9...65.8..97...34.......9.9...4.8...62.75...4.3...7.3.......56...38..2.57...3..
+Result: 239841657861975423475623819793154286186297534542386971328769145614538792957412368
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@15ed323
+Quest: ..9...65.8..97...34.......979...4.8...62.75...4.3...713.......56...38..2.57...3..
+Result: 239841657861975423475623819793154286186297534542386971328769145614538792957412368
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@127868b
+Quest: ..4..631.....7......23.56..68...3..23..6.1.......2...........4..7.....35.6..4.2..
+Result: 754296318136874529892315674687453192329681457541729863215938746478162935963547281
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@7958ef
+Quest: .5....1.......1..616.2...3.57981....61.....8.23..9.5..7..5..26.8.612....3.56.97.1
+Result: 453968172982371456167245839579813624614752983238496517791534268846127395325689741
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@d5146d
+Quest: .5....1.......1..6.6.2...3..798.....61.....8.2...9.5..7..5...6.8...2......5..97.1
+Result: 453968172982371456167245839579813624614752983238496517791534268846127395325689741
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@12cf9bd
+Quest: .53...1..9...71..616.2...3.57981....61....98.23..9.5..7.15..26.8.612....3256.97.1
+Result: 453968172982371456167245839579813624614752983238496517791534268846127395325689741
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@1eae6fb
+Quest: .5....1.......1..616.2...3.57981....61.....8.23..9.5..7..5...6.8.612....3.56.97.1
+Result: 453968172982371456167245839579813624614752983238496517791534268846127395325689741
+Unique: true
+Level: mittel
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1a23b84
+Quest: .2..15..4.8......93.4.9.......4..8.5..65.82..5.8..1.......8.1.29......4.8..76..5.
+Result: 629815374187643529354297681231476895496538217578921436745389162963152748812764953
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@969e08
+Quest: .2..15..4.8.....293.4.9.......4.68.5..65.82..5.89.1.......8.1.296.....4.8..76..5.
+Result: 629815374187643529354297681231476895496538217578921436745389162963152748812764953
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@b4361a
+Quest: .51.....7..24.........7.3..3.....12...71.483.........5.....8.5.4...1.7..1..6.54..
+Result: 851396247732481569649572318386957124597124836214863975923748651465219783178635492
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1a34e31
+Quest: 6.93...7....7.2.8.....4659.1...783...32........72...6.56..............1..984....5
+Result: 629385471415792683783146592156978324832614957947253168561837249374529816298461735
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@27a30c
+Quest: 6.93...7..1.7.2.8.7...4659.1...7832..326.......72..16.56..............1..984....5
+Result: 629385471415792683783146592156978324832614957947253168561837249374529816298461735
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@d34b8c
+Quest: ..53..8.43..6...2..18.4.....3..69..88.......61..23..4.....7.16..8...6..36.3..45..
+Result: 265391874374685921918742635437169258892457316156238749549873162781526493623914587
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b3a5eb
+Quest: ..53..8.437.6...2.918.4.6...37.69..88.2...3.61..23.74...9.7.162.8...6.936.3..45..
+Result: 265391874374685921918742635437169258892457316156238749549873162781526493623914587
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@e1fa50
+Quest: ..53..8.43..6...2...8.4.....3..69..88.......61..23..4.....7.1...8...6..36.3..45..
+Result: 265391874374685921918742635437169258892457316156238749549873162781526493623914587
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@1426075
+Quest: ....1..9.94....1....7......7...36..24..7.93.1..24......2...4.57.........51....94.
+Result: 265813794943657128187942635791536482458729361632481579329164857874395216516278943
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@11e7af3
+Quest: .8.53.1.9...6.....6.27......24...7.3.......86......29.8...9...........45.3.1....7
+Result: 487532169359618472612749358524986713793421586168375294845297631271863945936154827
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@325087
+Quest: .8..3.1.9...6.....6.27......24...7.3.......86......29.8...9...........45.3.1....7
+Result: 487532169359618472612749358524986713793421586168375294845297631271863945936154827
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@5ebd39
+Quest: .8.53.169...6...7.6.27......24...7.3.......86..8...29.8...9...........4593.1....7
+Result: 487532169359618472612749358524986713793421586168375294845297631271863945936154827
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@103c25f
+Quest: .2..3..1....17.829...6.2..3..2..1.35...786...19.2..4..5..3.8...348.17....7..6..8.
+Result: 725839614634175829981642573862491735453786192197253468516328947348917256279564381
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@171d691
+Quest: .2..3..1.....7.829...6.2..3..2..1..5...786...1..2..4..5..3.8...348.1.....7..6..8.
+Result: 725839614634175829981642573862491735453786192197253468516328947348917256279564381
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@44f218
+Quest: .2..3..1.6..17.829...6.2..3..2..1.35...786...19.2..4..5..3.8...348.17..6.7..6..8.
+Result: 725839614634175829981642573862491735453786192197253468516328947348917256279564381
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@bf1775
+Quest: .9.76........2....5.8....2.7....5....89..6..5.5....486......2.48....91.....4.7.5.
+Result: 392768541417523698568194327746815932289346715153972486935681274874259163621437859
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@13ac592
+Quest: ...8471....1.3.....2.............7...4..8..5.8.3...9.2.....9..6..7...3.56.83.2...
+Result: 569847123781236594324591867156924738942783651873615942435179286297468315618352479
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@7a73aa
+Quest: ..9847123..1.3.....2.............7..942.8..5.8.3...9.2.3...9..6..7...3.56.83.2...
+Result: 569847123781236594324591867156924738942783651873615942435179286297468315618352479
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@31f737
+Quest: .7265....4..9.7..2.....4.9....29.6.8.........3.4.61....3.1.....1..4.9..7....7621.
+Result: 972658134463917582518324796751293648296845371384761925637182459125439867849576213
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b8dc93
+Quest: .7265..344..9.7.82...3.4.9....29.6.8...8.5...3.4.61....3.1.2...12.4.9..784..7621.
+Result: 972658134463917582518324796751293648296845371384761925637182459125439867849576213
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1387985
+Quest: ...5....6.....34..7......1.57.3.1.....1.9.6...9..4...3......3.21....4.....4.6.7..
+Result: 412579836659813427783426519576381294341297685298645173967158342125734968834962751
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@da431b
+Quest: .581...9...49..7...29.7.3..4.3.1..5.1.....43.....6...9..6....8.......5..2...5...3
+Result: 758136294314982765629475318493217856162598437875364129536741982987623541241859673
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@bd327b
+Quest: .581...9...49..7.5.29.7.3.84.3.1..5.1.....43.....6.1.9..6....8....62.5..2.1.5.6.3
+Result: 758136294314982765629475318493217856162598437875364129536741982987623541241859673
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@16e5f3e
+Quest: ..1...2...3..7.1..94..28.....67...5.1..6.4..9.9...56.....34..72..3.6..1...7...9..
+Result: 671593248832476195945128367326789451158634729794215683569341872283967514417852936
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@6aa50f
+Quest: ..1...2...32.7.1..94..28.....67...5.1..6.4..9.9...56.....34..72..3.6.51...7...9..
+Result: 671593248832476195945128367326789451158634729794215683569341872283967514417852936
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@af8eaa
+Quest: .75...1.....5..6.2.......8.6.........3..9..21.9..127.8.21.7.......68....86...1..7
+Result: 275863194183549672946127385612758943738496521594312768421975836357684219869231457
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1c79148
+Quest: 2.15.....3486...5.6...2....9..3.6..14.....2...3.74.6......7.1...1.....6....9....8
+Result: 271534896348619752659827314982356471467198235135742689896475123514283967723961548
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@d37bd8
+Quest: 2.15.....3486...5.6...2....9..3.6..146....2...3.74.6......7.1...1..8..67...9...48
+Result: 271534896348619752659827314982356471467198235135742689896475123514283967723961548
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@acca00
+Quest: ...74.....29.5....45.3.96....5....41..1...2..98....5....69.4.58....6.73.....13...
+Result: 163748925729156384458329617375692841641587293982431576236974158814265739597813462
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1d484c3
+Quest: ...74.....29.5....45.3.96....5....41..1.8.2..98....5....69.4.58....6.73.....13...
+Result: 163748925729156384458329617375692841641587293982431576236974158814265739597813462
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@8fbf0e
+Quest: 7...1.5.....3......8...9.31.3.........5.7.81.8......93......2.5...7.83.6..756....
+Result: 793416528251387964684259731136892457945673812872145693468931275519728346327564189
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@e4b3b8
+Quest: 1..3.7....87..4.6.9..5....1...23.594.....8....5..7.3..27..4......1.....9........3
+Result: 125367948387194265964582731718236594432958617659471382273849156541623879896715423
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@127bd04
+Quest: 1..3.7....87..426.9..5....1..823.594....58....5..7.3..27.84......1.....9........3
+Result: 125367948387194265964582731718236594432958617659471382273849156541623879896715423
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@47668
+Quest: .4..6.2.82..4.......8...3.5......8..12.8.5.74..3......8.7...6.......7..23.2.1..9.
+Result: 749563218235481769618972345974126853126835974583749126897254631461397582352618497
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@19b0d0
+Quest: .4..6.2.82..4..7....8...3.5......8..12.8.5.74..3......8.7...6....1..7..23.2.1..9.
+Result: 749563218235481769618972345974126853126835974583749126897254631461397582352618497
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1be7ff5
+Quest: ..428...5.51...2.........4.9.5............4...6.945........6.71..94.15....8..7...
+Result: 794283165351764298286519347945172836127638459863945712432856971679421583518397624
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@3c4542
+Quest: .5.93.1.8...5.2.6.........7......3.4...12.9....9..52..342.6.7..8..2.....6...9....
+Result: 456937128173582469928416537281679354534128976769345281342861795897254613615793842
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1091857
+Quest: .5.93.1.8...5.2.6.9......37......3.4...12.97...9.45281342.6179.8..2.....6..79...2
+Result: 456937128173582469928416537281679354534128976769345281342861795897254613615793842
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@4734b7
+Quest: 3.2.5.6...1..3...9468..2..3...6....7...4.5...7....3...2..3..9141...2..3...9.4.2.5
+Result: 392754681517836429468912573924681357683475192751293846275368914146529738839147265
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@607cd0
+Quest: ..2.5.6...1..3...9468..2..3...6....7...4.5...7....3...2..3..9141...2..3...9.4.2..
+Result: 392754681517836429468912573924681357683475192751293846275368914146529738839147265
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@887b6
+Quest: 3.2.5.6...1..3...9468..2..3...68...7.8.4.5.9.7...93...2..3..9141...2..3...9.4.2.5
+Result: 392754681517836429468912573924681357683475192751293846275368914146529738839147265
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1edaf0e
+Quest: 8..9.5....9....4.7.64..8...3.9.........1...64...8..97....47.....83..9........159.
+Result: 837945621591632487264718359349267815758193264612854973925476138183529746476381592
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@157bbd4
+Quest: .....3..7...5.71.8..8..1....3...2...524..8..11.7...4...6.....139...1.62.......9.5
+Result: 619283547342567198758491236836142759524978361197356482465729813973815624281634975
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1a701c9
+Quest: .....3..7...5.71.8..8.......3...2...524..8..11.....4...6......39...1.62.......9.5
+Result: 619283547342567198758491236836142759524978361197356482465729813973815624281634975
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@567b79
+Quest: ..9.83..7..25.71.8758..12...3...2...524..83.11.73..4.2.6....813973.1.62.......9.5
+Result: 619283547342567198758491236836142759524978361197356482465729813973815624281634975
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@4578e0
+Quest: .1..4....2.39.1....4.2.....8...6.4..46.1.7.29..1.2...5.....4.5....8.53.2....1..9.
+Result: 519746283273981564648253917827569431465137829931428675782394156196875342354612798
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1819341
+Quest: .1..4...32.39.1....4.2.....8...6.4..46.1.7.29..1.2...5.....4.5....8.53.23...1..9.
+Result: 519746283273981564648253917827569431465137829931428675782394156196875342354612798
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@583a4e
+Quest: .1...5.6..2..9......9416.2....8..1...4...12...91..4..6.......1..3..8.649...6....8
+Result: 418275963627398451359416827765832194843961275291754386986543712532187649174629538
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@11a5d31
+Quest: .3..9..5.9.......7.41...39......4..5..82...3....51..6.5..3...4.....7.2...8..4..1.
+Result: 837492651965831427241756398623984175158267934479513862516328749394175286782649513
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1f82bf8
+Quest: .3..92.5.9.....4.7.41...398.....4..5..826..3....51..625..32..49....752...82.49.1.
+Result: 837492651965831427241756398623984175158267934479513862516328749394175286782649513
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@499eb5
+Quest: 3.654......8.6.7.24...18....4.....8.261...359.8.....2....65...38.2.7.5......912.4
+Result: 326547918158369742479218635543926187261784359987135426714652893892473561635891274
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1f61628
+Quest: 32654......8.6.7.24..218.3..43....8.261.8.359.8....42..1.652..38.2.7.5......91274
+Result: 326547918158369742479218635543926187261784359987135426714652893892473561635891274
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@9920f6
+Quest: .....2..33.......42..6....7..942.......7.9...58.....2...3.9.4.2....48....7....3..
+Result: 147852963356971284298634157719425836632789541584163729863597412921348675475216398
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@124212
+Quest: 4...83.....39.7.4.9....5.7...7....8..3...29...5..3...1..28.....5.......2.86..159.
+Result: 475183629823967145961245378147596283638412957259738461392854716514679832786321594
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@96df09
+Quest: 4..........39.7.4.9....5.7...7....8..3...29...5..3...1...8.....5.......2.86..159.
+Result: 475183629823967145961245378147596283638412957259738461392854716514679832786321594
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@f02bee
+Quest: 475.83.2.8.39.7.4.9..2.5.7...7....8..3...29.7.59.3...1..285....5.4.....2.86.2159.
+Result: 475183629823967145961245378147596283638412957259738461392854716514679832786321594
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@7b8f42
+Quest: 4...8......39.7.4.9....5.7...7....8..3...29...5..3...1...8.....5.......2.86..159.
+Result: 475183629823967145961245378147596283638412957259738461392854716514679832786321594
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@eff0c
+Quest: ......5...5.1..43....23...18...9..4...34.62...9..8...37...64....39..1.2...6......
+Result: 318649572952178436647235891861392745573416289294587163725964318439851627186723954
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@d5ba3a
+Quest: ......5...5217.436...23...18...9..4.5734.6289.9..8...37...64...439.5162...6......
+Result: 318649572952178436647235891861392745573416289294587163725964318439851627186723954
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@c6b7f6
+Quest: 5..9..3....6........9.5.6849....4..5....7.....4..38.7....6..8.......1...48.....5.
+Result: 524986317836417592719352684978164235153279468642538179397645821265891743481723956
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@15abe01
+Quest: .7..9...315..4.9..8...2.7...13...........2.......68.9.4..2...86..148..5....6..47.
+Result: 274895613156743928839126745913574862648912537725368194497251386361487259582639471
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@10b589d
+Quest: .7..9...31...4.9..8...2.7...13...........2.......68.9.4......86..148..5....6..47.
+Result: 274895613156743928839126745913574862648912537725368194497251386361487259582639471
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1ba658a
+Quest: .7..9.6.315..4.9288...2.7...13...........2.3....36819.4972.1.86.6148..59...6..47.
+Result: 274895613156743928839126745913574862648912537725368194497251386361487259582639471
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@a937ae
+Quest: 9.....8...261...39.3..82......4..5..67..3..84..2..8......29..7.28...634...7.....5
+Result: 914367852826145739735982416398421567671539284542678193153294678289756341467813925
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@199e02a
+Quest: 9.....8.2.261..739.3.982......4..5..67..3..84..2..8......294.7.289..634.4.7.....5
+Result: 914367852826145739735982416398421567671539284542678193153294678289756341467813925
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@fc30b8
+Quest: ....6.7.56..........17.9.4...4..1...57......6..3....5.....5.3..84.3..1....9..4.6.
+Result: 492168735687435921351729648964581273578293416123647859716952384845376192239814567
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@845f64
+Quest: 74......86.....2...8..7......2.5..3.49...27..8.3..69.....5.7..9.6.8.9..1..4.....7
+Result: 749263158635198274281475693172954836496382715853716942318527469567849321924631587
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@be5303
+Quest: 74......86.....2...8..7......2.5..3.496.827..8.3..69.....5.7..9.6.8.9..1.24.....7
+Result: 749263158635198274281475693172954836496382715853716942318527469567849321924631587
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@5dc52
+Quest: 74......8......2...8..7......2.5..3.49...27..8.3..69.....5......6.8.9..1..4.....7
+Result: 749263158635198274281475693172954836496382715853716942318527469567849321924631587
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@cca280
+Quest: .8..2.....1...4.6...59....7.61..53...723.815...81..79.1....38...9.8...3.....5..4.
+Result: 389627415217584963645931287961475328472398156538162794156243879794816532823759641
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@182e8c2
+Quest: .8..27....1...4.6..459....7.61..53...723.815...81..79.1....387..9.8...3....75..4.
+Result: 389627415217584963645931287961475328472398156538162794156243879794816532823759641
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@5e0651
+Quest: ........7.2..1.84..94.3...28..5..21..1.......3......84.....8.3...1...9....924....
+Result: 168452397723916845594837162847563219912784653356129784275698431481375926639241578
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1461829
+Quest: .1......93..2.....8.....34.......2...4.1...8.9.2..85....63.5.......96..7.5.....1.
+Result: 614853729395274168827961345168539274543127986972648531786315492231496857459782613
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@af7fab
+Quest: .1......93..27..688....134.......2...4.1...8.9.2.485....63.54...3..96.57.5.....1.
+Result: 614853729395274168827961345168539274543127986972648531786315492231496857459782613
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1aa994e
+Quest: ..51.8.7...8..73...1.2..6...4.95....5.......9....71.5...1..9.3...97..5...2.5.67..
+Result: 435168972268497315917235684143952867576384129892671453751849236689723541324516798
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@c26e4a
+Quest: ..51.8.7...8..73...1.2.56.414.95.8..5.......9..2.71.537.18.9.3...97..5...2.5.67..
+Result: 435168972268497315917235684143952867576384129892671453751849236689723541324516798
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@e1e74d
+Quest: ..7.4..8346...8.91.............1.....1.5.9..49....48.6..8.....7..34..6........1.8
+Result: 297641583465238791381957462734816925816529374952374816648195237173482659529763148
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1d3d0eb
+Quest: .....7...4...2695..8....4....85...3......3...9..76.....3.8.52.7.5...1....91......
+Result: 529487163417326958386159472168542739275913846943768521634895217852671394791234685
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@e465ea
+Quest: .....7...4.7.2695..8....4....85...3......3...9..76...1.3.8.52.7.5...1....91......
+Result: 529487163417326958386159472168542739275913846943768521634895217852671394791234685
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@14ce931
+Quest: .2...5.1.5....1..861...3.977...1.3...9.....8...2.7...615.8...632..3....1.8.1...5.
+Result: 923785614574961238618243597765418329491632785832579146157824963249356871386197452
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@36e4e
+Quest: 3.5...7..9.1.............28.9...6.....8..3..66...8...1...1392....68...17......8.3
+Result: 385261749921478635764395128593716482148923576672584391857139264436852917219647853
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@c02dac
+Quest: ....9.12825.....7..4..76...93......64...25.9.1...4.......9..2..3....286.....635..
+Result: 673594128259831674841276935932718456487625391165349782516987243394152867728463519
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@a40b04
+Quest: ....9..2825........4..76...93......64...25.9.1...4.......9..2..3.....86.....635..
+Result: 673594128259831674841276935932718456487625391165349782516987243394152867728463519
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@144809c
+Quest: ....9.12825.....7..4..76.3.93......64..625.9.1...49......9..2..3....286.....635..
+Result: 673594128259831674841276935932718456487625391165349782516987243394152867728463519
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1ef90e0
+Quest: .....5.4.9...7..366.4...5.22....7.9....943....9.6....78.6...7.142..3...9.7.5.....
+Result: 317265948952874136684319572248157693761943285593628417836492751425731869179586324
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@62d2ab
+Quest: .1...5.4.9...7..366.4...5.22....7.9....943....9.6....78.6...7.142..3...9.7.5...2.
+Result: 317265948952874136684319572248157693761943285593628417836492751425731869179586324
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@ea3e3c
+Quest: ..4.8319.1.94..2...8.....6.......68..7..1.......7...3...139..2.6................6
+Result: 764283195139465278285971463912534687378619542546728931851396724623147859497852316
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@11dfaf2
+Quest: 7.8.4.3....6......1..5....9..........692....48.......6........3.2...819...46372.5
+Result: 758149362496723518132586479275864931369271854841395726587912643623458197914637285
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@10bc1e
+Quest: 7.8.4.3....67.....1..5....9..........692..8.48.......6........3.2...81979.46372.5
+Result: 758149362496723518132586479275864931369271854841395726587912643623458197914637285
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@9bf1b5
+Quest: 18...4.....2.8...63.6..2.1..21.........2.6.........45..1.7..6.45...4.8.....8...97
+Result: 189364275752189346346572918921458763475236189863917452218795634597643821634821597
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@155df18
+Quest: 18.3.4.....2.8...63.65.2.1..214.......52.61.......745..1.7.56.45...4.8.....8.1.97
+Result: 189364275752189346346572918921458763475236189863917452218795634597643821634821597
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@f03cb9
+Quest: 49..1...3..1.3.8.......5....1...9...52....9.4....56..13............9.2.58..2..1..
+Result: 495812673761934852238675419613429587527183964984756321342561798176398245859247136
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1303a76
+Quest: ........489.....2..4.58.3...2..1.4..5......76671.5......8..6....6..3..9....9...5.
+Result: 235769814896341527147582369329617485584293176671458932958176243462835791713924658
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1fd18
+Quest: .......1489.....2..4.58.3...29.1.4.558..9..76671.5......8.76.4.46..3..91.1.9...5.
+Result: 235769814896341527147582369329617485584293176671458932958176243462835791713924658
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@2ac57c
+Quest: ..4..9..685........2...5.9...1..7365...1.2...4679..2...8.5...3........193..7..4..
+Result: 174389526859621743623475198291847365538162974467953281982514637745236819316798452
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1f11ffc
+Quest: ..4..952685........2...5.9.2918.7365...162...4679.3281.8.5...3........193167..4..
+Result: 174389526859621743623475198291847365538162974467953281982514637745236819316798452
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@866f20
+Quest: 5.47...28...8..7........5.4.....2..17.5.6....4...1......2...48...12.3...8....5...
+Result: 564731928239854716187926534396472851715368249428519367652197483941283675873645192
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1c52256
+Quest: ....624.9....5.........1685.......4.25.9..7....13.8....75.2.....3....9.7.......1.
+Result: 513862479687459321429731685398275146254916738761348592975123864132684957846597213
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@552b48
+Quest: .1.8624.9....5..2..2...1685.......4625.9.67....13.8....75.2..6..3....9.7....9..1.
+Result: 513862479687459321429731685398275146254916738761348592975123864132684957846597213
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@10fd2df
+Quest: 1.5.34......96......45.8....92...4...3.....5...6...83....8.16......97......24.3.8
+Result: 165734982387962145924518763592683471831479256476125839243851697618397524759246318
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@d35e27
+Quest: 1.5.34......96....9245.8....92...4...3.....5...6...83....8.1697....97......24.3.8
+Result: 165734982387962145924518763592683471831479256476125839243851697618397524759246318
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1387e8c
+Quest: .57....6.....8..5.1..4.....4.1...7.......74.3...9...8.....6...8.7.5.4.....581.6..
+Result: 857239164234186957196475832421358796589627413763941285912763548678594321345812679
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@193ccd5
+Quest: 5..74......18..3..46.1.9.7...39..8..6.9...43...5..179..9...7.1....4.......46...8.
+Result: 538746129971825346462139578723954861619278435845361792396587214187492653254613987
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@d2b042
+Quest: 5..74......18..3..46...9.....3...8..6.....43...5..179..9...7.1....4.......46...8.
+Result: 538746129971825346462139578723954861619278435845361792396587214187492653254613987
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@2371c0
+Quest: 5..74......18..3..46.1.9.7...39548..6.9..843...5..1792.9...7.1....4.......46...8.
+Result: 538746129971825346462139578723954861619278435845361792396587214187492653254613987
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b1d085
+Quest: 9............8.5.7.846...1.34..2.8..8.......4..7.5..91.1...493.2.9.6............5
+Result: 952147683163982547784635219341729856895316724627458391516874932239561478478293165
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@cd33b8
+Quest: 7......3...492.1..2..36.7.........1..1.732....9.8....31.....42...2......3...4...9
+Result: 769184532534927186281365794823459617615732948497816253178693425942578361356241879
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1887735
+Quest: ...63....4.....8..57.84.6..64...15......9......3.62.....7....212.9.1..7.8......6.
+Result: 928635147436127859571849632642781593785394216193562784367958421259416378814273965
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@13e7d19
+Quest: ....3....4.....8..57.8..6..64...15......9......3.62.....7....21..9.1..7.8......6.
+Result: 928635147436127859571849632642781593785394216193562784367958421259416378814273965
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@c4b67b
+Quest: ...63....43...78..57.84.6..64...15......9......3.62.8...79...212.941..7.81.....6.
+Result: 928635147436127859571849632642781593785394216193562784367958421259416378814273965
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@19e4725
+Quest: ....3....4.....8..57.84.6..64...15......9......3.62.....7....21..9.1..7.8......6.
+Result: 928635147436127859571849632642781593785394216193562784367958421259416378814273965
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@990e62
+Quest: 6....51..4.128..6....61..298.6.......4.....3.......6.798..57....1..268.3..78....1
+Result: 692375184431289765758614329876531492149762538325498617983157246514926873267843951
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@753711
+Quest: 6....51..4.128..6....61.3298.6.......4.....3.......6.7983.57....1..268.3..78....1
+Result: 692375184431289765758614329876531492149762538325498617983157246514926873267843951
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@2cd6c8
+Quest: 6....51..4..28..6....61..298.6.......4.....3.......6.798..57....1..26..3..78....1
+Result: 692375184431289765758614329876531492149762538325498617983157246514926873267843951
+Unique: true
+Level: mittel
+sehr schwer de.jdufner.sudoku.solver.service.Solution@4fda99
+Quest: ...4.....7...315...32...7....3...8....5.1....8...7.4.1.....81.........561...5.3.7
+Result: 591427638748631529632589714413296875975814263826375491359768142287143956164952387
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@6727f0
+Quest: 8.......3..4...8........2.6..3.....271.9.2......8.4......7..45..2..5.....5..697..
+Result: 876245913234691875195387246943576182718932564562814397689723451427158639351469728
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@17a765c
+Quest: 87......3..4...8........2.6..3.7...27189.25.....8.4.....97..45..2..5.....5..697..
+Result: 876245913234691875195387246943576182718932564562814397689723451427158639351469728
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1229b73
+Quest: .7...1...2..6.719.1..9.4.57.1...6..3..27.94..6..3...2.72.1.8..9.634.2..5...5...6.
+Result: 579821634234657198186934257918246573352719486647385921725168349863492715491573862
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@d1d6ce
+Quest: .7.......2..6..19.1..9.4.57.1...6.....27.94.....3...2.72.1.8..9.63..2..5.......6.
+Result: 579821634234657198186934257918246573352719486647385921725168349863492715491573862
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@912008
+Quest: .79..1...2..6.719.1..9.4.57.1..46..3..27.94..6..38..2.72.1.8..9.634.2..5...5..86.
+Result: 579821634234657198186934257918246573352719486647385921725168349863492715491573862
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@14b3257
+Quest: ..2.1.8....7..52.9.6....54.4....9.5.........7.25....6..14.52.........6.........28
+Result: 542913876187465239369278541471689352936524187825731964614852793298347615753196428
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@8684b1
+Quest: ..5....9..9423.7..7.6..91....7..5.8......4..3...62....8..417..6......4.8.4.8.....
+Result: 325176894194238765786549132467395281912784653538621947859417326673952418241863579
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@11fa1ed
+Quest: .25....9..9423.7..7.6..91....7..5.8....7.4..3...62....8..417..6......4.8.4.8.....
+Result: 325176894194238765786549132467395281912784653538621947859417326673952418241863579
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@1d70cde
+Quest: ..5....9..9.23.7..7.6..91....7....8......4..3...62....8...17..6......4...4.8.....
+Result: 325176894194238765786549132467395281912784653538621947859417326673952418241863579
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@3a57aa
+Quest: .41.2............2.2..1.7.335.7...4....6.9....6...4.814.8.6..2.1............4.39.
+Result: 741523869583976412629418753352781946814659237967234581498367125135892674276145398
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1f41f8f
+Quest: .41.2..6.5.3....12.2..1.7.335.7...4.8.46.92.7.6...4.814.8.6..2.13....6.4.7..4.39.
+Result: 741523869583976412629418753352781946814659237967234581498367125135892674276145398
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@68be28
+Quest: .2.9...7.......95....451..........2..1...67.5..52.9...1..8......96.42....42.....1
+Result: 524968173681723954937451286378514629219386745465279318153897462896142537742635891
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@a1fd57
+Quest: ......91..1.56.8...3.4...5..8.2......42..3.......58....5.8.2.6..69.1...5..3......
+Result: 625387914714569823938421657587246391142973586396158472451832769869714235273695148
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@2a8bfb
+Quest: ......91..1.56.8...3.4...5..872......42..3.......58....5.8.2.6..69.1...5..3.9....
+Result: 625387914714569823938421657587246391142973586396158472451832769869714235273695148
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1225d4a
+Quest: ....73.81...2..3..7..1.62...4......88..6.5..72......6...58.1..2..3..7...67.39....
+Result: 524973681961258374738146259346712598819635427257489163495861732183527946672394815
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b50639
+Quest: ....73681...2..3..7..1.62...4......88..635..72......6...58.1..2..3..7...67239....
+Result: 524973681961258374738146259346712598819635427257489163495861732183527946672394815
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@141e734
+Quest: 3..........25.7.4.9...13..66......7...41....913..4...5.....41.....731...79.....3.
+Result: 376492518812567943945813726689325471524178369137649285263984157458731692791256834
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@342475
+Quest: 9...4..1.1.69.5.3..7.63.4.8.......8.......7.9..52.8...7..3...5...9...671.........
+Result: 983742516146985237572631498427196385618453729395278164764319852839524671251867943
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1ed1c32
+Quest: 9..74..1.1.69.5.3..72631498.......8......37.9..52.8..47..3...5.839...671.........
+Result: 983742516146985237572631498427196385618453729395278164764319852839524671251867943
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@9ec948
+Quest: ...69.......7.13.8..8....16..9.761...7.8.9.6...215.7..84....6..6.75.4.......62...
+Result: 134698275256741398798235416589476123371829564462153789843917652627584931915362847
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1fd3e64
+Quest: ...69....2..7.13.8..8..5.16..9.761...7.8.9.6...215.7..84.9..6..6.75.4..1....62...
+Result: 134698275256741398798235416589476123371829564462153789843917652627584931915362847
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@11008e
+Quest: ....6..2.6..5.3.....9...6...936..5...2.....76..67.51...6.9.73.89...26...3.7.5..6.
+Result: 574169823612583497839274615793612584125438976486795132261947358958326741347851269
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@aff016
+Quest: ....6..2....5.3.....9...6...936..5...2.....7...67.51...6...73.8....2....3.7.5..6.
+Result: 574169823612583497839274615793612584125438976486795132261947358958326741347851269
+Unique: true
+Level: sehr schwer
+sehr schwer de.jdufner.sudoku.solver.service.Solution@bd441a
+Quest: .8...5.6.9..37...2.6.........9..83.....1.........3....5...4.9.3.47.6..2.2.......1
+Result: 483215769951376482762489135679528314834197256125634897516842973347961528298753641
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@b84cb8
+Quest: .8..15.699..3764.2.6..8......9.283.....1.........3....51.8429.3.47.6..2.2.......1
+Result: 483215769951376482762489135679528314834197256125634897516842973347961528298753641
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@138fec2
+Quest: .73........86.9....5.7.......613.52..35.7.16..12.964.......5.1....3.47........24.
+Result: 973841652128659374654723891496138527835472169712596438347285916269314785581967243
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@21fdc8
+Quest: .73...6....865937..5.7..8....613.52..35.7.16..12.964....7..5.1..693147....1...24.
+Result: 973841652128659374654723891496138527835472169712596438347285916269314785581967243
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@ab5443
+Quest: 948.....1...........3..58....5.4..9....57.3...9...6.48.8..93....3...8974...1.....
+Result: 948637251652981437173425869315842796864579312297316548486793125531268974729154683
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@184fd7a
+Quest: ..5.1..8..3..486.........9..6.....3928........5.........8..734......1.....13.67.5
+Result: 745619283932548617816732594164275839287193456359864172628957341573421968491386725
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@16072
+Quest: ..561.28..3..486........59..6.....3928......6.5..6......8..734...3..19....13.67.5
+Result: 745619283932548617816732594164275839287193456359864172628957341573421968491386725
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b9e6d7
+Quest: ..129...32....7.14.8..1...2....83...9.......8...15....7...3..8.42.8....65...467..
+Result: 641298573295367814387415692172683945953724168864159237716532489429871356538946721
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@e6f983
+Quest: .....81742......5.....1......2....17.5.........45...2669..412....195..4.....7....
+Result: 563298174218734659749615832982463517356127498174589326697341285821956743435872961
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1e4926a
+Quest: ..4....7......716.....8....2.35..........37..61.9...28.6......14......9...1.3...2
+Result: 124659873389247165756381249273568914948123756615974328867492531432815697591736482
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@85cec8
+Quest: ..4....7......716.7.6.8.2..2.35..9.4..8..37..6159...28.6...25.14......9.591.3...2
+Result: 124659873389247165756381249273568914948123756615974328867492531432815697591736482
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@8f27fc
+Quest: 3.6..2.47.42..6....81.......542.18...7.....1...84.732.......46....1..53.42.6..7.1
+Result: 396852147542716983781349256654231879273598614918467325137925468869174532425683791
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@52d4df
+Quest: .3.97...8.865...23.9......6......2.......8.395..3.......82...9..6...18...12......
+Result: 234976518786514923195823746873149265621758439549362187458237691367491852912685374
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@503aec
+Quest: 5...2..8.431.....22....94......35679..9..2...6......1..67.....814.6.79......4.1..
+Result: 596724381431856792278319456824135679719462835653978214367291548145687923982543167
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@696ece
+Quest: 5...2..8.431......2....94......35.79.....2...6......1...7.....8.4.6.7.......4.1..
+Result: 596724381431856792278319456824135679719462835653978214367291548145687923982543167
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@21f9dd
+Quest: 59..2..8.4318....22....94....4.35679..9..2...6......1..67....4814.6879......431..
+Result: 596724381431856792278319456824135679719462835653978214367291548145687923982543167
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@df479d
+Quest: 1.539.....7..1.4..2.6.........1..5..4..5.3..1..7..4.........9.7..9.5..8.....261.3
+Result: 145397268978612435236845719863179542492563871517284396651438927329751684784926153
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@15aa8f7
+Quest: 1.539...897..1.4..2.6.........1..54.4..5.3..1.17..4.........9.7..9.5..847...261.3
+Result: 145397268978612435236845719863179542492563871517284396651438927329751684784926153
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1eaaf10
+Quest: ..3..........1..491.5...72..12..8...3..2.....7...3..1....5.7..297......5...4....3
+Result: 493762851267815349185349726612978534348251697759634218834597162976123485521486973
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@2661f8
+Quest: ........8.3...15..2.4.6......9.148.38.............5..1.8.6..2.........7...672.3..
+Result: 791532648638491527254867139579214863813976452462385791987653214325148976146729385
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@2fafa2
+Quest: ..1.....8.3...152.2.4.6.1.9..9.148.38.............5..19876..2.........7...672.3.5
+Result: 791532648638491527254867139579214863813976452462385791987653214325148976146729385
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@58b81b
+Quest: 8......9..6..1..3...5.9.6.7.9.4.27......6......69.8.2.6.7.8.9...3..4..1..4......2
+Result: 873526194964817235125394687391452768782163459456978321617285943238749516549631872
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@e53d23
+Quest: 8....6.9..6..1..3...5.9.687.9.4.27......6......69.8.2.617.8.9...3..4..1..4.6....2
+Result: 873526194964817235125394687391452768782163459456978321617285943238749516549631872
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1d2158c
+Quest: .........39........21..69738.9..2....3...9.2..6..3.1..4...9..37.12...89.......2.6
+Result: 678923451394157682521486973849712365135649728267538149486291537712365894953874216
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@96f1cb
+Quest: 8..69...3.4....876.2.1.......2.....4..623.....5.....1.....2...9.......3..8...1...
+Result: 875694123149352876623187945732819564416235798958476312561723489297548631384961257
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1344400
+Quest: 87.69...3.4..52876.2.1..94...2..9..4..623.....5.4...12.6..2...9.......3..8...1..7
+Result: 875694123149352876623187945732819564416235798958476312561723489297548631384961257
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1e8f902
+Quest: ..8.75...2..6..3........654..94...1..32...58..8...34..816........7..1..5...73.8..
+Result: 648375129295614378173928654569487213432196587781253496816549732327861945954732861
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1979163
+Quest: ..8.75...2..6..3........6545.94..21..32...58..81..34.6816........7..1..5...73.8..
+Result: 648375129295614378173928654569487213432196587781253496816549732327861945954732861
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@6abdec
+Quest: 8..9...2....4......3.....41..9.7.3.......8...4.1....9..1...6..72483.......38..4..
+Result: 874961523192435678536782941629174385357698214481523796915246837248357169763819452
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1d2f0cb
+Quest: 6.....4.5.87.4.1......6...........3.1.4...9...56.31...37......8...2.....2.86..79.
+Result: 623198475987345126541762389892574631134826957756931842375419268469287513218653794
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@127ac23
+Quest: 6.....4.5.8734.1......6...........3.1.4...9...56.31.4237.4...68...2..5..2.86..79.
+Result: 623198475987345126541762389892574631134826957756931842375419268469287513218653794
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1e86299
+Quest: .79.624..6.37....5.8........3.4.7....4..2..5....9.5.2........9.7....65.3..615.27.
+Result: 579862431623741985184539762235487619941623857867915324452378196718296543396154278
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@150d9b5
+Quest: ..9.624..6.37....5.8........3...7....4..2..5....9...2........9.7....65.3..615.2..
+Result: 579862431623741985184539762235487619941623857867915324452378196718296543396154278
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@310a07
+Quest: .79.624.16.374...5.8........3.4.7....4..2..5....9.5.2........9.7...965.33.615.27.
+Result: 579862431623741985184539762235487619941623857867915324452378196718296543396154278
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@184cdab
+Quest: .3........1...4.9...57........56..2...73.9.5.4.......3........2....37...29....5.4
+Result: 632958741718624395945713268389561427127349856456872913871495632564237189293186574
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@c2ffbc
+Quest: 62...943..8..4...9....7.....5.16..2...7.8.1........3..96.........4..591..........
+Result: 621859437785341269493276851859163724237584196146792385962418573374625918518937642
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@6720ae
+Quest: 62..5943778..41..9....7.8.1.5.16.72.23758.1.61.....3..96.....73..4..591......7...
+Result: 621859437785341269493276851859163724237584196146792385962418573374625918518937642
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1f4ced8
+Quest: .....96.....8..97.1..24...3..6.3.4..4.1...2.8..8.1.7..3...24..5.52..1.....49.....
+Result: 873159642245863971169247583726538419431796258598412736387624195952371864614985327
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@a91dd9
+Quest: .....96.....86.97.1..24...3..6.3.4..4.1...2.8..8.1.7..3...24..5.52.71.....49.....
+Result: 873159642245863971169247583726538419431796258598412736387624195952371864614985327
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@102ff4
+Quest: ..6.....9...7..3..2...3...64...9.....1...2....7..6...2.62..4.1.........5..5...73.
+Result: 736241589954786321281935476428197653613452897579863142362574918847319265195628734
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1ce5700
+Quest: .6..4..9..1.....3234..9..7.....28.4...8..7.....1..92.5..4.8.......2......7....32.
+Result: 567342891819756432342891576956128743428537619731469285294683157183275964675914328
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@c99912
+Quest: .6..4289..1.....3234..9..7...6.28.4...8..7....31..9285..4.83......2......7....32.
+Result: 567342891819756432342891576956128743428537619731469285294683157183275964675914328
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@19bc5bd
+Quest: .3...71......9.8.7..82.1.5..82....959.53.84.131....28..7.8.25..8.3.5......16...4.
+Result: 239587164156493827748261953482176395965328471317945286674812539893754612521639748
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@19168ba
+Quest: .3...71......9...7...2.1.5...2....95..53.84..31....2...7.8.2...8...5......16...4.
+Result: 239587164156493827748261953482176395965328471317945286674812539893754612521639748
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@62c27b
+Quest: .3.5.71..1...9.8.7..82.1.5..82....959.53.84.131....28..7.8.25..8.3.5...2..16.9.4.
+Result: 239587164156493827748261953482176395965328471317945286674812539893754612521639748
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@ece6e1
+Quest: 53.2.....1.....9...9..71.5...43.......1....6.75..1...3.6..5..........71......6.2.
+Result: 538249671172563984496871352684325197321497568759618243267154839845932716913786425
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@3593ab
+Quest: .6.....8....628.53.7....2....731..9.6........839.....15..8..9......34.....4...5..
+Result: 265973184941628753378145269457312698612489375839756421523861947796534812184297536
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1da30b
+Quest: .6.....8....628753.7....2....731..9.6........839...4.15..8..9..79..34...1.4...5..
+Result: 265973184941628753378145269457312698612489375839756421523861947796534812184297536
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@b3529b
+Quest: .....46...4..6...2.5..13.....18..4277.......1324..18.....64..7.8...2..5...73.....
+Result: 172594683943768512658213749591836427786452931324971865235649178869127354417385296
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1af0a45
+Quest: 1....46...4.76...2.5.213.....18..4277.......1324..18.....649.7.8...27.5...73....6
+Result: 172594683943768512658213749591836427786452931324971865235649178869127354417385296
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@8b168b
+Quest: 8....4..6..9.........73...44..3..17..6....4.9.7.....8..38.67.....64.8.........5..
+Result: 817524396349681257652739814485396172261875439973142685538267941196458723724913568
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1116845
+Quest: 64....8.5.3........91..8............2...347.8.7..9..5.....812.95..9......8..7...6
+Result: 642319875835627914791458362918765423256134798374892651467581239523946187189273546
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@147e045
+Quest: 64....8.583........91.58..2....6....25..347.837..9..5.....812.95..94.....8..7.5.6
+Result: 642319875835627914791458362918765423256134798374892651467581239523946187189273546
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@916e9a
+Quest: ......3.8...6.2.....93..6..9.6..1.7.1..9.8..5.7.5..2.9..7..49.....1.5...8.1......
+Result: 765419328384652197219387654956241873132978465478536219527864931643195782891723546
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@120ba9
+Quest: ......3.8...6.2.....93..6..9.6..1.7.13.9.8.65.7.5..2.9..7..49.....1.5...8.1......
+Result: 765419328384652197219387654956241873132978465478536219527864931643195782891723546
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1c6aa7
+Quest: .4.6.1......4.7..9....9........2...5681........7.....4..4..9.1.1....4.8696...8..2
+Result: 349651728216487359758392641493826175681745293527913864834269517172534986965178432
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@2f1185
+Quest: 1.6.5438...31872.55.8....1..1587..3......6.5....21587.3.752.1.......1.23.6.7.3..8
+Result: 126954387943187265578362419415879632782436951639215874397528146854691723261743598
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@18957f4
+Quest: .....43....318.2..5.8.......1587.........6.5....21....3.752.1.........23.6.7....8
+Result: 126954387943187265578362419415879632782436951639215874397528146854691723261743598
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b64a3a
+Quest: 1.6.5438...31872655.8....19.1587..3..8...6.5....21587.3.75281..8....1.23.617.3..8
+Result: 126954387943187265578362419415879632782436951639215874397528146854691723261743598
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@149544d
+Quest: 8..2.3....5.9..8..216.7....5..72.4.1..8...6..7.4.81..5....6.237..5..2.6....1.7..8
+Result: 849253716357916824216478953563729481198345672724681395981564237475832169632197548
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1ec4ecd
+Quest: 8..2.3....5.9..8..21..7....5...2.4.1..8...6..7.4.8...5....6..37..5..2.6....1.7..8
+Result: 849253716357916824216478953563729481198345672724681395981564237475832169632197548
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1e76187
+Quest: 8..2.3....5.9..82.216.7....5..72.4.1..8...6..7.4.81..5....6.237.75..2.6....1.7..8
+Result: 849253716357916824216478953563729481198345672724681395981564237475832169632197548
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@12c70d2
+Quest: ..98.....3...1..7......268.7..6...2......8......4..16....1....7861..9...2...83...
+Result: 529867341386914572174352689748631925615298734932475168453126897861749253297583416
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@167d438
+Quest: .....7.63..........24.1........514.8.3.29..1........5.2....5...7...2..3..9346...1
+Result: 158947263367582149924613875672351498835294617419876352241735986786129534593468721
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1f647ce
+Quest: ....47.633.7......924.1...5...3514.8.3.29..1..1....3522.1735...7.612..3..9346...1
+Result: 158947263367582149924613875672351498835294617419876352241735986786129534593468721
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@220d1d
+Quest: ..9......53...1.2.21.37....3..956.789.57.32.467.482..3....38.12.9.5...46......7..
+Result: 749265381536891427218374659324956178985713264671482593457638912193527846862149735
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@f5087d
+Quest: ..9.......3...1.2.21..7....3..9.6..8..57.32..6..4.2..3....3..12.9.5...4.......7..
+Result: 749265381536891427218374659324956178985713264671482593457638912193527846862149735
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@d5bd50
+Quest: ..9......536..1.2.21.37....3..956.789.57.32.467.482..3....38.12.9.5..846......7..
+Result: 749265381536891427218374659324956178985713264671482593457638912193527846862149735
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@6a95ae
+Quest: ....7...25.6..1....9.....7...........28.37..53..9.5..1..5..3......69.5....3.5...7
+Result: 431879652576321489892564173759216348128437965364985721985743216217698534643152897
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1733b94
+Quest: ....7...25.6..1....9.....7...........28.37..53..9.5..1.....3......69.5....3.5...7
+Result: 431879652576321489892564173759216348128437965364985721985743216217698534643152897
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@33a21
+Quest: ..23....9.36....7.....5..2.4.5.7.....67...91.329.6.....487....32..4......5.2.8..1
+Result: 582347169136982475794651328415879632867523914329164587948716253271435896653298741
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@59942d
+Quest: ...3....9.36....7.....5..2.4.5.7.....6.....1.329.6......87....32..4......5.2.8..1
+Result: 582347169136982475794651328415879632867523914329164587948716253271435896653298741
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@5fc5fc
+Quest: ..234...9.36....7.....5..2.4.5.7.....67...91.329.6.....487....32..4......5.2.8..1
+Result: 582347169136982475794651328415879632867523914329164587948716253271435896653298741
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@15bb7b7
+Quest: ...6..53.431..9....861......1.7..45...8...9...49..2.6......469....9..714.64..7...
+Result: 297648531431529876586173249312796458658431927749852163175384692823965714964217385
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@353cf
+Quest: ...6..53.431..9....8617.....1.7..45...8...9...49..2.6.....8469....9..714.64..7...
+Result: 297648531431529876586173249312796458658431927749852163175384692823965714964217385
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@487113
+Quest: 8.....3.717.....6....7.21....1....722.76......68.71........752.7....4..132..1.7.8
+Result: 842169357173458269659732184431895672297643815568271493914387526786524931325916748
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@cc420f
+Quest: 8.....3..17.....6......21.........722..6......68.71........752......4..132..1...8
+Result: 842169357173458269659732184431895672297643815568271493914387526786524931325916748
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@10957b1
+Quest: 7.53....93.........6...82.......157.6...8.....3..7........9..2......2..3.286..1..
+Result: 715324869382965741469718235894231576657489312231576984543197628176852493928643157
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@e0286d
+Quest: 7.53.4..938..6.7...6..1823..9...157665..8.....3.576......19..281....2..3.286.31..
+Result: 715324869382965741469718235894231576657489312231576984543197628176852493928643157
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@fc6b85
+Quest: 4...8..2......9.6....2...4...7.34..56.......99..81.2...5...2....8.7......1..5...7
+Result: 493685721872149563561273948127934685648527139935816274754392816389761452216458397
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@27b56f
+Quest: 4..68572..7...956.5..2..948.27.346.56..5.7..99.581.27.754..2..6.897...5..16458..7
+Result: 493685721872149563561273948127934685648527139935816274754392816389761452216458397
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@f82726
+Quest: ....1.7.3...3..2.....9.7.5..9...5.1.2.....3....5.32.9.31..7..6....1...3.....6...4
+Result: 629518743571346289438927651793685412286491375145732896314279568862154937957863124
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@f289ee
+Quest: ..53...28134....579.2.67......27.....4..1.3.5718..52.9..1.987..82...3....9.72..8.
+Result: 675341928134982657982567143563279814249816375718435269451698732827153496396724581
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@10ccdd4
+Quest: ..53...28.........9...67......2......4..1.3.5718..5..9..1.98....2........9.7...8.
+Result: 675341928134982657982567143563279814249816375718435269451698732827153496396724581
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@509e3
+Quest: ..53...28134.8..579.2.67......27.....4..1.3.5718..52.9..1.987..82...3....9.724.8.
+Result: 675341928134982657982567143563279814249816375718435269451698732827153496396724581
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@135ed52
+Quest: .4.......2..7.9....86..1.9..9.6...2...53.81...3...2.7..1.8..73....2.4..6.......4.
+Result: 947586213251739684386421597194657328725348169638192475419865732873214956562973841
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@88e2b8
+Quest: .4.......2..7.9....86..1.9..946...2...53.81...3...247..1.8..73....2.4..6.......4.
+Result: 947586213251739684386421597194657328725348169638192475419865732873214956562973841
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1206174
+Quest: ..35.......6...8.3....49.6.5......8.267.....5......3...8...7.5..25......9..26....
+Result: 793586124456721893812349567539674281267813945148952376384197652625438719971265438
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1225841
+Quest: ....87.9.......65.9..1.4............5384.9..1...3....5.1.9..26.......4..7.2.4...9
+Result: 453687192187293654926154873279518346538469721641372985814935267395726418762841539
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1abd36b
+Quest: ....87.9.......65.9..1.4....7..1....5384.9..1.4.3....5.1.9..26.......4..7.2.4...9
+Result: 453687192187293654926154873279518346538469721641372985814935267395726418762841539
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@3af3cb
+Quest: ....87.........65.9..1.4............538..9..1...3....5.1.9..26.......4..7.2.4...9
+Result: 453687192187293654926154873279518346538469721641372985814935267395726418762841539
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@734beb
+Quest: 46.....9...3..7..4.9...41538...9..3....2.5....2..4...16143...7.5..1..3...3.....18
+Result: 462531897153987624798624153841796235376215489925843761614358972589172346237469518
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@176b58a
+Quest: 4......9...3..7..4.9...41538...9..3....2.5....2..4...16143...7.5..1..3...3......8
+Result: 462531897153987624798624153841796235376215489925843761614358972589172346237469518
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@100187d
+Quest: 46.....9...3..7..4.9...41538...9..3..7.2.5.8..2..4...16143...7.5..1..3...3.....18
+Result: 462531897153987624798624153841796235376215489925843761614358972589172346237469518
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1f54031
+Quest: ...5...9...1..3..2.72...5....7.....51.3...2.7.8.....4..5.9..8......4..2..1.8.2...
+Result: 836524791591783462472196538627438915143659287985217346254961873768345129319872654
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@803533
+Quest: ...6....8.57......8...29.4..2..9.61...9..6573.......82....6.32...8..3...931.7.8..
+Result: 492657138357184269816329745723895614189246573645731982574968321268513497931472856
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@19ade0a
+Quest: ...6....8.57......8...29.4..2....6....9..6573.......82....6.32...8..3...9.1.7....
+Result: 492657138357184269816329745723895614189246573645731982574968321268513497931472856
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@a9038f
+Quest: ...6..1.8.57......8..329.4.72..9.61...9..6573.......82....6.32...8..3..7931.728..
+Result: 492657138357184269816329745723895614189246573645731982574968321268513497931472856
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@165d909
+Quest: .....7.3..352....4..1......628..14..59..4..81..46..925......2..8....675..5.4.....
+Result: 469857132735219864281364597628591473593742681174683925316975248842136759957428316
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@763c81
+Quest: .....7.3..352....42813.....628..147.59..4..81.746..925.....52488....675..5.4.....
+Result: 469857132735219864281364597628591473593742681174683925316975248842136759957428316
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1387200
+Quest: ...2.......63..4..8..54.9...4....29..27.....6.6...8...5..4.......9..63...8...2..5
+Result: 794261538256389471831547962148675293927134856365928714572413689419856327683792145
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1fc84
+Quest: 9..4.....1....68...5....3..5.1..7....7.58...3......6..2.6....4....9.....8...5..1.
+Result: 968435271143276895752891364521367489674589123389142657296713548415928736837654912
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@eeef95
+Quest: 9.84.....14...68..75....3.4521..7.8..7.58...3....4.6.7296....4....9.....8...5..12
+Result: 968435271143276895752891364521367489674589123389142657296713548415928736837654912
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1342088
+Quest: ......13.4.91.....3.8.27.9..9...16..2..3.6..5..79...1..3.27.4.1.....32.7.25......
+Result: 572869134469135728318427596893751642241386975657942813936278451184593267725614389
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b9c85c
+Quest: ..2...13.4.913....3.8.27.9..937.16.22.13869.56.79.281..3.27.4.1....932.7.25...3..
+Result: 572869134469135728318427596893751642241386975657942813936278451184593267725614389
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@7757dd
+Quest: .1.........2.........5..9.6...6.9.....8....23.5..7....5..3....2..92.6.5.6...5.13.
+Result: 315967248962481375487532916143629587798145623256873491571394862839216754624758139
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1ae3e2d
+Quest: ......4....3..6..897...8..26..2..7.1..9..4.........5.3....1.8..3...49.7.4.76.....
+Result: 861592437243176958975438162654283791139754286728961543596317824312849675487625319
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@19df19b
+Quest: .61...4....3..6..897...8.626.42.37.1..9..4.........5.3.96.1.8..3...49.7.4.76.....
+Result: 861592437243176958975438162654283791139754286728961543596317824312849675487625319
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@137d60c
+Quest: .4.59..16.5.....7.....82..48...2.3..5.......8..6.1...91..25.....7.....8.98..41.2.
+Result: 342597816658134972719682534897425361531976248426813759163258497274369185985741623
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@bc2704
+Quest: .4.59..16.5.....7.....82..48...2.3..53.....48..6.1...91..25.....7.....8.98..41.2.
+Result: 342597816658134972719682534897425361531976248426813759163258497274369185985741623
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@12344b
+Quest: 1.3..6..5.9.....7..8..5......9..5..375.........8....1....9..6...3..82....713..8..
+Result: 143796285592148376687253149219875463754631928368429517825917634436582791971364852
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1755d33
+Quest: 9..86...3..7...4..8....5.......3...8......1....674..9..1...73..6.4..2.59......82.
+Result: 921864573567193482843275916792531648458629137136748295215987364684312759379456821
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@9873b7
+Quest: 9...6...3..7...4..8....5.......3...8......1....674..9..1...7...6.4..2.59......82.
+Result: 921864573567193482843275916792531648458629137136748295215987364684312759379456821
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@122914a
+Quest: 9..86...35.7...4..8....5.1.....3.6.8.....91.7..674..9..1...736.6.4.12.59......82.
+Result: 921864573567193482843275916792531648458629137136748295215987364684312759379456821
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1fc8d05
+Quest: 8..5.2....41..3...3......7.9..12.3....47.58....2.98..5.9......3...3..72....2.6..8
+Result: 867542139541973286329861574985124367614735892732698415298417653456389721173256948
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@69be37
+Quest: 8..5.2.3..419.3...3.9....7.9..1243.7..47.58..7.2698..5.9....6.3...3.972..7.2.6..8
+Result: 867542139541973286329861574985124367614735892732698415298417653456389721173256948
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1bfdaa4
+Quest: 81....6..3.28.9..1..9.1...2....78.......2.8.....6.1.2...32..9.64.8..623.6......1.
+Result: 814532679372869451569714382246378195731925864985641723153287946498156237627493518
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1dbfd4d
+Quest: ........81...7....3....5.2..6.....5.2...476.....68.9....9.215..4....9.....24....1
+Result: 954236178128974365376815429867193254291547683543682917789321546415769832632458791
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@df3ac5
+Quest: ....3...81...7.3..3....5.2.86..93.5.2..5476....368.9....9.2154.41...9832..24..791
+Result: 954236178128974365376815429867193254291547683543682917789321546415769832632458791
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@195eb41
+Quest: ...6.928..2.53......9........1.52.63..3...5..45.76.1........7......76.2..643.1...
+Result: 347619285126538947589247631871952463693184572452763198238495716915876324764321859
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@18925ae
+Quest: ...61928..2.53.9..589....3...1.52.63..31.45..45.76.1...3....716..5.76.2..64321...
+Result: 347619285126538947589247631871952463693184572452763198238495716915876324764321859
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@6b868b
+Quest: 12.4.....7.....4.2......19.....6...4.9..1.6....8..7.......5..7....1.6....47.9..5.
+Result: 123489765759631482486725193571963824294518637368247519812354976935176248647892351
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@f9a477
+Quest: .....5.76687...2.9..............9...3.8...6.1..537......4..3.8...3.8..6.....21...
+Result: 431295876687134259592768314246819537378542691915376428764953182123487965859621743
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@16aee36
+Quest: ........4...41.856..1..5.72.76.8...9.........9...4.63.75.1..9..182.97...3........
+Result: 635278194297413856841965372576381249423659781918742635754136928182597463369824517
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@4bffa1
+Quest: .....8..4...41.856..1..5.72.76.8.2.9.........9.8.4.63.75.1..9..182.97...3..8.....
+Result: 635278194297413856841965372576381249423659781918742635754136928182597463369824517
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@16f24cf
+Quest: 8...71.2...3.4.7...9.........2...3...19...........7..89..8..2...3...96...2.3..17.
+Result: 845671923263948751197532846482165397719483562356297418974816235531729684628354179
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1899818
+Quest: 1..5.3......49.1.5..4.........2..4....5.7.......1.8....91...6.8.28.6..7.....3.2.4
+Result: 172583946683497125954612783816259437245376819739148562391724658428965371567831294
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@11f4a9b
+Quest: 1..5.3...6..49.1.59.4.1.......2..4....5.7.......1.8...391...6.8.28.6..71..7.312.4
+Result: 172583946683497125954612783816259437245376819739148562391724658428965371567831294
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@bd33f8
+Quest: ..5..3489......7......462.....6...2..93...81..4...9.....197......7......2863..5..
+Result: 165723489824591763379846251518637924793452816642189375451978632937265148286314597
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@49cda3
+Quest: .65..3489......7.....84625....6...2.793...816.4...9....51978.....7......2863..59.
+Result: 165723489824591763379846251518637924793452816642189375451978632937265148286314597
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@833a14
+Quest: ....62...4.67..8........35..7.6.....3.48.16......3.2.486........1..4.......3...7.
+Result: 138562749456793821297418356971624583324851697685937214862179435713245968549386172
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@e854ec
+Quest: ..634..8.....975.....18.24.14.7..6..2.........39..1..8.......1..8....9.....459...
+Result: 516342789824697531793185246145738692278964153639521478952876314487213965361459827
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1ab7d89
+Quest: ..634..8.....975.....1..24.14.7..6..2.........39..1..8.......1..8..........459...
+Result: 516342789824697531793185246145738692278964153639521478952876314487213965361459827
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@9733fa
+Quest: ..634..8.....975.....18.24.14.7.86..2..9....3.39..1..8....76.1..8....9.....459...
+Result: 516342789824697531793185246145738692278964153639521478952876314487213965361459827
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@2e9626
+Quest: 87...31...6.7.2.3....4...67..837....91.....46....915..39...7....8.1.6.2...69...83
+Result: 872563194469712835531489267658374912917258346243691578394827651785136429126945783
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@b83261
+Quest: 87...31...6...2......4....7..8.7....91.....46....9.5..3....7......1...2...69...83
+Result: 872563194469712835531489267658374912917258346243691578394827651785136429126945783
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@2b8f23
+Quest: 87...31...6.7.2.3....4...67..837..1291.....4624..915..39...7....8.1.6.2...69...83
+Result: 872563194469712835531489267658374912917258346243691578394827651785136429126945783
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@34efbf
+Quest: 9..4...161.3........69....7.6.......3.41.7.....8....49....8463......15.....6....4
+Result: 952478316173265498486913257765849123394127865218536749529784631647391582831652974
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1024134
+Quest: 1.2.76..8.........5.6.3...17......16.8.21..79.51...8..26.3..9..3..72.6.5.....4..2
+Result: 142976358938152764576438291729843516683215479451697823265381947314729685897564132
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1e6a407
+Quest: 1.2.76..8.........5.6.3...17......16.8.21..7..5........6.3..9..3...2.6.5.....4..2
+Result: 142976358938152764576438291729843516683215479451697823265381947314729685897564132
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1a570da
+Quest: 1.2.76..89.....7..5.6.3.2.17......1668.21..79.51..78..26.3..9..3..72.6.5....641.2
+Result: 142976358938152764576438291729843516683215479451697823265381947314729685897564132
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@5e2f1d
+Quest: 1.2.76..8.........5.6.3...17......16.8.21..79.51.......6.3..9..3...2.6.5.....4..2
+Result: 142976358938152764576438291729843516683215479451697823265381947314729685897564132
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@1bc1051
+Quest: 157........3..6.....2.81.9...581....6.1...3.5....459...8.19.4.....3..6........739
+Result: 157439826893526147462781593975813264641972385238645971386197452729354618514268739
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@e2f5a3
+Quest: 157..9.....3..6.....2.81.9...581....6.1.7.3.5....459...8.19.4.....3..6.....2..739
+Result: 157439826893526147462781593975813264641972385238645971386197452729354618514268739
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1958ed5
+Quest: 7.....1.....8...2.58..97......3.1...1.72.....8...7.5....4...3.5....89......52..7.
+Result: 793642158461835729582197436259361847147258693836974512924716385375489261618523974
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@7cfca9
+Quest: .53..71...8......9...9.4..56.974......7..38.....5..4...1..7..4...5.8.3.1...3....6
+Result: 953867124784152639162934785629748513547613892831529467316275948295486371478391256
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@ac5a9a
+Quest: .53..71...8......9...9.4..56.9........7..38.....5..4...1..7..4...5...3.1...3....6
+Result: 953867124784152639162934785629748513547613892831529467316275948295486371478391256
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@14de6e4
+Quest: .53..71...8....6.9...9.4.856.9748.1...7..38..8.152.4.7.1..7..4...5.8.3.1...3....6
+Result: 953867124784152639162934785629748513547613892831529467316275948295486371478391256
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1bf13ad
+Quest: ...8...9...4....7...27.5..8.81.6..4...5...6...6..3.18.2..4.17...3....9...4...9...
+Result: 573816492814923576692745318381567249425198637967234185259481763138672954746359821
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@123d8f4
+Quest: ..38.6.9.814....7...27.5..8.81.6..4...51.86...6..3.18.2..4.17...3....954.4.3.98..
+Result: 573816492814923576692745318381567249425198637967234185259481763138672954746359821
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@174e9a
+Quest: ..38..1....8.263.9..9..3..53.2...8..49..3.......9......6.4....88..6.192.......6..
+Result: 573849162148526379629173485312765894495238716786914253261497538834651927957382641
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@8bf924
+Quest: 9.35....4.5.4....9.6......54..6...8......764..1....2..84.2........394.....9.1....
+Result: 983561724752483169164729835475632981298157643316948257841275396627394518539816472
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@139a82d
+Quest: 9.35....4.5.4....9.6......54..6...8...8..7643.1....2..84.2........394.....9.1....
+Result: 983561724752483169164729835475632981298157643316948257841275396627394518539816472
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@ef89c6
+Quest: 9.7..21....49..8...1.45.9...9....76...........21....8...2.89.3...3..16....96..5.8
+Result: 957832146634917852218456973395128764876394215421765389762589431583241697149673528
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@532d15
+Quest: 957..21....49..8...1.45.9...9.1.876...........217.5.8...2.89.3...3..16....96..528
+Result: 957832146634917852218456973395128764876394215421765389762589431583241697149673528
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1574cdc
+Quest: ..3........54.8.9..8..1..5.9...2.....5..3...6...154.......8.6.181.5.....4..9....5
+Result: 143295768625478193789613452971826534254739816368154927592387641816542379437961285
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@c5a37d
+Quest: 6.4..2.7.81........32....4.4.38......5.4.17.........6.1..7..5.....6..........3297
+Result: 694312875815974623732586941473869152256431789981257364149728536327695418568143297
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@188fa1d
+Quest: 6.4..2.7.81........32....4.4.38......5.4.1..........6.1..7..5.....6..........3297
+Result: 694312875815974623732586941473869152256431789981257364149728536327695418568143297
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1e1bddb
+Quest: 6.4..2.7.81...4....32.8..4.4.386...2.5.4.17.........6.1..7.85.....6..........3297
+Result: 694312875815974623732586941473869152256431789981257364149728536327695418568143297
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@f71c07
+Quest: 589....34.4..95....72.......5..23.1...1.4.9...3.91..4.......42....76..5.46....371
+Result: 589172634146395287372486195954623718821547963637918542795831426213764859468259371
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@314ab8
+Quest: 589.....4.4..95....72.......5..23.1...1.4.9...3.91..4.......42....76..5.4.....371
+Result: 589172634146395287372486195954623718821547963637918542795831426213764859468259371
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@188b5b2
+Quest: 589....3414..95....72.......5..23.1...1.4.9...3.91..4.......42....76..5946....371
+Result: 589172634146395287372486195954623718821547963637918542795831426213764859468259371
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@42c7d3
+Quest: ....1.2..6...97..4...6......7.....6.....2.....845...7...7.4.8..21...64.5...2.1...
+Result: 759413286621897354843652719572134968196728543384569172967345821218976435435281697
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@212ab1
+Quest: .76.1...8.2....15.....4...........35.4..83...8......6...8..57.2...2.7....97..1...
+Result: 376512498924378156185946327769124835542683971813759264638495712451237689297861543
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@16fd116
+Quest: .76.....8.2....15.....4...........35.4..83...8......6...8..57.2...2.7....97..1...
+Result: 376512498924378156185946327769124835542683971813759264638495712451237689297861543
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@ed0faa
+Quest: 376.1...8924..815.....4.....69...835.4..83...8....926.6.8..57.24..2.76..297.615..
+Result: 376512498924378156185946327769124835542683971813759264638495712451237689297861543
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@19c92ab
+Quest: 976.8.....42..7.86...6..2...29.....4....4....6.....59...3..8...45.3..82.....5.913
+Result: 976283451142597386385614279729835164518946732634721598293178645451369827867452913
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@bc86fc
+Quest: ...6.85....3...7............9...2.53.8..31...5.2.8...1.2....6..8....5.1..6...3.82
+Result: 214678539953124768678359124196742853487531296532986471321897645849265317765413982
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@c94eb
+Quest: .651.4.7.7.4....1......35.8..9.1..2.4.3..67.12.8.4..........1.254....6.932.9.....
+Result: 865194273734582916192673548679315824453826791218749365986457132547231689321968457
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1c7ec60
+Quest: .6...4.7........1......35....9.1..2.4.3..67.1..8.4..........1..54....6.9.2.9.....
+Result: 865194273734582916192673548679315824453826791218749365986457132547231689321968457
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1ddfd49
+Quest: .651.4.7.734....1......35.86.9.1..2.4.3.267.12.8.4..........1.254....6.932.9.....
+Result: 865194273734582916192673548679315824453826791218749365986457132547231689321968457
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@22e600
+Quest: .2..96.57..3.78...78.5.....63.....2...1...3...5.....18.....5.73...74.5..27.98..6.
+Result: 124396857563478192789521634637814925891257346452639718948165273316742589275983461
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@f6042b
+Quest: .2..96.57.63.78..278.5.....637...92...1...3...52...718.....5.733..74.58.27.98..6.
+Result: 124396857563478192789521634637814925891257346452639718948165273316742589275983461
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@17b0012
+Quest: .6...37....71..4...8...9.166.1....74......9...9.75........4......9.17.....6.8..5.
+Result: 164823795927165483583479216631298574475631928298754361712546839859317642346982157
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@1ca166b
+Quest: ...6.75..1........6.73..2...32...9.....4..8......1.6.3.84.59.2...9......36.......
+Result: 248697531193528467657341298432876915916435872875912643784159326529763184361284759
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@181ab43
+Quest: 2.86975.11........6.73..2...32...9.....4.58......1.6.3.84.5932...9.6.1..36.......
+Result: 248697531193528467657341298432876915916435872875912643784159326529763184361284759
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@13ba22c
+Quest: 2..1.....3.9.7..4.1...6.2.7.9.81......15.68......29.1.4.2.9...3.3..8.9.4.....2..8
+Result: 278154396369278541154963287593817462721546839846329715482695173635781924917432658
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@282a2
+Quest: 2..1...963.9.78.4.1...6.2.7.93817.....15.68.....32971.4.2.9...3.3.78.9.491...2..8
+Result: 278154396369278541154963287593817462721546839846329715482695173635781924917432658
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@17f95de
+Quest: ..59.63.2.....24.........1.5...6.24..49.........3...517...4......6523...3.....6.5
+Result: 475916382631852497928437516583761249149285763267394851752649138816523974394178625
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@c70bfd
+Quest: 392.......61..4.277..1.6.8.2..58..9..1......3.7.6.....1...7.9......951.8......74.
+Result: 392758416861934527754126389243587691615249873978613254186472935427395168539861742
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@287dba
+Quest: 392.......6...4.2.7..1.6...2..58..9..1......3.7.6.....1............951.8......74.
+Result: 392758416861934527754126389243587691615249873978613254186472935427395168539861742
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@8c1f10
+Quest: 392...4...61..4.277..1.6.8.2..58..91.1....8.3.7.6.....1...7.9...2..951.8......74.
+Result: 392758416861934527754126389243587691615249873978613254186472935427395168539861742
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@223279
+Quest: 4..86.5.9..2...8...5..2..1.52...4..1....8....8..3...45.1..7..5...5...1..7.3.59..8
+Result: 471863529692541837358927416527694381134785692869312745216478953985236174743159268
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@ad588a
+Quest: 4..86.5.9..2...8..35..2..1652...4..1....8....8..3...4521..7..53..5...1..7.3.59..8
+Result: 471863529692541837358927416527694381134785692869312745216478953985236174743159268
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@93ae5d
+Quest: 3......7.7...6.1...96..1...8.........1...3..75.361...9....7..41.5..9...6...5.....
+Result: 321945678785362194496781253867429315912853467543617829639278541258194736174536982
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@15e0d38
+Quest: ...1.5.9..98.2..3..1...365....49.8.......2..5....6..2......1.....6.....33.2..9...
+Result: 623145798598726134417983652235497816869312475741568329954831267176254983382679541
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1a3e46f
+Quest: 6.31.5.9.598.2..3..1...365....49.8.686..12.75....6..2..5..31.....6.....33.26.9.4.
+Result: 623145798598726134417983652235497816869312475741568329954831267176254983382679541
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1ddd550
+Quest: 12.5..37.93......4.8..36.......53...5.......2...91.......19..4.8......25.12..5.69
+Result: 124589376936721584785436291468253917591678432273914658657192843849367125312845769
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@2d5cfb
+Quest: 12.5.937.93......4.8..36.......53...5.......2...91.......19..4.8......25.128.5.69
+Result: 124589376936721584785436291468253917591678432273914658657192843849367125312845769
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@e0bfc9
+Quest: .7..4...96..9....8..9..154.1.7....8.......3.....67.41..4....9....1..6..3..8..9...
+Result: 275843169614925738839761542157394286462518397983672415346287951791456823528139674
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1f10957
+Quest: .1.5.3.97...68.4...7....8.....2.5.....3....8.95473......13.....3..8.6...7.6.2....
+Result: 618543297239687451475192863867215349123469785954738612581374926392856174746921538
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@392d44
+Quest: .1.5.3.97..968.4...7....8.....2.5.....3....8.95473..1...13.4...3..856...7.6.2.5..
+Result: 618543297239687451475192863867215349123469785954738612581374926392856174746921538
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@147af37
+Quest: .1.5.3.97...68.4...7....8.....2.5.....3....8.95.73......13.....3..8.6...7.6.2....
+Result: 618543297239687451475192863867215349123469785954738612581374926392856174746921538
+Unique: true
+Level: mittel
+sehr leicht de.jdufner.sudoku.solver.service.Solution@191f225
+Quest: .........5..1.2...1....5764.62.....983.9.7.529.....64.3958....1...5.4..8.........
+Result: 483679215576142983129385764762451839834967152951238647395826471617594328248713596
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@9de72f
+Quest: 3.28..1...5.2....4....7...........45.7...9.....5....27..3.9..1.....375..7...1...2
+Result: 392845176157263894486971253918726345274359681635184927543692718821437569769518432
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1563f06
+Quest: ..9....14......5.9..74.82.......18..8.26.4...........2.3.......1..8.5.9.6....73.5
+Result: 289356714346712589517498263473921856852674931961583472735269148124835697698147325
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@126b88a
+Quest: 2.93...14......589..74.82.....9.18..8526.49..9.......2.3......81..8.569.6...473.5
+Result: 289356714346712589517498263473921856852674931961583472735269148124835697698147325
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@8376a9
+Quest: ..1...8..3..72..1.69.....3...7248....8..9..5....6574...3.....89.6..83..4..4...1..
+Result: 571936842348725916692814735957248361486391257213657498135472689769183524824569173
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1514faa
+Quest: ..19..8..3..72..1.692....3...72483..48..9..57..36574...3....689.6..83..4..4..91..
+Result: 571936842348725916692814735957248361486391257213657498135472689769183524824569173
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@ebc6bf
+Quest: ..1...8..3..72..1.69.....3...72.8....8..9..5....6.74...3.....89.6..83..4..4...1..
+Result: 571936842348725916692814735957248361486391257213657498135472689769183524824569173
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@10df68b
+Quest: .7...2.....249...3..5.3.4.6.......3..643....5....5.97.1..7.9.........5..........9
+Result: 473562198612498753895137426587924631964371285321856974158749362249683517736215849
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@8e8f1e
+Quest: ..1..2..6....79.42.....81..9.3..5..1........4..5...9..8.6.54...3..6......42...8..
+Result: 591432786638179542724568193963845271287913654415726938876254319359681427142397865
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@a7f2c7
+Quest: 5.1..2..6....79.42.....819.9.3..5..1........4..5...9..8.6.54...3..6......42...865
+Result: 591432786638179542724568193963845271287913654415726938876254319359681427142397865
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1b0fedc
+Quest: .9.....7.4.7.1....265784...1.9...4..7..2.9..1..8...2.7...623715....5.9.3.7.....6.
+Result: 891532674437916528265784139129378456756249381348165297984623715612857943573491862
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1f58d74
+Quest: .9.....7.4...1.....65.84...1.9...4..7..2.9..1..8...2.7...62.71.....5...3.7.....6.
+Result: 891532674437916528265784139129378456756249381348165297984623715612857943573491862
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@fd92e7
+Quest: 89.....7.4.7.1....265784...1.9...4..7..249..1..8...2.7...623715....5.9.3.7.....62
+Result: 891532674437916528265784139129378456756249381348165297984623715612857943573491862
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1c752ba
+Quest: ..68...1.72.54...8....2.6..1.7....56...1...............18.7....4....23.........25
+Result: 946837512721546938385921674137294856592168743864753291218375469459612387673489125
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1f7b707
+Quest: ..68...1.72.54...8....2.6..1.72...56..21...............18.7....4....23.........25
+Result: 946837512721546938385921674137294856592168743864753291218375469459612387673489125
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@195f463
+Quest: 4.3..2..7......8..7.9.5........9..68.1..........3.79.1....8..3.8...4.219.2.9..4.5
+Result: 453812697261479853789653142372194568916528374548367921194285736835746219627931485
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@8aadef
+Quest: 4.3..2..7......8..7.9.5........9..68.1..........3.79......8..3.8...4.2.9.2.9..4.5
+Result: 453812697261479853789653142372194568916528374548367921194285736835746219627931485
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@9d11d
+Quest: 4.3..2..72.....8..7.9.5.......19..68.1......4...3.79.1....8..3.8..746219.2.93.485
+Result: 453812697261479853789653142372194568916528374548367921194285736835746219627931485
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@15184ee
+Quest: ..2....13.317.5.2...92..........4.59.........64.3..........16...1.8.279.78....1..
+Result: 572468913831795426469213587127684359953127864648359271294571638316842795785936142
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@d2be35
+Quest: ..2....13.317.5.26.692..5.......4.59..3...8..64.3.......4..163.31.8.279.78....1..
+Result: 572468913831795426469213587127684359953127864648359271294571638316842795785936142
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@64e553
+Quest: 6.....8....942.......1.......2....9..1...87.49.....1..........657..9..48......51.
+Result: 641359872859427361237186459782514693315968724964273185128745936573691248496832517
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@37721a
+Quest: 5..3.........69.8.4.9.8....1..4.5..6.....13.9..6.2..4..15...6.7.....3..2.........
+Result: 587342961321569784469187253192435876854671329736928145215894637648713592973256418
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1a5d1a4
+Quest: 5..34.9.1..1.69.8446918....1.24.5.768.4.713.9..6928.4.2158..6.7...7.3..2..3.....8
+Result: 587342961321569784469187253192435876854671329736928145215894637648713592973256418
+Unique: true
+Level: sehr leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1ac133e
+Quest: .5..2..96..43651..8....9...4..2..3....9...2....6..4..7...1....8..85739..19..4..5.
+Result: 351428796974365182862719534415287369789631245236954817523196478648573921197842653
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@7c1c14
+Quest: .2..3.15...8..9.2.19...78...1..53...9.6218..............5.6...33......1..8....5..
+Result: 724836159568149327193527846412753968936218475857694231245961783379485612681372594
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@10ef738
+Quest: 672..1...89.4.6..11.....5....9..4....1.29..6.........5...6...2....84......65.2437
+Result: 672951384895436271143728596569384712417295863238167945354679128721843659986512437
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@293ad8
+Quest: 672.51.8.895436..11.....5.6..9..4..2.1.295.6....1....5...67..2..2184..5...6512437
+Result: 672951384895436271143728596569384712417295863238167945354679128721843659986512437
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1ad510b
+Quest: .1..94..8.4...6.1....2.84.......365..6.....8..935.......58.2....7.6...4.2..14..3.
+Result: 612394578948756213357218496721483659564921387893567124435872961179635842286149735
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@13080df
+Quest: .1..94..8.4..5621....2.84.......365.56.....87.935.......58.2....7963..4.2..14..3.
+Result: 612394578948756213357218496721483659564921387893567124435872961179635842286149735
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@154d30d
+Quest: ....7.....7.3......391.6......92....3......8.29....7.3.....9.21..15....85..7.1.3.
+Result: 156278394472395816839146257687923145314657982295814763763489521941532678528761439
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@134f473
+Quest: .6....9.445....6..38.6...5.2....9...8.3.7.......5.23..9....6.1.......53....4.....
+Result: 162835974457921683389647152215369748893174265746582391938256417624718539571493826
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@131a8ff
+Quest: .6....9.445.9.168.38.6...5.2..3.9...893.7.......5.23..93...6.1..2.7..53.5..4.....
+Result: 162835974457921683389647152215369748893174265746582391938256417624718539571493826
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1c59111
+Quest: ...7......285..4.3..94...16...3.5.4.84.....35.5.1.9...38...21..1.5..439......3...
+Result: 514736829628591473739428516976385241841267935253149687387952164165874392492613758
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1245703
+Quest: ...7.....6285..4.37.94...16...3.5.4.841...935.5.1.9...38...21.41.5..4392.....3...
+Result: 514736829628591473739428516976385241841267935253149687387952164165874392492613758
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@981d47
+Quest: .2.5..1...1..7..23....6.5.7..7....5.....5..8..5....21.3....4....76..........31...
+Result: 724593168615478923839162547487216359162359784953847216391624875276985431548731692
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@18641b0
+Quest: ....9..65...8...2...3...1......895.7.98.4..162.461..8.47..3.....1.56....8..1..6..
+Result: 182493765967851324543726198631289547798345216254617983476932851319568472825174639
+Unique: true
+Level: leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@d8265a
+Quest: ....9...5...8...2...3...1.......95.7..8.....62.461..8..7..3.....1.56....8..1..6..
+Result: 182493765967851324543726198631289547798345216254617983476932851319568472825174639
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@2775e
+Quest: ....9..65...8...2...3...1...31.895.7.98.4..162.461..8.47..328...1.56....8..1..6..
+Result: 182493765967851324543726198631289547798345216254617983476932851319568472825174639
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@100de32
+Quest: ....9..65...8...2...3...1.......95.7..8.4...62.461..8..7..3.....1.56....8..1..6..
+Result: 182493765967851324543726198631289547798345216254617983476932851319568472825174639
+Unique: true
+Level: mittel
+sehr schwer de.jdufner.sudoku.solver.service.Solution@d1db2
+Quest: 4....7....15..2.8.7..1..4.2...3.1.4.3.......9.7.5.4...1.2..6..8.5.2..19....7....3
+Result: 423867915915432786786159432569321847341678259278594361132946578657283194894715623
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@79d438
+Quest: 4....7....15..2.867..15.4.2...3.1.4.34..7..59.7.5.4...1.2.46..865.2..19....7....3
+Result: 423867915915432786786159432569321847341678259278594361132946578657283194894715623
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1043a18
+Quest: 9....76....295.7.......682.2....9..8.6.....9...7.....2....1.9...7...8.5....42....
+Result: 943287615682951743751346829235179468468532197197864532526713984374698251819425376
+Unique: true
+Level: sehr schwer
+     leicht de.jdufner.sudoku.solver.service.Solution@582a5e
+Quest: ....6...4....3.25.3...92...1.6.45....9......5..7..1.2............1...63..29..3.7.
+Result: 912567384768134259345892167186245793294376815537981426653728941871459632429613578
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1b93372
+Quest: ....6...4.68.3.259345.92...1.6245..3.9.3....5.37..1.2...3.....1..1...63..29.13.7.
+Result: 912567384768134259345892167186245793294376815537981426653728941871459632429613578
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1adcb4
+Quest: 16..5....9..2.....7.58.6......61..3.87.....56.9..35......4.93.1.....7..4....2..87
+Result: 162354978938271465745896213254618739873942156691735842587469321326187594419523687
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@10bffbb
+Quest: 16.35....9..2.1..57.58.6....5.61..3.873...156.9..35.4....4.93.13..1.7..4....23.87
+Result: 162354978938271465745896213254618739873942156691735842587469321326187594419523687
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@1eb5159
+Quest: ........85.8.479..92785.6....6..27.92...6....8.95...2..9.2..4..3...............87
+Result: 143629578568347912927851643456182739271963854839574126795238461384716295612495387
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@1d1f8d3
+Quest: ..9.31.5.35..7......7..9..4.2..1...37....4.6......7.2.9........6...........5281..
+Result: 249631758358472619167859234826915473731284965594367821915746382682193547473528196
+Unique: true
+Level: sehr leicht
+sehr schwer de.jdufner.sudoku.solver.service.Solution@13f452d
+Quest: 2....415..6..1.......53.2.8..4.7......1...3......2.5..6.3.91.......5..8..853....9
+Result: 239684157568217934417539268324175896951468372876923541643891725192756483785342619
+Unique: true
+Level: sehr schwer
+sehr leicht de.jdufner.sudoku.solver.service.Solution@8b3e2b
+Quest: 2....415.568.1..3....53.2.8..4.7......1...3......2.5..6.3.91....9..5.483.853....9
+Result: 239684157568217934417539268324175896951468372876923541643891725192756483785342619
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@26868
+Quest: 36.7.......1...6.....4.5.2.1.....2.3.473.....6...1..78....2...........5.2....64..
+Result: 362781594451239687789465321195678243847392165623514978534927816916843752278156439
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@7505bd
+Quest: 9.8..4.....19..7..7..2.6.....7...2......42.858.9....3..........3.....54....185...
+Result: 968374152231958764754216893547839216613742985829561437195423678382697541476185329
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@3578f2
+Quest: 9.8..4.....195.7..7..2.6.....7...2......42.858.9....3..........3.....54...6185...
+Result: 968374152231958764754216893547839216613742985829561437195423678382697541476185329
+Unique: true
+Level: sehr leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@1e47c41
+Quest: .49..3...12.9.74.5........1..2.4..9.8..6.5..2.7..9.6..9........2.43.9.17...4..32.
+Result: 749513286126987435385264971652748193891635742473192658937821564264359817518476329
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@16d9ed7
+Quest: .49..3...12.9.74.5..5.....16.2.4..9.8..635..2.7..9.6.89.....5..2.43.9.17...4..32.
+Result: 749513286126987435385264971652748193891635742473192658937821564264359817518476329
+Unique: true
+Level: sehr leicht
+     mittel de.jdufner.sudoku.solver.service.Solution@1d8b01d
+Quest: ..9..3...12...74.5........1..2.4..9.8..6.5..2.7..9.6..9........2.43...17...4..3..
+Result: 749513286126987435385264971652748193891635742473192658937821564264359817518476329
+Unique: true
+Level: mittel
+     leicht de.jdufner.sudoku.solver.service.Solution@982389
+Quest: ....35.....3.2641.6..1...9...5...8.2.1.3...5..24.......8...1.......8..219........
+Result: 148935276593726418672148593765419832819362754324857169286591347457683921931274685
+Unique: true
+Level: leicht
+     leicht de.jdufner.sudoku.solver.service.Solution@17a0171
+Quest: .456...7.67.....8....1.5.4....3..........29...218...3.392....5.....4...7.5......1
+Result: 145638279673924185289175643468397512537412968921856734392781456816549327754263891
+Unique: true
+Level: leicht
+sehr leicht de.jdufner.sudoku.solver.service.Solution@3ca641
+Quest: .4563..7.67...4.8.2..175.4..6.3.7......4.29...218...343927...5..1..4...7.5.2....1
+Result: 145638279673924185289175643468397512537412968921856734392781456816549327754263891
+Unique: true
+Level: sehr leicht

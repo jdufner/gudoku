@@ -23,7 +23,7 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.pdf;
+package de.jdufner.sudoku.generator.pdf;
 
 import java.awt.Color;
 import java.util.Properties;
