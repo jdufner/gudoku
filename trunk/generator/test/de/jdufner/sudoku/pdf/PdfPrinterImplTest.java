@@ -38,6 +38,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.dao.SudokuData;
+import de.jdufner.sudoku.generator.pdf.PdfPrinter;
 
 /**
  * 

@@ -44,18 +44,18 @@
 		scope="prototype">
 	</bean>
 	
-	<bean id="sudokuGenerator" class="de.jdufner.sudoku.SudokuGenerator">
+	<bean id="sudokuGenerator" class="de.jdufner.sudoku.generator.service.SudokuGeneratorService">
     <property name="literalEleminationBuilder" ref="literalEleminationBuilder"/>
     <property name="randomEleminationBuilder" ref="randomEleminationBuilder"/>
     <property name="symetricRandomEleminationBuilder" ref="symetricRandomEleminationBuilder"/>
     <property name="sudokuDao" ref="sudokuDao"/>
 	</bean>
 
-	<bean id="pdfPrinter" class="de.jdufner.sudoku.pdf.PdfPrinterImpl" >
+	<bean id="pdfPrinter" class="de.jdufner.sudoku.generator.pdf.PdfPrinterImpl" >
 	    <property name="pdfStyle" ref="pdfStyle"/>
 	</bean>
 
-	<bean id="pdfGenerator" class="de.jdufner.sudoku.pdf.PdfGenerator">
+	<bean id="pdfGenerator" class="de.jdufner.sudoku.generator.pdf.PdfGeneratorService">
 		<property name="pdfPrinter" ref="pdfPrinter" />
 		<property name="approachPrinter" ref="approachPrinter" />
 		<property name="sudokuDao" ref="sudokuDao" />
@@ -63,10 +63,10 @@
 	</bean>
 	
   <!-- scope="prototype" -->
-  <bean id="approachFilePrinter" class="de.jdufner.sudoku.text.ApproachFilePrinterImpl">
+  <bean id="approachFilePrinter" class="de.jdufner.sudoku.generator.text.ApproachFilePrinterImpl">
   </bean>
 
-	<bean id="approachPrinter" class="de.jdufner.sudoku.text.ApproachPrinter">
+	<bean id="approachPrinter" class="de.jdufner.sudoku.generator.text.ApproachPrinter">
 	  <property name="approachFilePrinter" ref="approachFilePrinter" />
     <property name="sudokuDao" ref="sudokuDao" />
     <property name="extendedSolver" ref="strategySolverWithBacktracking" />
@@ -131,6 +131,6 @@
 	</aop:config>
 
 	<util:properties id="pdfStyle"
-		location="classpath:de/jdufner/sudoku/pdf/style.properties" />
+		location="classpath:de/jdufner/sudoku/generator/pdf/style.properties" />
 
 </beans>

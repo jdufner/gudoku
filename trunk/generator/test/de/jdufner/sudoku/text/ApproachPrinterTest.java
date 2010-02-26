@@ -32,6 +32,7 @@ import junit.framework.TestCase;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
+import de.jdufner.sudoku.generator.text.ApproachPrinter;
 
 /**
  * 

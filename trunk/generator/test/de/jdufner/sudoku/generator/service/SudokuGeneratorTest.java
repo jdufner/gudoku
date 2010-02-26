@@ -23,35 +23,37 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.pdf;
+package de.jdufner.sudoku.generator.service;
+
+import junit.framework.TestCase;
+
+import org.apache.log4j.Logger;
+
+import de.jdufner.sudoku.context.GeneratorServiceFactory;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2009-12-07
+ * @since 0.1
  * @version $Revision$
+ * 
  */
-public final class PdfConstants {
+public class SudokuGeneratorTest extends TestCase {
 
-  /**
-   * Farbe Linien: Schwarz
-   */
-  public static final int[] RAHMEN_FARBE = new int[] { 0x00, 0x00, 0x00 };
-  /**
-   * Keine Linie
-   */
-  public static final float RAHMEN_KEIN = 0f;
-  /**
-   * Dicke Linie
-   */
-  public static final float RAHMEN_DICK = 1.0f;
-  /**
-   * Dünner Linie
-   */
-  public static final float RAHMEN_DUENN = 0.5f;
-  /**
-   * Farbe Hintergrund: Hellgrau
-   */
-  public static final int[] HINTERGRUND_FARBE = new int[] { 0xCC, 0xCC, 0xCC };
+  private static final Logger LOG = Logger.getLogger(SudokuGeneratorTest.class);
 
+  private SudokuGeneratorService sudokuGenerator;
+
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    sudokuGenerator = (SudokuGeneratorService) GeneratorServiceFactory.getInstance().getBean(
+        SudokuGeneratorService.class);
+  }
+
+  public void testGetSudoku() throws Exception {
+    LOG.debug("Start Test");
+    sudokuGenerator.generate();
+    LOG.debug("End Test");
+  }
 }
