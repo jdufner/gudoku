@@ -123,6 +123,7 @@ div.candidateButtonOn {
       <input id="incloseCandidates" type="checkbox">inkl. Kandidaten</input><input type="button" value="Laden" onclick="loadSudoku()"/><input type="button" value="Speichern" onclick="saveSudoku()"/><br/>
       <input type="button" value="Kandidaten entfernen" onclick="removeAllCandidates()"/><input type="button" value="Reset" onclick="resetAllCandidates()"/><input type="button" value="Leeren" onclick="emptyCandidates()"/><input id="hideButton" type="button" value="Ausblenden" onclick="hideCandidates()"/><br/>
       <input type="button" value="Aus Cookie laden" onclick="loadSudokuFromCookie()"/><input type="button" value="In Cookie speichern" onclick="saveSudokuInCookie()"/><br/>
+      <input id="undoButton" type="button" value="&lt;&lt; Zurück &lt;&lt;" onclick="undoCommand();"><input id="doButton" type="button" value="&gt;&gt; Vor &gt;&gt;" onclick="doCommand();"><br/>
       <fieldset>
         <legend>Spielhilfe (<span id="configHelp" style="cursor:default;" onclick="switchVisibility('configHelp');">+</span>)</legend>
         <div id="configHelpBlock" style="visibility:hidden; display:none;">
@@ -153,10 +154,97 @@ div.candidateButtonOn {
 var size = 9;
 var subSize = 3;
 var original;
+var doCmd = new Array();
+var undoCmd = new Array();
 
 function main() {
   buildBoard();
   buildCandidateButtons();
+}
+
+function command(cmdClass, cellNumber, candidateNumber) {
+  this.cmdClass = cmdClass;
+  this.cellNumber = cellNumber;
+  this.candidateNumber = candidateNumber;
+  this.candidateNumbers = null;
+  this.execute = function() {
+    if (cmdClass == "createCandidate") {
+      createCandidateDo(cellNumber, candidateNumber);
+    } else if (cmdClass == "removeCandidate") {
+      removeCandidateDo(cellNumber, candidateNumber);
+    } else if (cmdClass == "setCell") {
+      this.candidateNumbers = getCandidateArray(cellNumber);
+      promoteCandidateDo(cellNumber, candidateNumber);
+    } else if (cmdClass == "unsetCell") {
+      removeFixed(cellNumber, candidateNumber);
+    } else {
+      alert("Unbekannter Befehl: " + cmdClass);
+    }
+  }
+  this.unexecute = function() {
+    if (cmdClass == "createCandidate") {
+      removeCandidateDo(cellNumber, candidateNumber);
+    } else if (cmdClass == "removeCandidate") {
+      createCandidateDo(cellNumber, candidateNumber);
+    } else if (cmdClass == "setCell") {
+      buildCandidates(getCellId(cellNumber));
+      var index = 0;
+      for (var i = 1; i <= size; i++) {
+        if (i == this.candidateNumbers[index]) {
+          index++;
+        } else {
+          removeCandidateDo(cellNumber, i);
+        }
+      }
+    } else if (cmdClass == "unsetCell") {
+      promoteCandidateDo(cellNumber, candidateNumber);
+    } else {
+      alert("Unbekannter Befehl: " + cmdClass);
+    }
+  }
+}
+
+function ableCmdButtons() {
+  if (undoCmd.length <= 0) {
+    document.getElementById("undoButton").disabled=true;
+  } else {
+    document.getElementById("undoButton").disabled=false;
+  }
+  if (doCmd.length <= 0) {
+    document.getElementById("doButton").disabled=true;
+  } else {
+    document.getElementById("doButton").disabled=false;
+  }
+}
+
+function createAndExecuteCmd(cmdClass, cellNumber, candidateNumber) {
+  var cmd = new command(cmdClass, cellNumber, candidateNumber);
+  cmd.execute();
+  this.undoCmd.push(cmd);
+  this.doCmd = new Array();
+  ableCmdButtons();
+}
+
+function doCommand() {
+  if (doCmd.length > 0) {
+    var cmd = doCmd.pop();
+    cmd.execute();
+    undoCmd.push(cmd);
+    ableCmdButtons();
+  } else {
+    alert("Es liegen keine Befehle zur Ausführung vor.");
+  }
+}
+
+function undoCommand() {
+  if (undoCmd.length > 0) {
+    var cmd = undoCmd.pop();
+    cmd.unexecute();
+    doCmd.push(cmd);
+    ableCmdButtons();
+  } else {
+    alert("Es liegen keine Rückgängig-Befehle zur Ausführung vor.");
+  }
 }
 
 function switchVisibility(switchId) {
@@ -384,7 +472,7 @@ function removeCandidates(cellNumber) {
     if (fixed[i]) {
       var cellId = getCellId(cellNumber);
       var candidateId = getCandidateId(cellId, i);
-      removeCandidateDo(candidateId);
+      createAndExecuteCmd("removeCandidate", cellNumber, i);
     }
   }
 }
@@ -430,15 +518,9 @@ function enterFixed() {
 
 function exitFixed() {
   var value = getValue(this);
-  //if (document.getElementById("highlightFixed").checked) {
-    this.className = removeStyle(this.className, "highlight3");
-  //}
-  //if (document.getElementById("highlightAllFixed").checked) {
-    highlightFixedOff(value);
-  //}
-  //if (document.getElementById("highlightAllFixedAndCandidates").checked) {
-    highlightCandidateOff(value, "highlight2");
-  //}
+  this.className = removeStyle(this.className, "highlight3");
+  highlightFixedOff(value);
+  highlightCandidateOff(value, "highlight2");
 }
 
 function enterCandidate() {
@@ -456,19 +538,13 @@ function enterCandidate() {
 
 function exitCandidate() {
   var value = getValue(this);
-  //if (document.getElementById("highlightCandidates").checked) {
-    this.className = removeStyle(this.className, "highlight2");
-  //}
-  //if (document.getElementById("highlightAllCandidates").checked) {
-    highlightCandidateOff(value, "highlight2");
-  //}
-  //if (document.getElementById("highlightAllCandidatesAndFixed").checked) {
-    highlightFixedOff(value);
-  //}
+  this.className = removeStyle(this.className, "highlight2");
+  highlightCandidateOff(value, "highlight2");
+  highlightFixedOff(value);
 }
 
-function removeCandidateDo(candidateId) {
-  var candidate = document.getElementById(candidateId);
+function removeCandidateDo(cellNumber, candidateNumber) {
+  var candidate = getCandidate(cellNumber, candidateNumber);
   if (candidate.firstChild == null || candidate.firstChild.data.length <= 0) {
     return;
   }
@@ -479,57 +555,42 @@ function removeCandidateDo(candidateId) {
   //candidate.onclick = null;
   //candidate.ondblclick = null;
   candidate.removeChild(candidate.firstChild);
-  //var step = null;
-  //if (window.location.hash.match(/\d+/g)){
-  //  step = parseInt(window.location.hash.match(/\d+/g));
-  //} else {
-  //  step = 0;
-  //}
-  //step = step + 1;
-  //window.location.hash="" + step;
 }
 
-function createCandidateDo(candidateId) {
-  var candidate = document.getElementById(candidateId);
+function createCandidateDo(cellNumber, candidateNumber) {
+  var candidate = getCandidate(cellNumber, candidateNumber);
   candidate.className = "candidate";
   candidate.onmouseover = enterCandidate;
   candidate.onmouseout = exitCandidate;
   //candidate.onclick = removeCandidate;
   //candidate.ondblclick = promoteCandidate;
-  var re = candidateId.match(/candidate(\d+)/g);
-  var value = RegExp.$1;
-  if (isCandidateButtonOn(value)) {
+  if (isCandidateButtonOn(candidateNumber)) {
     candidate.className = addStyle(candidate.className, "highlight1");
   }
-  candidateText = document.createTextNode(value);
+  candidateText = document.createTextNode(candidateNumber);
   candidate.appendChild(candidateText);
 }
 
 function createOrRemoveCandidateDo(candidateId) {
   var candidate = document.getElementById(candidateId);
+  candidateId.match(/cell(\d+)candidate(\d+)/g);
   if (candidate.firstChild != null && candidate.firstChild.nodeType == 3) {
-    removeCandidateDo(candidateId);
+    createAndExecuteCmd("removeCandidate", parseInt(RegExp.$1), parseInt(RegExp.$2));
   } else {
-    createCandidateDo(candidateId);
+    createAndExecuteCmd("createCandidate", parseInt(RegExp.$1), parseInt(RegExp.$2));
   }
 }
 
-function promoteCandidateDo(candidateId) {
-  candidate = document.getElementById(candidateId);
-  var re = new RegExp("cell(\\d+)candidate(\\d+)","i");
-  if (re.test(candidateId)) {
-    var cellNumber = parseInt(RegExp.$1);
-    var candidateNumber = parseInt(RegExp.$2);
-    buildFixed(cellNumber, candidateNumber);
-    var cellId = getCellId(cellNumber)
-    var cell = document.getElementById(cellId);
-    if (conflictsCandidate(cellNumber, candidateNumber)) {
-      cell.className = addStyle(cell.className, "conflict");
-    }
-    cell.replaceChild(document.createTextNode(candidateNumber), cell.firstChild);
-    cell.onclick = resetFixed;
-    checkAllConflicts(cellNumber);
+function promoteCandidateDo(cellNumber, candidateNumber) {
+  buildFixed(cellNumber, candidateNumber);
+  var cellId = getCellId(cellNumber)
+  var cell = document.getElementById(cellId);
+  if (conflictsCandidate(cellNumber, candidateNumber)) {
+    cell.className = addStyle(cell.className, "conflict");
   }
+  cell.replaceChild(document.createTextNode(candidateNumber), cell.firstChild);
+  cell.onclick = resetFixed;
+  checkAllConflicts(cellNumber);
   if (isSolved()) {
     var board = document.getElementById("board");
     board.className = addStyle(board.className, "solved");
@@ -551,7 +612,8 @@ function removeCandidate() {
 function promoteCandidate() {
   var candidateId = this.id;
   dblclick = true;
-  promoteCandidateDo(candidateId);
+  candidateId.match(/cell(\d+)candidate(\d+)/g);
+  createAndExecuteCmd("setCell", parseInt(RegExp.$1), parseInt(RegExp.$2));
   setTimeout(function() {
     dblclick = false;
   }, 250);
@@ -620,22 +682,26 @@ function isCandidateButtonOn(value) {
   return false;
 }
 
-function resetFixed() {
-  var cellNumber = parseInt(this.id.match(/\d+/g)[0]);
-  var value = getValue(this);
-  highlightFixedOff(value);
-  highlightCandidateOff(value, "highlight2");
+function removeFixed(cellNumber, candidateNumber) {
+  highlightFixedOff(candidateNumber);
+  highlightCandidateOff(candidateNumber, "highlight2");
   if (isInOriginal(cellNumber)) {
     // Nix machen
   } else {
     // Reset
-    buildCandidates(this.id);
+    buildCandidates(getCellId(cellNumber));
     checkAllConflicts(cellNumber);
   }
   if (!isSolved()) {
     var board = document.getElementById("board");
     board.className = removeStyle(board.className, "solved");
   }
+}
+
+function resetFixed() {
+  var cellNumber = parseInt(this.id.match(/\d+/g)[0]);
+  var value = getValue(this);
+  createAndExecuteCmd("unsetCell", cellNumber, value);
 }
 
 function isInOriginal(cellNumber) {
@@ -793,7 +859,7 @@ function setCookie(wert) {
 
 function getCookie() {
   var name = "SudokuAsString";
-  var i=0;  //Suchposition im Cookie
+  var i = 0;  //Suchposition im Cookie
   var suche = name + "=";
   while (i < document.cookie.length) {
     if (document.cookie.substring(i, i + suche.length) == suche) {
@@ -809,42 +875,40 @@ function getCookie() {
   return "";
 }
 
-function buildCandidateString(cellNumber) {
-  var candidateString = "";
-  var firstCandidate = true;
-  for (var k = 1; k <= size; k++) {
-    var candidate = getCandidate(cellNumber, k);
+function getCandidateArray(cellNumber) {
+  var candidates = new Array();
+  for (var i = 1; i <= size; i++) {
+    var candidate = getCandidate(cellNumber, i);
     if (candidate.firstChild != null && candidate.firstChild.nodeType == 3) {
-      if (!firstCandidate) {
-        candidateString += "-";
-      }
-      candidateString += getValue(candidate);
-      firstCandidate = false;
+      candidates.push(i);
     }
   }
-  return candidateString;
+  return candidates;
+}
+
+function buildCandidateString(cellNumber) {
+  return getCandidateArray(cellNumber).join("-");
 }
 
 function buildSudokuString(forceIncloseCandidates) {
-  var sudokuAsString = "";
-  var firstCell = true;
+  var sudoku = new Array();
   var incloseCandidates = document.getElementById("incloseCandidates").checked;
   for (var i = 1; i <= size * size; i++) {
-    if (!firstCell && (forceIncloseCandidates || incloseCandidates)) {
-      sudokuAsString = sudokuAsString + ",";
-    }
     if (isCellFixed(i)) {
-      sudokuAsString = sudokuAsString + getFixedValue(i);
+      sudoku[i-1] = getFixedValue(i);
     } else {
       if (forceIncloseCandidates || incloseCandidates) {
-        sudokuAsString += buildCandidateString(i);
+        sudoku[i-1] = buildCandidateString(i);
       } else {
-        sudokuAsString += ".";
+        sudoku[i-1] = ".";
       }
     }
-    firstCell = false;
   }
-  return sudokuAsString
+  if (forceIncloseCandidates || incloseCandidates) {
+    return sudoku.join(",");
+  } else {
+    return sudoku.join("");
+  }
 }
 
 function saveSudokuInCookie() {
