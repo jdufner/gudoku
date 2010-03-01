@@ -1,3 +1,4 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <title>Sudoku 2010-02</title>
@@ -27,6 +28,7 @@ td.fixed {
 }
 td.candidate {
   font-size: 9px;
+  font-weight: normal; 
   text-align: center;
   vertical-align: middle;
   width: 13px;
@@ -84,6 +86,13 @@ div.candidateButtonOn {
   <body>
     <h1>Sudoku 2010-02</h1>
     <div id="sudoku" style="float:left"></div>
+    <div style="float:left; margin-left:10px;">
+      <fieldset>
+        <legend>Statistik</legend>
+        <p>Gesetzte Zellen: <input id="fixedCellNumber" style="float:right;" type="text" size="3" readonly="true" value=""/></p>
+        <p>Verbleibende Kandidaten: <input id="candidateNumber" style="float:right;" type="text" size="3" readonly="true" value=""/></p>
+      </fieldset>
+    </div>
     <div id="candidateButtons" style="float:left; margin-left:10px;"></div>
     <div id="buttons" style="clear:both; margin-top:10px;">
       <select id="quests" name="quests" size="1">
@@ -180,6 +189,7 @@ function command(cmdClass, cellNumber, candidateNumber) {
     } else {
       alert("Unbekannter Befehl: " + cmdClass);
     }
+    updateStatistics();
   }
   this.unexecute = function() {
     if (cmdClass == "createCandidate") {
@@ -201,6 +211,7 @@ function command(cmdClass, cellNumber, candidateNumber) {
     } else {
       alert("Unbekannter Befehl: " + cmdClass);
     }
+    updateStatistics();
   }
 }
 
@@ -245,6 +256,25 @@ function undoCommand() {
   } else {
     alert("Es liegen keine Rückgängig-Befehle zur Ausführung vor.");
   }
+}
+
+function updateStatistics() {
+  var fixedCellNumber = 0;
+  var candidateNumber = 0;
+  for (var i = 1; i <= size * size; i++) {
+    if (isCellFixed(i)) {
+      fixedCellNumber++;
+    } else {
+      for (var k = 1; k <= size; k++) {
+        var candidate = getCandidate(i, k);
+        if (candidate.firstChild != null && candidate.firstChild.nodeType == 3) {
+          candidateNumber++;
+        }
+      }
+    }
+  }
+  document.getElementById("fixedCellNumber").value = fixedCellNumber;
+  document.getElementById("candidateNumber").value = candidateNumber;
 }
 
 function switchVisibility(switchId) {
@@ -470,9 +500,10 @@ function removeCandidates(cellNumber) {
   var fixed = collectFixed(cellNumber);
   for (var i = 1; i <= size; i++) {
     if (fixed[i]) {
-      var cellId = getCellId(cellNumber);
-      var candidateId = getCandidateId(cellId, i);
-      createAndExecuteCmd("removeCandidate", cellNumber, i);
+      var candidate = getCandidate(cellNumber, i);
+      if (candidate.firstChild != null && candidate.firstChild.nodeType == 3) {
+        createAndExecuteCmd("removeCandidate", cellNumber, i);
+      }
     }
   }
 }
