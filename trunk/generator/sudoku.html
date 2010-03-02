@@ -466,7 +466,7 @@ function loadSudoku() {
       alert("Sudoku ist ungültig!");
     }
   }
-  updateStatistics();
+  updateStatisticsAsync();
 }
 
 function removeAllCandidates() {
@@ -1004,6 +1004,7 @@ function parseSudokuString(sudokuString) {
 function loadSudokuFromCookie() {
   var sudokuString = getCookie();
   parseSudokuString(sudokuString);
+  updateStatisticsAsync();
 }
 
 main();
