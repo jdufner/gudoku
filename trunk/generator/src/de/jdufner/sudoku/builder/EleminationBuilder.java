@@ -30,8 +30,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.math.random.RandomData;
-import org.apache.commons.math.random.RandomDataImpl;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.builder.transformation.TransformationUtil;
@@ -79,8 +77,8 @@ public abstract class EleminationBuilder extends AbstractBuilder {
         }
       }
     }
-    RandomData randomData = new RandomDataImpl();
-    Object[] objs = randomData.nextSample(felder, felder.size());
+    //    RandomData randomData = new RandomDataImpl();
+    Object[] objs = getRandomData().nextSample(felder, felder.size());
     List<Cell> arbitraryPermution = new ArrayList<Cell>();
     for (int i = 0; i < objs.length; i++) {
       arbitraryPermution.add((Cell) objs[i]);
@@ -97,8 +95,8 @@ public abstract class EleminationBuilder extends AbstractBuilder {
         }
       }
     }
-    RandomData randomData = new RandomDataImpl();
-    Object[] objs = randomData.nextSample(felder, felder.size());
+    //    RandomData randomData = new RandomDataImpl();
+    Object[] objs = getRandomData().nextSample(felder, felder.size());
     List<Cell> arbitraryPermution = new ArrayList<Cell>();
     for (int i = 0; i < objs.length; i++) {
       arbitraryPermution.add((Cell) objs[i]);

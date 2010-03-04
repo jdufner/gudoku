@@ -26,8 +26,16 @@
 package de.jdufner.sudoku;
 
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
+import de.jdufner.sudoku.generator.service.PdfGeneratorConfiguration;
 import de.jdufner.sudoku.generator.service.PdfGeneratorService;
 
+/**
+ * 
+ * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @since 2010-02-26
+ * @version $Revision$
+ * 
+ */
 public final class PdfGenerator {
 
   /**
@@ -36,7 +44,6 @@ public final class PdfGenerator {
   public static void main(String[] args) throws Exception {
     PdfGeneratorService pdfGeneratorService = (PdfGeneratorService) GeneratorServiceFactory.getInstance().getBean(
         PdfGeneratorService.class);
-    pdfGeneratorService.generate();
+    pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().build());
   }
-
 }

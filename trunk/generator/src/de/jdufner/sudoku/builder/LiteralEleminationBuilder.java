@@ -29,8 +29,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.commons.math.random.RandomData;
-import org.apache.commons.math.random.RandomDataImpl;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Cell;
@@ -61,8 +59,8 @@ public final class LiteralEleminationBuilder extends EleminationBuilder {
 
   private List<Cell> randomizeCells(Collection<Cell> cells) {
     LOG.debug(cells);
-    RandomData randomData = new RandomDataImpl();
-    Object[] objs = randomData.nextSample(cells, cells.size());
+    //    RandomData randomData = new RandomDataImpl();
+    Object[] objs = getRandomData().nextSample(cells, cells.size());
     List<Cell> arbitraryPermutation = new ArrayList<Cell>();
     for (int i = 0; i < objs.length; i++) {
       arbitraryPermutation.add((Cell) objs[i]);
@@ -75,8 +73,8 @@ public final class LiteralEleminationBuilder extends EleminationBuilder {
     List<Literal> list = new ArrayList<Literal>();
     list.addAll(sudoku.getSize().initializeCandidates());
 
-    RandomData randomData = new RandomDataImpl();
-    Object[] objs = randomData.nextSample(list, list.size());
+    //    RandomData randomData = new RandomDataImpl();
+    Object[] objs = getRandomData().nextSample(list, list.size());
     List<Literal> arbitraryPermutation = new ArrayList<Literal>();
     for (int i = 0; i < objs.length; i++) {
       arbitraryPermutation.add((Literal) objs[i]);

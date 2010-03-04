@@ -31,8 +31,8 @@ import junit.framework.TestCase;
 
 import com.lowagie.text.DocumentException;
 
+import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
-import de.jdufner.sudoku.generator.service.PdfGeneratorService;
 
 /**
  * 
@@ -50,9 +50,7 @@ public final class PdfGeneratorServiceTest extends TestCase {
     pdfGenerator = (PdfGeneratorService) GeneratorServiceFactory.getInstance().getBean(PdfGeneratorService.class);
   }
 
-  // TODO Das ist kein Test
   public void testGenerate() throws DocumentException, IOException {
-    //pdfGenerator.generate();
+    pdfGenerator.generate(new PdfGeneratorConfiguration.Builder().level(Level.SEHR_LEICHT).sudokusPerPage(1).build());
   }
-
 }

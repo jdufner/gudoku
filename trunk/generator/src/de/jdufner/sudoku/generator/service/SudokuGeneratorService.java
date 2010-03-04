@@ -34,6 +34,7 @@ import de.jdufner.sudoku.builder.LiteralEleminationBuilder;
 import de.jdufner.sudoku.builder.RandomEleminationBuilder;
 import de.jdufner.sudoku.builder.SymetricRandomEleminationBuilder;
 import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.dao.SudokuDao;
 import de.jdufner.sudoku.solver.service.Solution;
 
@@ -50,9 +51,10 @@ public final class SudokuGeneratorService {
   private static final Logger SUDOKU = Logger.getLogger("sudoku");
 
   private SudokuDao sudokuDao;
-  private LiteralEleminationBuilder literalEleminationBuilder;
-  private RandomEleminationBuilder randomEleminationBuilder;
-  private SymetricRandomEleminationBuilder symetricRandomEleminationBuilder;
+
+  //  private LiteralEleminationBuilder literalEleminationBuilder;
+  //  private RandomEleminationBuilder randomEleminationBuilder;
+  //  private SymetricRandomEleminationBuilder symetricRandomEleminationBuilder;
 
   public void generate() {
     generateLiteralEleminationBuilder();
@@ -61,7 +63,7 @@ public final class SudokuGeneratorService {
   }
 
   public void generateLiteralEleminationBuilder() {
-    Map<Level, Solution> map = literalEleminationBuilder.buildSudokus();
+    Map<Level, Solution> map = getLiteralEleminationBuilder().buildSudokus();
     for (Level l : map.keySet()) {
       if (map.get(l).getQuest().getNumberOfFixed() <= 30) {
         sudokuDao.saveSolution(map.get(l));
@@ -71,7 +73,7 @@ public final class SudokuGeneratorService {
   }
 
   public void generateRandomEleminationBuilder() {
-    Map<Level, Solution> map = randomEleminationBuilder.buildSudokus();
+    Map<Level, Solution> map = getRandomEleminationBuilder().buildSudokus();
     for (Level l : map.keySet()) {
       sudokuDao.saveSolution(map.get(l));
       SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
@@ -79,11 +81,24 @@ public final class SudokuGeneratorService {
   }
 
   public void generateSymetricRandomEleminationBuilder() {
-    Map<Level, Solution> map = symetricRandomEleminationBuilder.buildSudokus();
+    Map<Level, Solution> map = getSymetricRandomEleminationBuilder().buildSudokus();
     for (Level l : map.keySet()) {
       sudokuDao.saveSolution(map.get(l));
       SUDOKU.info(StringUtils.leftPad(l.toString(), 11) + " " + map.get(l));
     }
+  }
+
+  private LiteralEleminationBuilder getLiteralEleminationBuilder() {
+    return (LiteralEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(LiteralEleminationBuilder.class);
+  }
+
+  private RandomEleminationBuilder getRandomEleminationBuilder() {
+    return (RandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(RandomEleminationBuilder.class);
+  }
+
+  private SymetricRandomEleminationBuilder getSymetricRandomEleminationBuilder() {
+    return (SymetricRandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
+        SymetricRandomEleminationBuilder.class);
   }
 
   //
@@ -98,28 +113,28 @@ public final class SudokuGeneratorService {
     this.sudokuDao = sudokuDao;
   }
 
-  public LiteralEleminationBuilder getLiteralEleminationBuilder() {
-    return literalEleminationBuilder;
-  }
-
-  public void setLiteralEleminationBuilder(LiteralEleminationBuilder literalEleminationBuilder) {
-    this.literalEleminationBuilder = literalEleminationBuilder;
-  }
-
-  public RandomEleminationBuilder getRandomEleminationBuilder() {
-    return randomEleminationBuilder;
-  }
-
-  public void setRandomEleminationBuilder(RandomEleminationBuilder randomEleminationBuilder) {
-    this.randomEleminationBuilder = randomEleminationBuilder;
-  }
-
-  public SymetricRandomEleminationBuilder getSymetricRandomEleminationBuilder() {
-    return symetricRandomEleminationBuilder;
-  }
-
-  public void setSymetricRandomEleminationBuilder(SymetricRandomEleminationBuilder symetricRandomEleminationBuilder) {
-    this.symetricRandomEleminationBuilder = symetricRandomEleminationBuilder;
-  }
+  //  public LiteralEleminationBuilder getLiteralEleminationBuilder() {
+  //    return literalEleminationBuilder;
+  //  }
+  //
+  //  public void setLiteralEleminationBuilder(LiteralEleminationBuilder literalEleminationBuilder) {
+  //    this.literalEleminationBuilder = literalEleminationBuilder;
+  //  }
+  //
+  //  public RandomEleminationBuilder getRandomEleminationBuilder() {
+  //    return randomEleminationBuilder;
+  //  }
+  //
+  //  public void setRandomEleminationBuilder(RandomEleminationBuilder randomEleminationBuilder) {
+  //    this.randomEleminationBuilder = randomEleminationBuilder;
+  //  }
+  //
+  //  public SymetricRandomEleminationBuilder getSymetricRandomEleminationBuilder() {
+  //    return symetricRandomEleminationBuilder;
+  //  }
+  //
+  //  public void setSymetricRandomEleminationBuilder(SymetricRandomEleminationBuilder symetricRandomEleminationBuilder) {
+  //    this.symetricRandomEleminationBuilder = symetricRandomEleminationBuilder;
+  //  }
 
 }
