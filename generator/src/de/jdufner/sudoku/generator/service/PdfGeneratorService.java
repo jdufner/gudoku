@@ -35,7 +35,6 @@ import java.util.List;
 import com.lowagie.text.DocumentException;
 
 import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.dao.SudokuDao;
@@ -59,10 +58,11 @@ public final class PdfGeneratorService {
   private ApproachPrinter approachPrinter;
   private ExtendedSolver solver;
 
-  public void generate() throws DocumentException, IOException {
+  public void generate(PdfGeneratorConfiguration config) throws DocumentException, IOException {
     final List<SudokuData> allSudokuQuests = new ArrayList<SudokuData>();
-    for (Level level : Level.values()) {
-      List<SudokuData> sudokus = getSudokuDao().findSudokus(SudokuSize.DEFAULT, level, 6, Boolean.FALSE);
+    for (Level level : config.getLevels()) {
+      List<SudokuData> sudokus = getSudokuDao().findSudokus(config.getSize(), level, config.getSudokusPerPage(),
+          Boolean.FALSE);
       allSudokuQuests.addAll(sudokus);
     }
     final List<SudokuData> allSudokuResults = new ArrayList<SudokuData>(allSudokuQuests.size());

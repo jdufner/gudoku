@@ -45,9 +45,9 @@
 	</bean>
 	
 	<bean id="sudokuGenerator" class="de.jdufner.sudoku.generator.service.SudokuGeneratorService">
-    <property name="literalEleminationBuilder" ref="literalEleminationBuilder"/>
+    <!--property name="literalEleminationBuilder" ref="literalEleminationBuilder"/>
     <property name="randomEleminationBuilder" ref="randomEleminationBuilder"/>
-    <property name="symetricRandomEleminationBuilder" ref="symetricRandomEleminationBuilder"/>
+    <property name="symetricRandomEleminationBuilder" ref="symetricRandomEleminationBuilder"/-->
     <property name="sudokuDao" ref="sudokuDao"/>
 	</bean>
 
