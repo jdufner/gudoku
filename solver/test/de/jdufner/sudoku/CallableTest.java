@@ -43,7 +43,19 @@ import de.jdufner.sudoku.test.AbstractSolverTestCase;
  */
 public final class CallableTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(CallableTest.class);
-  private static final ExecutorService ES = Executors.newFixedThreadPool(3);
+  private ExecutorService executorService;
+
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    executorService = Executors.newFixedThreadPool(3);
+  }
+
+  @Override
+  protected void tearDown() throws Exception {
+    super.tearDown();
+    executorService.shutdown();
+  }
 
   public void testIsDone() throws InterruptedException {
     long start = System.currentTimeMillis(), end = System.currentTimeMillis();
@@ -54,7 +66,7 @@ public final class CallableTest extends AbstractSolverTestCase {
     waiter.add(new WaitSeconds(6));
     end = System.currentTimeMillis();
     LOG.info("b) " + (end - start) + " ms");
-    List<Future<Boolean>> results = ES.invokeAll(waiter);
+    List<Future<Boolean>> results = executorService.invokeAll(waiter);
     end = System.currentTimeMillis();
     LOG.info("c) " + (end - start) + " ms");
     if (results.get(0).isDone() && results.get(1).isDone() && results.get(2).isDone()) {

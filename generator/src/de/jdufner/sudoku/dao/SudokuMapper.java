@@ -26,6 +26,7 @@
 package de.jdufner.sudoku.dao;
 
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.XsudokuUtils;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.service.Solution;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -48,10 +49,15 @@ public final class SudokuMapper {
 
   public static SudokuData map(Solution solution) {
     SudokuData sudokuData = new SudokuData();
+    return map(sudokuData, solution);
+  }
+
+  public static SudokuData map(SudokuData sudokuData, Solution solution) {
     sudokuData.setFixed(solution.getQuest().getNumberOfFixed());
     sudokuData.setLevel(solution.getLevel().getValue());
     sudokuData.setSize(solution.getQuest().getSize().getUnitSize());
     sudokuData.setSudokuAsString(solution.getQuest().toShortString());
+    sudokuData.setxSudoku(XsudokuUtils.isXsudoku(solution.getResult()) ? "J" : "N");
     sudokuData.setStrategySimple(solution.getNumberSuccessfulCommand(StrategyNameEnum.SIMPLE));
     sudokuData.setStrategyHiddenSingle(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_SINGLE));
     sudokuData.setStrategyNakedPair(solution.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_PAIR));
@@ -62,15 +68,12 @@ public final class SudokuMapper {
     sudokuData.setStrategyHiddenQuad(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_QUAD));
     sudokuData.setStrategyIntersectionRemoval(solution
         .getNumberSuccessfulCommand(StrategyNameEnum.INTERSECTION_REMOVAL));
-    // TODO Y-Wing
-    //sudokuData.setStrategy(solution.getNumberSuccessfulCommand(StrategyNameEnum.YWING));
+    sudokuData.setStrategyYwing(solution.getNumberSuccessfulCommand(StrategyNameEnum.YWING));
     sudokuData.setStrategyXwing(solution.getNumberSuccessfulCommand(StrategyNameEnum.XWING));
-    // TODO Swordfish
-    //sudokuData.setStrategy(solution.getNumberSuccessfulCommand(StrategyNameEnum.SWORDFISH));
-    // TODO Jellyfish
-    //sudokuData.setStrategy(solution.getNumberSuccessfulCommand(StrategyNameEnum.JELLYFISH));
-    // TODO Backtracking
-    //sudokuData.setStrategy(solution.getNumberSuccessfulCommand(StrategyNameEnum.BACKTRACKING));
+    sudokuData.setStrategySwordfish(solution.getNumberSuccessfulCommand(StrategyNameEnum.SWORDFISH));
+    sudokuData.setStrategyJellyfish(solution.getNumberSuccessfulCommand(StrategyNameEnum.JELLYFISH));
+    sudokuData.setStrategyBacktracking(solution.getNumberSuccessfulCommand(StrategyNameEnum.BACKTRACKING));
     return sudokuData;
   }
+
 }

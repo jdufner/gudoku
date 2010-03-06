@@ -90,10 +90,20 @@ public final class SudokuData {
   private int strategyHiddenQuad;
   @Column(name = "SDKS_STRGY_INTERSECTION_REMOVAL", nullable = true)
   private int strategyIntersectionRemoval;
+  @Column(name = "SDKS_STRGY_YWING", nullable = true)
+  private int strategyYwing;
   @Column(name = "SDKS_STRGY_XWING", nullable = true)
   private int strategyXwing;
   @Column(name = "SDKS_STRGY_SWORDFISH", nullable = true)
   private int strategySwordfish;
+  @Column(name = "SDKS_STRGY_JELLYFISH", nullable = true)
+  private int strategyJellyfish;
+  @Column(name = "SDKS_STRGY_BACKTRACKING", nullable = true)
+  private int strategyBacktracking;
+  @Column(name = "SDKS_DAT_ERST", nullable = false)
+  private Date created;
+  @Column(name = "SDKS_DAT_AEND", nullable = false)
+  private Date modified;
 
   public int getId() {
     return id;
@@ -245,6 +255,46 @@ public final class SudokuData {
 
   public void setStrategySwordfish(int strategySwordfish) {
     this.strategySwordfish = strategySwordfish;
+  }
+
+  public int getStrategyYwing() {
+    return strategyYwing;
+  }
+
+  public void setStrategyYwing(int strategyYwing) {
+    this.strategyYwing = strategyYwing;
+  }
+
+  public int getStrategyJellyfish() {
+    return strategyJellyfish;
+  }
+
+  public void setStrategyJellyfish(int strategyJellyfish) {
+    this.strategyJellyfish = strategyJellyfish;
+  }
+
+  public int getStrategyBacktracking() {
+    return strategyBacktracking;
+  }
+
+  public void setStrategyBacktracking(int strategyBacktracking) {
+    this.strategyBacktracking = strategyBacktracking;
+  }
+
+  public Date getCreated() {
+    return created;
+  }
+
+  public void setCreated(Date erstellt) {
+    this.created = erstellt;
+  }
+
+  public Date getModified() {
+    return modified;
+  }
+
+  public void setModified(Date geaendert) {
+    this.modified = geaendert;
   }
 
   @Override

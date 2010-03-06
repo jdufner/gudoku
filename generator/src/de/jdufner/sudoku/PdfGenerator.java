@@ -36,12 +36,17 @@ import de.jdufner.sudoku.generator.service.PdfGeneratorService;
  * @version $Revision$
  * 
  */
-public final class PdfGenerator {
+public final class PdfGenerator extends AbstractMainClass {
 
   /**
    * @param args
    */
   public static void main(String[] args) throws Exception {
+    PdfGenerator pdfGenerator = new PdfGenerator();
+    pdfGenerator.start();
+  }
+
+  protected void run() throws Exception {
     PdfGeneratorService pdfGeneratorService = (PdfGeneratorService) GeneratorServiceFactory.getInstance().getBean(
         PdfGeneratorService.class);
     pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().build());
