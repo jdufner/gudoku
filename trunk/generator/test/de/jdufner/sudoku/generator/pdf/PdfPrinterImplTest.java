@@ -38,7 +38,6 @@ import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.dao.SudokuData;
-import de.jdufner.sudoku.generator.pdf.PdfPrinter;
 
 /**
  * 
@@ -69,7 +68,7 @@ public final class PdfPrinterImplTest extends TestCase {
     sudokus.add(sudokuData);
     sudokus.add(sudokuData);
     String fileName = "C:\\tmp\\PdfPrinterImplTest.pdf";
-    PdfPrinter pdfPrinter = (PdfPrinter) GeneratorServiceFactory.getInstance().getBean(PdfPrinter.class);
+    PdfPrinter pdfPrinter = (PdfPrinter) GeneratorServiceFactory.INSTANCE.getBean(PdfPrinter.class);
     pdfPrinter.print(sudokus, fileName);
   }
 }

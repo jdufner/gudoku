@@ -47,7 +47,7 @@ public final class PdfGeneratorServiceTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    pdfGenerator = (PdfGeneratorService) GeneratorServiceFactory.getInstance().getBean(PdfGeneratorService.class);
+    pdfGenerator = (PdfGeneratorService) GeneratorServiceFactory.INSTANCE.getBean(PdfGeneratorService.class);
   }
 
   public void testGenerate() throws DocumentException, IOException {

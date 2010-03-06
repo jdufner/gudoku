@@ -47,8 +47,7 @@ public class SudokuGeneratorServiceTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    sudokuGenerator = (SudokuGeneratorService) GeneratorServiceFactory.getInstance().getBean(
-        SudokuGeneratorService.class);
+    sudokuGenerator = (SudokuGeneratorService) GeneratorServiceFactory.INSTANCE.getBean(SudokuGeneratorService.class);
   }
 
   public void testGetSudoku() throws Exception {

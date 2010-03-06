@@ -50,7 +50,7 @@ public final class SudokuDaoTest extends AbstractGeneratorTestCase {
 
   @Override
   public void setUp() {
-    sudokuDao = (SudokuDao) GeneratorServiceFactory.getInstance().getBean(SudokuDao.class);
+    sudokuDao = (SudokuDao) GeneratorServiceFactory.INSTANCE.getBean(SudokuDao.class);
     solver = getStrategySolverWithBacktracking();
   }
 

@@ -56,8 +56,8 @@ public final class GeneratorServiceFactoryTest extends TestCase {
   }
 
   public void testGetLiteralEleminationBuilder() throws Exception {
-    Builder builder = (LiteralEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
-        LiteralEleminationBuilder.class);
+    Builder builder = (LiteralEleminationBuilder) GeneratorServiceFactory.INSTANCE
+        .getBean(LiteralEleminationBuilder.class);
     assertNotNull(builder);
     AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
     assertNotNull(abstractBuilder.getRandomData());
@@ -65,8 +65,8 @@ public final class GeneratorServiceFactoryTest extends TestCase {
   }
 
   public void testGetRandomEleminationBuilder() throws Exception {
-    Builder builder = (RandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
-        RandomEleminationBuilder.class);
+    Builder builder = (RandomEleminationBuilder) GeneratorServiceFactory.INSTANCE
+        .getBean(RandomEleminationBuilder.class);
     assertNotNull(builder);
     AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
     assertNotNull(abstractBuilder.getRandomData());
@@ -74,8 +74,8 @@ public final class GeneratorServiceFactoryTest extends TestCase {
   }
 
   public void testGetSymetricRandomEleminationBuilder() throws Exception {
-    Builder builder = (SymetricRandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
-        SymetricRandomEleminationBuilder.class);
+    Builder builder = (SymetricRandomEleminationBuilder) GeneratorServiceFactory.INSTANCE
+        .getBean(SymetricRandomEleminationBuilder.class);
     assertNotNull(builder);
     AbstractBuilder abstractBuilder = (AbstractBuilder) builder;
     assertNotNull(abstractBuilder.getRandomData());
@@ -83,12 +83,12 @@ public final class GeneratorServiceFactoryTest extends TestCase {
   }
 
   public void testGetSudokuDao() throws Exception {
-    SudokuDao sudokuDao = (SudokuDao) GeneratorServiceFactory.getInstance().getBean(SudokuDao.class);
+    SudokuDao sudokuDao = (SudokuDao) GeneratorServiceFactory.INSTANCE.getBean(SudokuDao.class);
     assertTrue(sudokuDao instanceof SudokuDao);
   }
 
   public void testGetPdfStyle() {
-    Object obj = GeneratorServiceFactory.getInstance().getPdfStyle();
+    Object obj = GeneratorServiceFactory.INSTANCE.getPdfStyle();
     LOG.debug(obj);
   }
 }

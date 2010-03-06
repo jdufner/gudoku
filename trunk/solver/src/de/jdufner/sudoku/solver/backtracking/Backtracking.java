@@ -362,7 +362,7 @@ public final class Backtracking {
 
   private SudokuPool getSudokuPool() {
     if (sudokuPool == null) {
-      sudokuPool = (SudokuPool) SolverServiceFactory.getInstance().getBean(SudokuPool.class);
+      sudokuPool = (SudokuPool) SolverServiceFactory.INSTANCE.getBean(SudokuPool.class);
     }
     return sudokuPool;
   }

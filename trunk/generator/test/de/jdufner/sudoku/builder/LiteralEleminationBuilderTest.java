@@ -50,8 +50,7 @@ public final class LiteralEleminationBuilderTest extends AbstractGeneratorTestCa
   @Override
   public void setUp() throws Exception {
     super.setUp();
-    builder = (LiteralEleminationBuilder) GeneratorServiceFactory.getInstance()
-        .getBean(LiteralEleminationBuilder.class);
+    builder = (LiteralEleminationBuilder) GeneratorServiceFactory.INSTANCE.getBean(LiteralEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
   }
 

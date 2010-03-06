@@ -32,7 +32,6 @@ import junit.framework.TestCase;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
-import de.jdufner.sudoku.generator.text.ApproachPrinter;
 
 /**
  * 
@@ -49,7 +48,7 @@ public final class ApproachPrinterTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    approachPrinter = (ApproachPrinter) GeneratorServiceFactory.getInstance().getBean(ApproachPrinter.class);
+    approachPrinter = (ApproachPrinter) GeneratorServiceFactory.INSTANCE.getBean(ApproachPrinter.class);
   }
 
   public void testasommerf() throws IOException {

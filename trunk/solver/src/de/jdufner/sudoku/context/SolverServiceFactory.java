@@ -25,10 +25,10 @@
  */
 package de.jdufner.sudoku.context;
 
+import java.io.FileNotFoundException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.Log4jConfigurer;
@@ -38,9 +38,11 @@ import org.springframework.util.Log4jConfigurer;
  * @since 0.1
  * @version $Revision$
  */
-public final class SolverServiceFactory {
-  private static final Logger LOG = Logger.getLogger(SolverServiceFactory.class);
+public enum SolverServiceFactory {
 
+  INSTANCE;
+
+  //private static final Logger LOG = Logger.getLogger(SolverServiceFactory.class);
   private static final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(3);
 
   public static final String BACKTRACKING_SOLVER = "backtrackingSolver";
@@ -49,21 +51,13 @@ public final class SolverServiceFactory {
 
   private final transient ApplicationContext applicationContext;
 
-  private static class SingletonHolder {
-    private static SolverServiceFactory instance = new SolverServiceFactory(); // NOPMD by Jürgen on 14.11.09 23:14
-  }
-
   private SolverServiceFactory() {
     applicationContext = new ClassPathXmlApplicationContext("solver-context.xml");
     try {
       Log4jConfigurer.initLogging(Log4jConfigurer.CLASSPATH_URL_PREFIX + "log4j.properties", 10000);
-    } catch (Exception e) {
-      LOG.error(e.getMessage(), e);
+    } catch (FileNotFoundException fnfe) {
+      throw new RuntimeException(fnfe); // NOPMD
     }
-  }
-
-  public static SolverServiceFactory getInstance() {
-    return SingletonHolder.instance;
   }
 
   public Object getBean(final String name) {
