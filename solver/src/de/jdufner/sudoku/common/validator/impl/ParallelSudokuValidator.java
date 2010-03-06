@@ -54,7 +54,7 @@ public final class ParallelSudokuValidator implements SudokuValidator {
       checkTasks.add(new UnitValidChecker(validity, sudoku.getBlocks()));
       checkTasks.add(new UnitValidChecker(validity, sudoku.getColumns()));
       checkTasks.add(new UnitValidChecker(validity, sudoku.getRows()));
-      SolverServiceFactory.getInstance().getExecutorService().invokeAll(checkTasks);
+      SolverServiceFactory.INSTANCE.getExecutorService().invokeAll(checkTasks);
       return validity.get();
     } catch (InterruptedException ie) {
       LOG.error(ie.getMessage(), ie);

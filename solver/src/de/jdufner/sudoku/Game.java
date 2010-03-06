@@ -56,8 +56,8 @@ public final class Game {
     final PropertiesLoader propertiesLoader = new PropertiesLoader();
     final String sudokuAsString = propertiesLoader.getSudokuAsString(id);
     quest = SudokuFactory.buildSudoku(sudokuAsString);
-    ExtendedSolver extendedSolver = (ExtendedSolver) SolverServiceFactory.getInstance().getBean(
-        SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
+    ExtendedSolver extendedSolver = (ExtendedSolver) SolverServiceFactory.INSTANCE
+        .getBean(SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
     solution = extendedSolver.solve(quest);
 
     commandManager = new CommandManager();

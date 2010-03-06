@@ -25,9 +25,9 @@
  */
 package de.jdufner.sudoku.context;
 
+import java.io.FileNotFoundException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.Log4jConfigurer;
@@ -37,33 +37,28 @@ import org.springframework.util.Log4jConfigurer;
  * @since 0.1
  * @version $Revision$
  */
-public final class GeneratorServiceFactory {
-  private static final Logger LOG = Logger.getLogger(GeneratorServiceFactory.class);
+public enum GeneratorServiceFactory {
+
+  INSTANCE;
+
+  //  private static final Logger LOG = Logger.getLogger(GeneratorServiceFactory.class);
 
   private ApplicationContext applicationContext;
-
-  private static class SingletonHolder {
-    static GeneratorServiceFactory instance = new GeneratorServiceFactory();
-  }
 
   private GeneratorServiceFactory() {
     applicationContext = new ClassPathXmlApplicationContext("generator-context.xml");
     try {
       Log4jConfigurer.initLogging(Log4jConfigurer.CLASSPATH_URL_PREFIX + "log4j.properties", 10000);
-    } catch (Exception e) {
-      LOG.error(e.getMessage(), e);
+    } catch (FileNotFoundException fnfe) {
+      throw new RuntimeException(fnfe); //NOPMD
     }
-  }
-
-  public static GeneratorServiceFactory getInstance() {
-    return SingletonHolder.instance;
   }
 
   public Properties getPdfStyle() {
     return (Properties) applicationContext.getBean("pdfStyle");
   }
 
-  public Object getBean(Class clazz) {
+  public Object getBean(Class<?> clazz) {
     String[] beanNames = applicationContext.getBeanNamesForType(clazz);
     if (beanNames.length == 0) {
       throw new IllegalStateException("Klasse " + clazz + " existiert im Kontext "

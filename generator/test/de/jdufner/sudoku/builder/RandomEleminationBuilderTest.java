@@ -49,7 +49,7 @@ public final class RandomEleminationBuilderTest extends AbstractGeneratorTestCas
   @Override
   public void setUp() throws Exception {
     super.setUp();
-    builder = (RandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(RandomEleminationBuilder.class);
+    builder = (RandomEleminationBuilder) GeneratorServiceFactory.INSTANCE.getBean(RandomEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
   }
 

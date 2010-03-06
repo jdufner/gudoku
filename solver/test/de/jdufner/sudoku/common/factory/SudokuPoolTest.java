@@ -47,7 +47,7 @@ public final class SudokuPoolTest extends AbstractSolverTestCase {
 
   @Override
   public void setUp() throws Exception {
-    pool = (SudokuPool) SolverServiceFactory.getInstance().getBean(SudokuPool.class);
+    pool = (SudokuPool) SolverServiceFactory.INSTANCE.getBean(SudokuPool.class);
   }
 
   public void testBorrowSudoku1() {

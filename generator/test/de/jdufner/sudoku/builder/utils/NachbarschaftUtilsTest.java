@@ -52,7 +52,7 @@ public class NachbarschaftUtilsTest extends AbstractGeneratorTestCase {
   protected void setUp() throws Exception {
     super.setUp();
     solver = getStrategySolverWithBacktracking();
-    randomData = (RandomData) GeneratorServiceFactory.getInstance().getBean(RandomData.class);
+    randomData = (RandomData) GeneratorServiceFactory.INSTANCE.getBean(RandomData.class);
   }
 
   public void testCheckNachbarschaft1() {

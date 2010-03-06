@@ -41,8 +41,8 @@ public abstract class AbstractParallelStrategy extends AbstractStrategy {
    */
   protected void gatherCommandsFromCallables() {
     try {
-      final List<Future<Collection<Command>>> futures = SolverServiceFactory.getInstance().getExecutorService()
-          .invokeAll(callables);
+      final List<Future<Collection<Command>>> futures = SolverServiceFactory.INSTANCE.getExecutorService().invokeAll(
+          callables);
       for (Future<Collection<Command>> future : futures) {
         getCommands().addAll(future.get());
       }

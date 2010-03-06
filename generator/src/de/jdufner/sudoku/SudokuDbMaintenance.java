@@ -53,9 +53,9 @@ public final class SudokuDbMaintenance extends AbstractMainClass {
 
   protected void run() {
     LOG.debug("START");
-    SudokuDao sudokuDao = (SudokuDao) GeneratorServiceFactory.getInstance().getBean(SudokuDao.class);
-    ExtendedSolver solver = (ExtendedSolver) SolverServiceFactory.getInstance().getBean(
-        SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
+    SudokuDao sudokuDao = (SudokuDao) GeneratorServiceFactory.INSTANCE.getBean(SudokuDao.class);
+    ExtendedSolver solver = (ExtendedSolver) SolverServiceFactory.INSTANCE
+        .getBean(SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
     boolean weitereObjekteVorhanden = true;
     int index = 0;
     int number = 10;

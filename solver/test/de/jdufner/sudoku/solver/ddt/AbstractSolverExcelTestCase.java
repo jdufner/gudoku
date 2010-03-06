@@ -41,16 +41,16 @@ import de.jdufner.sudoku.solver.service.Solver;
 public abstract class AbstractSolverExcelTestCase extends DDStepsExcelTestCase {
 
   protected Solver getBacktrackingSolver() {
-    return (Solver) SolverServiceFactory.getInstance().getBean(SolverServiceFactory.BACKTRACKING_SOLVER);
+    return (Solver) SolverServiceFactory.INSTANCE.getBean(SolverServiceFactory.BACKTRACKING_SOLVER);
   }
 
   protected Solver getStrategySolver() {
-    return (ExtendedSolver) SolverServiceFactory.getInstance().getBean(SolverServiceFactory.STRATEGY_SOLVER);
+    return (ExtendedSolver) SolverServiceFactory.INSTANCE.getBean(SolverServiceFactory.STRATEGY_SOLVER);
   }
 
   protected Solver getStrategySolverWithBacktracking() {
-    return (ExtendedSolver) SolverServiceFactory.getInstance().getBean(
-        SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
+    return (ExtendedSolver) SolverServiceFactory.INSTANCE
+        .getBean(SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
   }
 
   @Override

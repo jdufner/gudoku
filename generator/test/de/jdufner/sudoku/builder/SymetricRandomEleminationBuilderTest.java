@@ -52,8 +52,8 @@ public final class SymetricRandomEleminationBuilderTest extends AbstractGenerato
   @Override
   public void setUp() throws Exception {
     super.setUp();
-    builder = (SymetricRandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
-        SymetricRandomEleminationBuilder.class);
+    builder = (SymetricRandomEleminationBuilder) GeneratorServiceFactory.INSTANCE
+        .getBean(SymetricRandomEleminationBuilder.class);
     builder.setSize(SudokuSize.DEFAULT);
     strategySolver = getStrategySolver();
     strategySolverWithBacktracking = getStrategySolverWithBacktracking();

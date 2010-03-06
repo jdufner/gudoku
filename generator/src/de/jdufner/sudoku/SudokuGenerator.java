@@ -39,7 +39,7 @@ public final class SudokuGenerator extends AbstractMainClass {
   }
 
   protected void run() {
-    SudokuGeneratorService sudokuGeneratorService = (SudokuGeneratorService) GeneratorServiceFactory.getInstance()
+    SudokuGeneratorService sudokuGeneratorService = (SudokuGeneratorService) GeneratorServiceFactory.INSTANCE
         .getBean(SudokuGeneratorService.class);
     //    while (true) {
     sudokuGeneratorService.generate();

@@ -47,8 +47,8 @@ public final class PdfGenerator extends AbstractMainClass {
   }
 
   protected void run() throws Exception {
-    PdfGeneratorService pdfGeneratorService = (PdfGeneratorService) GeneratorServiceFactory.getInstance().getBean(
-        PdfGeneratorService.class);
+    PdfGeneratorService pdfGeneratorService = (PdfGeneratorService) GeneratorServiceFactory.INSTANCE
+        .getBean(PdfGeneratorService.class);
     pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().build());
   }
 }

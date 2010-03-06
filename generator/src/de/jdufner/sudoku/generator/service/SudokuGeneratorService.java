@@ -89,16 +89,16 @@ public final class SudokuGeneratorService {
   }
 
   private LiteralEleminationBuilder getLiteralEleminationBuilder() {
-    return (LiteralEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(LiteralEleminationBuilder.class);
+    return (LiteralEleminationBuilder) GeneratorServiceFactory.INSTANCE.getBean(LiteralEleminationBuilder.class);
   }
 
   private RandomEleminationBuilder getRandomEleminationBuilder() {
-    return (RandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(RandomEleminationBuilder.class);
+    return (RandomEleminationBuilder) GeneratorServiceFactory.INSTANCE.getBean(RandomEleminationBuilder.class);
   }
 
   private SymetricRandomEleminationBuilder getSymetricRandomEleminationBuilder() {
-    return (SymetricRandomEleminationBuilder) GeneratorServiceFactory.getInstance().getBean(
-        SymetricRandomEleminationBuilder.class);
+    return (SymetricRandomEleminationBuilder) GeneratorServiceFactory.INSTANCE
+        .getBean(SymetricRandomEleminationBuilder.class);
   }
 
   //

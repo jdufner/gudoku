@@ -53,10 +53,10 @@ public abstract class AbstractSolverTestCase extends TestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    backtrackingSolver = (Solver) SolverServiceFactory.getInstance().getBean(SolverServiceFactory.BACKTRACKING_SOLVER);
-    strategySolver = (ExtendedSolver) SolverServiceFactory.getInstance().getBean(SolverServiceFactory.STRATEGY_SOLVER);
-    strategySolverWithBacktracking = (ExtendedSolver) SolverServiceFactory.getInstance().getBean(
-        SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
+    backtrackingSolver = (Solver) SolverServiceFactory.INSTANCE.getBean(SolverServiceFactory.BACKTRACKING_SOLVER);
+    strategySolver = (ExtendedSolver) SolverServiceFactory.INSTANCE.getBean(SolverServiceFactory.STRATEGY_SOLVER);
+    strategySolverWithBacktracking = (ExtendedSolver) SolverServiceFactory.INSTANCE
+        .getBean(SolverServiceFactory.STRATEGY_SOLVER_WITH_BACKTRACKING);
   }
 
   protected Solver getBacktrackingSolver() {

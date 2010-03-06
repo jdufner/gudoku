@@ -52,7 +52,7 @@ public abstract class AbstractMainClass {
 
   protected void tearDown() {
     LOG.debug("ExecutorService runterfahren");
-    SolverServiceFactory.getInstance().shutdown();
+    SolverServiceFactory.INSTANCE.shutdown();
   }
 
   protected abstract void run() throws Exception;
