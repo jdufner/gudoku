@@ -27,14 +27,13 @@ package de.jdufner.sudoku.common.validator.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.validator.SudokuValidator;
+import de.jdufner.sudoku.context.SolverServiceFactory;
 
 /**
  * Prüft mit einem parallel Algorithmus ob das Sudoku gültig ist.
@@ -47,8 +46,6 @@ public final class ParallelSudokuValidator implements SudokuValidator {
 
   private static final Logger LOG = Logger.getLogger(Sudoku.class);
 
-  private final transient ExecutorService executorService = Executors.newFixedThreadPool(3);
-
   @Override
   public boolean isValid(final Sudoku sudoku) {
     try {
@@ -57,7 +54,7 @@ public final class ParallelSudokuValidator implements SudokuValidator {
       checkTasks.add(new UnitValidChecker(validity, sudoku.getBlocks()));
       checkTasks.add(new UnitValidChecker(validity, sudoku.getColumns()));
       checkTasks.add(new UnitValidChecker(validity, sudoku.getRows()));
-      executorService.invokeAll(checkTasks);
+      SolverServiceFactory.getInstance().getExecutorService().invokeAll(checkTasks);
       return validity.get();
     } catch (InterruptedException ie) {
       LOG.error(ie.getMessage(), ie);

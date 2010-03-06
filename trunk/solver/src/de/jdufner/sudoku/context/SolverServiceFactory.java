@@ -25,6 +25,9 @@
  */
 package de.jdufner.sudoku.context;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -37,6 +40,8 @@ import org.springframework.util.Log4jConfigurer;
  */
 public final class SolverServiceFactory {
   private static final Logger LOG = Logger.getLogger(SolverServiceFactory.class);
+
+  private static final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(3);
 
   public static final String BACKTRACKING_SOLVER = "backtrackingSolver";
   public static final String STRATEGY_SOLVER = "strategySolver";
@@ -76,6 +81,14 @@ public final class SolverServiceFactory {
           + applicationContext.getDisplayName() + " mehrfach und ist nicht eindeutig.");
     }
     return applicationContext.getBean(beanNames[0]);
+  }
+
+  public ExecutorService getExecutorService() {
+    return EXECUTOR_SERVICE;
+  }
+
+  public void shutdown() {
+    getExecutorService().shutdown();
   }
 
 }

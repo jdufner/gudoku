@@ -25,25 +25,36 @@
  */
 package de.jdufner.sudoku;
 
-import de.jdufner.sudoku.context.GeneratorServiceFactory;
-import de.jdufner.sudoku.generator.service.SudokuGeneratorService;
+import org.apache.log4j.Logger;
 
-public final class SudokuGenerator extends AbstractMainClass {
+import de.jdufner.sudoku.context.SolverServiceFactory;
 
-  /**
-   * @param args
-   */
-  public static void main(String[] args) throws Exception {
-    SudokuGenerator sudokuGenerator = new SudokuGenerator();
-    sudokuGenerator.start();
+/**
+ * 
+ * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @since 2010-03-06
+ * @version $Revision$
+ * 
+ */
+public abstract class AbstractMainClass {
+
+  private static Logger LOG = Logger.getLogger(AbstractMainClass.class);
+
+  protected void start() throws Exception {
+    setUp();
+    run();
+    tearDown();
   }
 
-  protected void run() {
-    SudokuGeneratorService sudokuGeneratorService = (SudokuGeneratorService) GeneratorServiceFactory.getInstance()
-        .getBean(SudokuGeneratorService.class);
-    //    while (true) {
-    sudokuGeneratorService.generate();
-    //    }
+  protected void setUp() {
+
   }
+
+  protected void tearDown() {
+    LOG.debug("ExecutorService runterfahren");
+    SolverServiceFactory.getInstance().shutdown();
+  }
+
+  protected abstract void run() throws Exception;
 
 }

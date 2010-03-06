@@ -27,6 +27,7 @@ package de.jdufner.sudoku.dao;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -115,6 +116,7 @@ public final class SudokuDaoImpl implements SudokuDao {
       LOG.debug("Save Solution");
     }
     SudokuData sudokuData = SudokuMapper.map(solution);
+    updateTimestamp(sudokuData);
     Serializable serializable = hibernateTemplate.save(sudokuData);
     if (LOG.isInfoEnabled()) {
       LOG.info("Solution saved");
@@ -125,6 +127,9 @@ public final class SudokuDaoImpl implements SudokuDao {
 
   @Override
   public void update(Collection<SudokuData> collection) {
+    for (SudokuData sudokuData : collection) {
+      updateTimestamp(sudokuData);
+    }
     hibernateTemplate.saveOrUpdateAll(collection);
   }
 
@@ -136,8 +141,16 @@ public final class SudokuDaoImpl implements SudokuDao {
     if (sudokus.size() >= 1) {
       SudokuData sudokuData = sudokus.get(0);
       sudokuData.setPrintedAt(printedAt);
+      updateTimestamp(sudokuData);
       hibernateTemplate.update(sudokuData);
     }
+  }
+
+  private void updateTimestamp(SudokuData sudokuData) {
+    if (sudokuData.getCreated() == null) {
+      sudokuData.setCreated(new Timestamp(new Date().getTime()));
+    }
+    sudokuData.setModified(new Timestamp(new Date().getTime()));
   }
 
   //
