@@ -26,7 +26,6 @@
 package de.jdufner.sudoku.generator.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -44,42 +43,80 @@ import de.jdufner.sudoku.common.misc.Level;
  */
 public final class PdfGeneratorConfiguration {
 
-  private List<Level> levels;
+  private List<Page> pages;
   private SudokuSize size;
-  private int sudokusPerPage;
 
   private PdfGeneratorConfiguration(Builder builder) {
-    this.levels = new ArrayList<Level>();
-    this.levels.addAll(builder.levels);
-    Collections.sort(this.levels);
+    this.pages = new ArrayList<Page>();
+    this.pages.addAll(builder.pages);
+    Collections.sort(this.pages);
     this.size = builder.size;
-    this.sudokusPerPage = builder.sudokusPerPage;
   }
 
-  public List<Level> getLevels() {
-    return levels;
+  public List<Page> getPages() {
+    return pages;
   }
 
   public SudokuSize getSize() {
     return size;
   }
 
-  public int getSudokusPerPage() {
-    return sudokusPerPage;
+  public static class Page implements Comparable<Page> {
+    private Level level;
+    private int number;
+
+    private Page(Level level, int number) {
+      this.level = level;
+      this.number = number;
+    }
+
+    public Level getLevel() {
+      return level;
+    }
+
+    public int getNumber() {
+      return number;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj) {
+        return true;
+      }
+      if (obj == null) {
+        return false;
+      }
+      if (obj instanceof Page) {
+        Page that = (Page) obj;
+        if (this.level == that.level) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    @Override
+    public int hashCode() {
+      return level.getValue();
+    }
+
+    @Override
+    public int compareTo(Page that) {
+      return this.level.getValue() - that.level.getValue();
+    }
+
+    @Override
+    public String toString() {
+      return this.level + "-" + number + " Seiten";
+    }
+
   }
 
   public static class Builder {
-
-    private Set<Level> levels = new HashSet<Level>();
     private SudokuSize size = SudokuSize.DEFAULT;
-    private int sudokusPerPage = 6;
+    private Set<Page> pages = new HashSet<Page>();
 
     public Builder() {
-    }
-
-    public Builder level(Level level) {
-      this.levels.add(level);
-      return this;
     }
 
     public Builder size(SudokuSize size) {
@@ -87,14 +124,18 @@ public final class PdfGeneratorConfiguration {
       return this;
     }
 
-    public Builder sudokusPerPage(int sudokusPerPage) {
-      this.sudokusPerPage = sudokusPerPage;
+    public Builder numberPerLevel(Level level, int number) {
+      this.pages.add(new Page(level, number));
       return this;
     }
 
     public PdfGeneratorConfiguration build() {
-      if (levels.isEmpty()) {
-        levels.addAll(Arrays.asList(Level.values()));
+      if (pages.isEmpty()) {
+        for (Level level : Level.values()) {
+          if (level.getValue() > 0) {
+            pages.add(new Page(level, 6));
+          }
+        }
       }
       return new PdfGeneratorConfiguration(this);
     }

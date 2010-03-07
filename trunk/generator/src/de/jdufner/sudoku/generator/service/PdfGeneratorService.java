@@ -36,10 +36,10 @@ import com.lowagie.text.DocumentException;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.dao.SudokuDao;
 import de.jdufner.sudoku.dao.SudokuData;
 import de.jdufner.sudoku.generator.pdf.PdfPrinter;
+import de.jdufner.sudoku.generator.service.PdfGeneratorConfiguration.Page;
 import de.jdufner.sudoku.generator.text.ApproachPrinter;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
 
@@ -60,8 +60,8 @@ public final class PdfGeneratorService {
 
   public void generate(PdfGeneratorConfiguration config) throws DocumentException, IOException {
     final List<SudokuData> allSudokuQuests = new ArrayList<SudokuData>();
-    for (Level level : config.getLevels()) {
-      List<SudokuData> sudokus = getSudokuDao().findSudokus(config.getSize(), level, config.getSudokusPerPage(),
+    for (Page page : config.getPages()) {
+      List<SudokuData> sudokus = getSudokuDao().findSudokus(config.getSize(), page.getLevel(), page.getNumber(),
           Boolean.FALSE);
       allSudokuQuests.addAll(sudokus);
     }

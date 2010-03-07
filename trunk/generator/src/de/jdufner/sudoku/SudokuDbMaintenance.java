@@ -59,20 +59,20 @@ public final class SudokuDbMaintenance extends AbstractMainClass {
     boolean weitereObjekteVorhanden = true;
     int index = 0;
     int number = 10;
-    //    do {
-    List<SudokuData> sudokuDataList = sudokuDao.findSudokus(index, number);
-    for (SudokuData sudokuData : sudokuDataList) {
-      Sudoku sudoku = SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
-      Solution solution = solver.getSolution(sudoku);
-      SudokuMapper.map(sudokuData, solution);
-    }
-    index += sudokuDataList.size();
-    LOG.debug("Index: " + index);
-    if (sudokuDataList.size() < number) {
-      weitereObjekteVorhanden = false;
-    }
-    sudokuDao.update(sudokuDataList);
-    //    } while (weitereObjekteVorhanden);
+    do {
+      List<SudokuData> sudokuDataList = sudokuDao.findSudokus(index, number);
+      for (SudokuData sudokuData : sudokuDataList) {
+        Sudoku sudoku = SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
+        Solution solution = solver.getSolution(sudoku);
+        SudokuMapper.map(sudokuData, solution);
+      }
+      index += sudokuDataList.size();
+      LOG.debug("Index: " + index);
+      if (sudokuDataList.size() < number) {
+        weitereObjekteVorhanden = false;
+      }
+      sudokuDao.update(sudokuDataList);
+    } while (weitereObjekteVorhanden);
     LOG.debug("ENDE");
   }
 

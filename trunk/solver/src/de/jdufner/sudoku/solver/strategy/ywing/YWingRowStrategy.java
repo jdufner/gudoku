@@ -32,6 +32,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
+import de.jdufner.sudoku.commands.CommandFactory;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
@@ -39,6 +40,7 @@ import de.jdufner.sudoku.common.board.Row;
 import de.jdufner.sudoku.common.board.RowHandler;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * 
@@ -137,6 +139,9 @@ public final class YWingRowStrategy extends AbstractYWingStrategy implements Row
         if (!foundCell.isFixed() && foundCell.getCandidates().contains(removableCandidate)) {
           LOG.debug("Zelle gefunden: " + foundCell + " Erzeuge Kommando zum Entfernen von " + removableCandidate);
           LOG.debug("Gefunden in: " + getSudoku());
+          final Command command = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.YWING, foundCell,
+              removableCandidate);
+          getCommands().add(command);
         }
       }
     }
@@ -181,6 +186,9 @@ public final class YWingRowStrategy extends AbstractYWingStrategy implements Row
       if (!foundCell.isFixed() && foundCell.getCandidates().contains(removableCandidate)) {
         LOG.debug("Zelle gefunden: " + foundCell + " Erzeuge Kommando zum Entfernen von " + removableCandidate);
         LOG.debug("Gefunden in: " + getSudoku());
+        final Command command = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.YWING, foundCell,
+            removableCandidate);
+        getCommands().add(command);
       }
     }
   }
