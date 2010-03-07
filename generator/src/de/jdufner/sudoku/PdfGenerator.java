@@ -25,6 +25,7 @@
  */
 package de.jdufner.sudoku;
 
+import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.generator.service.PdfGeneratorConfiguration;
 import de.jdufner.sudoku.generator.service.PdfGeneratorService;
@@ -49,6 +50,7 @@ public final class PdfGenerator extends AbstractMainClass {
   protected void run() throws Exception {
     PdfGeneratorService pdfGeneratorService = (PdfGeneratorService) GeneratorServiceFactory.INSTANCE
         .getBean(PdfGeneratorService.class);
-    pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().build());
+    pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().numberPerLevel(Level.MITTEL, 12)
+        .numberPerLevel(Level.SCHWER, 12).build());
   }
 }

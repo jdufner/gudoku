@@ -51,6 +51,7 @@ public final class PdfGeneratorServiceTest extends TestCase {
   }
 
   public void testGenerate() throws DocumentException, IOException {
-    pdfGenerator.generate(new PdfGeneratorConfiguration.Builder().level(Level.SEHR_LEICHT).sudokusPerPage(1).build());
+    pdfGenerator.generate(new PdfGeneratorConfiguration.Builder().numberPerLevel(Level.SEHR_LEICHT, 1).build());
   }
+
 }
