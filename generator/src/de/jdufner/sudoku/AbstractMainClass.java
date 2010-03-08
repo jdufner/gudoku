@@ -34,27 +34,42 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2010-03-06
  * @version $Revision$
- * 
  */
 public abstract class AbstractMainClass {
 
   private static Logger LOG = Logger.getLogger(AbstractMainClass.class);
 
+  /**
+   * Startet die Applikation und führt die allgemeine Logik vorher und nachher aus.
+   * 
+   * @throws Exception
+   */
   protected void start() throws Exception {
     setUp();
     run();
     tearDown();
   }
 
+  /**
+   * Allgemeine Logik vor dem Ausführen der Applikation.
+   */
   protected void setUp() {
 
   }
 
+  /**
+   * Allgemeine Logik nach dem Ausführen der Applikation.
+   */
   protected void tearDown() {
     LOG.debug("ExecutorService runterfahren");
     SolverServiceFactory.INSTANCE.shutdown();
   }
 
+  /**
+   * Methode, welche die eigentliche Logik der Applikation enthält.
+   * 
+   * @throws Exception
+   */
   protected abstract void run() throws Exception;
 
 }

@@ -28,22 +28,36 @@ package de.jdufner.sudoku;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.generator.service.SudokuGeneratorService;
 
+/**
+ * Applikation zum Starten des SudokuGenerators. Der SudokuGenerator arbeitet selbständig und speichert die erzeugten
+ * Sudokus in der Datenbank ab.
+ * 
+ * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @since 2009-12-27
+ * @version $Revision$
+ */
 public final class SudokuGenerator extends AbstractMainClass {
 
   /**
+   * Instanziert und startet den SudokuGenerator.
+   * 
    * @param args
+   *          Es werden keine Parameter ausgewertet.
    */
   public static void main(String[] args) throws Exception {
     SudokuGenerator sudokuGenerator = new SudokuGenerator();
     sudokuGenerator.start();
   }
 
+  /**
+   * Implementiert die Logik und ruft den SudokuGeneratorService auf.
+   */
   protected void run() {
     SudokuGeneratorService sudokuGeneratorService = (SudokuGeneratorService) GeneratorServiceFactory.INSTANCE
         .getBean(SudokuGeneratorService.class);
-    //    while (true) {
-    sudokuGeneratorService.generate();
-    //    }
+    while (true) {
+      sudokuGeneratorService.generate();
+    }
   }
 
 }
