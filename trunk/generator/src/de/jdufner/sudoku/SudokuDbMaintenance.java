@@ -39,18 +39,32 @@ import de.jdufner.sudoku.dao.SudokuMapper;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
 import de.jdufner.sudoku.solver.service.Solution;
 
+/**
+ * Applikation zum Starten der SudokuDBMaintenance. Die Klasse SudokuDBMaintenance liest die Sudokus aus der Datenbank,
+ * führt eine Logik auf dem Sudokus aus und aktualisiert das Sudoku in der Datenbank.
+ * 
+ * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @since 2010-02-26
+ * @version $Revision$
+ */
 public final class SudokuDbMaintenance extends AbstractMainClass {
 
   private static final Logger LOG = Logger.getLogger(SudokuDbMaintenance.class);
 
   /**
+   * Instanziert und startet den SudokuDbMaintenance.
+   * 
    * @param args
+   *          Es werden keine Parameter ausgewertet.
    */
   public static void main(String[] args) throws Exception {
     SudokuDbMaintenance sudokuDbMaintenance = new SudokuDbMaintenance();
     sudokuDbMaintenance.start();
   }
 
+  /**
+   * Implementiert die Logik und ruft den Service zum Laden, Berechnen und Speichern des Sudokus.
+   */
   protected void run() {
     LOG.debug("START");
     SudokuDao sudokuDao = (SudokuDao) GeneratorServiceFactory.INSTANCE.getBean(SudokuDao.class);
