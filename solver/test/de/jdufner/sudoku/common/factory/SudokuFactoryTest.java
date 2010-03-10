@@ -29,6 +29,7 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
+import de.jdufner.sudoku.common.misc.Examples;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
@@ -78,5 +79,14 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
   public void testBuildShuffled() {
     Sudoku sudoku = SudokuFactory.buildShuffled(SudokuSize.NEUN);
     LOG.debug(sudoku);
+  }
+
+  public void testSudokuStringWithCandidates() {
+    final Sudoku sudoku = SudokuFactory.buildSudoku(Examples.ING_DIBA);
+    final String sudokuAsStringWithCandidates = sudoku.toShortStringWithCandidates();
+    LOG.debug(sudokuAsStringWithCandidates);
+    final Sudoku sudoku2 = SudokuFactory.buildSudoku(sudokuAsStringWithCandidates);
+    assertEquals(sudoku, sudoku2);
+    assertNotSame(sudoku, sudoku2);
   }
 }

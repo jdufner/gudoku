@@ -23,26 +23,28 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.solver.strategy.simple;
+package de.jdufner.sudoku.solver.strategy.naked;
 
+import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 
-/**
- * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2010-03-08
- * @version $Revision$
- */
-public final class SimpleSerialStrategyTest extends AbstractSimpleStrategyTestCase {
-
-  @Override
-  protected Strategy getStrategy() {
-    return new SimpleSerialStrategy(sudoku);
-  }
+public final class NakedBlockStrategyTest extends AbstractStrategyTestCase {
 
   @Override
   protected int getNumberCommands() {
-    return 173;
+    return 0;
+  }
+
+  @Override
+  protected Strategy getStrategy() {
+    NakedBlockStrategy nakedBlockStrategy = new NakedBlockStrategy(sudoku);
+    nakedBlockStrategy.setSize(2);
+    return nakedBlockStrategy;
+  }
+
+  @Override
+  protected String getSudokuAsString() {
+    return "...1.2.4.9.....1.2.....69.........7816..8....2....95.6...6.5.8.6.......9..1.4..2.";
   }
 
 }

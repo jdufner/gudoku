@@ -37,8 +37,8 @@ import de.jdufner.sudoku.test.AbstractSolverTestCase;
  */
 public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
 
-  protected Sudoku sudoku;
-  protected Strategy strategy;
+  protected transient Sudoku sudoku;
+  protected transient Strategy strategy;
 
   @Override
   protected void setUp() throws Exception {
@@ -51,10 +51,15 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
 
   protected abstract Strategy getStrategy();
 
+  protected abstract int getNumberCommands();
+
   public void testAllgemein() {
-    StrategyResult strategyResult = strategy.execute();
-    assertNotNull(strategyResult);
-    assertNotNull(strategyResult.getCommands());
-    assertTrue(strategyResult.getCommands().size() > 0);
+    final StrategyResult strategyResult = strategy.execute();
+    assertNotNull("Eine Strategie muss ein Ergebnis ungleich null liefern.", strategyResult);
+    assertNotNull("Eine Strategie muss eine (leere) Liste von Befehlen liefern.", strategyResult.getCommands());
+    assertTrue("Eine Strategie muss mindestens ein Befehl liefern.", strategyResult.getCommands().size() > 0);
+    assertEquals("Ein Strategie muss diese Anzahl von Befehlen liefern.", getNumberCommands(), strategyResult
+        .getCommands().size());
   }
+
 }

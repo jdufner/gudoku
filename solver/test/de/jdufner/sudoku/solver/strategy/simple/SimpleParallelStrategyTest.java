@@ -39,4 +39,10 @@ public final class SimpleParallelStrategyTest extends AbstractSimpleStrategyTest
   protected Strategy getStrategy() {
     return new SimpleParallelStrategy(sudoku);
   }
+
+  @Override
+  protected int getNumberCommands() {
+    return 173;
+  }
+
 }

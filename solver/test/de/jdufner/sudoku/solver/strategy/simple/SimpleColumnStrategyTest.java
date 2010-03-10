@@ -39,4 +39,10 @@ public final class SimpleColumnStrategyTest extends AbstractSimpleStrategyTestCa
   protected Strategy getStrategy() {
     return new SimpleColumnStrategy(sudoku);
   }
+
+  @Override
+  protected int getNumberCommands() {
+    return 59;
+  }
+
 }

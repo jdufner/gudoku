@@ -41,6 +41,7 @@ import de.jdufner.sudoku.common.cellhandlerimpls.LongString;
 import de.jdufner.sudoku.common.cellhandlerimpls.ResetAndRemoveCandidates;
 import de.jdufner.sudoku.common.cellhandlerimpls.ResetCell;
 import de.jdufner.sudoku.common.cellhandlerimpls.ShortString;
+import de.jdufner.sudoku.common.cellhandlerimpls.ShortStringWithCandidates;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.common.validator.SudokuValidator;
 import de.jdufner.sudoku.context.SolverServiceFactory;
@@ -52,7 +53,7 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
  * @since 0.1
  * @version $Revision$
  */
-public class Sudoku implements Cloneable {
+public final class Sudoku implements Cloneable {
 
   private static final Logger LOG = Logger.getLogger(Sudoku.class);
   /**
@@ -135,6 +136,23 @@ public class Sudoku implements Cloneable {
         board[i][j] = new Cell(i, j, Literal.getInstance(values[index]), size);
         addToUnits(board[i][j]);
         index++;
+      }
+    }
+    initialized = true;
+  }
+
+  public Sudoku(final SudokuSize size, final Cell[] cells) {
+    assert size.getTotalSize() == cells.length : "Es werden " + size.getTotalSize()
+        + " Zellen erwartet, aber es wurden " + cells.length + " Zellen übergeben.";
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("Erzeuge neues Sudoku");
+    }
+    this.size = size;
+    board = new Cell[size.getUnitSize()][size.getUnitSize()];
+    for (int i = 0; i < size.getUnitSize(); i++) {
+      for (int j = 0; j < size.getUnitSize(); j++) {
+        board[i][j] = cells[CellUtils.getNumber(i, j, size)];
+        addToUnits(board[i][j]);
       }
     }
     initialized = true;
@@ -305,6 +323,16 @@ public class Sudoku implements Cloneable {
     final ShortString shortString = new ShortString(this);
     HandlerUtil.forEachCell(this, shortString);
     return shortString.toString();
+  }
+
+  /**
+   * @return Gibt einen String des Sudokus in einer Zeile zurück. Die Zellen sind mit Komma getrennt, die Kandidaten
+   *         sind mit Bindestrich getrennt.
+   */
+  public String toShortStringWithCandidates() {
+    final ShortStringWithCandidates shortStringWithCandidates = new ShortStringWithCandidates();
+    HandlerUtil.forEachCell(this, shortStringWithCandidates);
+    return shortStringWithCandidates.toString();
   }
 
   /**
