@@ -23,26 +23,29 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.solver.strategy.simple;
-
-import de.jdufner.sudoku.solver.strategy.Strategy;
+package de.jdufner.sudoku.common.board;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2010-03-08
+ * @since 2010-03-10
  * @version $Revision$
  */
-public final class SimpleSerialStrategyTest extends AbstractSimpleStrategyTestCase {
+public final class CellUtils {
 
-  @Override
-  protected Strategy getStrategy() {
-    return new SimpleSerialStrategy(sudoku);
+  private CellUtils() {
+
   }
 
-  @Override
-  protected int getNumberCommands() {
-    return 173;
+  public static int getRowIndex(final int number, final SudokuSize sudokuSize) {
+    return number / sudokuSize.getUnitSize();
   }
 
+  public static int getColumnIndex(final int number, final SudokuSize sudokuSize) {
+    return number % sudokuSize.getUnitSize();
+  }
+
+  public static int getNumber(final int rowIndex, final int columnIndex, final SudokuSize sudokuSize) {
+    return rowIndex * sudokuSize.getUnitSize() + columnIndex;
+  }
 }

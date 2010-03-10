@@ -40,4 +40,9 @@ public final class SimpleBlockStrategyTest extends AbstractSimpleStrategyTestCas
     return new SimpleBlockStrategy(sudoku);
   }
 
+  @Override
+  protected int getNumberCommands() {
+    return 59;
+  }
+
 }

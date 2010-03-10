@@ -32,6 +32,7 @@ import org.apache.commons.math.random.RandomData;
 import org.apache.commons.math.random.RandomDataImpl;
 import org.apache.commons.pool.PoolableObjectFactory;
 
+import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
@@ -47,6 +48,7 @@ public class SudokuFactory implements PoolableObjectFactory {
 
   private static final Pattern SIZE_PATTERN = Pattern.compile("^(\\d+):");
   private static final Pattern CELLS_PATTERN = Pattern.compile(":([0-9,]+)$");
+  private static final Pattern CANDIDATES_PATTERN = Pattern.compile("^[0-9,\\-]+$");
 
   private SudokuSize size = SudokuSize.DEFAULT;
 
@@ -58,19 +60,44 @@ public class SudokuFactory implements PoolableObjectFactory {
       }
       return sudoku;
     } else {
-      final char[] chars = sudokuAsString.toCharArray();
-      Integer[] felder = new Integer[chars.length];
-      for (int i = 0; i < chars.length; i++) {
-        if (chars[i] == '.') {
-          felder[i] = Integer.valueOf(0);
-        } else {
-          felder[i] = Integer.valueOf(String.valueOf(chars[i]));
+      if (CANDIDATES_PATTERN.matcher(sudokuAsString).matches()) {
+        final String[] felderAsStrings = Pattern.compile(",").split(sudokuAsString);
+        final Cell[] cells = new Cell[felderAsStrings.length];
+        for (int i = 0; i < felderAsStrings.length; i++) {
+          if (felderAsStrings[i].contains("-")) {
+            final String[] candidatesAsStrings = Pattern.compile("-").split(felderAsStrings[i]);
+            final Literal[] candidates = new Literal[candidatesAsStrings.length];
+            for (int j = 0; j < candidatesAsStrings.length; j++) {
+              candidates[j] = Literal.getInstance(Integer.parseInt(candidatesAsStrings[j]));
+            }
+            cells[i] = new Cell(i, null, candidates, SudokuSize.DEFAULT);
+          } else {
+            cells[i] = new Cell(i, Literal.getInstance(Integer.parseInt(felderAsStrings[i])), null, SudokuSize.DEFAULT);
+          }
         }
+        return new Sudoku(SudokuSize.DEFAULT, cells);
+      } else {
+        final Sudoku sudoku = buildSudokuFrom81Chars(sudokuAsString);
+        if (!sudoku.isValid()) {
+          throw new IllegalArgumentException("Das eingegebene Sudoku ist nicht gültig.");
+        }
+        return sudoku;
       }
-
-      final Sudoku sudoku = new Sudoku(SudokuSize.NEUN, felder);
-      return sudoku;
     }
+  }
+
+  private static Sudoku buildSudokuFrom81Chars(final String sudokuAsString) {
+    final char[] chars = sudokuAsString.toCharArray();
+    Integer[] felder = new Integer[chars.length];
+    for (int i = 0; i < chars.length; i++) {
+      if (chars[i] == '.') {
+        felder[i] = Integer.valueOf(0);
+      } else {
+        felder[i] = Integer.valueOf(String.valueOf(chars[i]));
+      }
+    }
+    final Sudoku sudoku = new Sudoku(SudokuSize.NEUN, felder);
+    return sudoku;
   }
 
   protected static SudokuSize getGroesseFromString(final String boardAsString) {

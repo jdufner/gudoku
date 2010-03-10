@@ -26,15 +26,11 @@
 package de.jdufner.sudoku.solver.strategy.simple;
 
 import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
-import de.jdufner.sudoku.solver.strategy.Strategy;
 
 public abstract class AbstractSimpleStrategyTestCase extends AbstractStrategyTestCase {
 
   protected String getSudokuAsString() {
     return ".859.7.....9.1.2.....8........4.1.76..2....5..1.............8.17....4.2....6..9..";
   }
-
-  @Override
-  protected abstract Strategy getStrategy();
 
 }

@@ -26,6 +26,7 @@
 package de.jdufner.sudoku.common.board;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -71,6 +72,21 @@ public final class Cell implements Cloneable, Comparable<Cell> {
     this.sudokuSize = cell.sudokuSize;
     this.value = cell.value;
     this.candidates.addAll(cell.candidates);
+  }
+
+  public Cell(final int number, final Literal value, final Literal[] candidates, final SudokuSize sudokuSize) {
+    this.rowIndex = CellUtils.getRowIndex(number, sudokuSize);
+    this.columnIndex = CellUtils.getColumnIndex(number, sudokuSize);
+    this.blockIndex = BlockUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, sudokuSize);
+    this.sudokuSize = sudokuSize;
+    if (value == null) {
+      //      if (candidates != null && candidates.length > 0) {
+      setValue(Literal.EMPTY, false);
+      getCandidates().addAll(Arrays.asList(candidates));
+      //      }
+    } else {
+      setValue(value, false);
+    }
   }
 
   public Literal getValue() {

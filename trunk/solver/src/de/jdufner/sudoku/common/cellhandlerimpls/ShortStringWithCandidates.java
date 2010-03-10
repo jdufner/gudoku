@@ -23,26 +23,52 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.solver.strategy.simple;
+package de.jdufner.sudoku.common.cellhandlerimpls;
 
-import de.jdufner.sudoku.solver.strategy.Strategy;
+import de.jdufner.sudoku.common.board.Cell;
+import de.jdufner.sudoku.common.board.CellHandler;
+import de.jdufner.sudoku.common.board.Literal;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2010-03-08
+ * @since 2010-03-10
  * @version $Revision$
  */
-public final class SimpleSerialStrategyTest extends AbstractSimpleStrategyTestCase {
+public final class ShortStringWithCandidates implements CellHandler {
+
+  private final static char CELL_SEPARATOR = ',';
+  private final static char CANDIDATE_SEPARATOR = '-';
+
+  private transient StringBuilder stringBuilder = null;
 
   @Override
-  protected Strategy getStrategy() {
-    return new SimpleSerialStrategy(sudoku);
+  public void initialize() {
+    stringBuilder = new StringBuilder();
   }
 
   @Override
-  protected int getNumberCommands() {
-    return 173;
+  public void handleCell(final Cell cell) {
+    if (cell.getNumber() > 0) {
+      stringBuilder.append(CELL_SEPARATOR);
+    }
+    if (cell.isFixed()) {
+      stringBuilder.append(cell.getValue());
+    } else {
+      int i = 1;
+      for (Literal candidate : cell.getCandidates()) {
+        stringBuilder.append(candidate);
+        if (i < cell.getCandidates().size()) {
+          stringBuilder.append(CANDIDATE_SEPARATOR);
+          i++;
+        }
+      }
+    }
+  }
+
+  @Override
+  public String toString() {
+    return stringBuilder.toString();
   }
 
 }
