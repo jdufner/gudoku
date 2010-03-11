@@ -60,7 +60,7 @@ public class SudokuFactory implements PoolableObjectFactory {
       }
       return sudoku;
     } else {
-      if (CANDIDATES_PATTERN.matcher(sudokuAsString).matches()) {
+      if (sudokuAsString.contains(",") && CANDIDATES_PATTERN.matcher(sudokuAsString).matches()) {
         final String[] felderAsStrings = Pattern.compile(",").split(sudokuAsString);
         final Cell[] cells = new Cell[felderAsStrings.length];
         for (int i = 0; i < felderAsStrings.length; i++) {

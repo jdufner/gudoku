@@ -49,6 +49,8 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
 /**
  * Diese Klasse kapselt das Spielfeld mit Zeilen, Spalten und Blöcken.
  * 
+ * TODO Methode clone() und Interface Cloneable entfernen
+ * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
@@ -308,7 +310,11 @@ public final class Sudoku implements Cloneable {
   }
 
   /**
+   * Gibt ein Sudoku in mehreren Zeilen aus. Pro Zeile wird eine Zelle inkl. Kandidaten ausgegeben. Wird vermutlich
+   * nicht mehr verwendet. Inzwischen kann das Sudoku besser visualisiert werden.
+   * 
    * @return Gibt einen String des Sudokus zurück, für Debugging-Zwecke.
+   * @see LongString
    */
   public String toLongString() {
     final LongString longString = new LongString(this);
@@ -317,7 +323,8 @@ public final class Sudoku implements Cloneable {
   }
 
   /**
-   * @return Gibt einen String des Sudokus in einer Zeile mit Kommas getrennt zurück.
+   * @return Gibt einen String des Sudokus in einer Zeile zurück.
+   * @see ShortString
    */
   public String toShortString() {
     final ShortString shortString = new ShortString(this);
@@ -328,6 +335,7 @@ public final class Sudoku implements Cloneable {
   /**
    * @return Gibt einen String des Sudokus in einer Zeile zurück. Die Zellen sind mit Komma getrennt, die Kandidaten
    *         sind mit Bindestrich getrennt.
+   * @see ShortStringWithCandidates
    */
   public String toShortStringWithCandidates() {
     final ShortStringWithCandidates shortStringWithCandidates = new ShortStringWithCandidates();
@@ -471,15 +479,15 @@ public final class Sudoku implements Cloneable {
   }
 
   public Block getBlock(final int rowIndex, final int columnIndex) {
-    // Implementierungsalternative 1
-    // return getCell(rowIndex, columnIndex).getBlock();
-    // Implementierungsalternative 2
-    return getBlock((rowIndex / size.getTotalSize()) * size.getTotalSize() + (columnIndex / size.getTotalSize()));
+    return getBlock(BlockUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, size));
   }
 
   @Override
   public String toString() {
-    return toShortString();
+    if (isSolved()) {
+      return toShortString();
+    }
+    return toShortStringWithCandidates();
   }
 
   @Override

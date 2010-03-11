@@ -49,7 +49,7 @@ public final class Cell implements Cloneable, Comparable<Cell> {
   private static final Logger LOG = Logger.getLogger(Cell.class);
   private static final Random RANDOM = new Random();
 
-  private transient SudokuSize sudokuSize;
+  private final transient SudokuSize sudokuSize;
   private final transient int rowIndex;
   private final transient int columnIndex;
   private final transient int blockIndex;
@@ -123,18 +123,9 @@ public final class Cell implements Cloneable, Comparable<Cell> {
       if (LOG.isInfoEnabled()) {
         LOG.info("Set " + this);
       }
-      assert candidateAvailableOrFixed();
     }
-    assert candidateAvailableOrFixed();
+    assert isValid();
     return candidatesRemoved;
-  }
-
-  /**
-   * @return <code>true</code> if either is fixed and no candidates available or is not fixed and at least on candidate
-   *         available
-   */
-  private boolean candidateAvailableOrFixed() {
-    return (candidates.size() > 0 && value.getValue() == 0) || (candidates.size() <= 0 && value.getValue() > 0);
   }
 
   /**
@@ -286,10 +277,7 @@ public final class Cell implements Cloneable, Comparable<Cell> {
    * </pre>
    */
   public int getNumber() {
-    if (number == null) {
-      number = Integer.valueOf(getRowIndex() * sudokuSize.getUnitSize() + getColumnIndex());
-    }
-    return number.intValue();
+    return CellUtils.getNumber(rowIndex, columnIndex, sudokuSize);
   }
 
   /**
