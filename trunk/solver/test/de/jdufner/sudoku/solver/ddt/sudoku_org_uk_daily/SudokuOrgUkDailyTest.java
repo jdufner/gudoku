@@ -37,8 +37,8 @@ import de.jdufner.sudoku.solver.service.Solver;
  * @since 0.1
  * @version $Revision$
  */
-public final class SudokuTest extends AbstractSolverExcelTestCase {
-  private static final Logger LOG = Logger.getLogger(SudokuTest.class);
+public final class SudokuOrgUkDailyTest extends AbstractSolverExcelTestCase {
+  private static final Logger LOG = Logger.getLogger(SudokuOrgUkDailyTest.class);
 
   private String sudokuAsString;
   private boolean solveable;

@@ -113,11 +113,9 @@ public abstract class AbstractCommand implements Command {
    * {@link #getFrozenString()} abgerufen werden. Diese Methode ist nach Erzeugung des Objekts aufzurufen.
    */
   protected void freeze(Sudoku sudoku) {
-    //if (LOG.isDebugEnabled()) {
     if (frozenString == null || frozenString.length() <= 0) {
       frozenString = this.toString(sudoku);
     }
-    //}
   }
 
   protected abstract String toString(Sudoku sudoku);
