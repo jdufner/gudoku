@@ -25,6 +25,8 @@
  */
 package de.jdufner.sudoku.solver.strategy;
 
+import org.apache.log4j.Logger;
+
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
@@ -36,6 +38,8 @@ import de.jdufner.sudoku.test.AbstractSolverTestCase;
  * @version $Revision$
  */
 public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
+
+  private static final Logger LOG = Logger.getLogger(AbstractStrategyTestCase.class);
 
   protected transient Sudoku sudoku;
   protected transient Strategy strategy;
@@ -58,8 +62,8 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
     assertNotNull("Eine Strategie muss ein Ergebnis ungleich null liefern.", strategyResult);
     assertNotNull("Eine Strategie muss eine (leere) Liste von Befehlen liefern.", strategyResult.getCommands());
     assertTrue("Eine Strategie muss mindestens ein Befehl liefern.", strategyResult.getCommands().size() > 0);
+    LOG.debug(strategyResult.getCommands());
     assertEquals("Ein Strategie muss diese Anzahl von Befehlen liefern.", getNumberCommands(), strategyResult
         .getCommands().size());
   }
-
 }
