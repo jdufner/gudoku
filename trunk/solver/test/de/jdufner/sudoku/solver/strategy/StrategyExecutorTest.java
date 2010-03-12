@@ -48,11 +48,12 @@ public class StrategyExecutorTest extends AbstractSolverTestCase {
    */
   private static final String SUDOKU_AS_STRING =
   //".5..9...2.6..2...8..7...9...81.............5...69.3......7.2..5...6..4..8.9.5...3";
-  ".1...4..3.3..5..7.74....1.......25....1...6....35.......2....47.9..7..2.4..3...1.";
+  //".1...4..3.3..5..7.74....1.......25....1...6....35.......2....47.9..7..2.4..3...1.";
+  ".....2..9..2...7.8..5..6...6.......342...3..7..7.1...4.71..........8......69.5.2.";
 
-  private Sudoku sudoku;
+  private transient Sudoku sudoku;
 
-  public StrategyExecutorTest(String name) {
+  public StrategyExecutorTest(final String name) {
     super(name);
   }
 
@@ -61,10 +62,18 @@ public class StrategyExecutorTest extends AbstractSolverTestCase {
     sudoku = SudokuFactory.buildSudoku(SUDOKU_AS_STRING);
   }
 
-  public void testExecute() {
-    StrategyConfiguration configuration = new StrategyConfiguration(StrategyThreadingEnum.PARALLEL)
-        .add(StrategyNameEnum.values());
-    StrategyExecutor strategyExecutor = new StrategyExecutor(sudoku, configuration);
+  /*
+   * public void testExecuteParallel() { final StrategyConfiguration configuration = new
+   * StrategyConfiguration(StrategyThreadingEnum.PARALLEL) .add(StrategyNameEnum.values()); final StrategyExecutor
+   * strategyExecutor = new StrategyExecutor(sudoku, configuration); LOG.debug(strategyExecutor);
+   * strategyExecutor.execute(); // SolutionImpl solution = strategyExecutor.buildStrategySolution(); //
+   * LOG.debug(solution); }
+   */
+
+  public void testExecuteSerial() {
+    final StrategyConfiguration configuration = new StrategyConfiguration(StrategyThreadingEnum.SERIAL).add(
+        StrategyNameEnum.values()).remove(StrategyNameEnum.BACKTRACKING);
+    final StrategyExecutor strategyExecutor = new StrategyExecutor(sudoku, configuration);
     LOG.debug(strategyExecutor);
     strategyExecutor.execute();
     //    SolutionImpl solution = strategyExecutor.buildStrategySolution();

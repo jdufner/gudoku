@@ -28,18 +28,18 @@ package de.jdufner.sudoku.solver.strategy.naked;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 
-public final class NakedBlockStrategyTest extends AbstractStrategyTestCase {
+public final class NakedColumnStrategyTest extends AbstractStrategyTestCase {
 
   @Override
   protected int getNumberCommands() {
-    return 6;
+    return 2;
   }
 
   @Override
   protected Strategy getStrategy() {
-    final NakedBlockStrategy nakedBlockStrategy = new NakedBlockStrategy(sudoku);
-    nakedBlockStrategy.setSize(2);
-    return nakedBlockStrategy;
+    final NakedColumnStrategy nakedColumnStrategy = new NakedColumnStrategy(sudoku);
+    nakedColumnStrategy.setSize(2);
+    return nakedColumnStrategy;
   }
 
   @Override

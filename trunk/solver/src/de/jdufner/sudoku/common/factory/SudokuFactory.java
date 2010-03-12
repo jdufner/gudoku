@@ -25,6 +25,7 @@
  */
 package de.jdufner.sudoku.common.factory;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -70,7 +71,7 @@ public class SudokuFactory implements PoolableObjectFactory {
             for (int j = 0; j < candidatesAsStrings.length; j++) {
               candidates[j] = Literal.getInstance(Integer.parseInt(candidatesAsStrings[j]));
             }
-            cells[i] = new Cell(i, null, candidates, SudokuSize.DEFAULT);
+            cells[i] = new Cell(i, null, Arrays.asList(candidates), SudokuSize.DEFAULT);
           } else {
             cells[i] = new Cell(i, Literal.getInstance(Integer.parseInt(felderAsStrings[i])), null, SudokuSize.DEFAULT);
           }
