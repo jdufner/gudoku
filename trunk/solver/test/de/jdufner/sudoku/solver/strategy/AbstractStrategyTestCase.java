@@ -49,6 +49,13 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
     super.setUp();
     sudoku = SudokuFactory.buildSudoku(getSudokuAsString());
     strategy = getStrategy();
+    LOG.debug("Vorher: " + sudoku);
+  }
+
+  @Override
+  protected void tearDown() throws Exception {
+    super.tearDown();
+    LOG.debug("Nachher: " + sudoku);
   }
 
   protected abstract String getSudokuAsString();

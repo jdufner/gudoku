@@ -25,6 +25,8 @@
  */
 package de.jdufner.sudoku.solver.strategy.naked;
 
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
+
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -34,5 +36,7 @@ package de.jdufner.sudoku.solver.strategy.naked;
 public interface Naked {
 
   int getSize();
+
+  StrategyNameEnum getStrategyNameEnum();
 
 }

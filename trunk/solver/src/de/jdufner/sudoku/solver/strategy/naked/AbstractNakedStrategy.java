@@ -56,7 +56,8 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
 
   private static final Logger LOG = Logger.getLogger(AbstractNakedStrategy.class);
 
-  private int size;
+  private transient int size;
+  private transient StrategyNameEnum strategyNameEnum;
 
   /**
    * In dieser Zuordnung werden pro Einheit die Kandidaten gespeichert, die bereits in der Strategie geprüft wurden.
@@ -80,6 +81,16 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
   @Override
   public void setSize(final int size) {
     this.size = size;
+  }
+
+  @Override
+  public void setStrategyNameEnum(final StrategyNameEnum strategyNameEnum) {
+    this.strategyNameEnum = strategyNameEnum;
+  }
+
+  @Override
+  public StrategyNameEnum getStrategyNameEnum() {
+    return strategyNameEnum;
   }
 
   @Override
@@ -168,8 +179,8 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
   protected final void removeCandidatesInOtherCells(final Candidates<Literal> candidates,
       final List<Cell> excludedCells, final Unit unit) {
     for (Cell cell : unit.getNonFixed()) {
-      if (!excludedCells.contains(cell)) {
-        getCommands().add(new RemoveCandidatesCommand(StrategyNameEnum.NAKED_PAIR, cell, candidates));
+      if (!excludedCells.contains(cell) && cell.getCandidates().containsAtLeastOneOf(candidates)) {
+        getCommands().add(new RemoveCandidatesCommand(strategyNameEnum, cell, candidates));
       }
     }
   }

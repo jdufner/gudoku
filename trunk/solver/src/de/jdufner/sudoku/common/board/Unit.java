@@ -253,7 +253,7 @@ public abstract class Unit implements Comparable<Unit> {
 
   @Override
   public String toString() {
-    final StringBuilder sb = new StringBuilder("Unit " + index);
+    final StringBuilder sb = new StringBuilder(String.valueOf(index));
     sb.append(" ").append(getCells());
     return sb.toString();
   }

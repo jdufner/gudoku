@@ -27,7 +27,6 @@ package de.jdufner.sudoku.common.board;
 
 import java.util.List;
 
-
 /**
  * A block represents a unit of m x n cells. It spans about several columns and rown and contains each literal one time.
  * 
@@ -81,6 +80,11 @@ public final class Block extends Unit {
       return super.equals(other);
     }
     return false;
+  }
+
+  @Override
+  public String toString() {
+    return "Block " + super.toString();
   }
 
 }

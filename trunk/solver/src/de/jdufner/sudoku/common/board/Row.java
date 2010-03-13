@@ -27,7 +27,6 @@ package de.jdufner.sudoku.common.board;
 
 import java.util.List;
 
-
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -57,6 +56,11 @@ public final class Row extends Unit {
       return super.equals(other);
     }
     return false;
+  }
+
+  @Override
+  public String toString() {
+    return "Row " + super.toString();
   }
 
 }

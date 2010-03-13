@@ -27,7 +27,6 @@ package de.jdufner.sudoku.common.board;
 
 import java.util.List;
 
-
 /**
  * A column represents a unit of cells in one column.
  * 
@@ -55,11 +54,15 @@ public final class Column extends Unit {
 
   @Override
   public boolean equals(final Object other) { // NOPMD by Jürgen on 16.11.09 00:23
-    // TODO Implementierung mit Row und Block abgleichen
     if (other instanceof Column) {
       return super.equals(other);
     }
     return false;
+  }
+
+  @Override
+  public String toString() {
+    return "Column " + super.toString();
   }
 
 }
