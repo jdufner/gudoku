@@ -233,6 +233,12 @@ public abstract class Unit implements Comparable<Unit> {
 
   @Override
   public boolean equals(final Object other) {
+    if (other == this) {
+      return true;
+    }
+    if (other == null) {
+      return false;
+    }
     if (other instanceof Unit) {
       final Unit that = (Unit) other;
       return this.index == that.index;
@@ -247,7 +253,7 @@ public abstract class Unit implements Comparable<Unit> {
 
   @Override
   public String toString() {
-    final StringBuilder sb = new StringBuilder(super.toString());
+    final StringBuilder sb = new StringBuilder("Unit " + index);
     sb.append(" ").append(getCells());
     return sb.toString();
   }
