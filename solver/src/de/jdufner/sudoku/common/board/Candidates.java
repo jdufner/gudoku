@@ -126,13 +126,13 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
    *         enthalten sind, sonst <code>false</code>, also es existiert mindestens ein Testkandidat, der in der Liste
    *         der Zellkandidaten nicht enthalten ist.
    */
-  public boolean containsAtLeast(final Collection<T> testCandidates) {
-    for (T testCandidate : this) {
-      if (!this.contains(testCandidate)) {
-        return false;
+  public boolean containsAtLeastOneOf(final Collection<T> testCandidates) {
+    for (T testCandidate : testCandidates) {
+      if (this.contains(testCandidate)) {
+        return true;
       }
     }
-    return true;
+    return false;
   }
 
   @Override

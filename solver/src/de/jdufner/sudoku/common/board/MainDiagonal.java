@@ -36,8 +36,21 @@ import java.util.List;
  */
 public final class MainDiagonal extends Unit {
 
-  public MainDiagonal(SudokuSize sudokuSize, int index, List<Cell> cells) {
+  public MainDiagonal(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
     super(sudokuSize, index, cells);
+  }
+
+  @Override
+  public boolean equals(Object other) { // NOPMD Jürgen Dufner 13.03.2010
+    if (other instanceof MainDiagonal) {
+      return super.equals(other);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    return "MainDiagonal " + super.toString();
   }
 
 }

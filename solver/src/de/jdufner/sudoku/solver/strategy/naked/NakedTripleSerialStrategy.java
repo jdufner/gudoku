@@ -26,6 +26,7 @@
 package de.jdufner.sudoku.solver.strategy.naked;
 
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -35,6 +36,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 public final class NakedTripleSerialStrategy extends AbstractNakedSerialStrategy {
 
   public static final int SIZE = 3;
+  public static final StrategyNameEnum STRATEGY_NAME = StrategyNameEnum.NAKED_TRIPLE;
 
   public NakedTripleSerialStrategy(final Sudoku sudoku) {
     super(sudoku);
@@ -43,6 +45,11 @@ public final class NakedTripleSerialStrategy extends AbstractNakedSerialStrategy
   @Override
   public int getSize() {
     return SIZE;
+  }
+
+  @Override
+  public StrategyNameEnum getStrategyNameEnum() {
+    return STRATEGY_NAME;
   }
 
 }

@@ -34,7 +34,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
  * @since 0.1
  * @version $Revision$
  */
-public abstract class AbstractNakedParallelStrategy extends AbstractParallelStrategy {
+public abstract class AbstractNakedParallelStrategy extends AbstractParallelStrategy implements Naked {
 
   //  private static final Logger LOG = Logger.getLogger(AbstractNakedParallelStrategy.class);
 
@@ -42,12 +42,15 @@ public abstract class AbstractNakedParallelStrategy extends AbstractParallelStra
     super(sudoku);
     final NakedBlockStrategy nakedBlockStrategy = new NakedBlockStrategy(sudoku);
     nakedBlockStrategy.setSize(getSize());
+    nakedBlockStrategy.setStrategyNameEnum(getStrategyNameEnum());
     getCallables().add(nakedBlockStrategy);
     final NakedColumnStrategy nakedColumnStrategy = new NakedColumnStrategy(sudoku);
     nakedColumnStrategy.setSize(getSize());
+    nakedColumnStrategy.setStrategyNameEnum(getStrategyNameEnum());
     getCallables().add(nakedColumnStrategy);
     final NakedRowStrategy nakedRowStrategy = new NakedRowStrategy(sudoku);
     nakedRowStrategy.setSize(getSize());
+    nakedRowStrategy.setStrategyNameEnum(getStrategyNameEnum());
     getCallables().add(nakedRowStrategy);
   }
 
@@ -55,7 +58,5 @@ public abstract class AbstractNakedParallelStrategy extends AbstractParallelStra
   public Level getLevel() {
     return Level.LEICHT;
   }
-
-  protected abstract int getSize();
 
 }

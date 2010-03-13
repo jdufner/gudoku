@@ -36,8 +36,21 @@ import java.util.List;
  */
 public final class SecondaryDiagonal extends Unit {
 
-  public SecondaryDiagonal(SudokuSize sudokuSize, int index, List<Cell> cells) {
+  public SecondaryDiagonal(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
     super(sudokuSize, index, cells);
+  }
+
+  @Override
+  public boolean equals(Object other) { // NOPMD Jürgen Dufner 13.03.2010
+    if (other instanceof SecondaryDiagonal) {
+      return super.equals(other);
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    return "SecondaryDiagonal " + super.toString();
   }
 
 }

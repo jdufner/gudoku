@@ -42,12 +42,15 @@ public abstract class AbstractNakedSerialStrategy extends AbstractSerialStrategy
     super(sudoku);
     final NakedBlockStrategy nakedBlockStrategy = new NakedBlockStrategy(sudoku);
     nakedBlockStrategy.setSize(getSize());
+    nakedBlockStrategy.setStrategyNameEnum(getStrategyNameEnum());
     getStrategies().add(nakedBlockStrategy);
     final NakedColumnStrategy nakedColumnStrategy = new NakedColumnStrategy(sudoku);
     nakedColumnStrategy.setSize(getSize());
+    nakedColumnStrategy.setStrategyNameEnum(getStrategyNameEnum());
     getStrategies().add(nakedColumnStrategy);
     final NakedRowStrategy nakedRowStrategy = new NakedRowStrategy(sudoku);
     nakedRowStrategy.setSize(getSize());
+    nakedRowStrategy.setStrategyNameEnum(getStrategyNameEnum());
     getStrategies().add(nakedRowStrategy);
   }
 
