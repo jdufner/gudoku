@@ -38,6 +38,31 @@ import de.jdufner.sudoku.test.AbstractSolverTestCase;
  */
 public final class CandidatesTest extends AbstractSolverTestCase {
 
+  public void testEquals1() throws Exception {
+    final Candidates<Literal> c1 = new Candidates<Literal>();
+    c1.add(Literal.getInstance(1));
+    c1.add(Literal.getInstance(2));
+    c1.add(Literal.getInstance(3));
+    final Candidates<Literal> c2 = new Candidates<Literal>();
+    c2.add(Literal.getInstance(1));
+    c2.add(Literal.getInstance(2));
+    c2.add(Literal.getInstance(3));
+    final Candidates<Literal> c3 = new Candidates<Literal>();
+    c3.add(Literal.getInstance(1));
+    c3.add(Literal.getInstance(2));
+    c3.add(Literal.getInstance(3));
+    final Candidates<Literal> c4 = new Candidates<Literal>();
+    c4.add(Literal.getInstance(1));
+    assertEquals("Soll gleich sein.", c1, c2);
+    assertNotSame("Sind nicht dasselbe.", c1, c2);
+    assertEquals("Soll gleich sein.", c1, c3);
+    assertNotSame("Sind nicht dasselbe.", c1, c3);
+    assertEquals("Soll gleich sein.", c2, c3);
+    assertNotSame("Sind nicht dasselbe.", c2, c3);
+    assertFalse("Enthält unterschiedliche Literale.", c1.equals(c4));
+    assertNotSame("Sind nicht dasselbe.", c2, c3);
+  }
+
   public void testContainsAtLeastOneOf1() throws Exception {
     final Candidates<Literal> candidates = new Candidates<Literal>();
     candidates.add(Literal.getInstance(1));

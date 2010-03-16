@@ -25,6 +25,10 @@
  */
 package de.jdufner.sudoku.commands;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Cell;
@@ -45,15 +49,15 @@ public abstract class AbstractCommand implements Command {
 
   private static final Logger LOG = Logger.getLogger(AbstractCommand.class);
 
-  private transient String strategyName = null;
   private transient String frozenString = null;
 
+  protected transient String strategyName = null;
   protected transient int rowIndex, columnIndex;
   protected transient Literal value;
   protected transient boolean successfully = false;
 
   /**
-   * Konstrukter mit Information über den Erzeuger.
+   * Konstruktor mit Information über den Erzeuger.
    * 
    * @param strategyName
    *          Der Erzeuger des Befehls.
@@ -78,7 +82,7 @@ public abstract class AbstractCommand implements Command {
    * 
    * @param sudoku
    */
-  protected abstract void executeCommand(Sudoku sudoku);
+  protected abstract void executeCommand(final Sudoku sudoku);
 
   @Override
   public void unexecute(final Sudoku sudoku) {
@@ -93,7 +97,7 @@ public abstract class AbstractCommand implements Command {
    * 
    * @param sudoku
    */
-  protected abstract void unexecuteCommand(Sudoku sudoku);
+  protected abstract void unexecuteCommand(final Sudoku sudoku);
 
   @Override
   public abstract boolean reversible();
@@ -112,7 +116,7 @@ public abstract class AbstractCommand implements Command {
    * Speichert den Inhalt der {@link #toString()}-Methode des Objekts im Attribut {@link #frozenString} ab und kann mit
    * {@link #getFrozenString()} abgerufen werden. Diese Methode ist nach Erzeugung des Objekts aufzurufen.
    */
-  protected void freeze(Sudoku sudoku) {
+  protected void freeze(final Sudoku sudoku) {
     if (frozenString == null || frozenString.length() <= 0) {
       frozenString = this.toString(sudoku);
     }
@@ -135,8 +139,44 @@ public abstract class AbstractCommand implements Command {
     return rowIndex;
   }
 
-  protected Cell getCell(Sudoku sudoku) {
+  protected Cell getCell(final Sudoku sudoku) {
     return sudoku.getCell(getRowIndex(), getColumnIndex());
+  }
+
+  @Override
+  public boolean equals(Object other) {
+    if (this == other) {
+      return true;
+    }
+    if (other == null) {
+      return false;
+    }
+    if (other instanceof AbstractCommand) {
+      final AbstractCommand that = (AbstractCommand) other;
+      if ((this.strategyName == that.strategyName || //
+          (this.strategyName == null ? false : this.strategyName.equals(that.strategyName)))
+          && this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex && this.value == that.value) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    int hashCode = 17;
+    final int hashMultiplier = 31; // NOPMD Jürgen Dufner 14.03.2010
+    hashCode *= hashMultiplier + (strategyName == null ? 0 : strategyName.hashCode());
+    hashCode *= hashMultiplier + rowIndex;
+    hashCode *= hashMultiplier + columnIndex;
+    hashCode *= hashMultiplier + (value == null ? 0 : value.getValue());
+    return hashCode;
+  }
+
+  protected boolean isEqual(Collection<Literal> col1, Collection<Literal> col2) {
+    final Set<Literal> set1 = new HashSet<Literal>(col1);
+    final Set<Literal> set2 = new HashSet<Literal>(col2);
+    return set1.containsAll(set2) && set2.containsAll(set1);
   }
 
 }

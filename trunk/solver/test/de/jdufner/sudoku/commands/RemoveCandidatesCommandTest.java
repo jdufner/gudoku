@@ -31,8 +31,10 @@ import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
@@ -251,6 +253,21 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     Command rcc4 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates2);
     rcc4.execute(sudoku);
     assertFalse(rcc4.isSuccessfully());
+  }
+
+  public void testEquals() {
+    final Candidates<Literal> candidates1 = new Candidates<Literal>();
+    candidates1.add(Literal.getInstance(1));
+    candidates1.add(Literal.getInstance(2));
+    Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6, Literal.EMPTY,
+        SudokuSize.DEFAULT), candidates1);
+    final Candidates<Literal> candidates2 = new Candidates<Literal>();
+    candidates2.add(Literal.getInstance(2));
+    candidates2.add(Literal.getInstance(1));
+    Command rcc2 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6, Literal.EMPTY,
+        SudokuSize.DEFAULT), candidates1);
+    assertEquals("Sollen gleich sein.", rcc1, rcc2);
+    assertNotSame("Sind nicht dasselbe.", rcc1, rcc2);
   }
 
 }
