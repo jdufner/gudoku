@@ -51,7 +51,7 @@ public abstract class AbstractCommand implements Command {
 
   private transient String frozenString = null;
 
-  protected transient String strategyName = null;
+  protected transient StrategyNameEnum strategyNameEnum = null;
   protected transient int rowIndex, columnIndex;
   protected transient Literal value;
   protected transient boolean successfully = false;
@@ -63,9 +63,7 @@ public abstract class AbstractCommand implements Command {
    *          Der Erzeuger des Befehls.
    */
   protected AbstractCommand(final StrategyNameEnum strategyNameEnum) {
-    if (strategyNameEnum != null) {
-      this.strategyName = strategyNameEnum.name();
-    }
+    this.strategyNameEnum = strategyNameEnum;
   }
 
   @Override
@@ -109,7 +107,10 @@ public abstract class AbstractCommand implements Command {
 
   @Override
   public String getStrategyName() {
-    return strategyName;
+    if (strategyNameEnum == null) {
+      return null;
+    }
+    return strategyNameEnum.name();
   }
 
   /**
@@ -144,7 +145,7 @@ public abstract class AbstractCommand implements Command {
   }
 
   @Override
-  public boolean equals(Object other) {
+  public boolean equals(final Object other) {
     if (this == other) {
       return true;
     }
@@ -153,8 +154,8 @@ public abstract class AbstractCommand implements Command {
     }
     if (other instanceof AbstractCommand) {
       final AbstractCommand that = (AbstractCommand) other;
-      if ((this.strategyName == that.strategyName || //
-          (this.strategyName == null ? false : this.strategyName.equals(that.strategyName)))
+      if ((this.strategyNameEnum == that.strategyNameEnum || //
+          (this.strategyNameEnum == null ? false : this.strategyNameEnum.equals(that.strategyNameEnum)))
           && this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex && this.value == that.value) {
         return true;
       }
@@ -166,14 +167,14 @@ public abstract class AbstractCommand implements Command {
   public int hashCode() {
     int hashCode = 17;
     final int hashMultiplier = 31; // NOPMD Jürgen Dufner 14.03.2010
-    hashCode *= hashMultiplier + (strategyName == null ? 0 : strategyName.hashCode());
+    hashCode *= hashMultiplier + (strategyNameEnum == null ? 0 : strategyNameEnum.hashCode());
     hashCode *= hashMultiplier + rowIndex;
     hashCode *= hashMultiplier + columnIndex;
     hashCode *= hashMultiplier + (value == null ? 0 : value.getValue());
     return hashCode;
   }
 
-  protected boolean isEqual(Collection<Literal> col1, Collection<Literal> col2) {
+  protected boolean isEqual(final Collection<Literal> col1, final Collection<Literal> col2) {
     final Set<Literal> set1 = new HashSet<Literal>(col1);
     final Set<Literal> set2 = new HashSet<Literal>(col2);
     return set1.containsAll(set2) && set2.containsAll(set1);

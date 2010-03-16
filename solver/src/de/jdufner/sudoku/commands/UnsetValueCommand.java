@@ -75,7 +75,7 @@ public final class UnsetValueCommand extends AbstractSingleValueCommand {
   }
 
   @Override
-  public boolean equals(final Object other) { // NOPMD Jürgen Dufner 14.04.2010
+  public boolean equals(final Object other) { // NOPMD Jürgen Dufner 14.03.2010
     if (other instanceof SetCandidateCommand) {
       return super.equals(other);
     }

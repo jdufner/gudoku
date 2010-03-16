@@ -25,6 +25,8 @@
  */
 package de.jdufner.sudoku.solver.strategy.hidden;
 
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
+
 /**
  * Implementiert die Logik für <a href="http://www.sudopedia.org/wiki/Hidden_Subset">Hidden Subset
  * http://www.sudopedia.org/wiki/Hidden_Subset</a>.
@@ -40,4 +42,8 @@ public interface HiddenUnit extends Hidden {
    */
   void setSize(int size);
 
+  /**
+   * @see Hidden#getStrategyName()
+   */
+  void setStrategyNameEnum(StrategyNameEnum strategyNameEnum);
 }

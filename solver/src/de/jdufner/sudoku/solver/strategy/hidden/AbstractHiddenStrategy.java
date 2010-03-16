@@ -57,7 +57,8 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
 
   private static final Logger LOG = Logger.getLogger(AbstractHiddenStrategy.class);
 
-  private int size;
+  private transient int size;
+  private transient StrategyNameEnum strategyNameEnum;
 
   protected AbstractHiddenStrategy(final Sudoku sudoku) {
     super(sudoku);
@@ -76,6 +77,16 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
   @Override
   public void setSize(final int size) {
     this.size = size;
+  }
+
+  @Override
+  public StrategyNameEnum getStrategyNameEnum() {
+    return strategyNameEnum;
+  }
+
+  @Override
+  public void setStrategyNameEnum(final StrategyNameEnum strategyNameEnum) {
+    this.strategyNameEnum = strategyNameEnum;
   }
 
   /**
@@ -121,8 +132,8 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
           if (LOG.isDebugEnabled()) { // NOPMD by Jürgen on 08.11.09 00:23
             LOG.debug("Remove other candidates than " + kombination + " in cell " + cell);
           }
-          final Command cmd = CommandFactory.buildRetainCandidatesCommand(StrategyNameEnum.HIDDEN_PAIR, cell,
-              kombination); // NOPMD by Jürgen on 08.11.09 22:39
+          // FIXME
+          final Command cmd = CommandFactory.buildRetainCandidatesCommand(strategyNameEnum, cell, kombination); // NOPMD by Jürgen on 08.11.09 22:39
           getCommands().add(cmd);
         }
       }

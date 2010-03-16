@@ -26,6 +26,7 @@
 package de.jdufner.sudoku.solver.strategy.hidden;
 
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -43,6 +44,11 @@ public final class HiddenTripleParallelStrategy extends AbstractHiddenParallelSt
   @Override
   public int getSize() {
     return SIZE;
+  }
+
+  @Override
+  public StrategyNameEnum getStrategyNameEnum() {
+    return StrategyNameEnum.HIDDEN_TRIPLE;
   }
 
 }

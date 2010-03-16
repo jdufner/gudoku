@@ -26,6 +26,8 @@
 package de.jdufner.sudoku.commands;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 
@@ -38,9 +40,18 @@ public final class CommandUtils {
   private CommandUtils() {
   }
 
-  public static boolean areEquals(final Collection<Command> commands1, final Collection<Command> commands2) {
+  public static boolean isEqual(final Collection<Command> commands1, final Collection<Command> commands2) {
+    return isEqualSet(commands1, commands2);
+  }
+
+  private static boolean isEqualCollection(final Collection<Command> commands1, final Collection<Command> commands2) {
     return (commands1.containsAll(commands2) && commands2.containsAll(commands1));
-    //    return commands1.equals(commands2);
+  }
+
+  private static boolean isEqualSet(final Collection<Command> commands1, final Collection<Command> commands2) {
+    final Set<Command> cmd1 = new HashSet<Command>(commands1);
+    final Set<Command> cmd2 = new HashSet<Command>(commands2);
+    return (cmd1.containsAll(cmd2) && cmd2.containsAll(cmd1));
   }
 
 }
