@@ -80,7 +80,7 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
     assertEquals("Eine Strategie muss diese Anzahl von Befehlen liefern.", getCommands().size(), strategyResult
         .getCommands().size());
     assertTrue("Eine Strategie muss diese Befehle liefern: " + getCommands() + " lieferte aber "
-        + strategyResult.getCommands(), CommandUtils.areEquals(getCommands(), strategyResult.getCommands()));
+        + strategyResult.getCommands(), CommandUtils.isEqual(getCommands(), strategyResult.getCommands()));
     //    for (Command cmd : strategyResult.getCommands()) {
     //      LOG.debug(cmd.toString() + " Hashcode=" + cmd.hashCode());
     //    }

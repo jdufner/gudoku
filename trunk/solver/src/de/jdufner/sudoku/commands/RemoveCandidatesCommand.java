@@ -119,7 +119,7 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
   }
 
   @Override
-  public boolean equals(final Object other) {
+  public boolean equals(final Object other) { // NOPMD Jürgen Dufner 15.03.2010
     if (this == other) {
       return true;
     }
@@ -129,18 +129,8 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
     if (other instanceof RemoveCandidatesCommand) {
       final RemoveCandidatesCommand that = (RemoveCandidatesCommand) other;
       return (super.equals(other) && isEqual(this.candidates, that.candidates));
-      //      this.candidates.equals(that.candidates));
     }
     return false;
-  }
-
-  @Override
-  public int hashCode() {
-    int hashCode = 17;
-    final int hashMultiplier = 31; // NOPMD Jürgen Dufner 14.03.2010
-    hashCode *= hashMultiplier + super.hashCode();
-    //hashCode *= hashMultiplier + (candidates == null ? 0 : candidates.hashCode());
-    return hashCode;
   }
 
 }

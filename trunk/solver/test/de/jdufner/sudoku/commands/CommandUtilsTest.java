@@ -52,7 +52,7 @@ public final class CommandUtilsTest extends AbstractSolverTestCase {
         Literal.EMPTY, SudokuSize.DEFAULT), candidates2);
     final List<Command> commands2 = new ArrayList<Command>();
     commands2.add(rcc2);
-    assertTrue(CommandUtils.areEquals(commands1, commands2));
+    assertTrue(CommandUtils.isEqual(commands1, commands2));
   }
 
   public void testIsEqual2() {
@@ -70,7 +70,7 @@ public final class CommandUtilsTest extends AbstractSolverTestCase {
         Literal.EMPTY, SudokuSize.DEFAULT), candidates2);
     final List<Command> commands2 = new ArrayList<Command>();
     commands2.add(rcc2);
-    assertFalse(CommandUtils.areEquals(commands1, commands2));
+    assertFalse(CommandUtils.isEqual(commands1, commands2));
   }
 
   public void testIsEqual3() {
@@ -94,7 +94,7 @@ public final class CommandUtilsTest extends AbstractSolverTestCase {
     final List<Command> commands2 = new ArrayList<Command>();
     commands2.add(rcc2);
     commands2.add(rcc4);
-    assertTrue(CommandUtils.areEquals(commands1, commands2));
+    assertTrue(CommandUtils.isEqual(commands1, commands2));
   }
 
 }

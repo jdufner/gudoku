@@ -57,7 +57,7 @@ public final class PdfGenerator extends AbstractMainClass {
   protected void run() throws Exception {
     PdfGeneratorService pdfGeneratorService = (PdfGeneratorService) GeneratorServiceFactory.INSTANCE
         .getBean(PdfGeneratorService.class);
-    pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().numberPerLevel(Level.MITTEL, 12)
-        .numberPerLevel(Level.SCHWER, 12).build());
+    pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().numberPerLevel(Level.LEICHT, 12)
+        .numberPerLevel(Level.MITTEL, 12).numberPerLevel(Level.SCHWER, 12).build());
   }
 }
