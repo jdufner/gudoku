@@ -25,8 +25,13 @@
  */
 package de.jdufner.sudoku.solver.strategy;
 
+import java.util.Collection;
+import java.util.Collections;
+
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.commands.Command;
+import de.jdufner.sudoku.commands.CommandUtils;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
@@ -62,7 +67,9 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
 
   protected abstract Strategy getStrategy();
 
-  protected abstract int getNumberCommands();
+  protected Collection<Command> getCommands() {
+    return Collections.emptyList();
+  }
 
   public void testAllgemein() {
     final StrategyResult strategyResult = strategy.execute();
@@ -70,7 +77,17 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
     assertNotNull("Eine Strategie muss eine (leere) Liste von Befehlen liefern.", strategyResult.getCommands());
     assertTrue("Eine Strategie muss mindestens ein Befehl liefern.", strategyResult.getCommands().size() > 0);
     LOG.debug(strategyResult.getCommands());
-    assertEquals("Ein Strategie muss diese Anzahl von Befehlen liefern.", getNumberCommands(), strategyResult
+    assertEquals("Eine Strategie muss diese Anzahl von Befehlen liefern.", getCommands().size(), strategyResult
         .getCommands().size());
+    assertTrue("Eine Strategie muss diese Befehle liefern: " + getCommands() + " lieferte aber "
+        + strategyResult.getCommands(), CommandUtils.areEquals(getCommands(), strategyResult.getCommands()));
+    //    for (Command cmd : strategyResult.getCommands()) {
+    //      LOG.debug(cmd.toString() + " Hashcode=" + cmd.hashCode());
+    //    }
+    //    for (Command cmd : getCommands()) {
+    //      LOG.debug(cmd.toString() + " Hashcode=" + cmd.hashCode());
+    //      assertTrue("Command " + cmd + " muss in " + strategyResult.getCommands() + " enthalten sein.", strategyResult
+    //          .getCommands().contains(cmd));
+    //    }
   }
 }

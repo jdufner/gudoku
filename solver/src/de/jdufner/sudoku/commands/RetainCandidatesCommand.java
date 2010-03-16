@@ -102,31 +102,32 @@ public final class RetainCandidatesCommand extends AbstractCommand {
   }
 
   @Override
-  protected String toString(Sudoku sudoku) {
+  protected String toString(final Sudoku sudoku) {
     return getStrategyName() + ": Behalte Kandidaten " + candidates + " in Zelle " + getCell(sudoku);
   }
 
   @Override
   public boolean equals(final Object other) {
-    if (other == null) {
-      return false;
-    }
     if (this == other) {
       return true;
     }
+    if (other == null) {
+      return false;
+    }
     if (other instanceof RetainCandidatesCommand) {
       final RetainCandidatesCommand that = (RetainCandidatesCommand) other;
-      if (this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex
-          && this.candidates.containsAll(that.candidates) && that.candidates.containsAll(this.candidates)) {
-        return true;
-      }
+      return (super.equals(other) && this.candidates.equals(that.candidates));
     }
     return false;
   }
 
   @Override
   public int hashCode() {
-    return rowIndex;
+    int hashCode = 17;
+    final int hashMultiplier = 31; // NOPMD Jürgen Dufner 14.03.2010
+    hashCode *= hashMultiplier + super.hashCode();
+    //hashCode *= hashMultiplier + (candidates == null ? 0 : candidates.hashCode());
+    return hashCode;
   }
 
 }

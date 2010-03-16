@@ -88,30 +88,16 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
   }
 
   @Override
-  protected String toString(Sudoku sudoku) {
+  protected String toString(final Sudoku sudoku) {
     return getStrategyName() + ": Setze Wert " + value + " in Zelle " + getCell(sudoku);
   }
 
   @Override
-  public boolean equals(final Object other) {
-    if (this == other) {
-      return true;
-    }
-    if (other == null) {
-      return false;
-    }
-    if (other instanceof SetValueCommand) {
-      final SetValueCommand that = (SetValueCommand) other;
-      if (this.value.equals(that.value) && this.rowIndex == that.rowIndex && this.columnIndex == that.columnIndex) {
-        return true;
-      }
+  public boolean equals(final Object other) { // NOPMD Jürgen Dufner 14.04.2010
+    if (other instanceof SetCandidateCommand) {
+      return super.equals(other);
     }
     return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return rowIndex;
   }
 
 }

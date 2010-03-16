@@ -65,8 +65,16 @@ public final class UnsetCandidateCommand extends AbstractSingleValueCommand {
   }
 
   @Override
-  protected String toString(Sudoku sudoku) {
+  protected String toString(final Sudoku sudoku) {
     return getStrategyName() + ": Entferne Kandidat " + value + " aus Zelle " + getCell(sudoku);
+  }
+
+  @Override
+  public boolean equals(final Object other) { // NOPMD Jürgen Dufner 14.04.2010
+    if (other instanceof SetCandidateCommand) {
+      return super.equals(other);
+    }
+    return false;
   }
 
 }

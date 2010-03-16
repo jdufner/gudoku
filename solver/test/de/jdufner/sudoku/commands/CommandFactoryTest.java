@@ -23,53 +23,30 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.solver.strategy.simple;
+package de.jdufner.sudoku.commands;
 
-import org.apache.log4j.Logger;
-
-import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
-import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.Unit;
-import de.jdufner.sudoku.common.misc.Level;
-import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
+import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
+import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 0.1
+ * @since 14.03.2010
  * @version $Revision$
- * 
  */
-public abstract class AbstractSimpleStrategy extends AbstractStrategy {
+public final class CommandFactoryTest extends AbstractSolverTestCase {
 
-  private static final Logger LOG = Logger.getLogger(AbstractSimpleStrategy.class);
-
-  public AbstractSimpleStrategy(final Sudoku sudoku) {
-    super(sudoku);
-  }
-
-  @Override
-  public Level getLevel() {
-    return Level.SEHR_LEICHT;
-  }
-
-  public void handleUnit(final Unit unit) {
-    final Candidates<Literal> fixed = new Candidates<Literal>();
-    fixed.addAll(unit.getFixedAsLiteral());
-    for (Cell cell : unit.getNonFixed()) {
-      if (cell.getCandidates().containsAtLeastOneOf(fixed)) {
-        final Command cmd = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, cell, fixed);
-        if (LOG.isDebugEnabled()) {
-          LOG.debug(cmd);
-        }
-        getCommands().add(cmd);
-      }
-    }
+  public void testEquals1() {
+    Command c1 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(0, 0, Literal
+        .getInstance(1), SudokuSize.DEFAULT), Literal.getInstance(1));
+    Command c2 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(0, 0, Literal
+        .getInstance(1), SudokuSize.DEFAULT), Literal.getInstance(1));
+    assertEquals("Muss gleich sein.", c1, c2);
+    assertEquals("Muss gleich sein.", c1.hashCode(), c2.hashCode());
+    assertNotSame("Darf nicht gleich sein.", c1, c2);
   }
 
 }

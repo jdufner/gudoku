@@ -27,8 +27,6 @@ package de.jdufner.sudoku.commands;
 
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
-
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
@@ -42,57 +40,49 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  */
 public final class CommandFactory {
 
-  private final static Logger LOG = Logger.getLogger(CommandFactory.class);
+  //  private final static Logger LOG = Logger.getLogger(CommandFactory.class);
 
   private CommandFactory() {
   }
 
   public static Command buildRemoveCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Literal candidateToRemove) {
-    final RemoveCandidatesCommand rcc = new RemoveCandidatesCommand(strategyNameEnum, cell, candidateToRemove);
-    return rcc;
+    return new RemoveCandidatesCommand(strategyNameEnum, cell, candidateToRemove);
   }
 
   public static Command buildRemoveCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Candidates<Literal> candidatesToRemove) {
-    final RemoveCandidatesCommand rcc = new RemoveCandidatesCommand(strategyNameEnum, cell, candidatesToRemove);
-    return rcc;
+    return new RemoveCandidatesCommand(strategyNameEnum, cell, candidatesToRemove);
   }
 
   public static Command buildRetainCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Collection<Literal> candidates) {
-    final RetainCandidatesCommand rcc = new RetainCandidatesCommand(strategyNameEnum, cell, candidates);
-    return rcc;
+    return new RetainCandidatesCommand(strategyNameEnum, cell, candidates);
   }
 
   public static Command buildSetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row,
       final int column, final Literal value) {
-    final SetCandidateCommand scc = new SetCandidateCommand(strategyNameEnum, row, column, value);
-    return scc;
+    return new SetCandidateCommand(strategyNameEnum, row, column, value);
   }
 
   public static Command buildSetValueCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Literal value) {
-    final SetValueCommand svc = new SetValueCommand(strategyNameEnum, cell, value);
-    return svc;
+    return new SetValueCommand(strategyNameEnum, cell, value);
   }
 
   public static Command buildSetValueCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column,
       final Literal value) {
-    final SetValueCommand svc = new SetValueCommand(strategyNameEnum, row, column, value);
-    return svc;
+    return new SetValueCommand(strategyNameEnum, row, column, value);
   }
 
   public static Command buildUnsetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row,
       final int column, final Literal value) {
-    final UnsetCandidateCommand ucc = new UnsetCandidateCommand(strategyNameEnum, row, column, value);
-    return ucc;
+    return new UnsetCandidateCommand(strategyNameEnum, row, column, value);
   }
 
   public static Command buildUnsetValueCommand(final StrategyNameEnum strategyNameEnum, final int row,
       final int column, final Literal value) {
-    final UnsetValueCommand uvc = new UnsetValueCommand(strategyNameEnum, row, column, value);
-    return uvc;
+    return new UnsetValueCommand(strategyNameEnum, row, column, value);
   }
 
 }

@@ -23,16 +23,24 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.solver.strategy.simple;
+package de.jdufner.sudoku.commands;
 
-import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
+import java.util.Collection;
 
-public abstract class AbstractSimpleStrategyTestCase extends AbstractStrategyTestCase {
+/**
+ * 
+ * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @since 14.03.2010
+ * @version $Revision$
+ */
+public final class CommandUtils {
 
-  //private static final Logger LOG = Logger.getLogger(AbstractSimpleStrategyTestCase.class);
+  private CommandUtils() {
+  }
 
-  protected String getSudokuAsString() {
-    return "1-3-7-8,1-3-4-6-8,3-4-8,1-3-4-5-7-8,3-4-5-7,2,1-3-4-5-6,1-3-4-5-6,9,1-3-9,1-3-4-6-9,2,1-3-4-5,3-4-5-9,1-4-9,7,1-3-4-5-6,8,1-3-7-8-9,1-3-4-8-9,5,1-3-4-7-8,3-4-7-9,6,1-2-3-4,1-3-4,1-2,6,1-5-8-9,8-9,2-4-5-7-8,2-4-5-7-9,4-7-8-9,1-2-5-8-9,1-5-8-9,3,4,2,8-9,5-6-8,5-6-9,3,1-5-6-8-9,1-5-6-8-9,7,3-5-8-9,3-5-8-9,7,2-5-6-8,1,8-9,2-5-6-8-9,5-6-8-9,4,2-3-5-8-9,7,1,2-3-4-6,2-3-4-6,4,3-4-5-6-8-9,3-4-5-6-8-9,5-6,2-3-5-9,3-4-5-9,3-4-9,1-2-3-4-6-7,8,1-4-7,1-3-4-5-6-9,1-3-4-5-6-7-9,1-5-6,3-8,3-4-8,6,9,3-4-7,5,1-3-4-8,2,1";
+  public static boolean areEquals(final Collection<Command> commands1, final Collection<Command> commands2) {
+    return (commands1.containsAll(commands2) && commands2.containsAll(commands1));
+    //    return commands1.equals(commands2);
   }
 
 }
