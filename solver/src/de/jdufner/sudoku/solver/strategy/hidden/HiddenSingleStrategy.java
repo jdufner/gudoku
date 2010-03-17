@@ -32,7 +32,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
+import de.jdufner.sudoku.commands.SetValueCommand.SetValueCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
@@ -83,7 +83,7 @@ public final class HiddenSingleStrategy extends AbstractStrategy implements Unit
         fixed.addAll(getSudoku().getColumn(cell.getColumnIndex()).getFixedAsLiteral());
         fixed.addAll(getSudoku().getRow(cell.getRowIndex()).getFixedAsLiteral());
         if (!fixed.contains(single)) {
-          getCommands().add(CommandFactory.buildSetValueCommand(StrategyNameEnum.HIDDEN_SINGLE, cell, single));
+          getCommands().add(new SetValueCommandBuilder(StrategyNameEnum.HIDDEN_SINGLE, cell, single).build());
         }
       }
     }

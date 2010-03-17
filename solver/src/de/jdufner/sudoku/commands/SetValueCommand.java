@@ -45,18 +45,10 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
    */
   private transient Candidates<Literal> candidates;
 
-  protected SetValueCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column,
-      final Literal value) {
+  private SetValueCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column, final Literal value) {
     super(strategyNameEnum);
     this.rowIndex = row;
     this.columnIndex = column;
-    this.value = value;
-  }
-
-  protected SetValueCommand(final StrategyNameEnum strategyNameEnum, final Cell cell, final Literal value) {
-    super(strategyNameEnum);
-    this.rowIndex = cell.getRowIndex();
-    this.columnIndex = cell.getColumnIndex();
     this.value = value;
   }
 
@@ -98,6 +90,34 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
       return super.equals(other);
     }
     return false;
+  }
+
+  public static class SetValueCommandBuilder {
+
+    private final transient StrategyNameEnum strategyNameEnum;
+    private final transient int rowIndex;
+    private final transient int columnIndex;
+    private final transient Literal literal;
+
+    public SetValueCommandBuilder(final StrategyNameEnum strategyNameEnum, final Cell cell, final Literal literal) {
+      this.strategyNameEnum = strategyNameEnum;
+      this.rowIndex = cell.getRowIndex();
+      this.columnIndex = cell.getColumnIndex();
+      this.literal = literal;
+    }
+
+    public SetValueCommandBuilder(final StrategyNameEnum strategyNameEnum, final int rowIndex, final int columnIndex,
+        final Literal literal) {
+      this.strategyNameEnum = strategyNameEnum;
+      this.rowIndex = rowIndex;
+      this.columnIndex = columnIndex;
+      this.literal = literal;
+    }
+
+    public SetValueCommand build() {
+      return new SetValueCommand(strategyNameEnum, rowIndex, columnIndex, literal);
+    }
+
   }
 
 }

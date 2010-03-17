@@ -65,7 +65,7 @@ public final class RetainCandidatesCommand extends AbstractCommand {
    * @param candidates
    *          Die Kandidaten, welche beibehalten werden sollen.
    */
-  protected RetainCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
+  private RetainCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Collection<Literal> candidates) {
     super(strategyNameEnum);
     this.rowIndex = cell.getRowIndex();
