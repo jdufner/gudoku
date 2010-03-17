@@ -36,7 +36,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  */
 public final class SetCandidateCommand extends AbstractSingleValueCommand {
 
-  protected SetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column,
+  private SetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column,
       final Literal value) {
     super(strategyNameEnum);
     this.rowIndex = row;
@@ -75,6 +75,27 @@ public final class SetCandidateCommand extends AbstractSingleValueCommand {
       return super.equals(other);
     }
     return false;
+  }
+
+  public static class SetCandidateCommandBuilder {
+
+    private final transient StrategyNameEnum strategyNameEnum;
+    private final transient int rowIndex;
+    private final transient int columnIndex;
+    private final transient Literal value;
+
+    public SetCandidateCommandBuilder(final StrategyNameEnum strategyNameEnum, final int rowIndex,
+        final int columnIndex, final Literal value) {
+      this.strategyNameEnum = strategyNameEnum;
+      this.rowIndex = rowIndex;
+      this.columnIndex = columnIndex;
+      this.value = value;
+    }
+
+    public SetCandidateCommand build() {
+      return new SetCandidateCommand(strategyNameEnum, rowIndex, columnIndex, value);
+    }
+
   }
 
 }

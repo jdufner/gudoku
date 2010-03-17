@@ -27,6 +27,7 @@ package de.jdufner.sudoku.commands;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.commands.UnsetCandidateCommand.UnsetCandidateCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
@@ -49,7 +50,7 @@ public final class UnsetCandidateCommandTest extends AbstractSolverTestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Command ucc = CommandFactory.buildUnsetCandidateCommand(null, 0, 2, Literal.getInstance(1));
+    Command ucc = new UnsetCandidateCommandBuilder(null, 0, 2, Literal.getInstance(1)).build();
     LOG.debug(ucc.getFrozenString());
     assertEquals(null, ucc.getFrozenString());
     ucc.execute(sudoku);

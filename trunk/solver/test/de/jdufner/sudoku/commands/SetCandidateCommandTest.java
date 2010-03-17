@@ -27,6 +27,7 @@ package de.jdufner.sudoku.commands;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.commands.SetCandidateCommand.SetCandidateCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
@@ -49,7 +50,7 @@ public final class SetCandidateCommandTest extends AbstractSolverTestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Command scc = CommandFactory.buildSetCandidateCommand(null, 0, 2, Literal.getInstance(2));
+    Command scc = new SetCandidateCommandBuilder(null, 0, 2, Literal.getInstance(2)).build();
     LOG.debug(scc.getFrozenString());
     assertEquals(null, scc.getFrozenString());
     scc.execute(sudoku);
