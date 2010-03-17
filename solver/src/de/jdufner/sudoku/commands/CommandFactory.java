@@ -52,19 +52,4 @@ public final class CommandFactory {
     return new RemoveCandidatesCommand(strategyNameEnum, cell, candidatesToRemove);
   }
 
-  public static Command buildSetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row,
-      final int column, final Literal value) {
-    return new SetCandidateCommand(strategyNameEnum, row, column, value);
-  }
-
-  public static Command buildUnsetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row,
-      final int column, final Literal value) {
-    return new UnsetCandidateCommand(strategyNameEnum, row, column, value);
-  }
-
-  public static Command buildUnsetValueCommand(final StrategyNameEnum strategyNameEnum, final int row,
-      final int column, final Literal value) {
-    return new UnsetValueCommand(strategyNameEnum, row, column, value);
-  }
-
 }
