@@ -27,7 +27,7 @@ package de.jdufner.sudoku.commands;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Candidates;
+import de.jdufner.sudoku.commands.RetainCandidatesCommand.RetainCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
@@ -50,11 +50,7 @@ public final class RetainCandidatesCommandTest extends AbstractSolverTestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Candidates<Literal> candidates1 = new Candidates<Literal>();
-    candidates1.add(Literal.getInstance(2));
-    candidates1.add(Literal.getInstance(6));
-
-    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates1);
+    final Command rcc1 = new RetainCandidatesCommandBuilder(null, cell).addCandidate(2, 6).build();
     assertNull(rcc1.getFrozenString());
     rcc1.execute(sudoku);
     assertTrue(rcc1.isSuccessfully());
@@ -70,22 +66,26 @@ public final class RetainCandidatesCommandTest extends AbstractSolverTestCase {
   }
 
   public void testRetainNone() {
-    Cell cell = sudoku.getCell(0, 2);
+    try {
+      Cell cell = sudoku.getCell(0, 2);
 
-    assertEquals(9, cell.getCandidates().size());
+      assertEquals(9, cell.getCandidates().size());
 
-    Candidates<Literal> candidates1 = new Candidates<Literal>();
+      Command rcc1 = new RetainCandidatesCommandBuilder(null, cell).build();
+      assertNull(rcc1.getFrozenString());
+      rcc1.execute(sudoku);
+      assertTrue(rcc1.isSuccessfully());
+      assertFalse(cell.isValid());
+      LOG.debug(rcc1.getFrozenString());
+      assertEquals("null: Behalte Kandidaten [] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
+          .getFrozenString());
 
-    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates1);
-    assertNull(rcc1.getFrozenString());
-    rcc1.execute(sudoku);
-    assertTrue(rcc1.isSuccessfully());
-    assertFalse(cell.isValid());
-    LOG.debug(rcc1.getFrozenString());
-    assertEquals("null: Behalte Kandidaten [] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1.getFrozenString());
-
-    assertEquals(0, cell.getCandidates().size());
-    assertFalse(cell.isFixed());
+      assertEquals(0, cell.getCandidates().size());
+      assertFalse(cell.isFixed());
+      fail("IllegalStateException erwartet.");
+    } catch (IllegalStateException ise) {
+      LOG.debug(ise.getLocalizedMessage());
+    }
   }
 
   public void testRetainAlle() {
@@ -93,18 +93,7 @@ public final class RetainCandidatesCommandTest extends AbstractSolverTestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Candidates<Literal> candidates1 = new Candidates<Literal>();
-    candidates1.add(Literal.getInstance(1));
-    candidates1.add(Literal.getInstance(2));
-    candidates1.add(Literal.getInstance(3));
-    candidates1.add(Literal.getInstance(4));
-    candidates1.add(Literal.getInstance(5));
-    candidates1.add(Literal.getInstance(6));
-    candidates1.add(Literal.getInstance(7));
-    candidates1.add(Literal.getInstance(8));
-    candidates1.add(Literal.getInstance(9));
-
-    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates1);
+    Command rcc1 = new RetainCandidatesCommandBuilder(null, cell).addCandidate(1, 2, 3, 4, 5, 6, 7, 8, 9).build();
     assertNull(rcc1.getFrozenString());
     rcc1.execute(sudoku);
     assertFalse(rcc1.isSuccessfully());
@@ -125,22 +114,13 @@ public final class RetainCandidatesCommandTest extends AbstractSolverTestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Candidates<Literal> candidates1 = new Candidates<Literal>();
-    candidates1.add(Literal.getInstance(2));
-    candidates1.add(Literal.getInstance(6));
-
-    Command rcc1 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates1);
+    Command rcc1 = new RetainCandidatesCommandBuilder(null, cell).addCandidate(2, 6).build();
     rcc1.execute(sudoku);
     assertTrue(rcc1.isSuccessfully());
 
-    Candidates<Literal> candidates2 = new Candidates<Literal>();
-    candidates2.add(Literal.getInstance(2));
-    candidates2.add(Literal.getInstance(6));
-
-    Command rcc2 = CommandFactory.buildRetainCandidatesCommand(null, cell, candidates2);
+    Command rcc2 = new RetainCandidatesCommandBuilder(null, cell).addCandidate(2, 6).build();
     rcc2.execute(sudoku);
     assertFalse(rcc2.isSuccessfully());
 
   }
-
 }

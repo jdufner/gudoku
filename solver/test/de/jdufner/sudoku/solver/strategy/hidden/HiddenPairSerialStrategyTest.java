@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory.RetainCommandBuilder;
+import de.jdufner.sudoku.commands.RetainCandidatesCommand.RetainCandidatesCommandBuilder;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -45,11 +45,11 @@ public final class HiddenPairSerialStrategyTest extends AbstractStrategyTestCase
   @Override
   protected Collection<Command> getCommands() {
     final Collection<Command> commands = new ArrayList<Command>();
-    commands.add(new RetainCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 0, 8).addCandidate(1, 9).build());
-    commands.add(new RetainCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 1, 8).addCandidate(1, 9).build());
-    commands.add(new RetainCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 3, 1).addCandidate(6, 8).build());
-    commands.add(new RetainCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 6, 0).addCandidate(6, 8).build());
-    commands.add(new RetainCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 6, 1).addCandidate(6, 8).build());
+    commands.add(new RetainCandidatesCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 0, 8).addCandidate(1, 9).build());
+    commands.add(new RetainCandidatesCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 1, 8).addCandidate(1, 9).build());
+    commands.add(new RetainCandidatesCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 3, 1).addCandidate(6, 8).build());
+    commands.add(new RetainCandidatesCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 6, 0).addCandidate(6, 8).build());
+    commands.add(new RetainCandidatesCommandBuilder(StrategyNameEnum.HIDDEN_PAIR, 6, 1).addCandidate(6, 8).build());
     return commands;
   }
 

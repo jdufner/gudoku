@@ -32,7 +32,7 @@ import java.util.concurrent.Callable;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
+import de.jdufner.sudoku.commands.RetainCandidatesCommand.RetainCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Literal2CellMap;
@@ -132,8 +132,8 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
           if (LOG.isDebugEnabled()) { // NOPMD by Jürgen on 08.11.09 00:23
             LOG.debug("Remove other candidates than " + kombination + " in cell " + cell);
           }
-          // FIXME
-          final Command cmd = CommandFactory.buildRetainCandidatesCommand(strategyNameEnum, cell, kombination); // NOPMD by Jürgen on 08.11.09 22:39
+          final Command cmd = new RetainCandidatesCommandBuilder(strategyNameEnum, cell).addCandidate(kombination)
+              .build();
           getCommands().add(cmd);
         }
       }

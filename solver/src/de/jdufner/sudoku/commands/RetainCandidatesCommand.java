@@ -26,11 +26,14 @@
 package de.jdufner.sudoku.commands;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -119,6 +122,59 @@ public final class RetainCandidatesCommand extends AbstractCommand {
       return (super.equals(other) && isEqual(this.candidates, that.candidates));
     }
     return false;
+  }
+
+  public static class RetainCandidatesCommandBuilder {
+    private final transient StrategyNameEnum strategyNameEnum;
+    private transient Cell cell = null;
+    private final transient int rowIndex;
+    private final transient int columnIndex;
+    private final transient Set<Literal> candidates = new HashSet<Literal>();
+
+    public RetainCandidatesCommandBuilder(final StrategyNameEnum strategyNameEnum, final int rowIndex,
+        final int columnIndex) {
+      this.strategyNameEnum = strategyNameEnum;
+      this.rowIndex = rowIndex;
+      this.columnIndex = columnIndex;
+    }
+
+    public RetainCandidatesCommandBuilder(final StrategyNameEnum strategyNameEnum, final Cell cell) {
+      this.strategyNameEnum = strategyNameEnum;
+      this.cell = cell;
+      this.rowIndex = -1;
+      this.columnIndex = -1;
+    }
+
+    public RetainCandidatesCommandBuilder addCandidate(final Literal candiate) {
+      candidates.add(candiate);
+      return this;
+    }
+
+    public RetainCandidatesCommandBuilder addCandidate(final Collection<Literal> candiates) {
+      candidates.addAll(candiates);
+      return this;
+    }
+
+    public RetainCandidatesCommandBuilder addCandidate(final int... values) {
+      for (int value : values) {
+        candidates.add(Literal.getInstance(value));
+      }
+      return this;
+    }
+
+    public Command build() {
+      if (candidates.isEmpty()) {
+        throw new IllegalStateException("Es wurden keine Kandidaten hinzugefügt, Command kann nicht erzeugt werden.");
+      }
+      if (cell == null && rowIndex < 0 && columnIndex < 0) {
+        throw new IllegalStateException(
+            "Es wurde keine Zelle hinzugefügt oder Zellkoordinaten angegeben, Command kann nicht erzeugt werden.");
+      }
+      if (cell == null) {
+        cell = new Cell(rowIndex, columnIndex, Literal.EMPTY, SudokuSize.DEFAULT);
+      }
+      return new RetainCandidatesCommand(strategyNameEnum, cell, candidates);
+    }
   }
 
 }

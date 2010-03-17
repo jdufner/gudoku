@@ -25,14 +25,9 @@
  */
 package de.jdufner.sudoku.commands;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -41,9 +36,8 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * @since
  * @version $Revision$
  */
+@Deprecated
 public final class CommandFactory {
-
-  //  private final static Logger LOG = Logger.getLogger(CommandFactory.class);
 
   private CommandFactory() {
   }
@@ -56,11 +50,6 @@ public final class CommandFactory {
   public static Command buildRemoveCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
       final Candidates<Literal> candidatesToRemove) {
     return new RemoveCandidatesCommand(strategyNameEnum, cell, candidatesToRemove);
-  }
-
-  public static Command buildRetainCandidatesCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
-      final Collection<Literal> candidates) {
-    return new RetainCandidatesCommand(strategyNameEnum, cell, candidates);
   }
 
   public static Command buildSetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row,
@@ -86,39 +75,6 @@ public final class CommandFactory {
   public static Command buildUnsetValueCommand(final StrategyNameEnum strategyNameEnum, final int row,
       final int column, final Literal value) {
     return new UnsetValueCommand(strategyNameEnum, row, column, value);
-  }
-
-  public static class RetainCommandBuilder {
-    private final StrategyNameEnum strategyNameEnum;
-    private final int rowIndex;
-    private final int columnIndex;
-    private final Set<Literal> candidates = new HashSet<Literal>();
-
-    public RetainCommandBuilder(final StrategyNameEnum strategyNameEnum, final int rowIndex, final int columnIndex) {
-      this.strategyNameEnum = strategyNameEnum;
-      this.rowIndex = rowIndex;
-      this.columnIndex = columnIndex;
-    }
-
-    public RetainCommandBuilder addCandidate(final Literal candiate) {
-      candidates.add(candiate);
-      return this;
-    }
-
-    public RetainCommandBuilder addCandidate(final int... values) {
-      for (int value : values) {
-        candidates.add(Literal.getInstance(value));
-      }
-      return this;
-    }
-
-    public Command build() {
-      if (candidates.isEmpty()) {
-        throw new IllegalStateException("Es wurden keine Kandidaten hinzugefügt, Command kann nicht erzeugt werden.");
-      }
-      return buildRetainCandidatesCommand(strategyNameEnum, new Cell(rowIndex, columnIndex, Literal.EMPTY,
-          SudokuSize.DEFAULT), candidates);
-    }
   }
 
 }
