@@ -28,7 +28,7 @@ package de.jdufner.sudoku;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
+import de.jdufner.sudoku.commands.SetValueCommand.SetValueCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
@@ -49,7 +49,7 @@ public final class GameTest extends AbstractSolverTestCase {
     assertFalse(game.getQuest().isSolved());
     assertTrue(game.getSolution().isValid());
     assertTrue(game.getSolution().isSolved());
-    Command command = CommandFactory.buildSetValueCommand(null, 5, 6, Literal.getInstance(8));
+    Command command = new SetValueCommandBuilder(null, 5, 6, Literal.getInstance(8)).build();
     game.doCommand(command);
     assertTrue(game.isCorrect(5, 6));
     assertTrue(game.isUndoPossible());

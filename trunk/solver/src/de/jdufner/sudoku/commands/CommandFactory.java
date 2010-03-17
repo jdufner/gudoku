@@ -57,16 +57,6 @@ public final class CommandFactory {
     return new SetCandidateCommand(strategyNameEnum, row, column, value);
   }
 
-  public static Command buildSetValueCommand(final StrategyNameEnum strategyNameEnum, final Cell cell,
-      final Literal value) {
-    return new SetValueCommand(strategyNameEnum, cell, value);
-  }
-
-  public static Command buildSetValueCommand(final StrategyNameEnum strategyNameEnum, final int row, final int column,
-      final Literal value) {
-    return new SetValueCommand(strategyNameEnum, row, column, value);
-  }
-
   public static Command buildUnsetCandidateCommand(final StrategyNameEnum strategyNameEnum, final int row,
       final int column, final Literal value) {
     return new UnsetCandidateCommand(strategyNameEnum, row, column, value);

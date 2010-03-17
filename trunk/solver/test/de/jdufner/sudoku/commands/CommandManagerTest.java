@@ -27,6 +27,7 @@ package de.jdufner.sudoku.commands;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.commands.SetValueCommand.SetValueCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
@@ -75,7 +76,7 @@ public class CommandManagerTest extends AbstractSolverTestCase {
     sudoku.resetAndClearCandidatesOfNonFixed();
     Cell cell1 = sudoku.getCell(1, 1);
     LOG.debug("1) " + cell1.toString());
-    Command cmd1 = CommandFactory.buildSetValueCommand(null, cell1, Literal.getInstance(3));
+    Command cmd1 = new SetValueCommandBuilder(null, cell1, Literal.getInstance(3)).build();
     execute(cmd1);
     LOG.debug("2) " + cell1.toString());
     undo();
