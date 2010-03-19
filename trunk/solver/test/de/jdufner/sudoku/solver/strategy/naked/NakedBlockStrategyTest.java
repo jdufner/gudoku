@@ -29,11 +29,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
-import de.jdufner.sudoku.common.board.Candidates;
-import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.SudokuSize;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 
@@ -42,22 +38,11 @@ public final class NakedBlockStrategyTest extends AbstractStrategyTestCase {
   @Override
   protected Collection<Command> getCommands() {
     final Collection<Command> commands = new ArrayList<Command>();
-    final Candidates<Literal> candidates = new Candidates<Literal>();
-    candidates.add(Literal.getInstance(5));
-    candidates.add(Literal.getInstance(6));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(null, new Cell(6, 6, Literal.EMPTY, SudokuSize.DEFAULT),
-        candidates));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(null, new Cell(6, 7, Literal.EMPTY, SudokuSize.DEFAULT),
-        candidates));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(null, new Cell(7, 6, Literal.EMPTY, SudokuSize.DEFAULT),
-        candidates));
-    final Candidates<Literal> candidates2 = new Candidates<Literal>();
-    candidates2.add(Literal.getInstance(8));
-    candidates2.add(Literal.getInstance(9));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(null, new Cell(5, 0, Literal.EMPTY, SudokuSize.DEFAULT),
-        candidates2));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(null, new Cell(5, 1, Literal.EMPTY, SudokuSize.DEFAULT),
-        candidates2));
+    commands.add(new RemoveCandidatesCommandBuilder(null, 6, 6).addCandidate(5, 6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(null, 6, 7).addCandidate(5, 6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(null, 7, 6).addCandidate(5, 6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(null, 5, 0).addCandidate(8, 9).build());
+    commands.add(new RemoveCandidatesCommandBuilder(null, 5, 1).addCandidate(8, 9).build());
     return commands;
   }
 

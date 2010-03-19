@@ -29,11 +29,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
-import de.jdufner.sudoku.common.board.Candidates;
-import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.SudokuSize;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -43,15 +39,10 @@ public final class NakedQuadParallelStrategyTest extends AbstractStrategyTestCas
   @Override
   protected Collection<Command> getCommands() {
     final Collection<Command> commands = new ArrayList<Command>();
-    final Candidates<Literal> candidates = new Candidates<Literal>();
-    candidates.add(Literal.getInstance(1));
-    candidates.add(Literal.getInstance(3));
-    candidates.add(Literal.getInstance(4));
-    candidates.add(Literal.getInstance(5));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.NAKED_QUAD, new Cell(2, 3, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.NAKED_QUAD, new Cell(0, 3, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates));
+    commands
+        .add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.NAKED_QUAD, 2, 3).addCandidate(1, 3, 4, 5).build());
+    commands
+        .add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.NAKED_QUAD, 0, 3).addCandidate(1, 3, 4, 5).build());
     return commands;
   }
 

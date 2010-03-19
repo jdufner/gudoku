@@ -27,6 +27,7 @@ package de.jdufner.sudoku.commands;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
@@ -59,7 +60,7 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     assertEquals(9, cell.getCandidates().size());
 
     Literal l = sudoku.getCell(0, 0).getValue(); // 9
-    Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(null, cell, l);
+    Command rcc1 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(l).build();
     assertNull(rcc1.getFrozenString());
     rcc1.execute(sudoku);
     assertTrue(rcc1.isSuccessfully());
@@ -85,14 +86,11 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     candidates1.add(sudoku.getCell(0, 1).getValue()); // 5
     candidates1.add(sudoku.getCell(0, 6).getValue()); // 1
     candidates1.add(sudoku.getCell(0, 7).getValue()); // 8
-    Command rcc2 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates1);
+    Command rcc2 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates1).build();
     assertNull(rcc2.getFrozenString());
     rcc2.execute(sudoku);
     assertTrue(rcc2.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("null: Entferne Kandidaten [5, 1, 8] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8]", rcc2
-        .getFrozenString());
-
     assertEquals(5, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));
     assertTrue(cell.getCandidates().contains(Literal.getInstance(3)));
@@ -106,13 +104,11 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     candidates2.add(sudoku.getCell(5, 2).getValue()); // 4 
     candidates2.add(sudoku.getCell(6, 2).getValue()); // 5
     candidates2.add(sudoku.getCell(8, 2).getValue()); // 3
-    Command rcc3 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates2);
+    Command rcc3 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates2).build();
     assertNull(rcc3.getFrozenString());
     rcc3.execute(sudoku);
     assertTrue(rcc3.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("null: Entferne Kandidaten [4, 5, 3] in Zelle 0 (0, 2, 0) [2, 3, 4, 6, 7]", rcc3.getFrozenString());
-
     assertEquals(3, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));
     assertTrue(cell.getCandidates().contains(Literal.getInstance(6)));
@@ -127,44 +123,39 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     candidates3.add(sudoku.getCell(2, 0).getValue()); // 4
     candidates3.add(sudoku.getCell(2, 1).getValue()); // 7
 
-    Command rcc4 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates3);
+    Command rcc4 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates3).build();
     assertNull(rcc4.getFrozenString());
     rcc4.execute(sudoku);
     assertTrue(rcc4.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("null: Entferne Kandidaten [9, 5, 8, 4, 7] in Zelle 0 (0, 2, 0) [2, 6, 7]", rcc4.getFrozenString());
-
     assertEquals(2, cell.getCandidates().size());
     assertTrue(cell.getCandidates().contains(Literal.getInstance(2)));
     assertTrue(cell.getCandidates().contains(Literal.getInstance(6)));
     assertFalse(cell.isFixed());
 
     // Entferne einen bereits entfernen Kandidat
-    Command rcc6 = CommandFactory.buildRemoveCandidatesCommand(null, cell, Literal.getInstance(1));
+    Command rcc6 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(1).build();
     assertNull(rcc6.getFrozenString());
     rcc6.execute(sudoku);
     assertFalse(rcc6.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("null: Entferne Kandidaten [1] in Zelle 0 (0, 2, 0) [2, 6]", rcc6.getFrozenString());
 
     // Entferne mehrere bereits entfernen Kandidaten
     Candidates<Literal> candidates4 = new Candidates<Literal>();
     candidates4.add(Literal.getInstance(1));
     candidates4.add(Literal.getInstance(3));
-    Command rcc7 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates4);
+    Command rcc7 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates4).build();
     assertNull(rcc7.getFrozenString());
     rcc7.execute(sudoku);
     assertFalse(rcc7.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("null: Entferne Kandidaten [1, 3] in Zelle 0 (0, 2, 0) [2, 6]", rcc7.getFrozenString());
 
     // Entferne einen weiteren beliebigen Kandidaten und erwarte automatisches Setzen des verbleibenden Kandidaten
-    Command rcc5 = CommandFactory.buildRemoveCandidatesCommand(null, cell, Literal.getInstance(2));
+    Command rcc5 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(2).build();
     assertNull(rcc5.getFrozenString());
     rcc5.execute(sudoku);
     assertTrue(rcc5.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals("null: Entferne Kandidaten [2] in Zelle 0 (0, 2, 0) [2, 6]", rcc5.getFrozenString());
     assertEquals(0, cell.getCandidates().size());
     assertTrue(cell.isFixed());
   }
@@ -185,7 +176,7 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     candidates1.add(Literal.getInstance(8));
     candidates1.add(Literal.getInstance(9));
 
-    Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates1);
+    Command rcc1 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates1).build();
     assertNull(rcc1.getFrozenString());
     rcc1.execute(sudoku);
     assertTrue(rcc1.isSuccessfully());
@@ -202,39 +193,16 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     assertEquals(9, cell.getCandidates().size());
   }
 
-  public void testRemoveNone() {
-    Cell cell = sudoku.getCell(0, 2);
-
-    assertEquals(9, cell.getCandidates().size());
-
-    Candidates<Literal> candidates1 = new Candidates<Literal>();
-
-    Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates1);
-    assertNull(rcc1.getFrozenString());
-    rcc1.execute(sudoku);
-    assertFalse(rcc1.isSuccessfully());
-    assertTrue(cell.isValid());
-    assertTrue(rcc1.reversible());
-    LOG.debug(rcc1.getFrozenString());
-    assertEquals("null: Entferne Kandidaten [] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
-        .getFrozenString());
-    assertEquals(9, cell.getCandidates().size());
-
-    rcc1.unexecute(sudoku);
-    assertTrue(cell.isValid());
-    assertEquals(9, cell.getCandidates().size());
-  }
-
   public void testRemoveDuplicate() {
     Cell cell = sudoku.getCell(0, 2);
 
     assertEquals(9, cell.getCandidates().size());
 
-    Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(null, cell, Literal.getInstance(1));
+    Command rcc1 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(1).build();
     rcc1.execute(sudoku);
     assertTrue(rcc1.isSuccessfully());
 
-    Command rcc2 = CommandFactory.buildRemoveCandidatesCommand(null, cell, Literal.getInstance(1));
+    Command rcc2 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(1).build();
     rcc2.execute(sudoku);
     assertFalse(rcc2.isSuccessfully());
 
@@ -242,7 +210,7 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     candidates1.add(Literal.getInstance(8));
     candidates1.add(Literal.getInstance(9));
 
-    Command rcc3 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates1);
+    Command rcc3 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates1).build();
     rcc3.execute(sudoku);
     assertTrue(rcc3.isSuccessfully());
 
@@ -250,7 +218,7 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     candidates2.add(Literal.getInstance(8));
     candidates2.add(Literal.getInstance(9));
 
-    Command rcc4 = CommandFactory.buildRemoveCandidatesCommand(null, cell, candidates2);
+    Command rcc4 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates2).build();
     rcc4.execute(sudoku);
     assertFalse(rcc4.isSuccessfully());
   }
@@ -259,13 +227,13 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     final Candidates<Literal> candidates1 = new Candidates<Literal>();
     candidates1.add(Literal.getInstance(1));
     candidates1.add(Literal.getInstance(2));
-    Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates1);
+    Command rcc1 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, new Cell(7, 6, Literal.EMPTY,
+        SudokuSize.DEFAULT)).addCandidate(candidates1).build();
     final Candidates<Literal> candidates2 = new Candidates<Literal>();
     candidates2.add(Literal.getInstance(2));
     candidates2.add(Literal.getInstance(1));
-    Command rcc2 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates1);
+    Command rcc2 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, new Cell(7, 6, Literal.EMPTY,
+        SudokuSize.DEFAULT)).addCandidate(candidates1).build();
     assertEquals("Sollen gleich sein.", rcc1, rcc2);
     assertNotSame("Sind nicht dasselbe.", rcc1, rcc2);
   }

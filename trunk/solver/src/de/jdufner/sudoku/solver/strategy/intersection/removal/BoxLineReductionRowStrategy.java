@@ -31,7 +31,7 @@ import java.util.concurrent.Callable;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Block;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.HandlerUtil;
@@ -93,7 +93,8 @@ public final class BoxLineReductionRowStrategy extends AbstractBoxLineReductionS
     for (Cell cell : block.getNonFixed()) {
       if (!getSudoku().getRow(cell.getRowIndex()).equals(row)) {
         getCommands().add(
-            CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.INTERSECTION_REMOVAL, cell, testCandidate));
+            new RemoveCandidatesCommandBuilder(StrategyNameEnum.INTERSECTION_REMOVAL, cell).addCandidate(testCandidate)
+                .build());
       }
     }
   }

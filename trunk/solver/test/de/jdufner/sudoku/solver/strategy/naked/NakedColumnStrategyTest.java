@@ -29,11 +29,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
-import de.jdufner.sudoku.common.board.Candidates;
-import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.SudokuSize;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 
@@ -42,13 +38,8 @@ public final class NakedColumnStrategyTest extends AbstractStrategyTestCase {
   @Override
   protected Collection<Command> getCommands() {
     final Collection<Command> commands = new ArrayList<Command>();
-    final Candidates<Literal> candidates = new Candidates<Literal>();
-    candidates.add(Literal.getInstance(8));
-    candidates.add(Literal.getInstance(9));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(null, new Cell(0, 2, Literal.EMPTY, SudokuSize.DEFAULT),
-        candidates));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(null, new Cell(7, 2, Literal.EMPTY, SudokuSize.DEFAULT),
-        candidates));
+    commands.add(new RemoveCandidatesCommandBuilder(null, 0, 2).addCandidate(8, 9).build());
+    commands.add(new RemoveCandidatesCommandBuilder(null, 7, 2).addCandidate(8, 9).build());
     return commands;
   }
 

@@ -28,7 +28,7 @@ package de.jdufner.sudoku.solver.strategy.simple;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
@@ -63,7 +63,8 @@ public abstract class AbstractSimpleStrategy extends AbstractStrategy {
     fixed.addAll(unit.getFixedAsLiteral());
     for (Cell cell : unit.getNonFixed()) {
       if (cell.getCandidates().containsAtLeastOneOf(fixed)) {
-        final Command cmd = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, cell, fixed);
+        final Command cmd = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, cell).addCandidate(fixed)
+            .build();
         if (LOG.isDebugEnabled()) {
           LOG.debug(cmd);
         }

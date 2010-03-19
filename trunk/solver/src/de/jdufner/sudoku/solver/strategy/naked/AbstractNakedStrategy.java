@@ -34,7 +34,7 @@ import java.util.SortedSet;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.commands.RemoveCandidatesCommand;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
@@ -180,7 +180,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
       final List<Cell> excludedCells, final Unit unit) {
     for (Cell cell : unit.getNonFixed()) {
       if (!excludedCells.contains(cell) && cell.getCandidates().containsAtLeastOneOf(candidates)) {
-        getCommands().add(new RemoveCandidatesCommand(strategyNameEnum, cell, candidates));
+        getCommands().add(new RemoveCandidatesCommandBuilder(strategyNameEnum, cell).addCandidate(candidates).build());
       }
     }
   }
