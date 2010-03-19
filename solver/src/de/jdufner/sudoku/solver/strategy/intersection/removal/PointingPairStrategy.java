@@ -31,7 +31,7 @@ import java.util.concurrent.Callable;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Block;
 import de.jdufner.sudoku.common.board.BlockHandler;
 import de.jdufner.sudoku.common.board.Cell;
@@ -120,7 +120,8 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
     for (Cell cell : column.getNonFixed()) {
       if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block)) {
         getCommands().add(
-            CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.INTERSECTION_REMOVAL, cell, testCandidate));
+            new RemoveCandidatesCommandBuilder(StrategyNameEnum.INTERSECTION_REMOVAL, cell).addCandidate(testCandidate)
+                .build());
       }
     }
   }
@@ -162,7 +163,8 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
     for (Cell cell : row.getNonFixed()) {
       if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block)) {
         getCommands().add(
-            CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.INTERSECTION_REMOVAL, cell, testCandidate));
+            new RemoveCandidatesCommandBuilder(StrategyNameEnum.INTERSECTION_REMOVAL, cell).addCandidate(testCandidate)
+                .build());
       }
     }
   }

@@ -34,7 +34,7 @@ import java.util.concurrent.Callable;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Column;
 import de.jdufner.sudoku.common.board.ColumnHandler;
@@ -108,7 +108,7 @@ public final class XWingColumnStrategy extends AbstractStrategy implements Colum
   private void eleminateCandidatesInRowWithoutColumns(final Literal value, final Row row, final List<Column> columns) {
     for (Cell cell : row.getCells()) {
       if (!columns.contains(getSudoku().getColumn(cell.getColumnIndex()))) {
-        getCommands().add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.XWING, cell, value));
+        getCommands().add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, cell).addCandidate(value).build());
       }
     }
   }

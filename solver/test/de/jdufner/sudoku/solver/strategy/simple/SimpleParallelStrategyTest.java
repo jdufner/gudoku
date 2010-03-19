@@ -29,11 +29,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
-import de.jdufner.sudoku.common.board.Candidates;
-import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.SudokuSize;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
@@ -53,75 +49,27 @@ public final class SimpleParallelStrategyTest extends AbstractSimpleStrategyTest
   @Override
   protected Collection<Command> getCommands() {
     final Collection<Command> commands = new ArrayList<Command>();
-    final Candidates<Literal> candidates = new Candidates<Literal>();
-    candidates.add(Literal.getInstance(1));
-    candidates.add(Literal.getInstance(2));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 7, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 8, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(8, 6, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates));
-    final Candidates<Literal> candidates2 = new Candidates<Literal>();
-    candidates2.add(Literal.getInstance(2));
-    candidates2.add(Literal.getInstance(3));
-    candidates2.add(Literal.getInstance(4));
-    candidates2.add(Literal.getInstance(5));
-    candidates2.add(Literal.getInstance(6));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(1, 5, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates2));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(3, 5, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates2));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 5, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates2));
-    final Candidates<Literal> candidates3 = new Candidates<Literal>();
-    candidates3.add(Literal.getInstance(4));
-    candidates3.add(Literal.getInstance(5));
-    candidates3.add(Literal.getInstance(8));
-    candidates3.add(Literal.getInstance(9));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(6, 3, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates3));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(6, 4, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates3));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 3, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates3));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 5, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates3));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(8, 4, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates3));
-    final Candidates<Literal> candidates4 = new Candidates<Literal>();
-    candidates4.add(Literal.getInstance(1));
-    candidates4.add(Literal.getInstance(4));
-    candidates4.add(Literal.getInstance(7));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(6, 3, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates4));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(6, 4, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates4));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(6, 6, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates4));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(6, 7, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates4));
-    final Candidates<Literal> candidates5 = new Candidates<Literal>();
-    candidates5.add(Literal.getInstance(1));
-    candidates5.add(Literal.getInstance(3));
-    candidates5.add(Literal.getInstance(4));
-    candidates5.add(Literal.getInstance(7));
-    candidates5.add(Literal.getInstance(8));
-    candidates5.add(Literal.getInstance(9));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(2, 8, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates5));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 8, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates5));
-    final Candidates<Literal> candidates6 = new Candidates<Literal>();
-    candidates6.add(Literal.getInstance(1));
-    candidates6.add(Literal.getInstance(2));
-    candidates6.add(Literal.getInstance(5));
-    candidates6.add(Literal.getInstance(6));
-    candidates6.add(Literal.getInstance(9));
-    commands.add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(8, 6, Literal.EMPTY,
-        SudokuSize.DEFAULT), candidates6));
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 6).addCandidate(1, 2).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 7).addCandidate(1, 2).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 8).addCandidate(1, 2).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 8, 6).addCandidate(1, 2).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 1, 5).addCandidate(2, 3, 4, 5, 6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 3, 5).addCandidate(2, 3, 4, 5, 6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 5).addCandidate(2, 3, 4, 5, 6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 6, 3).addCandidate(4, 5, 8, 9).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 6, 4).addCandidate(4, 5, 8, 9).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 3).addCandidate(4, 5, 8, 9).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 5).addCandidate(4, 5, 8, 9).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 8, 4).addCandidate(4, 5, 8, 9).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 6, 3).addCandidate(1, 4, 7).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 6, 4).addCandidate(1, 4, 7).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 6, 6).addCandidate(1, 4, 7).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 6, 7).addCandidate(1, 4, 7).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 2, 8).addCandidate(1, 3, 4, 7, 8, 9)
+        .build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 8).addCandidate(1, 3, 4, 7, 8, 9)
+        .build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 8, 6).addCandidate(1, 2, 5, 6, 9).build());
     return commands;
   }
 

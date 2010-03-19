@@ -28,73 +28,43 @@ package de.jdufner.sudoku.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.jdufner.sudoku.common.board.Candidates;
-import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.SudokuSize;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 public final class CommandUtilsTest extends AbstractSolverTestCase {
 
   public void testIsEqual1() {
-    final Candidates<Literal> candidates1 = new Candidates<Literal>();
-    candidates1.add(Literal.getInstance(1));
-    candidates1.add(Literal.getInstance(2));
-    final Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6,
-        Literal.EMPTY, SudokuSize.DEFAULT), candidates1);
+    final Command rcc1 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 6).addCandidate(1, 2).build();
     final List<Command> commands1 = new ArrayList<Command>();
     commands1.add(rcc1);
-    final Candidates<Literal> candidates2 = new Candidates<Literal>();
-    candidates2.add(Literal.getInstance(2));
-    candidates2.add(Literal.getInstance(1));
-    final Command rcc2 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6,
-        Literal.EMPTY, SudokuSize.DEFAULT), candidates2);
+    final Command rcc2 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 6).addCandidate(1, 2).build();
     final List<Command> commands2 = new ArrayList<Command>();
     commands2.add(rcc2);
     assertTrue(CommandUtils.isEqual(commands1, commands2));
   }
 
   public void testIsEqual2() {
-    final Candidates<Literal> candidates1 = new Candidates<Literal>();
-    candidates1.add(Literal.getInstance(1));
-    candidates1.add(Literal.getInstance(3));
-    final Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6,
-        Literal.EMPTY, SudokuSize.DEFAULT), candidates1);
+    final Command rcc1 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 6).addCandidate(1, 3).build();
     final List<Command> commands1 = new ArrayList<Command>();
     commands1.add(rcc1);
-    final Candidates<Literal> candidates2 = new Candidates<Literal>();
-    candidates2.add(Literal.getInstance(2));
-    candidates2.add(Literal.getInstance(1));
-    final Command rcc2 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6,
-        Literal.EMPTY, SudokuSize.DEFAULT), candidates2);
+    final Command rcc2 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 6).addCandidate(1, 2).build();
     final List<Command> commands2 = new ArrayList<Command>();
     commands2.add(rcc2);
     assertFalse(CommandUtils.isEqual(commands1, commands2));
   }
 
   public void testIsEqual3() {
-    final Candidates<Literal> candidates1 = new Candidates<Literal>();
-    candidates1.add(Literal.getInstance(1));
-    candidates1.add(Literal.getInstance(2));
-    final Command rcc1 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6,
-        Literal.EMPTY, SudokuSize.DEFAULT), candidates1);
-    final Command rcc3 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 8,
-        Literal.EMPTY, SudokuSize.DEFAULT), candidates1);
+    final Command rcc1 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 6).addCandidate(1, 2).build();
+    final Command rcc3 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 8).addCandidate(1, 2).build();
     final List<Command> commands1 = new ArrayList<Command>();
     commands1.add(rcc1);
     commands1.add(rcc3);
-    final Candidates<Literal> candidates2 = new Candidates<Literal>();
-    candidates2.add(Literal.getInstance(2));
-    candidates2.add(Literal.getInstance(1));
-    final Command rcc2 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 6,
-        Literal.EMPTY, SudokuSize.DEFAULT), candidates2);
-    final Command rcc4 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(7, 8,
-        Literal.EMPTY, SudokuSize.DEFAULT), candidates2);
+    final Command rcc2 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 6).addCandidate(1, 2).build();
+    final Command rcc4 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, 7, 8).addCandidate(1, 2).build();
     final List<Command> commands2 = new ArrayList<Command>();
     commands2.add(rcc2);
     commands2.add(rcc4);
     assertTrue(CommandUtils.isEqual(commands1, commands2));
   }
-
 }

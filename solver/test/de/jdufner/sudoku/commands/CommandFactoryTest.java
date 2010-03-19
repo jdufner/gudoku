@@ -25,6 +25,7 @@
  */
 package de.jdufner.sudoku.commands;
 
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.SudokuSize;
@@ -40,13 +41,12 @@ import de.jdufner.sudoku.test.AbstractSolverTestCase;
 public final class CommandFactoryTest extends AbstractSolverTestCase {
 
   public void testEquals1() {
-    Command c1 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(0, 0, Literal
-        .getInstance(1), SudokuSize.DEFAULT), Literal.getInstance(1));
-    Command c2 = CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SIMPLE, new Cell(0, 0, Literal
-        .getInstance(1), SudokuSize.DEFAULT), Literal.getInstance(1));
+    Command c1 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, new Cell(0, 0, Literal.getInstance(1),
+        SudokuSize.DEFAULT)).addCandidate(1).build();
+    Command c2 = new RemoveCandidatesCommandBuilder(StrategyNameEnum.SIMPLE, new Cell(0, 0, Literal.getInstance(1),
+        SudokuSize.DEFAULT)).addCandidate(1).build();
     assertEquals("Muss gleich sein.", c1, c2);
     assertEquals("Muss gleich sein.", c1.hashCode(), c2.hashCode());
     assertNotSame("Darf nicht gleich sein.", c1, c2);
   }
-
 }

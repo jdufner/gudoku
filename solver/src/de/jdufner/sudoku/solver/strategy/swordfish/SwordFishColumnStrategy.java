@@ -37,7 +37,7 @@ import java.util.concurrent.Callable;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandFactory;
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Column;
 import de.jdufner.sudoku.common.board.ColumnHandler;
@@ -117,7 +117,8 @@ public final class SwordFishColumnStrategy extends AbstractStrategy implements C
           if (LOG.isDebugEnabled()) {
             LOG.debug("Create new Remove-Command!");
           }
-          getCommands().add(CommandFactory.buildRemoveCandidatesCommand(StrategyNameEnum.SWORDFISH, cell, literal));
+          getCommands().add(
+              new RemoveCandidatesCommandBuilder(StrategyNameEnum.SWORDFISH, cell).addCandidate(literal).build());
         }
       }
     }

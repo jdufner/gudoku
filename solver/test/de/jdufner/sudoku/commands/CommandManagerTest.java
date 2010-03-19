@@ -27,6 +27,7 @@ package de.jdufner.sudoku.commands;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.commands.SetValueCommand.SetValueCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
@@ -89,7 +90,7 @@ public class CommandManagerTest extends AbstractSolverTestCase {
     sudoku.resetAndClearCandidatesOfNonFixed();
     Cell cell1 = sudoku.getCell(1, 1);
     LOG.debug("1) " + cell1.toString());
-    Command cmd1 = CommandFactory.buildRemoveCandidatesCommand(null, cell1, Literal.getInstance(1));
+    Command cmd1 = new RemoveCandidatesCommandBuilder(null, cell1).addCandidate(1).build();
     execute(cmd1);
     LOG.debug("2) " + cell1.toString());
     undo();
