@@ -107,7 +107,7 @@ public final class XWingColumnStrategy extends AbstractStrategy implements Colum
 
   private void eleminateCandidatesInRowWithoutColumns(final Literal value, final Row row, final List<Column> columns) {
     for (Cell cell : row.getCells()) {
-      if (!columns.contains(getSudoku().getColumn(cell.getColumnIndex()))) {
+      if (!columns.contains(getSudoku().getColumn(cell.getColumnIndex())) && cell.getCandidates().contains(value)) {
         getCommands().add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, cell).addCandidate(value).build());
       }
     }
