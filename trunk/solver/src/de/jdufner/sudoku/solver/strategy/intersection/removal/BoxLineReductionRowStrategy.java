@@ -91,7 +91,7 @@ public final class BoxLineReductionRowStrategy extends AbstractBoxLineReductionS
 
   private void removeCandidateInBlockExceptInRow(final Literal testCandidate, final Block block, final Row row) {
     for (Cell cell : block.getNonFixed()) {
-      if (!getSudoku().getRow(cell.getRowIndex()).equals(row)) {
+      if (!getSudoku().getRow(cell.getRowIndex()).equals(row) && cell.getCandidates().contains(testCandidate)) {
         getCommands().add(
             new RemoveCandidatesCommandBuilder(StrategyNameEnum.INTERSECTION_REMOVAL, cell).addCandidate(testCandidate)
                 .build());

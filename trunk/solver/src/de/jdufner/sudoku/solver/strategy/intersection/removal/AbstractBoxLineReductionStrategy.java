@@ -54,8 +54,9 @@ public abstract class AbstractBoxLineReductionStrategy extends AbstractStrategy 
   }
 
   /**
-   * Achtung funktioniert nur korrekt für 1 oder 2 Elemente. Wenn mehr Elemente in der Sammlung sind, dann wird das 2.
-   * und 3. Element nicht miteinander verglichen.
+   * Funktioniert schon richtig. Wenn zwei Zellen paarweise verglichen werden und der Block unterschiedlich ist, wird
+   * <code>false</code> zurückgeliefert. Ist dier Block gleich wird der nächste Block mit dem ersten verglichen. Bis
+   * hierher wurde dann schon geprüft, dass die bisherigen Blöcke gleich sind.
    * 
    * @param cells
    * @return

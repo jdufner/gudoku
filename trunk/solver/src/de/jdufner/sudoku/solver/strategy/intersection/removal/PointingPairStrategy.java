@@ -118,7 +118,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
 
   private void removeCandidateInColumnExceptInBlock(final Literal testCandidate, final Column column, final Block block) {
     for (Cell cell : column.getNonFixed()) {
-      if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block)) {
+      if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block) && cell.getCandidates().contains(testCandidate)) {
         getCommands().add(
             new RemoveCandidatesCommandBuilder(StrategyNameEnum.INTERSECTION_REMOVAL, cell).addCandidate(testCandidate)
                 .build());
@@ -161,7 +161,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
 
   private void removeCandidateInRowExceptInBlock(final Literal testCandidate, final Row row, final Block block) {
     for (Cell cell : row.getNonFixed()) {
-      if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block)) {
+      if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block) && cell.getCandidates().contains(testCandidate)) {
         getCommands().add(
             new RemoveCandidatesCommandBuilder(StrategyNameEnum.INTERSECTION_REMOVAL, cell).addCandidate(testCandidate)
                 .build());
