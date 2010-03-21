@@ -107,7 +107,7 @@ public final class XWingRowStrategy extends AbstractStrategy implements RowHandl
 
   private void eleminateCandidatesInColumnWithoutRows(final Literal value, final Column column, final List<Row> rows) {
     for (Cell cell : column.getCells()) {
-      if (!rows.contains(getSudoku().getRow(cell.getRowIndex()))) {
+      if (!rows.contains(getSudoku().getRow(cell.getRowIndex())) && cell.getCandidates().contains(value)) {
         getCommands().add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, cell).addCandidate(value).build());
       }
     }

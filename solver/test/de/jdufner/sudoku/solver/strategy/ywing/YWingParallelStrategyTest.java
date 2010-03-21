@@ -33,13 +33,12 @@ import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesComman
 import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
-import de.jdufner.sudoku.solver.strategy.ywing.YWingSerialStrategy;
 
 public final class YWingParallelStrategyTest extends AbstractStrategyTestCase {
 
   @Override
   protected Collection<Command> getCommands() {
-    Collection<Command> commands = new ArrayList<Command>();
+    final Collection<Command> commands = new ArrayList<Command>();
     commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.YWING, 0, 8).addCandidate(6).build());
     commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.YWING, 8, 0).addCandidate(6).build());
     return commands;

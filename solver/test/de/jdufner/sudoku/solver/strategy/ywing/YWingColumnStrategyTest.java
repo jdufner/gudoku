@@ -38,7 +38,7 @@ public final class YWingColumnStrategyTest extends AbstractStrategyTestCase {
 
   @Override
   protected Collection<Command> getCommands() {
-    Collection<Command> commands = new ArrayList<Command>();
+    final Collection<Command> commands = new ArrayList<Command>();
     commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.YWING, 0, 8).addCandidate(6).build());
     return commands;
   }

@@ -23,7 +23,7 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.solver.strategy.ywing;
+package de.jdufner.sudoku.solver.strategy.xwing;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,24 +34,29 @@ import de.jdufner.sudoku.solver.strategy.AbstractStrategyTestCase;
 import de.jdufner.sudoku.solver.strategy.Strategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
-public final class YWingSerialStrategyTest extends AbstractStrategyTestCase {
+public final class XWingColumnStrategyTest extends AbstractStrategyTestCase {
 
   @Override
   protected Collection<Command> getCommands() {
-    final Collection<Command> commands = new ArrayList<Command>();
-    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.YWING, 0, 8).addCandidate(6).build());
-    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.YWING, 8, 0).addCandidate(6).build());
+    Collection<Command> commands = new ArrayList<Command>();
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, 2, 1).addCandidate(6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, 2, 4).addCandidate(6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, 2, 6).addCandidate(6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, 2, 8).addCandidate(6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, 8, 4).addCandidate(6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, 8, 6).addCandidate(6).build());
+    commands.add(new RemoveCandidatesCommandBuilder(StrategyNameEnum.XWING, 8, 8).addCandidate(6).build());
     return commands;
   }
 
   @Override
   protected Strategy getStrategy() {
-    return new YWingSerialStrategy(sudoku);
+    return new XWingColumnStrategy(sudoku);
   }
 
   @Override
   protected String getSudokuAsString() {
-    return "5-6,7,4,1,5-6-8,9,2-6-8,3,2-6-8,1,9,3,6-8,2,4,6-8,5,7,2,5-6,8,7,3,5-6,9,1,4,7,5-6-8,1,9,5-6-8,3,4,2,5-6,3,2,5-6,4,1,7,5-8,6-8,9,4,5-6-8,9,2,5-6-8,5-6-8,1,7,3,5-6-8,4,2,5-6-8,7,1,3,9,5-6-8,9,3,5-6,5-8,4,2,7,6-8,1,5-6-8,1,7,3,9,6-8,2-5-6-8,4,2-5-6-8";
+    return "2,8,3,4,6-9,1,7,5,6-9,1,6-9,5,2-3-9,8,7,2-6,4,3-6-9,7,6-9,4,2-3-5-9,3-5-6-9,3-5-6-9,1-2-6-8,6-8-9,1-3-6-8-9,4,1,7-9,5-8-9,2,5-9,5-6-8,3,5-6-7-8,6,2,7-9,3-5-8-9,1,3-5-9,4,7-8,5-7-8,3,5,8,6,7,4,9,1,2,8,3,1,5-9,4-5-6-9,2,5-6,7-9,4-7-9,5,7,6,1,4-9,8,3,2,4-9,9,4,2,7,3-5-6,3-5-6,1-5-6-8,6-8,1-5-6-8";
   }
 
 }
