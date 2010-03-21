@@ -28,6 +28,7 @@ package de.jdufner.sudoku.solver.strategy.ywing;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
+import java.util.concurrent.Callable;
 
 import org.apache.log4j.Logger;
 
@@ -49,7 +50,8 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * @version $Revision$
  * 
  */
-public final class YWingColumnStrategy extends AbstractYWingStrategy implements ColumnHandler {
+public final class YWingColumnStrategy extends AbstractYWingStrategy implements ColumnHandler,
+    Callable<Collection<Command>> {
 
   private static final Logger LOG = Logger.getLogger(YWingColumnStrategy.class);
 
@@ -82,6 +84,11 @@ public final class YWingColumnStrategy extends AbstractYWingStrategy implements 
         }
       }
     }
+  }
+
+  @Override
+  public Collection<Command> call() throws Exception {
+    return executeStrategy();
   }
 
   /**
@@ -192,4 +199,5 @@ public final class YWingColumnStrategy extends AbstractYWingStrategy implements 
       }
     }
   }
+
 }
