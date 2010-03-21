@@ -26,7 +26,6 @@
 package de.jdufner.sudoku.solver.strategy;
 
 import java.util.Collection;
-import java.util.Collections;
 
 import org.apache.log4j.Logger;
 
@@ -67,9 +66,7 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
 
   protected abstract Strategy getStrategy();
 
-  protected Collection<Command> getCommands() {
-    return Collections.emptyList();
-  }
+  protected abstract Collection<Command> getCommands();
 
   public void testAllgemein() {
     final StrategyResult strategyResult = strategy.execute();
