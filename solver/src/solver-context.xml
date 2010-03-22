@@ -9,12 +9,6 @@
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 	<!--
-		Das Spring-Wiring kann auch direkt in den Java-Klassen über
-		Annotations gemacht werden.
-	-->
-	<!--context:annotation-config /-->
-
-	<!--
 		bean id="log4jInitializer"
 		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
 		<property name="staticMethod"> <value>
