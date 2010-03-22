@@ -86,7 +86,7 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
 
   @Override
   public boolean equals(final Object other) { // NOPMD Jürgen Dufner 14.03.2010
-    if (other instanceof SetCandidateCommand) {
+    if (other instanceof SetValueCommand) {
       return super.equals(other);
     }
     return false;
@@ -107,11 +107,11 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
     }
 
     public SetValueCommandBuilder(final StrategyNameEnum strategyNameEnum, final int rowIndex, final int columnIndex,
-        final Literal literal) {
+        final int value) {
       this.strategyNameEnum = strategyNameEnum;
       this.rowIndex = rowIndex;
       this.columnIndex = columnIndex;
-      this.literal = literal;
+      this.literal = Literal.getInstance(value);
     }
 
     public SetValueCommand build() {

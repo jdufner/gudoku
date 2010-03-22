@@ -78,11 +78,17 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
         .getCommands().size());
     assertTrue("Eine Strategie muss diese Befehle liefern: " + getCommands() + " lieferte aber "
         + strategyResult.getCommands(), CommandUtils.isEqual(getCommands(), strategyResult.getCommands()));
+    //    LOG.debug("Ergebnis");
     //    for (Command cmd : strategyResult.getCommands()) {
     //      LOG.debug(cmd.toString() + " Hashcode=" + cmd.hashCode());
     //    }
+    //    LOG.debug("Erwartung");
     //    for (Command cmd : getCommands()) {
-    //      LOG.debug(cmd.toString() + " Hashcode=" + cmd.hashCode());
+    //      LOG.debug(cmd.toString() + " Hashcode=" + cmd.hashCode() + " ; Enthalten? "
+    //          + strategyResult.getCommands().contains(cmd));
+    //      for (Command cmd2 : strategyResult.getCommands()) {
+    //        LOG.debug(cmd + " / " + cmd2 + " " + cmd2.equals(cmd));
+    //      }
     //      assertTrue("Command " + cmd + " muss in " + strategyResult.getCommands() + " enthalten sein.", strategyResult
     //          .getCommands().contains(cmd));
     //    }
