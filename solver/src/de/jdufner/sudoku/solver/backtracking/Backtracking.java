@@ -56,11 +56,6 @@ public final class Backtracking {
   private transient Backtracking previousInstance = null;
 
   /**
-   * Es wird immer nur der Zeitstempel in der untersten Instanz gespeichert und aktualisiert.
-   */
-  private long lastTimestamp = System.currentTimeMillis();
-
-  /**
    * Das Backtracking wird solange durchgeführt, bis die Grenze erreicht ist. Ist der Wert kleiner oder gleich 0, werden
    * alle Lösungen gesucht. Ist der Wert 1 wird nur die erste Lösung gesucht, etc.
    */
@@ -292,20 +287,6 @@ public final class Backtracking {
       }
     }
     return null;
-  }
-
-  public long getLastTimestamp() {
-    if (previousInstance == null) {
-      return lastTimestamp;
-    }
-    return previousInstance.getLastTimestamp();
-  }
-
-  public void setLastTimestamp(final long lastTimestamp) {
-    if (previousInstance == null) {
-      this.lastTimestamp = lastTimestamp;
-    }
-    previousInstance.setLastTimestamp(lastTimestamp);
   }
 
   public void increaseSolutionCounter() {

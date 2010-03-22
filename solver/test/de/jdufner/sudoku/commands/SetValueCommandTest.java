@@ -50,7 +50,7 @@ public class SetValueCommandTest extends AbstractSolverTestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Command scc1 = new SetValueCommandBuilder(null, 0, 2, Literal.getInstance(2)).build();
+    Command scc1 = new SetValueCommandBuilder(null, 0, 2, 2).build();
     LOG.debug(scc1.getFrozenString());
     assertNull(scc1.getFrozenString());
     scc1.execute(sudoku);
