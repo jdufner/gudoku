@@ -46,7 +46,7 @@ public final class YWingParallelStrategyTest extends AbstractStrategyTestCase {
 
   @Override
   protected Strategy getStrategy() {
-    return new YWingSerialStrategy(sudoku);
+    return new YWingParallelStrategy(sudoku);
   }
 
   @Override
