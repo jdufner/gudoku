@@ -94,9 +94,6 @@ public final class Sudoku implements Cloneable {
   private transient FixedCounter fixedCounter = null;
   private transient CandidateCounter candidateCounter = null;
 
-  private transient int numberFixed = 0;
-  private boolean numberOfFixedDirty = true;
-
   /**
    * Copy-Constructor
    * 
@@ -184,9 +181,9 @@ public final class Sudoku implements Cloneable {
     assert blockIndex >= 0 : "Blockindex muss größer als oder gleich 0 sein, ist aber " + blockIndex;
     assert blockIndex < size.getUnitSize() : "Blockindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
         + blockIndex;
-    Collection<Cell> result = new ArrayList<Cell>();
+    final Collection<Cell> result = new ArrayList<Cell>();
     for (int i = 0; i < size.getUnitSize(); i++) {
-      Cell cell = board[rowIndex][i];
+      final Cell cell = board[rowIndex][i];
       if (cell.getBlockIndex() == blockIndex) {
         result.add(cell);
       }
@@ -201,9 +198,9 @@ public final class Sudoku implements Cloneable {
     assert blockIndex >= 0 : "Blockindex muss größer als oder gleich 0 sein, ist aber " + blockIndex;
     assert blockIndex < size.getUnitSize() : "Blockindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
         + blockIndex;
-    Collection<Cell> result = new ArrayList<Cell>();
+    final Collection<Cell> result = new ArrayList<Cell>();
     for (int i = 0; i < size.getUnitSize(); i++) {
-      Cell cell = board[i][columnIndex];
+      final Cell cell = board[i][columnIndex];
       if (cell.getBlockIndex() == blockIndex) {
         result.add(cell);
       }
@@ -258,7 +255,7 @@ public final class Sudoku implements Cloneable {
    * @return Gibt eine Liste aller Zellen zurück.
    */
   public Collection<Cell> getCells() {
-    List<Cell> cells = new ArrayList<Cell>(size.getTotalSize());
+    final List<Cell> cells = new ArrayList<Cell>(size.getTotalSize());
     for (int i = 0; i < size.getTotalSize(); i++) {
       cells.add(getCell(i));
     }
@@ -411,28 +408,14 @@ public final class Sudoku implements Cloneable {
   }
 
   /**
-   * TODO Hier könnte ein Caching eingebaut werden.
-   * 
    * @return Gibt die Anzahl der besetzen Zellen zurück.
    */
   public int getNumberOfFixed() {
-    //    if (numberOfFixedDirty) {
     if (fixedCounter == null) {
       fixedCounter = new FixedCounter();
     }
     HandlerUtil.forEachCell(this, fixedCounter);
-    numberFixed = fixedCounter.getNumber();
-    numberOfFixedDirty = false;
-    //    }
-    return numberFixed;
-  }
-
-  public boolean isNumberOfFixedDirty() {
-    return numberOfFixedDirty;
-  }
-
-  public void setNumberOfFixedDirty(final boolean numberFixedDirty) {
-    this.numberOfFixedDirty = numberFixedDirty;
+    return fixedCounter.getNumber();
   }
 
   /**

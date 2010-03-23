@@ -83,10 +83,11 @@ public final class TransformationUtil {
    * @param column2
    * @return Tauscht zwei Spalten innerhalb eines Blocks.
    */
-  public static Sudoku swapColumns(Sudoku sudoku, int column1, int column2) {
+  static Sudoku swapColumns(Sudoku sudoku, int column1, int column2) {
     assert sudoku.getBlock(0, column1) == sudoku.getBlock(0, column2) : column1 + " und " + column2
         + " sind nicht im selben Quandranten.";
     assert column1 < column2 : column1 + " ist nicht kleiner als " + column2;
+    log.debug("Tausche Spalte " + column1 + " und " + column2);
     Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
@@ -108,12 +109,6 @@ public final class TransformationUtil {
   public static Sudoku swapArbitraryColumns(Sudoku sudoku) {
     int[] twoColumns = getTwoNumbersInOneColumnBlock(sudoku);
     return swapColumns(sudoku, twoColumns[0], twoColumns[1]);
-  }
-
-  @SymetricTransformation
-  public static Sudoku swapSymetricColumns(Sudoku sudoku) {
-    int column = getRandomNumberBetween(0, sudoku.getSize().getUnitSize() / 2);
-    return swapColumns(sudoku, column, sudoku.getSize().getUnitSize() - column);
   }
 
   private static int[] getTwoNumbersInOneColumnBlock(Sudoku sudoku) {
@@ -154,17 +149,17 @@ public final class TransformationUtil {
   /**
    * @param min
    * @param max
-   * @return A arbitrary integer value between min (inclusive) and max
-   *         (exclusive).
+   * @return A arbitrary integer value between min (inclusive) and max (exclusive).
    */
   private static int getRandomNumberBetween(int min, int max) {
     assert max > min : "max: " + max + " muss größer als min: " + min + " sein.";
     return random.nextInt(max - min) + min;
   }
 
-  public static Sudoku swapRows(Sudoku sudoku, int row1, int row2) {
+  static Sudoku swapRows(Sudoku sudoku, int row1, int row2) {
     assert sudoku.getBlock(0, row1) == sudoku.getBlock(0, row2);
     assert row1 < row2;
+    log.debug("Tausche Zeilen " + row1 + " und " + row2);
     Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
@@ -188,12 +183,7 @@ public final class TransformationUtil {
     return swapRows(sudoku, twoRows[0], twoRows[1]);
   }
 
-  public static Sudoku swapSymetricRows(Sudoku sudoku) {
-    int row = getRandomNumberBetween(0, sudoku.getSize().getUnitSize() / 2);
-    return swapRows(sudoku, row, sudoku.getSize().getUnitSize() - row);
-  }
-
-  public static Sudoku swapColumnBlock(Sudoku sudoku, int columnBlock1, int columnBlock2) {
+  static Sudoku swapColumnBlock(Sudoku sudoku, int columnBlock1, int columnBlock2) {
     assert columnBlock1 >= 0 && columnBlock1 < sudoku.getSize().getBlockHeight();
     assert columnBlock2 >= 0 && columnBlock2 < sudoku.getSize().getBlockHeight();
     assert columnBlock1 < columnBlock2;
@@ -222,6 +212,7 @@ public final class TransformationUtil {
     return swapColumnBlock(sudoku, twoColumnBlocks[0], twoColumnBlocks[1]);
   }
 
+  @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku swapSymetricColumnBlocks(Sudoku sudoku) {
     int block = getRandomNumberBetween(0, (sudoku.getSize().getUnitSize() - 1) / 2);
@@ -233,7 +224,7 @@ public final class TransformationUtil {
     return result;
   }
 
-  public static Sudoku swapRowBlock(Sudoku sudoku, int rowBlock1, int rowBlock2) {
+  static Sudoku swapRowBlock(Sudoku sudoku, int rowBlock1, int rowBlock2) {
     assert rowBlock1 >= 0 && rowBlock1 < sudoku.getSize().getBlockHeight();
     assert rowBlock2 >= 0 && rowBlock2 < sudoku.getSize().getBlockHeight();
     assert rowBlock1 < rowBlock2;
@@ -262,6 +253,7 @@ public final class TransformationUtil {
     return swapRowBlock(sudoku, twoRowBlocks[0], twoRowBlocks[1]);
   }
 
+  @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku swapSymetricRowBlocks(Sudoku sudoku) {
     int block = getRandomNumberBetween(0, (sudoku.getSize().getUnitSize() - 1) / 2);
@@ -277,12 +269,10 @@ public final class TransformationUtil {
    * @param columnIndex
    *          Spaltenindex
    * @param sudoku
-   *          Ein {@link Sudoku}, das eine Referenz auf eine {@link SudokuSize}
-   *          hat.
+   *          Ein {@link Sudoku}, das eine Referenz auf eine {@link SudokuSize} hat.
    * @param block
    *          Blockindex im Sinne von {@link Unit#getIndex()}
-   * @return <code>true</code>, wenn der Spaltenindex im angegebenen Block
-   *         ist, sonst <code>false</code>.
+   * @return <code>true</code>, wenn der Spaltenindex im angegebenen Block ist, sonst <code>false</code>.
    */
   private static boolean isColumnIndexInBlock(int columnIndex, Sudoku sudoku, int block) {
     if (columnIndex >= getSmallestColumnIndexOfBlock(sudoku, block)
@@ -296,12 +286,10 @@ public final class TransformationUtil {
    * @param rowIndex
    *          Zeilenindex
    * @param sudoku
-   *          Ein {@link Sudoku}, das eine Referenz auf eine {@link SudokuSize}
-   *          hat.
+   *          Ein {@link Sudoku}, das eine Referenz auf eine {@link SudokuSize} hat.
    * @param block
    *          Blockindex im Sinne von {@link Unit#getIndex()}
-   * @return <code>true</code>, wenn der Zeilenindex im angegebenen Block
-   *         ist, sonst <code>false</code>.
+   * @return <code>true</code>, wenn der Zeilenindex im angegebenen Block ist, sonst <code>false</code>.
    */
   private static boolean isRowIndexInBlock(int rowIndex, Sudoku sudoku, int block) {
     if (rowIndex >= getSmallestRowIndexOfBlock(sudoku, block) && rowIndex <= getLargestRowIndexOfBlock(sudoku, block)) {
@@ -485,6 +473,7 @@ public final class TransformationUtil {
     try {
       methodNumber = getRandomNumberBetween(0, transformationMethods.size());
       arbitraryTransformation = transformationMethods.get(methodNumber);
+      log.debug("Führe beliebige Transformation aus: " + arbitraryTransformation.getName());
       return (Sudoku) arbitraryTransformation.invoke(null, new Object[] { sudoku });
     } catch (IllegalAccessException iae) {
       log.error(iae.getMessage() + " methodNumber=" + methodNumber + ", arbitraryTransformation="
