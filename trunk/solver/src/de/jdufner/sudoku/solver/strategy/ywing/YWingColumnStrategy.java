@@ -188,7 +188,6 @@ public final class YWingColumnStrategy extends AbstractYWingStrategy implements 
   private void createRemoveCommands(final Cell firstCell, final Cell secondCell, final Literal removableCandidate) {
     final Collection<Cell> cells = getSudoku().getCellByColumnAndBlock(firstCell.getColumnIndex(),
         secondCell.getBlockIndex());
-    //cells2.remove(firstCell);
     for (Cell foundCell : cells) {
       if (!foundCell.isFixed() && foundCell.getCandidates().contains(removableCandidate)) {
         LOG.debug("Zelle gefunden: " + foundCell + " Erzeuge Kommando zum Entfernen von " + removableCandidate);
