@@ -64,6 +64,7 @@ public final class SudokuDaoImpl implements SudokuDao {
   }
 
   @Override
+  @SuppressWarnings("unchecked")
   public List<SudokuData> findSudokus(final int index, final int number) {
     hibernateTemplate.setFetchSize(number);
     return (List<SudokuData>) hibernateTemplate.executeFind(new HibernateCallback() {
@@ -72,12 +73,13 @@ public final class SudokuDaoImpl implements SudokuDao {
         Query query = session.createQuery("from SudokuData");
         query.setFirstResult(index);
         query.setMaxResults(number);
-        return (List<SudokuData>) query.list();
+        return query.list();
       }
     });
   }
 
   @Override
+  @SuppressWarnings("unchecked")
   public List<SudokuData> findSudokus(SudokuSize size, Level level, int number, Boolean printed) {
     hibernateTemplate.setFetchSize(number);
     hibernateTemplate.setMaxResults(number);
@@ -102,6 +104,7 @@ public final class SudokuDaoImpl implements SudokuDao {
   }
 
   @Override
+  @SuppressWarnings("unchecked")
   public Sudoku loadSudokuOfDay() {
     hibernateTemplate.setFetchSize(1);
     hibernateTemplate.setMaxResults(1);
@@ -134,6 +137,7 @@ public final class SudokuDaoImpl implements SudokuDao {
   }
 
   @Override
+  @SuppressWarnings("unchecked")
   public void updatePrintedAt(int id, Date printedAt) {
     hibernateTemplate.setFetchSize(1);
     hibernateTemplate.setMaxResults(1);

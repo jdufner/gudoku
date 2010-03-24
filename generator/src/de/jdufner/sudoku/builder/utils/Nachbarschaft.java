@@ -46,11 +46,6 @@ public final class Nachbarschaft {
   private Literal subjekt;
   private Collection<Literal> nachbarn;
 
-  public Nachbarschaft(Literal subjekt, Collection<Literal> nachbarn) {
-    this.subjekt = subjekt;
-    this.nachbarn = nachbarn;
-  }
-
   public Nachbarschaft(Cell subjekt, Collection<Cell> nachbarn) {
     this.subjekt = subjekt.getValue();
     this.nachbarn = new HashSet<Literal>();
@@ -88,22 +83,6 @@ public final class Nachbarschaft {
     StringBuilder sb = new StringBuilder();
     sb.append(subjekt).append(" ").append(nachbarn);
     return sb.toString();
-  }
-
-  public Literal getSubjekt() {
-    return subjekt;
-  }
-
-  public void setSubjekt(Literal subjekt) {
-    this.subjekt = subjekt;
-  }
-
-  public Collection<Literal> getNachbarn() {
-    return nachbarn;
-  }
-
-  public void setNachbarn(Collection<Literal> nachbarn) {
-    this.nachbarn = nachbarn;
   }
 
 }

@@ -316,7 +316,7 @@ public final class SudokuData {
 
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(17, 37).append(getId()).toHashCode();
+    return new HashCodeBuilder(17, 31).append(getId()).toHashCode();
   }
 
   @Override

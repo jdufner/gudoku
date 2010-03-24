@@ -49,31 +49,30 @@ public final class SudokuMapper {
 
   public static SudokuData map(Solution solution) {
     SudokuData sudokuData = new SudokuData();
-    return map(sudokuData, solution);
+    map(sudokuData, solution);
+    return sudokuData;
   }
 
-  public static SudokuData map(SudokuData sudokuData, Solution solution) {
-    sudokuData.setFixed(solution.getQuest().getNumberOfFixed());
-    sudokuData.setLevel(solution.getLevel().getValue());
-    sudokuData.setSize(solution.getQuest().getSize().getUnitSize());
-    sudokuData.setSudokuAsString(solution.getQuest().toShortString());
-    sudokuData.setxSudoku(XsudokuUtils.isXsudoku(solution.getResult()) ? "J" : "N");
-    sudokuData.setStrategySimple(solution.getNumberSuccessfulCommand(StrategyNameEnum.SIMPLE));
-    sudokuData.setStrategyHiddenSingle(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_SINGLE));
-    sudokuData.setStrategyNakedPair(solution.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_PAIR));
-    sudokuData.setStrategyNakedTriple(solution.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_TRIPLE));
-    sudokuData.setStrategyNakedQuad(solution.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_QUAD));
-    sudokuData.setStrategyHiddenPair(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_PAIR));
-    sudokuData.setStrategyHiddenTriple(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_TRIPLE));
-    sudokuData.setStrategyHiddenQuad(solution.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_QUAD));
-    sudokuData.setStrategyIntersectionRemoval(solution
-        .getNumberSuccessfulCommand(StrategyNameEnum.INTERSECTION_REMOVAL));
-    sudokuData.setStrategyYwing(solution.getNumberSuccessfulCommand(StrategyNameEnum.YWING));
-    sudokuData.setStrategyXwing(solution.getNumberSuccessfulCommand(StrategyNameEnum.XWING));
-    sudokuData.setStrategySwordfish(solution.getNumberSuccessfulCommand(StrategyNameEnum.SWORDFISH));
-    sudokuData.setStrategyJellyfish(solution.getNumberSuccessfulCommand(StrategyNameEnum.JELLYFISH));
-    sudokuData.setStrategyBacktracking(solution.getNumberSuccessfulCommand(StrategyNameEnum.BACKTRACKING));
-    return sudokuData;
+  public static void map(SudokuData to, Solution from) {
+    to.setFixed(from.getQuest().getNumberOfFixed());
+    to.setLevel(from.getLevel().getValue());
+    to.setSize(from.getQuest().getSize().getUnitSize());
+    to.setSudokuAsString(from.getQuest().toShortString());
+    to.setxSudoku(XsudokuUtils.isXsudoku(from.getResult()) ? "J" : "N");
+    to.setStrategySimple(from.getNumberSuccessfulCommand(StrategyNameEnum.SIMPLE));
+    to.setStrategyHiddenSingle(from.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_SINGLE));
+    to.setStrategyNakedPair(from.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_PAIR));
+    to.setStrategyNakedTriple(from.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_TRIPLE));
+    to.setStrategyNakedQuad(from.getNumberSuccessfulCommand(StrategyNameEnum.NAKED_QUAD));
+    to.setStrategyHiddenPair(from.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_PAIR));
+    to.setStrategyHiddenTriple(from.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_TRIPLE));
+    to.setStrategyHiddenQuad(from.getNumberSuccessfulCommand(StrategyNameEnum.HIDDEN_QUAD));
+    to.setStrategyIntersectionRemoval(from.getNumberSuccessfulCommand(StrategyNameEnum.INTERSECTION_REMOVAL));
+    to.setStrategyYwing(from.getNumberSuccessfulCommand(StrategyNameEnum.YWING));
+    to.setStrategyXwing(from.getNumberSuccessfulCommand(StrategyNameEnum.XWING));
+    to.setStrategySwordfish(from.getNumberSuccessfulCommand(StrategyNameEnum.SWORDFISH));
+    to.setStrategyJellyfish(from.getNumberSuccessfulCommand(StrategyNameEnum.JELLYFISH));
+    to.setStrategyBacktracking(from.getNumberSuccessfulCommand(StrategyNameEnum.BACKTRACKING));
   }
 
 }
