@@ -54,8 +54,47 @@ public final class SudokuDaoTest extends AbstractGeneratorTestCase {
     solver = getStrategySolverWithBacktracking();
   }
 
-  public void testLoadSudoku() {
-    SudokuData sudokuData = sudokuDao.loadSudoku(2505);
+  public void testLoadSudoku1() {
+    SudokuData sudokuData = sudokuDao.loadSudoku(26532);
+    assertNotNull(sudokuData);
+    assertEquals(24, sudokuData.getFixed());
+    assertEquals("N", sudokuData.getxSudoku());
+    assertEquals(256, sudokuData.getStrategySimple());
+    assertEquals(25, sudokuData.getStrategyHiddenSingle());
+    assertEquals(0, sudokuData.getStrategyNakedPair());
+    assertEquals(0, sudokuData.getStrategyNakedTriple());
+    assertEquals(0, sudokuData.getStrategyNakedQuad());
+    assertEquals(0, sudokuData.getStrategyHiddenPair());
+    assertEquals(0, sudokuData.getStrategyHiddenTriple());
+    assertEquals(0, sudokuData.getStrategyHiddenQuad());
+    assertEquals(0, sudokuData.getStrategyIntersectionRemoval());
+    assertEquals(0, sudokuData.getStrategyYwing());
+    assertEquals(0, sudokuData.getStrategyXwing());
+    assertEquals(0, sudokuData.getStrategySwordfish());
+    assertEquals(0, sudokuData.getStrategyJellyfish());
+    assertEquals(0, sudokuData.getStrategyBacktracking());
+    LOG.debug(sudokuData);
+  }
+
+  public void testLoadSudoku2() {
+    SudokuData sudokuData = sudokuDao.loadSudoku(26539);
+    assertNotNull(sudokuData);
+    assertEquals(25, sudokuData.getFixed());
+    assertEquals("N", sudokuData.getxSudoku());
+    assertEquals(177, sudokuData.getStrategySimple());
+    assertEquals(28, sudokuData.getStrategyHiddenSingle());
+    assertEquals(4, sudokuData.getStrategyNakedPair());
+    assertEquals(0, sudokuData.getStrategyNakedTriple());
+    assertEquals(0, sudokuData.getStrategyNakedQuad());
+    assertEquals(0, sudokuData.getStrategyHiddenPair());
+    assertEquals(0, sudokuData.getStrategyHiddenTriple());
+    assertEquals(0, sudokuData.getStrategyHiddenQuad());
+    assertEquals(0, sudokuData.getStrategyIntersectionRemoval());
+    assertEquals(0, sudokuData.getStrategyYwing());
+    assertEquals(0, sudokuData.getStrategyXwing());
+    assertEquals(0, sudokuData.getStrategySwordfish());
+    assertEquals(0, sudokuData.getStrategyJellyfish());
+    assertEquals(28, sudokuData.getStrategyBacktracking());
     LOG.debug(sudokuData);
   }
 
