@@ -2,32 +2,34 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
 package de.jdufner.sudoku.solver.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import de.jdufner.sudoku.commands.Command;
+import de.jdufner.sudoku.commands.CommandUtils;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.StrategyResult;
@@ -61,8 +63,8 @@ public class Solution {
 
   public int getNumberSuccessfulCommand(final StrategyNameEnum strategyNameEnum) {
     int number = 0;
-    for (StrategyResult result : results) {
-      for (Command command : result.getCommands()) {
+    for (StrategyResult strategyResult : results) {
+      for (Command command : strategyResult.getCommands()) {
         if (command.isSuccessfully() && command.getStrategyName().equals(strategyNameEnum.name())) {
           number++;
         }
@@ -110,12 +112,36 @@ public class Solution {
   @Override
   public String toString() {
     final String lineSeparator = System.getProperty("line.separator");
-    final StringBuilder sb = new StringBuilder(super.toString());
-    sb.append(lineSeparator).append("Quest: ").append(getQuest());
-    sb.append(lineSeparator).append("Result: ").append(getResult());
-    sb.append(lineSeparator).append("Unique: ").append(isUnique());
-    sb.append(lineSeparator).append("Level: ").append(getLevel());
+    final StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(lineSeparator);
+    sb.append("Rätsel: ").append(getQuest()).append(lineSeparator);
+    sb.append("Lösung: ").append(getResult()).append(lineSeparator);
+    sb.append("Eindeutigkeit: ").append(isUnique()).append(lineSeparator);
+    sb.append("Schwierigkeitsgrad: ").append(getLevel()).append(lineSeparator);
+
+    int step = 0;
+    if (getResult() == null) {
+      sb.append("Kein Ergebnis gefunden.");
+    } else {
+      for (StrategyResult strategyResult : getResults()) {
+        step += 1;
+        sb.append(step).append(". Zwischenschritt(").append(strategyResult.getNumberFixedBefore()).append(" Zellen /")
+            .append(strategyResult.getNumberCandidatesBefore()).append(" Kandidaten): ").append(
+                strategyResult.getSudokuBefore()).append(lineSeparator);
+        final Collection<? extends Command> cmds = CommandUtils.aggregateCommandsIfPossible(strategyResult
+            .getCommands());
+        sb.append(strategyResult.getStrategyName()).append('(').append(cmds.size()).append(')').append(": ");
+        boolean first = true;
+        for (Command cmd : cmds) {
+          if (first) {
+            first = false;
+          } else {
+            sb.append(',');
+          }
+          sb.append(cmd.toJavascriptString());
+        }
+        sb.append(lineSeparator);
+      }
+    }
     return sb.toString();
   }
-
 }

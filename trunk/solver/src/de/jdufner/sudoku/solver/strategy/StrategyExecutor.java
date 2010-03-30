@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -36,7 +36,6 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
-import de.jdufner.sudoku.common.misc.Log;
 import de.jdufner.sudoku.solver.strategy.backtracking.BacktrackingStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyConfiguration;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -91,18 +90,13 @@ public final class StrategyExecutor {
     boolean doExecute = true;
     while (doExecute) {
       zaehler += 1;
-      Log.log("Starte Iteration " + zaehler);
       LOG.info("Starte Iteration " + zaehler);
-      Log.log("Sudoku " + getSudoku() //
-          + " (" + getSudoku().getNumberOfFixed() + " Zellen gesetzt, " //
-          + getSudoku().getNumberOfCandidates() + " Kandidaten )");
       LOG.info("Sudoku " + getSudoku() //
           + " (" + getSudoku().getNumberOfFixed() + " Zellen gesetzt, " //
           + getSudoku().getNumberOfCandidates() + " Kandidaten )");
       //LOG.info("Sudoku vor Iteration " + zaehler + ": " + getSudoku());
       final StrategyResult strategyResult = executeStrategy();
       if (strategyResult == null) {
-        Log.log("Keinen weiteren Lösungschrift gefunden. Sudoku nicht gelöst!");
         LOG.info("Keinen weiteren Lösungschrift gefunden. Sudoku nicht gelöst!");
         doExecute = false;
       } else {
@@ -110,15 +104,12 @@ public final class StrategyExecutor {
       }
       if (getSudoku().isSolved()) {
         if (getSudoku().isValid() && getSudoku().isSolvedByCheckSum()) {
-          Log.log("Sudoku gelöst! " + getSudoku());
           LOG.debug("Sudoku gelöst! " + getSudoku());
           doExecute = false;
         } else {
-          Log.log("Sudoku scheint gelöst zu sein, aber irgendwas ist schief gelaufen.");
           LOG.warn("Sudoku scheint gelöst zu sein, aber irgendwas ist schief gelaufen.");
         }
       } else {
-        Log.log("Sudoku noch nicht gelöst, weitermachen.");
         LOG.debug("Sudoku noch nicht gelöst, weitermachen.");
       }
     }
@@ -147,15 +138,12 @@ public final class StrategyExecutor {
         executeCommands(strategyResult.getCommands());
         strategyResult.storeStateAfter(getSudoku());
         if (strategyResult.getNumberEleminatedCandidates() > 0) {
-          Log.log(strategy + " entfernte " + strategyResult.getNumberEleminatedCandidates() + " Kandidaten und setzte "
-              + strategyResult.getNumberNewlyFixedCells() + " Zellen.");
           if (LOG.isInfoEnabled()) {
             LOG.info(strategy + " entfernte " + strategyResult.getNumberEleminatedCandidates()
                 + " Kandidaten und setzte " + strategyResult.getNumberNewlyFixedCells() + " Zellen.");
           }
           return strategyResult;
         } else {
-          Log.log(strategy + " hat keinen Kandidat entfernt und keine Zelle gesetzt");
           if (LOG.isInfoEnabled()) {
             LOG.info(strategy + " hat keinen Kandidat entfernt und keine Zelle gesetzt");
           }
