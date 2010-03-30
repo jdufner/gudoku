@@ -25,15 +25,10 @@
  */
 package de.jdufner.sudoku.solver.service;
 
-import java.util.Collection;
-
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.commands.CommandUtils;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
-import de.jdufner.sudoku.solver.strategy.StrategyResult;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
@@ -65,23 +60,23 @@ public final class ExtendedSolverTest extends AbstractSolverTestCase {
 
   public void testSolve() {
     final Solution solution = extendedSolver.getSolution(quest);
-    for (StrategyResult strategyResult : solution.getResults()) {
-      LOG.debug("(" + strategyResult.getNumberFixedBefore() + " Zellen /" + strategyResult.getNumberCandidatesBefore()
-          + " Kandidaten)" + strategyResult.getSudokuBefore());
-      final Collection<? extends Command> cmds = CommandUtils.aggregateCommandsIfPossible(strategyResult.getCommands());
-      final StringBuilder sb = new StringBuilder().append(strategyResult.getStrategyName()).append('(').append(
-          cmds.size()).append(')').append(':');
-      boolean first = true;
-      for (Command cmd : cmds) {
-        if (first) {
-          first = false;
-        } else {
-          sb.append(',');
-        }
-        sb.append(cmd.toJavascriptString());
-      }
-      LOG.debug(sb.toString());
-    }
+    //    for (StrategyResult strategyResult : solution.getResults()) {
+    //      LOG.debug("(" + strategyResult.getNumberFixedBefore() + " Zellen /" + strategyResult.getNumberCandidatesBefore()
+    //          + " Kandidaten)" + strategyResult.getSudokuBefore());
+    //      final Collection<? extends Command> cmds = CommandUtils.aggregateCommandsIfPossible(strategyResult.getCommands());
+    //      final StringBuilder sb = new StringBuilder().append(strategyResult.getStrategyName()).append('(').append(
+    //          cmds.size()).append(')').append(':');
+    //      boolean first = true;
+    //      for (Command cmd : cmds) {
+    //        if (first) {
+    //          first = false;
+    //        } else {
+    //          sb.append(',');
+    //        }
+    //        sb.append(cmd.toJavascriptString());
+    //      }
+    //      LOG.debug(sb.toString());
+    //    }
     LOG.debug(solution);
   }
 }

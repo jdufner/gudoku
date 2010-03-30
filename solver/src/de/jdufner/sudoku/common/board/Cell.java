@@ -32,8 +32,6 @@ import java.util.Random;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.misc.Log;
-
 /**
  * A cell is a field at the sudoku board. It has either a fixed value or a list of at least two candidates. A cell has
  * two coordinates: row index, column index. Each cell has a unique pair of row and cell index. Out of the row and
@@ -112,7 +110,6 @@ public final class Cell implements Cloneable, Comparable<Cell> {
     }
     final boolean candidatesRemoved = candidates.removeAll(values);
     if (candidatesRemoved) {
-      Log.log("Entfernte " + values.size() + " Kandidaten " + values + " aus " + this);
       if (LOG.isInfoEnabled()) {
         LOG.info("Entfernte " + values.size() + " Kandidaten " + values + " aus " + this);
       }
@@ -133,7 +130,6 @@ public final class Cell implements Cloneable, Comparable<Cell> {
     }
     final boolean candidatesRemoved = candidates.removeAll(values);
     if (candidatesRemoved) {
-      Log.log("Entfernte " + values.size() + " Kandidaten " + values + " aus " + this);
       if (LOG.isInfoEnabled()) {
         LOG.info("Entfernte " + values.size() + " Kandidaten " + values + " aus " + this);
       }
@@ -178,9 +174,6 @@ public final class Cell implements Cloneable, Comparable<Cell> {
       } else {
         candidates.clear();
       }
-    }
-    if (isInitialized) {
-      Log.log("Setzte " + value + " in " + this);
     }
     assert isValid();
   }

@@ -33,7 +33,6 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
-import de.jdufner.sudoku.common.misc.Log;
 import de.jdufner.sudoku.solver.service.StrategySolver;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
@@ -110,7 +109,6 @@ public abstract class AbstractStrategy implements Strategy {
     if (LOG.isInfoEnabled()) {
       LOG.info("Führe " + getStrategyName() + " (" + getClass().getSimpleName() + ") aus.");
     }
-    Log.log("Führe " + getStrategyName() + " (" + getClass().getSimpleName() + ") aus.");
     //strategyResult.storeStateBefore(getSudoku());
     strategyResult.start();
     setCommands(executeStrategy());
@@ -121,7 +119,6 @@ public abstract class AbstractStrategy implements Strategy {
     if (LOG.isInfoEnabled()) {
       LOG.info(getClass().getSimpleName() + " hat " + getCommands().size() + " Commands erzeugt.");
     }
-    Log.log(getClass().getSimpleName() + " hat " + getCommands().size() + " Commands erzeugt.");
     if (LOG.isDebugEnabled()) {
       LOG.info("Ausführungsdauer von " + getClass().getSimpleName() + " war " + strategyResult.getDurationInMillis()
           + " ms.");
