@@ -46,5 +46,5 @@ public interface Hidden {
    * 
    * @return Gibt den Namen der angewandten Strategie zurück.
    */
-  StrategyNameEnum getStrategyNameEnum();
+  StrategyNameEnum getStrategyName();
 }

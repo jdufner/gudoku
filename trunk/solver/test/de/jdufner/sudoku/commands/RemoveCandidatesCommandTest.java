@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -101,7 +101,7 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
 
     // Kandidaten aus der Spalte
     Candidates<Literal> candidates2 = new Candidates<Literal>();
-    candidates2.add(sudoku.getCell(5, 2).getValue()); // 4 
+    candidates2.add(sudoku.getCell(5, 2).getValue()); // 4
     candidates2.add(sudoku.getCell(6, 2).getValue()); // 5
     candidates2.add(sudoku.getCell(8, 2).getValue()); // 3
     Command rcc3 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates2).build();
@@ -156,8 +156,8 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     rcc5.execute(sudoku);
     assertTrue(rcc5.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals(0, cell.getCandidates().size());
-    assertTrue(cell.isFixed());
+    assertEquals(1, cell.getCandidates().size());
+    assertFalse(cell.isFixed());
   }
 
   public void testRemoveAll() {

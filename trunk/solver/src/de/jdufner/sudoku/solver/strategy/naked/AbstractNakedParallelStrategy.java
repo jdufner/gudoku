@@ -42,15 +42,15 @@ public abstract class AbstractNakedParallelStrategy extends AbstractParallelStra
     super(sudoku);
     final NakedBlockStrategy nakedBlockStrategy = new NakedBlockStrategy(sudoku);
     nakedBlockStrategy.setSize(getSize());
-    nakedBlockStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    nakedBlockStrategy.setStrategyNameEnum(getStrategyName());
     getCallables().add(nakedBlockStrategy);
     final NakedColumnStrategy nakedColumnStrategy = new NakedColumnStrategy(sudoku);
     nakedColumnStrategy.setSize(getSize());
-    nakedColumnStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    nakedColumnStrategy.setStrategyNameEnum(getStrategyName());
     getCallables().add(nakedColumnStrategy);
     final NakedRowStrategy nakedRowStrategy = new NakedRowStrategy(sudoku);
     nakedRowStrategy.setSize(getSize());
-    nakedRowStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    nakedRowStrategy.setStrategyNameEnum(getStrategyName());
     getCallables().add(nakedRowStrategy);
   }
 

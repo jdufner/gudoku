@@ -47,7 +47,7 @@ public final class HiddenQuadParallelStrategy extends AbstractHiddenParallelStra
   }
 
   @Override
-  public StrategyNameEnum getStrategyNameEnum() {
+  public StrategyNameEnum getStrategyName() {
     return StrategyNameEnum.HIDDEN_QUAD;
   }
 

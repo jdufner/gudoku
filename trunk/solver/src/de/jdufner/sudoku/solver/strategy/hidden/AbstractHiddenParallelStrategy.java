@@ -50,15 +50,15 @@ public abstract class AbstractHiddenParallelStrategy extends AbstractParallelStr
     super(sudoku);
     final HiddenBlockStrategy hiddenBlockStrategy = new HiddenBlockStrategy(sudoku);
     hiddenBlockStrategy.setSize(getSize());
-    hiddenBlockStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    hiddenBlockStrategy.setStrategyName(getStrategyName());
     getCallables().add(hiddenBlockStrategy);
     final HiddenColumnStrategy hiddenColumnStrategy = new HiddenColumnStrategy(sudoku);
     hiddenColumnStrategy.setSize(getSize());
-    hiddenColumnStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    hiddenColumnStrategy.setStrategyName(getStrategyName());
     getCallables().add(hiddenColumnStrategy);
     final HiddenRowStrategy hiddenRowStrategy = new HiddenRowStrategy(sudoku);
     hiddenRowStrategy.setSize(getSize());
-    hiddenRowStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    hiddenRowStrategy.setStrategyName(getStrategyName());
     getCallables().add(hiddenRowStrategy);
     if (LOG.isDebugEnabled()) {
       LOG.debug("Callables erzeugt: " + getCallables());

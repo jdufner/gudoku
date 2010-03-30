@@ -47,7 +47,7 @@ public final class HiddenTripleParallelStrategy extends AbstractHiddenParallelSt
   }
 
   @Override
-  public StrategyNameEnum getStrategyNameEnum() {
+  public StrategyNameEnum getStrategyName() {
     return StrategyNameEnum.HIDDEN_TRIPLE;
   }
 

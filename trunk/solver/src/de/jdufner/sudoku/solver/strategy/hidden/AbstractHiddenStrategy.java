@@ -80,12 +80,12 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
   }
 
   @Override
-  public StrategyNameEnum getStrategyNameEnum() {
+  public StrategyNameEnum getStrategyName() {
     return strategyNameEnum;
   }
 
   @Override
-  public void setStrategyNameEnum(final StrategyNameEnum strategyNameEnum) {
+  public void setStrategyName(final StrategyNameEnum strategyNameEnum) {
     this.strategyNameEnum = strategyNameEnum;
   }
 

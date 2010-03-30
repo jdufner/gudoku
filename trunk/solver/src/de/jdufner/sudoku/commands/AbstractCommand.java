@@ -32,8 +32,10 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Cell;
+import de.jdufner.sudoku.common.board.CellUtils;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -178,6 +180,10 @@ public abstract class AbstractCommand implements Command {
     final Set<Literal> set1 = new HashSet<Literal>(col1);
     final Set<Literal> set2 = new HashSet<Literal>(col2);
     return set1.containsAll(set2) && set2.containsAll(set1);
+  }
+
+  protected String getJavascriptCellNumber() {
+    return String.valueOf(CellUtils.getNumber(rowIndex, columnIndex, SudokuSize.NEUN) + 1);
   }
 
 }

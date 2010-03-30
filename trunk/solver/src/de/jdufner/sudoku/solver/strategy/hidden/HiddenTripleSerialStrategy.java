@@ -47,7 +47,7 @@ public final class HiddenTripleSerialStrategy extends AbstractHiddenSerialStrate
   }
 
   @Override
-  public StrategyNameEnum getStrategyNameEnum() {
+  public StrategyNameEnum getStrategyName() {
     return StrategyNameEnum.HIDDEN_TRIPLE;
   }
 
