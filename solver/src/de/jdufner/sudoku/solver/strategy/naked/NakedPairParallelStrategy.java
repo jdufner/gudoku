@@ -48,7 +48,7 @@ public final class NakedPairParallelStrategy extends AbstractNakedParallelStrate
   }
 
   @Override
-  public StrategyNameEnum getStrategyNameEnum() {
+  public StrategyNameEnum getStrategyName() {
     return STRATEGY_NAME;
   }
 

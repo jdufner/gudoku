@@ -48,7 +48,7 @@ public final class NakedQuadSerialStrategy extends AbstractNakedSerialStrategy {
   }
 
   @Override
-  public StrategyNameEnum getStrategyNameEnum() {
+  public StrategyNameEnum getStrategyName() {
     return STRATEGY_NAME;
   }
 

@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -35,6 +35,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.common.misc.Log;
 import de.jdufner.sudoku.solver.service.StrategySolver;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * Diese Klasse stellt die allgemeine Funktion für eine Lösungsstrategie eines Sudokus zur Verfügung.
@@ -85,6 +86,13 @@ public abstract class AbstractStrategy implements Strategy {
   /**
    * Diese Methode wird von die Subklasse für die tatsächliche Strategie implemeniert.
    * 
+   * @return Den Namen der Strategie.
+   */
+  public abstract StrategyNameEnum getStrategyName();
+
+  /**
+   * Diese Methode wird von die Subklasse für die tatsächliche Strategie implemeniert.
+   * 
    * @return
    */
   protected abstract Collection<Command> executeStrategy();
@@ -98,11 +106,11 @@ public abstract class AbstractStrategy implements Strategy {
    * @return Das Ausführungsergebnis.
    */
   public final StrategyResult execute() {
-    final StrategyResult strategyResult = new StrategyResult(getClass().getSimpleName(), getLevel());
+    final StrategyResult strategyResult = new StrategyResult(getStrategyName(), getLevel());
     if (LOG.isInfoEnabled()) {
-      LOG.info("Führe " + getClass().getSimpleName() + " aus.");
+      LOG.info("Führe " + getStrategyName() + " (" + getClass().getSimpleName() + ") aus.");
     }
-    Log.log("Führe " + getClass().getSimpleName() + " aus.");
+    Log.log("Führe " + getStrategyName() + " (" + getClass().getSimpleName() + ") aus.");
     //strategyResult.storeStateBefore(getSudoku());
     strategyResult.start();
     setCommands(executeStrategy());

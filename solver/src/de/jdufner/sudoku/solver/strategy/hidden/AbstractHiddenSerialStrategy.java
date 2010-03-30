@@ -50,15 +50,15 @@ public abstract class AbstractHiddenSerialStrategy extends AbstractSerialStrateg
     super(sudoku);
     final HiddenBlockStrategy hiddenBlockStrategy = new HiddenBlockStrategy(sudoku);
     hiddenBlockStrategy.setSize(getSize());
-    hiddenBlockStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    hiddenBlockStrategy.setStrategyName(getStrategyName());
     getStrategies().add(hiddenBlockStrategy);
     final HiddenColumnStrategy hiddenColumnStrategy = new HiddenColumnStrategy(sudoku);
     hiddenColumnStrategy.setSize(getSize());
-    hiddenColumnStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    hiddenColumnStrategy.setStrategyName(getStrategyName());
     getStrategies().add(hiddenColumnStrategy);
     final HiddenRowStrategy hiddenRowStrategy = new HiddenRowStrategy(sudoku);
     hiddenRowStrategy.setSize(getSize());
-    hiddenRowStrategy.setStrategyNameEnum(getStrategyNameEnum());
+    hiddenRowStrategy.setStrategyName(getStrategyName());
     getStrategies().add(hiddenRowStrategy);
     if (LOG.isDebugEnabled()) {
       LOG.debug("Strategies erzeugt: " + getStrategies());

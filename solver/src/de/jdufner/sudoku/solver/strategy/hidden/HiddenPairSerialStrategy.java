@@ -47,7 +47,7 @@ public final class HiddenPairSerialStrategy extends AbstractHiddenSerialStrategy
   }
 
   @Override
-  public StrategyNameEnum getStrategyNameEnum() {
+  public StrategyNameEnum getStrategyName() {
     return StrategyNameEnum.HIDDEN_PAIR;
   }
 

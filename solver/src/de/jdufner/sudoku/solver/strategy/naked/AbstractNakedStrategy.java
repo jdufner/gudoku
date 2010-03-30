@@ -89,7 +89,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
   }
 
   @Override
-  public StrategyNameEnum getStrategyNameEnum() {
+  public StrategyNameEnum getStrategyName() {
     return strategyNameEnum;
   }
 

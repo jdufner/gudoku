@@ -1,4 +1,4 @@
-// $Id$
+// $Id: NonFixed.java 7 2009-12-31 20:46:32Z jdufner $
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
@@ -23,47 +23,41 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.solver.strategy.simple;
+package de.jdufner.sudoku.common.cellhandlerimpls;
 
-import java.util.Collection;
-
-import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.misc.Level;
-import de.jdufner.sudoku.solver.strategy.AbstractSerialStrategy;
-import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
+import de.jdufner.sudoku.common.board.Cell;
+import de.jdufner.sudoku.common.board.CellHandler;
+import de.jdufner.sudoku.common.board.SudokuSize;
 
 /**
- * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since
- * @version $Revision$
+ * @since 0.1
+ * @version $Revision: 7 $
  */
-public final class SimpleSerialStrategy extends AbstractSerialStrategy {
+public final class NotStarted implements CellHandler {
 
-  //  private static final Logger LOG = Logger.getLogger(SimpleSerialStrategy.class);
+  // private static final Logger LOG = Logger.getLogger(NotStarted.class);
 
-  public SimpleSerialStrategy(final Sudoku sudoku) {
-    super(sudoku);
-    getStrategies().add(new SimpleBlockStrategy(sudoku));
-    getStrategies().add(new SimpleColumnStrategy(sudoku));
-    getStrategies().add(new SimpleRowStrategy(sudoku));
+  private transient final SudokuSize sudokuSize;
+  private transient boolean booleanValue = true;
+
+  public NotStarted(final SudokuSize sudokuSize) {
+    this.sudokuSize = sudokuSize;
   }
 
   @Override
-  public Collection<Command> executeStrategy() {
-    gatherCommandsFromStrategies();
-    return getCommands();
+  public void initialize() {
   }
 
   @Override
-  public Level getLevel() {
-    return Level.SEHR_LEICHT;
+  public void handleCell(final Cell cell) {
+    if (booleanValue && !cell.isFixed() && cell.getCandidates().size() != sudokuSize.getUnitSize()) {
+      booleanValue = false;
+    }
   }
 
-  @Override
-  public StrategyNameEnum getStrategyName() {
-    return StrategyNameEnum.SIMPLE;
+  public boolean isBooleanValue() {
+    return booleanValue;
   }
 
 }

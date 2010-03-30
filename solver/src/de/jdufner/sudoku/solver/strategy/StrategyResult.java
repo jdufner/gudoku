@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -30,6 +30,7 @@ import java.util.Collection;
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.misc.Level;
+import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
  * 
@@ -48,7 +49,10 @@ public final class StrategyResult {
   private transient int numberFixedBefore = 0;
   private transient int numberFixedAfter = 0;
 
-  private transient String strategyName = null;
+  private transient String sudokuBefore = null;
+  private transient String sudokuAfter = null;
+
+  private transient StrategyNameEnum strategyName = null;
   private transient Level level = Level.UNBEKANNT;
   private transient Collection<Command> commands;
 
@@ -57,7 +61,7 @@ public final class StrategyResult {
   public StrategyResult() {
   }
 
-  public StrategyResult(final String strategyName, final Level level) {
+  public StrategyResult(final StrategyNameEnum strategyName, final Level level) {
     this.strategyName = strategyName;
     this.level = level;
   }
@@ -95,11 +99,13 @@ public final class StrategyResult {
   }
 
   protected void storeStateBefore(final Sudoku sudoku) {
+    sudokuBefore = sudoku.toString();
     numberCandidatesBefore = sudoku.getNumberOfCandidates();
     numberFixedBefore = sudoku.getNumberOfFixed();
   }
 
   protected void storeStateAfter(final Sudoku sudoku) {
+    sudokuAfter = sudoku.toString();
     numberCandidatesAfter = sudoku.getNumberOfCandidates();
     numberFixedAfter = sudoku.getNumberOfFixed();
   }
@@ -119,11 +125,11 @@ public final class StrategyResult {
     return numberFixedAfter - numberFixedBefore;
   }
 
-  public String getStrategyName() {
+  public StrategyNameEnum getStrategyName() {
     return strategyName;
   }
 
-  public void setStrategyName(final String strategyName) {
+  public void setStrategyName(final StrategyNameEnum strategyName) {
     this.strategyName = strategyName;
   }
 
@@ -149,6 +155,54 @@ public final class StrategyResult {
 
   public void setSudokuUnique(final boolean sudokuUnique) {
     this.sudokuUnique = sudokuUnique;
+  }
+
+  public String getSudokuBefore() {
+    return sudokuBefore;
+  }
+
+  public void setSudokuBefore(String sudokuBefore) {
+    this.sudokuBefore = sudokuBefore;
+  }
+
+  public String getSudokuAfter() {
+    return sudokuAfter;
+  }
+
+  public void setSudokuAfter(String sudokuAfter) {
+    this.sudokuAfter = sudokuAfter;
+  }
+
+  public int getNumberCandidatesBefore() {
+    return numberCandidatesBefore;
+  }
+
+  public void setNumberCandidatesBefore(int numberCandidatesBefore) {
+    this.numberCandidatesBefore = numberCandidatesBefore;
+  }
+
+  public int getNumberCandidatesAfter() {
+    return numberCandidatesAfter;
+  }
+
+  public void setNumberCandidatesAfter(int numberCandidatesAfter) {
+    this.numberCandidatesAfter = numberCandidatesAfter;
+  }
+
+  public int getNumberFixedBefore() {
+    return numberFixedBefore;
+  }
+
+  public void setNumberFixedBefore(int numberFixedBefore) {
+    this.numberFixedBefore = numberFixedBefore;
+  }
+
+  public int getNumberFixedAfter() {
+    return numberFixedAfter;
+  }
+
+  public void setNumberFixedAfter(int numberFixedAfter) {
+    this.numberFixedAfter = numberFixedAfter;
   }
 
   @Override

@@ -45,5 +45,5 @@ public interface HiddenUnit extends Hidden {
   /**
    * @see Hidden#getStrategyName()
    */
-  void setStrategyNameEnum(StrategyNameEnum strategyNameEnum);
+  void setStrategyName(StrategyNameEnum strategyName);
 }

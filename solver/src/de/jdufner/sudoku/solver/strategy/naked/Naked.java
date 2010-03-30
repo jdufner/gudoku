@@ -37,6 +37,6 @@ public interface Naked {
 
   int getSize();
 
-  StrategyNameEnum getStrategyNameEnum();
+  StrategyNameEnum getStrategyName();
 
 }
