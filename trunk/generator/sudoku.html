@@ -11,6 +11,9 @@
 * {
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+table#board {
+  margin: 10px;
+}
 table#board.solved {
   border: #00ff00 solid 2px;
 }
@@ -253,6 +256,12 @@ function command(cmdClass, cellNumber, candidateNumber) {
   }
 }
 
+function resetCmdHistory() {
+  undoCmd = new Array();
+  doCmd = new Array();
+  ableCmdButtons();
+}
+
 function ableCmdButtons() {
   if (undoCmd.length <= 0) {
     document.getElementById("undoButton").disabled=true;
@@ -321,6 +330,14 @@ function updateStatistics() {
   }
   document.getElementById("fixedCellNumber").value = fixedCellNumber;
   document.getElementById("candidateNumber").value = candidateNumber;
+  var board = document.getElementById("board");
+  if (candidateNumber == 0 && fixedCellNumber == size * size) {
+    if (isSolved()) {
+      board.className = addStyle(board.className, "solved");
+    }
+  } else {
+      board.className = removeStyle(board.className, "solved");
+  }
 }
 
 function switchVisibility(switchId) {
@@ -499,6 +516,7 @@ function loadSudoku() {
       alert("Sudoku ist ungültig!");
     }
   }
+  resetCmdHistory();
   updateStatisticsAsync();
 }
 
@@ -666,10 +684,6 @@ function promoteCandidateDo(cellNumber, candidateNumber) {
   cell.replaceChild(document.createTextNode(candidateNumber), cell.firstChild);
   cell.onclick = resetFixed;
   checkAllConflicts(cellNumber);
-  if (isSolved()) {
-    var board = document.getElementById("board");
-    board.className = addStyle(board.className, "solved");
-  }
 }
 
 var dblclick = false;
@@ -1035,13 +1049,13 @@ function parseSudokuString(sudokuString) {
 function loadSudokuFromCookie() {
   var sudokuString = getCookie();
   parseSudokuString(sudokuString);
+  resetCmdHistory();
   updateStatisticsAsync();
 }
 
 function buildQuests() {
   var questsNode = document.getElementById("quests");
   for (var i = 0; i < this.sudokus.length; i++) {
-    alert(this.sudokus[i].id);
     var optionNode = document.createElement("option");
     var valueAttribute = document.createAttribute("value");
     valueAttribute.nodeValue = sudokus[i].quest;
