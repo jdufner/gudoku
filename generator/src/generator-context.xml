@@ -3,9 +3,9 @@
 		$Id$
 	-->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	     xmlns:aop="http://www.springframework.org/schema/aop"
-	     xmlns:tx="http://www.springframework.org/schema/tx" 
+	     xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:util="http://www.springframework.org/schema/util"
 	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
@@ -29,7 +29,7 @@
   <bean id="abstractBuilder" abstract="true" class="de.jdufner.sudoku.builder.AbstractBuilder">
     <property name="randomData" ref="randomData"/>
     <property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
-  </bean> 
+  </bean>
 
 	<bean id="randomEleminationBuilder" class="de.jdufner.sudoku.builder.RandomEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
@@ -43,7 +43,7 @@
 	<bean id="literalEleminationBuilder" class="de.jdufner.sudoku.builder.LiteralEleminationBuilder" parent="abstractBuilder"
 		scope="prototype">
 	</bean>
-	
+
 	<bean id="sudokuGenerator" class="de.jdufner.sudoku.generator.service.SudokuGeneratorService">
     <!--property name="literalEleminationBuilder" ref="literalEleminationBuilder"/>
     <property name="randomEleminationBuilder" ref="randomEleminationBuilder"/>
@@ -57,19 +57,19 @@
 
 	<bean id="pdfGenerator" class="de.jdufner.sudoku.generator.service.PdfGeneratorService">
 		<property name="pdfPrinter" ref="pdfPrinter" />
-		<property name="approachPrinter" ref="approachPrinter" />
+		<property name="approachFilePrinter" ref="approachFilePrinter" />
 		<property name="sudokuDao" ref="sudokuDao" />
 		<property name="solver" ref="strategySolverWithBacktracking" />
 	</bean>
-	
-  <!-- scope="prototype" -->
-  <bean id="approachFilePrinter" class="de.jdufner.sudoku.generator.text.ApproachFilePrinterImpl">
-  </bean>
+
+    <!-- scope="prototype" -->
+    <bean id="approachFilePrinter" class="de.jdufner.sudoku.generator.text.ApproachFilePrinterImpl">
+    </bean>
 
 	<bean id="approachPrinter" class="de.jdufner.sudoku.generator.text.ApproachPrinter">
 	  <property name="approachFilePrinter" ref="approachFilePrinter" />
-    <property name="sudokuDao" ref="sudokuDao" />
-    <property name="extendedSolver" ref="strategySolverWithBacktracking" />
+      <property name="sudokuDao" ref="sudokuDao" />
+      <property name="extendedSolver" ref="strategySolverWithBacktracking" />
 	</bean>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"

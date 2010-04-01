@@ -52,11 +52,11 @@ public final class ApproachPrinter {
 
   public void print(int sudokuId) throws IOException {
     LOG.info("Start!");
-    approachFilePrinter.openFile(sudokuId);
+    approachFilePrinter.openFile(String.valueOf(sudokuId));
     SudokuData sudokuData = getSudokuDao().loadSudoku(sudokuId);
     Sudoku sudoku = SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
     Solution solution = getExtendedSolver().getSolution(sudoku);
-    approachFilePrinter.print(solution.toString());
+    approachFilePrinter.print(JavascriptGenerator.toJavascript(sudokuId, solution));
     approachFilePrinter.closeAndCompressFile();
     LOG.info("Ende!");
   }
