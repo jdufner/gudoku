@@ -60,23 +60,6 @@ public final class ExtendedSolverTest extends AbstractSolverTestCase {
 
   public void testSolve() {
     final Solution solution = extendedSolver.getSolution(quest);
-    //    for (StrategyResult strategyResult : solution.getResults()) {
-    //      LOG.debug("(" + strategyResult.getNumberFixedBefore() + " Zellen /" + strategyResult.getNumberCandidatesBefore()
-    //          + " Kandidaten)" + strategyResult.getSudokuBefore());
-    //      final Collection<? extends Command> cmds = CommandUtils.aggregateCommandsIfPossible(strategyResult.getCommands());
-    //      final StringBuilder sb = new StringBuilder().append(strategyResult.getStrategyName()).append('(').append(
-    //          cmds.size()).append(')').append(':');
-    //      boolean first = true;
-    //      for (Command cmd : cmds) {
-    //        if (first) {
-    //          first = false;
-    //        } else {
-    //          sb.append(',');
-    //        }
-    //        sb.append(cmd.toJavascriptString());
-    //      }
-    //      LOG.debug(sb.toString());
-    //    }
     LOG.debug(solution);
   }
 }
