@@ -94,12 +94,24 @@ div.candidateButtonOn {
     <h1>Sudoku 2010-02</h1>
     <div id="sudoku" style="float:left"></div>
     <div style="float:left; margin-left:10px;">
-      <fieldset>
-        <legend>Statistik</legend>
-        <p>Gesetzte Zellen: <input id="fixedCellNumber" style="float:right;" type="text" size="3" readonly="true" value=""/></p>
-        <p>Verbleibende Kandidaten: <input id="candidateNumber" style="float:right;" type="text" size="3" readonly="true" value=""/></p>
-      </fieldset>
+      <div>
+        <fieldset>
+          <legend>Statistik</legend>
+          <p>Gesetzte Zellen: <input id="fixedCellNumber" style="float:right;" type="text" size="3" readonly="true" value=""/></p>
+          <p>Verbleibende Kandidaten: <input id="candidateNumber" style="float:right;" type="text" size="3" readonly="true" value=""/></p>
+        </fieldset>
+      </div>
+      <!-- float:left; margin-left:10px; -->
+      <div style="">
+        <fieldset>
+          <legend>Lösung (<span id="solution" style="cursor:default;" onclick="switchVisibility('solution');">+</span>)</legend>
+          <div id="solutionBlock" style="visibility:hidden; display:none;">
+            <div id="steps" style="height:220px; min-height:220px; max-height:220px; width:600px; min-width:600px; max-width:600px; overflow:auto;"></div>
+          </div>
+        </fieldset>
+      </div>
     </div>
+    
     <div id="candidateButtons" style="float:left; margin-left:10px;"></div>
     <div id="buttons" style="clear:both; margin-top:10px;">
       <select id="quests" name="quests" size="1"></select>
@@ -109,21 +121,6 @@ div.candidateButtonOn {
       <input type="button" value="Kandidaten entfernen" onclick="removeAllCandidates()"/><input type="button" value="Reset" onclick="resetAllCandidates()"/><input type="button" value="Leeren" onclick="emptyCandidates()"/><input id="hideButton" type="button" value="Ausblenden" onclick="hideCandidates()"/><br/>
       <input type="button" value="Aus Cookie laden" onclick="loadSudokuFromCookie()"/><input type="button" value="In Cookie speichern" onclick="saveSudokuInCookie()"/><br/>
       <input id="undoButton" type="button" value="&lt;&lt; Zurück &lt;&lt;" onclick="undoCommand();"/><input id="doButton" type="button" value="&gt;&gt; Vor &gt;&gt;" onclick="doCommand();"/><br/>
-      <fieldset>
-        <legend>Lösung (<span id="solution" style="cursor:default;" onclick="switchVisibility('solution');">+</span>)</legend>
-        <div id="solutionBlock" style="visibility:hidden; display:none;">
-          <div id="steps">
-            <div><span id="step1" style="cursor:default;" onclick="switchVisibility('step1');">+</span> SIMPLE Vorher: 21 / 123 Nachher: 21 / 89 <input type="button" value="Ausführen" onclick="executeStep('1');"/></div>
-            <div id="step1Block" style="visibility:hidden; display:none;">
-              1RM123, 2RM212
-            </div>
-            <div><span id="step2" style="cursor:default;" onclick="switchVisibility('step2');">+</span> SIMPLE Vorher: 21 / 123 Nachher: 21 / 89 <input type="button" value="Ausführen" onclick="executeStep('1');"/></div>
-            <div id="step2Block" style="visibility:hidden; display:none;">
-              1RM123, 2RM212
-            </div>
-          </div>
-        </div>
-      </fieldset>
       <fieldset>
         <legend>Spielhilfe (<span id="configHelp" style="cursor:default;" onclick="switchVisibility('configHelp');">+</span>)</legend>
         <div id="configHelpBlock" style="visibility:hidden; display:none;">
@@ -861,15 +858,65 @@ function removeSteps() {
   }
 }
 
+function highlightCmdOn(command) {
+  command.match(/(\d+)(\D+)(\d+)/);
+  var cellNumber = RegExp.$1;
+  var cmd = RegExp.$2;
+  var candidateNumbers = RegExp.$3;
+  if (!isCellFixed(cellNumber)) {
+    for (var i = 0; i < candidateNumbers.length; i++) {
+      var candidateNode = getCandidate(cellNumber, candidateNumbers[i]);
+      if (candidateNode.childNodes.length > 0 && candidateNode.firstChild.data.length > 0) {
+        candidateNode.className = addStyle(candidateNode.className, "highlight2");
+      }
+    }
+  }
+}
+
+function highlightCmdOff(command) {
+  command.match(/(\d+)(\D+)(\d+)/);
+  var cellNumber = RegExp.$1;
+  var cmd = RegExp.$2;
+  var candidateNumbers = RegExp.$3;
+  if (!isCellFixed(cellNumber)) {
+    for (var i = 0; i < candidateNumbers.length; i++) {
+      var candidateNode = getCandidate(cellNumber, candidateNumbers[i]);
+      if (candidateNode.childNodes.length > 0 && candidateNode.firstChild.data.length > 0) {
+        candidateNode.className = removeStyle(candidateNode.className, "highlight2");
+      }
+    }
+  }
+}
+
+function buildCommand(stepNode, command) {
+  var cmdNode = document.createElement("span");
+  var cmdOnMouseOverAttr = document.createAttribute("onmouseover");
+  cmdOnMouseOverAttr.nodeValue = "highlightCmdOn('" + command + "')";
+  cmdNode.setAttributeNode(cmdOnMouseOverAttr);
+  var cmdOnMouseOutAttr = document.createAttribute("onmouseout");
+  cmdOnMouseOutAttr.nodeValue = "highlightCmdOff('" + command + "')";
+  cmdNode.setAttributeNode(cmdOnMouseOutAttr);
+  var cmdText = document.createTextNode(command);
+  cmdNode.appendChild(cmdText);
+  stepNode.appendChild(cmdNode);
+}
+
 function buildStep(stepNr, step) {
   var stepsNode = document.getElementById("steps");
   var stepNode = document.createElement("p");
   var stepText = document.createTextNode(" " + step.strategyName + " Vorher: " + step.fixedBefore + " / " + step.candidatesBefore);
-  var stepBreak = document.createElement("br");
-  var stepCmds = document.createTextNode(step.commands.join(", "));
   stepNode.appendChild(stepText);
+  var stepBreak = document.createElement("br");
   stepNode.appendChild(stepBreak);
-  stepNode.appendChild(stepCmds);
+  //var stepCmds = document.createTextNode(step.commands.join(", "));
+  for (var i = 0; i < step.commands.length; i++) {
+    if (i != 0) {
+      var cmdText = document.createTextNode(", ");
+      stepNode.appendChild(cmdText);
+    }
+    buildCommand(stepNode, step.commands[i]);
+  }
+  //stepNode.appendChild(stepCmds);
   stepsNode.appendChild(stepNode);
 }
 
