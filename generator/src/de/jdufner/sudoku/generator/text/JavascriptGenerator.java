@@ -58,7 +58,8 @@ public final class JavascriptGenerator {
       }
       sb.append("new step(");
       sb.append("\"").append(strategyResult.getStrategyName().name()).append("\", \"").append(
-          strategyResult.getSudokuBefore()).append("\", [");
+          strategyResult.getSudokuBefore()).append("\", ").append(strategyResult.getNumberFixedBefore()).append(", ")
+          .append(strategyResult.getNumberCandidatesBefore()).append(", [");
       final Collection<? extends Command> cmds = CommandUtils.aggregateCommandsIfPossible(strategyResult.getCommands());
       int j = 0;
       for (Command cmd : cmds) {
