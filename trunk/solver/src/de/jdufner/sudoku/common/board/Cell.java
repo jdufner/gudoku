@@ -98,12 +98,6 @@ public final class Cell implements Cloneable, Comparable<Cell> {
     this.candidates = candidates;
   }
 
-  public boolean removeCandidate(final Literal value) {
-    final Collection<Literal> values = new ArrayList<Literal>(1);
-    values.add(value);
-    return removeCandidates(values);
-  }
-
   public boolean removeCandidates(final Collection<Literal> values) {
     if (values.size() <= 0) {
       return false;
@@ -116,12 +110,6 @@ public final class Cell implements Cloneable, Comparable<Cell> {
     }
     assert isValid();
     return candidatesRemoved;
-  }
-
-  public boolean removeCandidateAndSetIfOnlyOneRemains(final Literal value) {
-    final Collection<Literal> values = new ArrayList<Literal>(1);
-    values.add(value);
-    return removeCandidatesAndSetIfOnlyOneRemains(values);
   }
 
   public boolean removeCandidatesAndSetIfOnlyOneRemains(final Collection<Literal> values) {
