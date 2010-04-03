@@ -84,7 +84,7 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
 
   @Override
   public void executeCommand(final Sudoku sudoku) {
-    successfully = sudoku.getCell(getCell(sudoku).getNumber()).removeCandidates(candidates);
+    successfully = sudoku.getCell(getCell(sudoku).getNumber()).removeCandidatesAndSetIfOnlyOneRemains(candidates);
     assert getCell(sudoku).isValid() : "Zelle ist in keinem gültigen Zustand.";
   }
 
