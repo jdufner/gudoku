@@ -31,8 +31,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.zip.GZIPOutputStream;
 
-import org.apache.log4j.Logger;
-
 /**
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -41,9 +39,7 @@ import org.apache.log4j.Logger;
  */
 public final class ApproachFilePrinterImpl implements ApproachFilePrinter {
 
-  private static final Logger LOG = Logger.getLogger(ApproachFilePrinterImpl.class);
-  // TODO In Konfiguration auslagern
-  private static final String DIR = "C:\\tmp";
+  // private static final Logger LOG = Logger.getLogger(ApproachFilePrinterImpl.class);
 
   private PrintWriter pw;
 
@@ -56,8 +52,8 @@ public final class ApproachFilePrinterImpl implements ApproachFilePrinter {
   }
 
   @Override
-  public void openFile(final String date) throws IOException {
-    final File file = new File(DIR, "Sudoku_" + date + ".txt.gz");
+  public void openFile(final String fileName) throws IOException {
+    final File file = new File(fileName);
     final FileOutputStream fos = new FileOutputStream(file);
     final GZIPOutputStream gos = new GZIPOutputStream(fos);
     pw = new PrintWriter(gos);

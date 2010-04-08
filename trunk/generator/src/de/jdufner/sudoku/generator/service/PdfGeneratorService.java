@@ -26,7 +26,6 @@
 package de.jdufner.sudoku.generator.service;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,16 +51,17 @@ import de.jdufner.sudoku.solver.service.Solution;
  */
 public final class PdfGeneratorService {
 
-  private static final DateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd'T'kkmmss");
-
   private SudokuDao sudokuDao;
   private PdfPrinter pdfPrinter;
   private ApproachFilePrinter approachFilePrinter;
   private ExtendedSolver solver;
+  private String fileDirectory;
+  private String filePattern;
 
   public void generate(PdfGeneratorConfiguration config) throws DocumentException, IOException {
-    final String date = FORMATTER.format(new Date());
-    approachFilePrinter.openFile(date);
+    final String filename = getFileDirectory() + System.getProperty("file.separator")
+        + new SimpleDateFormat(getFilePattern()).format(new Date());
+    approachFilePrinter.openFile(filename + ".txt.gz");
     final List<SudokuData> allSudokuQuests = new ArrayList<SudokuData>();
     for (Page page : config.getPages()) {
       List<SudokuData> sudokus = getSudokuDao().findSudokus(config.getSize(), page.getLevel(), page.getNumber(),
@@ -89,7 +89,7 @@ public final class PdfGeneratorService {
     allSudokus.addAll(allSudokuQuests);
     allSudokus.addAll(allSudokuResults);
 
-    getPdfPrinter().print(allSudokus, "C:\\tmp\\Sudoku_" + date + ".pdf");
+    getPdfPrinter().print(allSudokus, filename + ".pdf");
 
     Date now = new Date();
     for (SudokuData sudoku : allSudokuQuests) {
@@ -132,6 +132,22 @@ public final class PdfGeneratorService {
 
   public void setApproachFilePrinter(ApproachFilePrinter approachFilePrinter) {
     this.approachFilePrinter = approachFilePrinter;
+  }
+
+  public String getFileDirectory() {
+    return fileDirectory;
+  }
+
+  public void setFileDirectory(String fileDirectory) {
+    this.fileDirectory = fileDirectory;
+  }
+
+  public String getFilePattern() {
+    return filePattern;
+  }
+
+  public void setFilePattern(String filePattern) {
+    this.filePattern = filePattern;
   }
 
 }
