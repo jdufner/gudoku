@@ -125,6 +125,7 @@ div.candidateButtonOn {
         <legend>Spielhilfe (<span id="configHelp" style="cursor:default;" onclick="switchVisibility('configHelp');">+</span>)</legend>
         <div id="configHelpBlock" style="visibility:hidden; display:none;">
           <input id="showConflicts" type="checkbox" checked="true">Fehler zeigen (funktioniert noch nicht)</input><br/>
+          <input id="kandidatenEntfernen" type="radio" name="spielweise" value="kandidatenEntfernen" checked="true">Kandidaten entfernen</input><input id="kandidatenSetzen" type="radio" name="spielweise" value="kandidatenSetzen">Kandidaten setzen</input>
         </div>
       </fieldset>
       <fieldset>
@@ -817,7 +818,7 @@ function emptyCandidates() {
   for (var i = 1; i <= size * size; i++) {
     if (!isCellFixed(i)) {
       for (var k = 1; k <= size; k++) {
-        removeCandidateDo(getCandidateId(getCellId(i), k));
+        removeCandidateDo(i, k);
       }
     }
   }
@@ -1079,7 +1080,11 @@ function getCandidateArray(cellNumber) {
 }
 
 function buildCandidateString(cellNumber) {
-  return getCandidateArray(cellNumber).join("-");
+  if (getCandidateArray(cellNumber).length == 0) {
+    return ""
+  } else {
+    return "(" + getCandidateArray(cellNumber).join("") + ")";
+  }
 }
 
 function buildSudokuString(forceIncloseCandidates) {
@@ -1111,6 +1116,41 @@ function saveSudokuInCookie() {
   setCookie(sudokuString);
 }
 
+function buildCandidatesFromString(cellNumber, candidatesString) {
+  var allCandidates = []; //"1","2","3","4","5","6","7","8","9"];
+  if (candidatesString.length == 0) {
+    if (!isSpielweiseKandidatenEntfernen()) {
+      var cellId = getCellId(cellNumber);
+      buildCandidates(cellId);
+      var candidate = parseInt(allCandidates.shift());
+      for (var k = 1; k <= size; k++) {
+        if (k != candidate) {
+          removeCandidateDo(cellNumber, k);
+        } else {
+          candidate = parseInt(allCandidates.shift());
+        }
+      }
+
+
+    }
+  }
+  if (candidatesString.match(/^\(([0-9]+)\)$/)) {
+    var candidates = RegExp.$1.split("");
+    var cellId = getCellId(cellNumber);
+    buildCandidates(cellId);
+    var candidate = parseInt(candidates.shift());
+    for (var k = 1; k <= size; k++) {
+      if (k != candidate) {
+        removeCandidateDo(cellNumber, k);
+      } else {
+        candidate = parseInt(candidates.shift());
+      }
+    }
+  } else {
+    return false;
+  }
+}
+
 function parseSudokuString(sudokuString) {
   var sudoku = sudokuString.split(",");
   original = "";
@@ -1129,21 +1169,7 @@ function parseSudokuString(sudokuString) {
       buildFixed(i, parseInt(RegExp.$1));
     } else {
       // candidates
-      if (sudoku[i-1].match(/^([0-9\-]+)$/)) {
-        var candidates = sudoku[i-1].split("-");
-        var cellId = getCellId(i);
-        buildCandidates(cellId);
-        var candidate = parseInt(candidates.shift());
-        for (var k = 1; k <= size; k++) {
-          if (k != candidate) {
-            removeCandidateDo(i, k);
-          } else {
-            candidate = parseInt(candidates.shift());
-          }
-        }
-      } else {
-        return false;
-      }
+      buildCandidatesFromString(i, sudoku[i-1]);
     }
   }
   return true;
@@ -1154,6 +1180,14 @@ function loadSudokuFromCookie() {
   parseSudokuString(sudokuString);
   resetCmdHistory();
   updateStatisticsAsync();
+}
+
+function isSpielweiseKandidatenEntfernen() {
+  var kandidatenEntfernen = document.getElementById("kandidatenEntfernen");
+  if (kandidatenEntfernen.checked == true) {
+    return true;
+  }
+  return false;
 }
 
 function buildQuests() {
