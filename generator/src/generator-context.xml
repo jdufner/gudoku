@@ -40,16 +40,11 @@
 
   <bean id="pdfGenerator" class="de.jdufner.sudoku.generator.service.PdfGeneratorService">
     <property name="pdfPrinter" ref="pdfPrinter" />
-    <property name="approachFilePrinter" ref="approachFilePrinter" />
     <property name="sudokuDao" ref="sudokuDao" />
     <property name="solver" ref="strategySolverWithBacktracking" />
     <!-- Configuration -->
     <property name="fileDirectory" value="E:\tmp" />
     <property name="filePattern" value="'Sudoku_'yyyy-MM-dd'T'kkmmss" />
-  </bean>
-
-  <!-- scope="prototype" -->
-  <bean id="approachFilePrinter" class="de.jdufner.sudoku.generator.text.ApproachFilePrinterImpl">
   </bean>
 
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

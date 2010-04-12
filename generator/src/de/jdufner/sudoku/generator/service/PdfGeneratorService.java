@@ -38,8 +38,8 @@ import de.jdufner.sudoku.dao.SudokuDao;
 import de.jdufner.sudoku.dao.SudokuData;
 import de.jdufner.sudoku.generator.pdf.PdfPrinter;
 import de.jdufner.sudoku.generator.service.PdfGeneratorConfiguration.Page;
-import de.jdufner.sudoku.generator.text.ApproachFilePrinter;
 import de.jdufner.sudoku.generator.text.JavascriptGenerator;
+import de.jdufner.sudoku.generator.text.RegExpReplacer;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
 import de.jdufner.sudoku.solver.service.Solution;
 
@@ -53,15 +53,14 @@ public final class PdfGeneratorService {
 
   private SudokuDao sudokuDao;
   private PdfPrinter pdfPrinter;
-  private ApproachFilePrinter approachFilePrinter;
   private ExtendedSolver solver;
   private String fileDirectory;
   private String filePattern;
 
   public void generate(PdfGeneratorConfiguration config) throws DocumentException, IOException {
-    final String filename = getFileDirectory() + System.getProperty("file.separator")
-        + new SimpleDateFormat(getFilePattern()).format(new Date());
-    approachFilePrinter.openFile(filename + ".txt.gz");
+    final String fileNameBase = new SimpleDateFormat(getFilePattern()).format(new Date());
+    final String filePathAndBasename = getFileDirectory() + System.getProperty("file.separator") + fileNameBase;
+    final StringBuilder javascriptSudokus = new StringBuilder();
     final List<SudokuData> allSudokuQuests = new ArrayList<SudokuData>();
     for (Page page : config.getPages()) {
       List<SudokuData> sudokus = getSudokuDao().findSudokus(config.getSize(), page.getLevel(), page.getNumber(),
@@ -78,9 +77,9 @@ public final class PdfGeneratorService {
       sudokuData2.setSize(sudokuData.getSize());
       sudokuData2.setSudokuAsString(solution.getResult().toString());
       if (index != 0) {
-        approachFilePrinter.print(",");
+        javascriptSudokus.append(",");
       }
-      approachFilePrinter.print(JavascriptGenerator.toJavascript(sudokuData.getId(), solution));
+      javascriptSudokus.append(JavascriptGenerator.toJavascript(sudokuData.getId(), solution));
       allSudokuResults.add(sudokuData2);
       index++;
     }
@@ -89,13 +88,13 @@ public final class PdfGeneratorService {
     allSudokus.addAll(allSudokuQuests);
     allSudokus.addAll(allSudokuResults);
 
-    getPdfPrinter().print(allSudokus, filename + ".pdf");
+    getPdfPrinter().print(allSudokus, filePathAndBasename + ".pdf");
 
     Date now = new Date();
     for (SudokuData sudoku : allSudokuQuests) {
       getSudokuDao().updatePrintedAt(sudoku.getId(), now);
     }
-    approachFilePrinter.closeAndCompressFile();
+    RegExpReplacer.replace(filePathAndBasename + ".html", fileNameBase, javascriptSudokus.toString());
   }
 
   //
@@ -124,14 +123,6 @@ public final class PdfGeneratorService {
 
   public void setSolver(ExtendedSolver solver) {
     this.solver = solver;
-  }
-
-  public ApproachFilePrinter getApproachFilePrinter() {
-    return approachFilePrinter;
-  }
-
-  public void setApproachFilePrinter(ApproachFilePrinter approachFilePrinter) {
-    this.approachFilePrinter = approachFilePrinter;
   }
 
   public String getFileDirectory() {
