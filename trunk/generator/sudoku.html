@@ -113,7 +113,7 @@ div.candidateButtonOn {
     </div>
     
     <div id="candidateButtons" style="float:left; margin-left:10px;"></div>
-    <div id="buttons" style="clear:both; margin-top:10px;">
+    <div id="buttons" style="clear:both; width:100%; margin-top:10px;">
       <select id="quests" name="quests" size="1"></select>
       <input type="button" value="Laden" onclick="copyAndLoadSudoku()"/><br/>
       <input id="sudokuAsString" type="text" value="" size="81"/>
@@ -121,14 +121,15 @@ div.candidateButtonOn {
       <input type="button" value="Kandidaten entfernen" onclick="removeAllCandidates()"/><input type="button" value="Reset" onclick="resetAllCandidates()"/><input type="button" value="Leeren" onclick="emptyCandidates()"/><input id="hideButton" type="button" value="Ausblenden" onclick="hideCandidates()"/><br/>
       <input type="button" value="Aus Cookie laden" onclick="loadSudokuFromCookie()"/><input type="button" value="In Cookie speichern" onclick="saveSudokuInCookie()"/><br/>
       <input id="undoButton" type="button" value="&lt;&lt; Zurück &lt;&lt;" onclick="undoCommand();"/><input id="doButton" type="button" value="&gt;&gt; Vor &gt;&gt;" onclick="doCommand();"/><br/>
-      <fieldset>
+      <fieldset style="width:45%;">
         <legend>Spielhilfe (<span id="configHelp" style="cursor:default;" onclick="switchVisibility('configHelp');">+</span>)</legend>
         <div id="configHelpBlock" style="visibility:hidden; display:none;">
-          <input id="showConflicts" type="checkbox" checked="true">Fehler zeigen (funktioniert noch nicht)</input><br/>
-          <input id="kandidatenEntfernen" type="radio" name="spielweise" value="kandidatenEntfernen" checked="true">Kandidaten entfernen</input><input id="kandidatenSetzen" type="radio" name="spielweise" value="kandidatenSetzen">Kandidaten setzen</input>
+          <input id="showConflicts" type="checkbox" checked="true" onclick="turnShowConflicts();saveConfig();">Fehler zeigen (funktioniert noch nicht)</input><br/>
+          <input id="kandidatenEntfernen" type="radio" name="spielweise" value="kandidatenEntfernen" checked="true" onclick="saveConfig();">Kandidaten entfernen</input>
+          <input id="kandidatenSetzen" type="radio" name="spielweise" value="kandidatenSetzen" onclick="saveConfig();">Kandidaten setzen</input>
         </div>
       </fieldset>
-      <fieldset>
+      <fieldset style="float:left; width:45%;">
         <legend>Zellen (<span id="configCellHighlight" style="cursor:default;" onclick="switchVisibility('configCellHighlight');">+</span>)</legend>
         <div id="configCellHighlightBlock" style="visibility:hidden; display:none;">
           <input id="highlightFixed" type="checkbox" checked="true">Zellen hervorheben</input><br/>
@@ -136,7 +137,7 @@ div.candidateButtonOn {
           <input id="highlightAllFixedAndCandidates" type="checkbox">Auch andere Kandidaten hervorheben</input><br/>
         </div>
       </fieldset>
-      <fieldset>
+      <fieldset style="float:left; width:45%;">
         <legend>Kandidaten (<span id="configCandidateHighlight" style="cursor:default;" onclick="switchVisibility('configCandidateHighlight');">+</span>)</legend>
         <div id="configCandidateHighlightBlock" style="visibility:hidden; display:none;">
           <input id="highlightCandidates" type="checkbox" checked="true">Kandidaten hervorheben</input><br/>
@@ -144,7 +145,7 @@ div.candidateButtonOn {
           <input id="highlightAllCandidatesAndFixed" type="checkbox">Auch andere Zellen hervorheben</input><br/>
         </div>
       </fieldset>
-      Kandidaten und andere Kandidaten hervorheben: Nach setzen einer Zelle, werden die anderen Zellen nicht zurückgesetzt.
+      <div style="clear:both"></div>
     </div>
   </body>
   <script language="javascript">
@@ -485,8 +486,10 @@ function buildCandidates(cellId) {
     candidatesCell.onclick = removeCandidate;
     candidatesCell.ondblclick = promoteCandidate;
     candidatesRow.appendChild(candidatesCell);
-    cellText = document.createTextNode(i);
-    candidatesCell.appendChild(cellText);
+    if (isSpielweiseKandidatenEntfernen()) {
+      cellText = document.createTextNode(i);
+      candidatesCell.appendChild(cellText);
+    }
   }
   cell.replaceChild(candidatesTable, cell.firstChild);
 }
@@ -576,7 +579,10 @@ function removeCandidates(cellNumber) {
 }
 
 function conflictsCandidate(cellNumber, c) {
-  return collectFixed(cellNumber)[c];
+  if (document.getElementById("showConflicts").checked) {
+    return collectFixed(cellNumber)[c];
+  }
+  return false;
 }
 
 function highlightFixedOn(value) {
@@ -949,10 +955,11 @@ function checkAllConflicts(cellNumber) {
 }
 
 function checkConflict(cellNumber) {
+  var showConflicts = document.getElementById("showConflicts").checked;
   var cellId = getCellId(cellNumber);
   var cell = document.getElementById(cellId);
   if (isCellFixed(cellNumber)) {
-    if (conflictsCandidate(cellNumber, getFixedValue(cellNumber))) {
+    if (showConflicts && conflictsCandidate(cellNumber, getFixedValue(cellNumber))) {
       cell.className = addStyle(cell.className, "conflict");
     } else {
       cell.className = removeStyle(cell.className, "conflict");
@@ -963,7 +970,6 @@ function checkConflict(cellNumber) {
 function hideCandidates() {
   var hideButton = document.getElementById("hideButton");
   if (hideButton.value == "Ausblenden") {
-    //var stylesheets = document.styleSheets;
     for (var i = 1; i <= size * size; i++) {
       if (!isCellFixed(i)) {
         for (var k = 1; k <= size; k++) {
@@ -1022,8 +1028,7 @@ function isSolved() {
   return true;
 }
 
-function eraseCookie() {
-  var name = "SudokuAsString";
+function eraseCookie(name) {
   var domain = null; //"jdufner.de";
   var expires = new Date((new Date()).getTime() - 1000*3600*24).toGMTString();
   var path = null;
@@ -1036,8 +1041,7 @@ function eraseCookie() {
   document.cookie = cook;
 }
 
-function setCookie(wert) {
-  var name = "SudokuAsString";
+function setCookie(name, wert) {
   var domain = null; //"jdufner.de";
   var expires = new Date((new Date()).getTime() + 1000*3600*24*7).toGMTString();
   var path = null;
@@ -1050,8 +1054,7 @@ function setCookie(wert) {
   document.cookie = cook;
 }
 
-function getCookie() {
-  var name = "SudokuAsString";
+function getCookie(name) {
   var i = 0;  //Suchposition im Cookie
   var suche = name + "=";
   while (i < document.cookie.length) {
@@ -1113,11 +1116,11 @@ function saveSudokuInCookie() {
   if (sudokuString.length > 4000) {
     alert("Sudoku kann nicht gespeichert werden");
   }
-  setCookie(sudokuString);
+  setCookie("SudokuAsString", sudokuString);
 }
 
 function buildCandidatesFromString(cellNumber, candidatesString) {
-  var allCandidates = []; //"1","2","3","4","5","6","7","8","9"];
+  var allCandidates = []; // ["1","2","3","4","5","6","7","8","9"];
   if (candidatesString.length == 0) {
     if (!isSpielweiseKandidatenEntfernen()) {
       var cellId = getCellId(cellNumber);
@@ -1176,7 +1179,7 @@ function parseSudokuString(sudokuString) {
 }
 
 function loadSudokuFromCookie() {
-  var sudokuString = getCookie();
+  var sudokuString = getCookie("SudokuAsString");
   parseSudokuString(sudokuString);
   resetCmdHistory();
   updateStatisticsAsync();
@@ -1195,7 +1198,6 @@ function buildQuests() {
   for (var i = 0; i < this.sudokus.length; i++) {
     var optionNode = document.createElement("option");
     var valueAttribute = document.createAttribute("value");
-    //valueAttribute.nodeValue = sudokus[i].quest;
     valueAttribute.nodeValue = sudokus[i].id;
     optionNode.setAttributeNode(valueAttribute);
     var textNode = document.createTextNode(sudokus[i].id + " " + sudokus[i].level);
@@ -1204,10 +1206,29 @@ function buildQuests() {
   }
 }
 
+function saveConfig() {
+  setCookie("showConflicts", document.getElementById("showConflicts").checked)
+  setCookie("kandidatenEntfernen", document.getElementById("kandidatenEntfernen").checked)
+  setCookie("kandidatenSetzen", document.getElementById("kandidatenSetzen").checked)
+}
+
+function loadConfig() {
+  document.getElementById("showConflicts").checked = getCookie("showConflicts") == "true" ? true : false;
+  document.getElementById("kandidatenEntfernen").checked = getCookie("kandidatenEntfernen") == "true" ? true : false;
+  document.getElementById("kandidatenSetzen").checked = getCookie("kandidatenSetzen") == "true" ? true : false;
+}
+
+function turnShowConflicts() {
+  for (var i = 1; i <= size * size; i++) {
+    checkAllConflicts(i);
+  }
+}
+
 function main() {
   buildBoard();
   buildCandidateButtons();
   buildQuests();
+  loadConfig();
 }
 
 main();
