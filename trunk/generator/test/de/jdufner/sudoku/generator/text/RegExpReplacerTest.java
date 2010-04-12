@@ -27,20 +27,11 @@ package de.jdufner.sudoku.generator.text;
 
 import java.io.IOException;
 
-import junit.framework.TestCase;
+import de.jdufner.sudoku.test.AbstractGeneratorTestCase;
 
-/**
- * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
- * @since 2010-01-12
- * @version $Revision$
- */
-public final class ApproachFilePrinterTest extends TestCase {
+public final class RegExpReplacerTest extends AbstractGeneratorTestCase {
 
-  public void testOpenFileWriteCloseAndCompressFile() throws IOException {
-    ApproachFilePrinter sp = new ApproachFilePrinterImpl();
-    sp.openFile("123");
-    sp.println("123456789456789123789123456234567891567891234891234567345678912678912345912345678");
-    sp.closeAndCompressFile();
+  public void testReplace() throws IOException {
+    RegExpReplacer.replace("E:\\tmp\\sudoku_nneeuu.html", "Sudoku_123", "JavaScript-Code");
   }
 }
