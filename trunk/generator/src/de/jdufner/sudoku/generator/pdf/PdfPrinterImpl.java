@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -44,6 +44,7 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.dao.SudokuData;
+import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * 
@@ -56,7 +57,24 @@ public final class PdfPrinterImpl implements PdfPrinter {
   private Properties pdfStyle;
 
   @Override
-  public void print(List<SudokuData> sudokus, String fileName) throws DocumentException, FileNotFoundException {
+  public void printFrontpage(String name, List<Solution> solutions, String fileName) throws DocumentException,
+      FileNotFoundException {
+    Document document = new Document(PageSize.A4, 10, 10, 10, 10);
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
+    writeFrontpage(name, document, solutions);
+    writer.close();
+  }
+
+  @Override
+  public void printQuests(List<SudokuData> sudokus, String fileName) throws DocumentException, FileNotFoundException {
+    Document document = new Document(PageSize.A4, 10, 10, 10, 10);
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
+    writeDocument(document, sudokus);
+    writer.close();
+  }
+
+  @Override
+  public void printResults(List<SudokuData> sudokus, String fileName) throws DocumentException, FileNotFoundException {
     Document document = new Document(PageSize.A4, 10, 10, 10, 10);
     PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
     writeDocument(document, sudokus);
@@ -116,6 +134,12 @@ public final class PdfPrinterImpl implements PdfPrinter {
     untereZelle.setBorder(0);
     einzelnesSudoku.addCell(untereZelle);
     return einzelnesSudoku;
+  }
+
+  private void writeFrontpage(String name, Document document, List<Solution> solutions) throws DocumentException {
+    document.open();
+    document.add(new Phrase(name));
+    document.close();
   }
 
   //
