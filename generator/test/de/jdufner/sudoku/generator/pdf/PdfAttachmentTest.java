@@ -55,19 +55,6 @@ public final class PdfAttachmentTest extends AbstractGeneratorTestCase {
     writer.close();
   }
 
-  public void testAttach2() throws Exception {
-    StringBuffer sb = readFile();
-    Document document = new Document(PageSize.A4, 10, 10, 10, 10);
-    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("E:\\tmp\\PdfAttachmentTest.pdf"));
-    document.open();
-    document.addCreationDate();
-    document.addCreator("de.jdufner.sudoku.Generator");
-    document.add(new Paragraph("PdfAttachmentTest"));
-    document.close();
-    writer.addFileAttachment("Eingebundenes HTML", sb.toString().getBytes(), null, "Sudoku.html");
-    writer.close();
-  }
-
   private StringBuffer readFile() throws FileNotFoundException, IOException {
     FileInputStream fis = new FileInputStream("E:\\tmp\\Sudoku.html");
     InputStreamReader isr = new InputStreamReader(fis);
@@ -80,6 +67,19 @@ public final class PdfAttachmentTest extends AbstractGeneratorTestCase {
     } while (line != null);
     br.close();
     return sb;
+  }
+
+  public void testAttach2() throws Exception {
+    StringBuffer sb = readFile();
+    Document document = new Document(PageSize.A4, 10, 10, 10, 10);
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("E:\\tmp\\PdfAttachmentTest.pdf"));
+    document.open();
+    document.addCreationDate();
+    document.addCreator("de.jdufner.sudoku.Generator");
+    document.add(new Paragraph("PdfAttachmentTest"));
+    document.close();
+    writer.addFileAttachment("Eingebundenes HTML", sb.toString().getBytes(), null, "Sudoku.html");
+    writer.close();
   }
 
   public void testAttach3() throws Exception {

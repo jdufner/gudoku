@@ -25,6 +25,8 @@
  */
 package de.jdufner.sudoku.generator.service;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +34,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.PdfName;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStamper;
 
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.dao.SudokuDao;
@@ -58,8 +63,18 @@ public final class PdfGeneratorService {
   private String filePattern;
 
   public void generate(PdfGeneratorConfiguration config) throws DocumentException, IOException {
-    final String fileNameBase = new SimpleDateFormat(getFilePattern()).format(new Date());
-    final String filePathAndBasename = getFileDirectory() + System.getProperty("file.separator") + fileNameBase;
+    final String fileBaseName = new SimpleDateFormat(getFilePattern()).format(new Date());
+    final String filePathName = getFileDirectory() + System.getProperty("file.separator");
+    final String packageFileBaseName = fileBaseName + ".pdf";
+    final String packageFileName = filePathName + packageFileBaseName;
+    final String frontpageFileBaseName = fileBaseName + "_Frontpage.pdf";
+    final String frontpageFileName = filePathName + frontpageFileBaseName;
+    final String questsFileBaseName = fileBaseName + "_Quests.pdf";
+    final String questsFileName = filePathName + questsFileBaseName;
+    final String resultsFileBaseName = fileBaseName + "_Results.pdf";
+    final String resultsFileName = filePathName + resultsFileBaseName;
+    final String htmlFileBaseName = fileBaseName + ".html";
+    final String htmlFileName = filePathName + htmlFileBaseName;
     final StringBuilder javascriptSudokus = new StringBuilder();
     final List<SudokuData> allSudokuQuests = new ArrayList<SudokuData>();
     for (Page page : config.getPages()) {
@@ -67,11 +82,15 @@ public final class PdfGeneratorService {
           Boolean.FALSE);
       allSudokuQuests.addAll(sudokus);
     }
+    getPdfPrinter().printQuests(allSudokuQuests, questsFileName);
+
+    final List<Solution> allSolutions = new ArrayList<Solution>(allSudokuQuests.size());
     final List<SudokuData> allSudokuResults = new ArrayList<SudokuData>(allSudokuQuests.size());
     int index = 0;
     for (SudokuData sudokuData : allSudokuQuests) {
       SudokuData sudokuData2 = new SudokuData();
       Solution solution = solver.getSolution(SudokuFactory.buildSudoku(sudokuData.getSudokuAsString()));
+      allSolutions.add(solution);
       sudokuData2.setId(sudokuData.getId());
       sudokuData2.setLevel(sudokuData.getLevel());
       sudokuData2.setSize(sudokuData.getSize());
@@ -83,18 +102,29 @@ public final class PdfGeneratorService {
       allSudokuResults.add(sudokuData2);
       index++;
     }
-
-    final List<SudokuData> allSudokus = new ArrayList<SudokuData>(allSudokuQuests.size() * 2);
-    allSudokus.addAll(allSudokuQuests);
-    allSudokus.addAll(allSudokuResults);
-
-    getPdfPrinter().print(allSudokus, filePathAndBasename + ".pdf");
+    getPdfPrinter().printFrontpage(fileBaseName, allSolutions, frontpageFileName);
+    getPdfPrinter().printResults(allSudokuResults, resultsFileName);
 
     Date now = new Date();
     for (SudokuData sudoku : allSudokuQuests) {
       getSudokuDao().updatePrintedAt(sudoku.getId(), now);
     }
-    RegExpReplacer.replace(filePathAndBasename + ".html", fileNameBase, javascriptSudokus.toString());
+    RegExpReplacer.replace(htmlFileName, fileBaseName, javascriptSudokus.toString());
+
+    packPdf(filePathName, packageFileBaseName, frontpageFileBaseName, questsFileBaseName, resultsFileBaseName,
+        htmlFileBaseName);
+  }
+
+  public void packPdf(String filePathName, String packageFileBaseName, String frontpageFileBaseName,
+      String questsFileBaseName, String resultsFileBaseName, String htmlFileName) throws FileNotFoundException,
+      DocumentException, IOException {
+    PdfStamper pdfStamper = new PdfStamper(new PdfReader(filePathName + frontpageFileBaseName), new FileOutputStream(
+        filePathName + packageFileBaseName));
+    pdfStamper.addFileAttachment("Quests", null, filePathName + questsFileBaseName, questsFileBaseName);
+    pdfStamper.addFileAttachment("Results", null, filePathName + resultsFileBaseName, resultsFileBaseName);
+    pdfStamper.addFileAttachment("HTML", null, filePathName + htmlFileName, htmlFileName);
+    pdfStamper.makePackage(PdfName.T);
+    pdfStamper.close();
   }
 
   //
