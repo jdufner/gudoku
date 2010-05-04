@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -151,7 +151,7 @@ public final class Backtracking {
       }
       // Eine Kopie der Lösung anlegen und zurückgeben
       // Muss die Lösung selbst zurück in den Pool?
-      return (Sudoku) sudoku.clone();
+      return new Sudoku(sudoku);
     }
 
     // Finde Zelle, über deren Kandidaten iteriert wird
@@ -166,7 +166,7 @@ public final class Backtracking {
         }
         // Eine Kopie der Lösung anlegen und zurückgeben
         // Muss die Lösung selbst zurück in den Pool?
-        return (Sudoku) sudoku.clone();
+        return new Sudoku(sudoku);
       } else {
         // Oder alle Zellen sind besetzt und das Sudoku ist ungültig
         LOG.equals("Alle Zellen sind besetzt, aber das Sudoku ist nicht gelöst.");
@@ -184,7 +184,7 @@ public final class Backtracking {
           // Zelle gesetzt
           // Sudoku gelöst
           if (nextSudoku.isSolvedByCheckSum()) {
-            solution = (Sudoku) nextSudoku.clone();
+            solution = new Sudoku(nextSudoku);
             if (LOG.isDebugEnabled()) {
               LOG.debug("Found a solution #" + solutionCounter);
               LOG.debug(nextSudoku.toShortString());

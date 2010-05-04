@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -49,7 +49,8 @@ public class SudokuFactory implements PoolableObjectFactory {
 
   private static final Pattern SIZE_PATTERN = Pattern.compile("^(\\d+):");
   private static final Pattern CELLS_PATTERN = Pattern.compile(":([0-9,]+)$");
-  private static final Pattern CANDIDATES_PATTERN = Pattern.compile("^[0-9,\\-]+$");
+  private static final Pattern CANDIDATES_PATTERN_1 = Pattern.compile("^[0-9,\\(\\)]+$");
+  private static final Pattern CANDIDATES_PATTERN_2 = Pattern.compile("^\\((\\d+)\\)$");
 
   private SudokuSize size = SudokuSize.DEFAULT;
 
@@ -61,17 +62,20 @@ public class SudokuFactory implements PoolableObjectFactory {
       }
       return sudoku;
     } else {
-      if (sudokuAsString.contains(",") && CANDIDATES_PATTERN.matcher(sudokuAsString).matches()) {
+      if (sudokuAsString.contains(",") && CANDIDATES_PATTERN_1.matcher(sudokuAsString).matches()) {
         final String[] felderAsStrings = Pattern.compile(",").split(sudokuAsString);
         final Cell[] cells = new Cell[felderAsStrings.length];
         for (int i = 0; i < felderAsStrings.length; i++) {
-          if (felderAsStrings[i].contains("-")) {
-            final String[] candidatesAsStrings = Pattern.compile("-").split(felderAsStrings[i]);
-            final Literal[] candidates = new Literal[candidatesAsStrings.length];
-            for (int j = 0; j < candidatesAsStrings.length; j++) {
-              candidates[j] = Literal.getInstance(Integer.parseInt(candidatesAsStrings[j]));
+          if (felderAsStrings[i].contains("(") || felderAsStrings[i].contains(")")) {
+            Matcher matcher = CANDIDATES_PATTERN_2.matcher(felderAsStrings[i]);
+            if (matcher.matches()) {
+              final String candidatesAsString = matcher.group(1);
+              final Literal[] candidates = new Literal[candidatesAsString.length()];
+              for (int j = 0; j < candidatesAsString.length(); j++) {
+                candidates[j] = Literal.getInstance(Integer.parseInt(candidatesAsString.substring(j, j + 1)));
+              }
+              cells[i] = new Cell(i, null, Arrays.asList(candidates), SudokuSize.DEFAULT);
             }
-            cells[i] = new Cell(i, null, Arrays.asList(candidates), SudokuSize.DEFAULT);
           } else {
             cells[i] = new Cell(i, Literal.getInstance(Integer.parseInt(felderAsStrings[i])), null, SudokuSize.DEFAULT);
           }
