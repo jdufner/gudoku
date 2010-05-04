@@ -56,7 +56,7 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
  * @since 0.1
  * @version $Revision$
  */
-public final class Sudoku implements Cloneable {
+public final class Sudoku {
 
   private static final Logger LOG = Logger.getLogger(Sudoku.class);
   /**
@@ -478,11 +478,6 @@ public final class Sudoku implements Cloneable {
     final NotStarted notStarted = new NotStarted(size);
     HandlerUtil.forEachCell(this, notStarted);
     return notStarted.isBooleanValue();
-  }
-
-  @Override
-  public Sudoku clone() { // NOPMD by Jürgen on 08.11.09 00:21
-    return new Sudoku(this);
   }
 
   @Override

@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -49,7 +49,7 @@ public final class StrategySolver implements ExtendedSolver {
   // Solver
   @Override
   public Sudoku solve(final Sudoku sudoku) {
-    final Sudoku sudokuResult = (Sudoku) sudoku.clone();
+    final Sudoku sudokuResult = new Sudoku(sudoku);
     final StrategyExecutor executor = new StrategyExecutor(sudokuResult, getConfiguration());
     executor.execute();
     return sudokuResult;
@@ -62,7 +62,7 @@ public final class StrategySolver implements ExtendedSolver {
 
   // Solver
   public boolean isUnique(final Sudoku sudoku) {
-    final Sudoku sudokuResult = (Sudoku) sudoku.clone();
+    final Sudoku sudokuResult = new Sudoku(sudoku);
     final StrategyConfiguration configuration = getConfiguration();
     final StrategyExecutor executor = new StrategyExecutor(sudokuResult, configuration);
     final List<StrategyResult> results = executor.execute();
@@ -71,8 +71,8 @@ public final class StrategySolver implements ExtendedSolver {
 
   // ExtendedSolver
   public Solution getSolution(final Sudoku sudoku) {
-    final Sudoku sudokuQuest = sudoku.clone();
-    final Sudoku sudokuResult = sudoku.clone();
+    final Sudoku sudokuQuest = new Sudoku(sudoku);
+    final Sudoku sudokuResult = new Sudoku(sudoku);
     final StrategyConfiguration configuration = getConfiguration();
     final StrategyExecutor executor = new StrategyExecutor(sudokuResult, configuration);
     final List<StrategyResult> results = executor.execute();
