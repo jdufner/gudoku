@@ -34,6 +34,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
@@ -44,7 +45,6 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.dao.SudokuData;
-import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * 
@@ -57,7 +57,7 @@ public final class PdfPrinterImpl implements PdfPrinter {
   private Properties pdfStyle;
 
   @Override
-  public void printFrontpage(String name, List<Solution> solutions, String fileName) throws DocumentException,
+  public void printFrontpage(String name, List<PdfSolution> solutions, String fileName) throws DocumentException,
       FileNotFoundException {
     Document document = new Document(PageSize.A4, 10, 10, 10, 10);
     PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
@@ -136,10 +136,101 @@ public final class PdfPrinterImpl implements PdfPrinter {
     return einzelnesSudoku;
   }
 
-  private void writeFrontpage(String name, Document document, List<Solution> solutions) throws DocumentException {
+  private void writeFrontpage(String name, Document document, List<PdfSolution> solutions) throws DocumentException {
     document.open();
-    document.add(new Phrase(name));
+    Paragraph p = new Paragraph(name);
+    p.setAlignment(Element.ALIGN_CENTER);
+    p.setSpacingBefore(20f);
+    p.setSpacingAfter(20f);
+    document.add(p);
+    PdfPTable table = new PdfPTable(17);
+    table.setWidthPercentage(100);
+    int[] width = { 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+    table.setWidths(width);
+    PdfPCell cell;
+    table.addCell(buildHeaderCell("Name", 90, true, false));
+    table.addCell(buildHeaderCell("Schwierigkeitsgrad", 90, false, false));
+    table.addCell(buildHeaderCell("Besetzte Zellen", 90, false, false));
+    table.addCell(buildHeaderCell("Simple", 90, false, false));
+    table.addCell(buildHeaderCell("Hidden Single", 90, false, false));
+    table.addCell(buildHeaderCell("Naked Pair", 90, false, false));
+    table.addCell(buildHeaderCell("Naked Triple", 90, false, false));
+    table.addCell(buildHeaderCell("Naked Quad", 90, false, false));
+    table.addCell(buildHeaderCell("Hidden Pair", 90, false, false));
+    table.addCell(buildHeaderCell("Hidden Triple", 90, false, false));
+    table.addCell(buildHeaderCell("Hidden Quad", 90, false, false));
+    table.addCell(buildHeaderCell("Intersection Removal", 90, false, false));
+    table.addCell(buildHeaderCell("Y-Wing", 90, false, false));
+    table.addCell(buildHeaderCell("X-Wing", 90, false, false));
+    table.addCell(buildHeaderCell("Jellyfish", 90, false, false));
+    table.addCell(buildHeaderCell("Swordfish", 90, false, false));
+    table.addCell(buildHeaderCell("Backtracking", 90, false, true));
+    boolean even = false;
+    for (PdfSolution solution : solutions) {
+      table.addCell(buildBodyNumberCell(solution.getId(), even, true, false));
+      table.addCell(buildBodyTextCell(solution.getLevel().toString(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getFixed(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategySimple(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyHiddenSingle(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyNakedPair(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyNakedTriple(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyNakedQuad(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyHiddenPair(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyHiddenTriple(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyHiddenQuad(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyIntersectionRemoval(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyYwing(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyXwing(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyJellyfish(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategySwordfish(), even, false, false));
+      table.addCell(buildBodyNumberCell(solution.getStrategyBacktracking(), even, false, true));
+      even = (even ? false : true);
+    }
+    document.add(table);
     document.close();
+  }
+
+  private PdfPCell buildHeaderCell(String text, int rotation, boolean first, boolean last) {
+    PdfPCell cell = new PdfPCell(new Phrase(text));
+    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+    setBorder(cell, first, last);
+    cell.setRotation(rotation);
+    return cell;
+  }
+
+  private PdfPCell buildBodyNumberCell(int value, boolean even, boolean first, boolean last) {
+    PdfPCell cell = new PdfPCell(new Phrase(String.valueOf(value)));
+    cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+    if (even) {
+      cell.setGrayFill(0.8f);
+    }
+    setBorder(cell, first, last);
+    //cell.setRotation(rotation);
+    return cell;
+  }
+
+  private PdfPCell buildBodyTextCell(String value, boolean even, boolean first, boolean last) {
+    PdfPCell cell = new PdfPCell(new Phrase(value));
+    cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+    if (even) {
+      cell.setGrayFill(0.8f);
+    }
+    setBorder(cell, first, last);
+    //cell.setRotation(rotation);
+    return cell;
+  }
+
+  private void setBorder(PdfPCell cell, boolean first, boolean last) {
+    if (cell == null) {
+      return;
+    }
+    if (first) {
+      cell.setBorder(PdfPCell.TOP | PdfPCell.BOTTOM | PdfPCell.LEFT);
+    } else if (last) {
+      cell.setBorder(PdfPCell.TOP | PdfPCell.BOTTOM | PdfPCell.RIGHT);
+    } else {
+      cell.setBorder(PdfPCell.TOP | PdfPCell.BOTTOM);
+    }
   }
 
   //

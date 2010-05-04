@@ -58,6 +58,9 @@ td.original {
 td.conflict {
   border: #ff0000 solid 1px;
 }
+td.error {
+  color: #FF0000;
+}
 /* Kandidaten per Knopf hervorheben */
 td.highlight1 {
   background-color: #ffff99; /* gelb */
@@ -124,7 +127,8 @@ div.candidateButtonOn {
       <fieldset style="width:45%;">
         <legend>Spielhilfe (<span id="configHelp" style="cursor:default;" onclick="switchVisibility('configHelp');">+</span>)</legend>
         <div id="configHelpBlock" style="visibility:hidden; display:none;">
-          <input id="showConflicts" type="checkbox" checked="true" onclick="turnShowConflicts();saveConfig();">Fehler zeigen (funktioniert noch nicht)</input><br/>
+          <input id="showConflicts" type="checkbox" checked="true" onclick="turnShowConflicts();saveConfig();">Konflikte zwischen Zellen anzeigen</input><br/>
+          <input id="showErrors" type="checkbox" checked="true" onclick="turnShowErrors();saveConfig();">Fehler zur Lösung anzeigen</input><br/>
           <input id="kandidatenEntfernen" type="radio" name="spielweise" value="kandidatenEntfernen" checked="true" onclick="saveConfig();">Kandidaten entfernen</input>
           <input id="kandidatenSetzen" type="radio" name="spielweise" value="kandidatenSetzen" onclick="saveConfig();">Kandidaten setzen</input>
         </div>
@@ -335,6 +339,7 @@ function updateStatistics() {
       }
     }
     checkConflict(i);
+    checkError(i);
   }
   document.getElementById("fixedCellNumber").value = fixedCellNumber;
   document.getElementById("candidateNumber").value = candidateNumber;
@@ -969,6 +974,23 @@ function checkConflict(cellNumber) {
   }
 }
 
+function checkError(cellNumber) {
+  var showErrors = document.getElementById("showErrors").checked;
+  var cellId = getCellId(cellNumber);
+  var cell = document.getElementById(cellId);
+  if (showErrors) {
+  	var fixedValue = getFixedValue(cellNumber);
+  	var resultValue = sudoku.result[cellNumber];
+  	if (isCellFixed(cellNumber) && getFixedValue(cellNumber) != sudoku.result[cellNumber - 1]) {
+      cell.className = addStyle(cell.className, "error");
+    } else {
+    	cell.className = removeStyle(cell.className, "error");
+    }
+  } else {
+    cell.className = removeStyle(cell.className, "error");
+  }
+}
+
 function hideCandidates() {
   var hideButton = document.getElementById("hideButton");
   if (hideButton.value == "Ausblenden") {
@@ -1210,12 +1232,14 @@ function buildQuests() {
 
 function saveConfig() {
   setCookie("showConflicts", document.getElementById("showConflicts").checked)
+  setCookie("showErrors", document.getElementById("showErrors").checked)
   setCookie("kandidatenEntfernen", document.getElementById("kandidatenEntfernen").checked)
   setCookie("kandidatenSetzen", document.getElementById("kandidatenSetzen").checked)
 }
 
 function loadConfig() {
   document.getElementById("showConflicts").checked = getCookie("showConflicts") == "true" ? true : false;
+  document.getElementById("showErrors").checked = getCookie("showErrors") == "true" ? true : false;
   document.getElementById("kandidatenEntfernen").checked = getCookie("kandidatenEntfernen") == "true" ? true : false;
   document.getElementById("kandidatenSetzen").checked = getCookie("kandidatenSetzen") == "true" ? true : false;
 }
@@ -1223,6 +1247,12 @@ function loadConfig() {
 function turnShowConflicts() {
   for (var i = 1; i <= size * size; i++) {
     checkAllConflicts(i);
+  }
+}
+
+function turnShowErrors() {
+  for (var i = 1; i <= size * size; i++) {
+    checkError(i);
   }
 }
 

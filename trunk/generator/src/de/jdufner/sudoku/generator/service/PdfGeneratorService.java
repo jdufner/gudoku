@@ -42,6 +42,7 @@ import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.dao.SudokuDao;
 import de.jdufner.sudoku.dao.SudokuData;
 import de.jdufner.sudoku.generator.pdf.PdfPrinter;
+import de.jdufner.sudoku.generator.pdf.PdfSolution;
 import de.jdufner.sudoku.generator.service.PdfGeneratorConfiguration.Page;
 import de.jdufner.sudoku.generator.text.JavascriptGenerator;
 import de.jdufner.sudoku.generator.text.RegExpReplacer;
@@ -84,13 +85,13 @@ public final class PdfGeneratorService {
     }
     getPdfPrinter().printQuests(allSudokuQuests, questsFileName);
 
-    final List<Solution> allSolutions = new ArrayList<Solution>(allSudokuQuests.size());
+    final List<PdfSolution> allSolutions = new ArrayList<PdfSolution>(allSudokuQuests.size());
     final List<SudokuData> allSudokuResults = new ArrayList<SudokuData>(allSudokuQuests.size());
     int index = 0;
     for (SudokuData sudokuData : allSudokuQuests) {
       SudokuData sudokuData2 = new SudokuData();
       Solution solution = solver.getSolution(SudokuFactory.buildSudoku(sudokuData.getSudokuAsString()));
-      allSolutions.add(solution);
+      allSolutions.add(new PdfSolution(sudokuData, solution));
       sudokuData2.setId(sudokuData.getId());
       sudokuData2.setLevel(sudokuData.getLevel());
       sudokuData2.setSize(sudokuData.getSize());

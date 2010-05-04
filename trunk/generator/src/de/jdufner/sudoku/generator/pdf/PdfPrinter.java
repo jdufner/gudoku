@@ -31,7 +31,6 @@ import java.util.List;
 import com.lowagie.text.DocumentException;
 
 import de.jdufner.sudoku.dao.SudokuData;
-import de.jdufner.sudoku.solver.service.Solution;
 
 /**
  * 
@@ -41,7 +40,7 @@ import de.jdufner.sudoku.solver.service.Solution;
  */
 public interface PdfPrinter {
 
-  void printFrontpage(String name, List<Solution> solutions, String fileName) throws DocumentException,
+  void printFrontpage(String name, List<PdfSolution> solutions, String fileName) throws DocumentException,
       FileNotFoundException;
 
   /**
