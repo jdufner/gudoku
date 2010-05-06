@@ -126,6 +126,9 @@ public final class Backtracking {
   public Sudoku firstSolution() {
     setSolutionLimit(1);
     final Sudoku mySolution = findSolutions2();
+    LOG.debug("mySolution" + mySolution);
+    LOG.debug("solutionCounter" + solutionCounter);
+    LOG.debug("getSolutions()" + getSolutions());
     assert solutionCounter == getSolutions().size() : "Der Zähler muss genau soviele Lösungen haben, wie gefunden wurden.";
     return mySolution;
   }
@@ -151,7 +154,11 @@ public final class Backtracking {
       }
       // Eine Kopie der Lösung anlegen und zurückgeben
       // Muss die Lösung selbst zurück in den Pool?
-      return new Sudoku(sudoku);
+      Sudoku result = new Sudoku(sudoku);
+      // Zur Konsistenz auch in Solutions eintragen und Counter erhöhen
+      increaseSolutionCounter();
+      addSolutions(result);
+      return result;
     }
 
     // Finde Zelle, über deren Kandidaten iteriert wird
