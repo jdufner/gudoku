@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  *
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der
  * GNU General Public License, wie von der Free Software Foundation
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
@@ -48,7 +48,7 @@ import de.jdufner.sudoku.common.validator.SudokuValidator;
 import de.jdufner.sudoku.context.SolverServiceFactory;
 
 /**
- * Diese Klasse kapselt das Spielfeld mit Zeilen, Spalten und Blöcken.
+ * Diese Klasse kapselt das Spielfeld mit Zeilen, Spalten und BlÃ¶cken.
  * 
  * TODO Methode clone() und Interface Cloneable entfernen
  * 
@@ -76,19 +76,19 @@ public final class Sudoku {
    */
   private transient boolean initialized = false;
   /**
-   * Speichert die Blöcke für den schnelleren Zugriff.
+   * Speichert die BlÃ¶cke fÃ¼r den schnelleren Zugriff.
    */
   private final transient Map<Integer, Block> blockMap = new HashMap<Integer, Block>();
   /**
-   * Speichert die Spalten für den schnelleren Zugriff.
+   * Speichert die Spalten fÃ¼r den schnelleren Zugriff.
    */
   private final transient Map<Integer, Column> columnMap = new HashMap<Integer, Column>();
   /**
-   * Speicher die Zeilen für den schnelleren Zugriff.
+   * Speicher die Zeilen fÃ¼r den schnelleren Zugriff.
    */
   private final transient Map<Integer, Row> rowMap = new HashMap<Integer, Row>();
 
-  // Die folgenden Objekte können wiederverwendet werden
+  // Die folgenden Objekte kÃ¶nnen wiederverwendet werden
   private transient WeakReference<SudokuValidator> weakReferenceValidator = null;
   private transient ResetCell resetCell = null;
   private transient WeakReference<ResetAndRemoveCandidates> weakReferenceResetAndRemoveCandidates = null;
@@ -124,7 +124,7 @@ public final class Sudoku {
    */
   public Sudoku(final SudokuSize size, final Integer[] values) {
     assert size.getTotalSize() == values.length : "Es werden " + size.getTotalSize()
-        + " Werte erwartet, aber es wurden " + values.length + " Werte übergeben.";
+        + " Werte erwartet, aber es wurden " + values.length + " Werte Ã¼bergeben.";
     if (LOG.isDebugEnabled()) {
       LOG.debug("Erzeuge neues Sudoku");
     }
@@ -143,7 +143,7 @@ public final class Sudoku {
 
   public Sudoku(final SudokuSize size, final Cell[] cells) {
     assert size.getTotalSize() == cells.length : "Es werden " + size.getTotalSize()
-        + " Zellen erwartet, aber es wurden " + cells.length + " Zellen übergeben.";
+        + " Zellen erwartet, aber es wurden " + cells.length + " Zellen Ã¼bergeben.";
     if (LOG.isDebugEnabled()) {
       LOG.debug("Erzeuge neues Sudoku");
     }
@@ -163,23 +163,23 @@ public final class Sudoku {
    *          Der Zeilenindex mit 0 beginnend.
    * @param columnIndex
    *          Der Spaltenindex mit 0 beginnend.
-   * @return Gibt eine Zelle zurück.
+   * @return Gibt eine Zelle zurÃ¼ck.
    */
   public Cell getCell(final int rowIndex, final int columnIndex) {
-    assert rowIndex >= 0 : "Zeilenindex muss größer als oder gleich 0 sein, ist aber " + rowIndex;
+    assert rowIndex >= 0 : "Zeilenindex muss grÃ¶ÃŸer als oder gleich 0 sein, ist aber " + rowIndex;
     assert rowIndex < size.getUnitSize() : "Zeilenindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
         + rowIndex;
-    assert columnIndex >= 0 : "Spaltenindex muss größer als oder gleich 0 sein, ist aber " + columnIndex;
+    assert columnIndex >= 0 : "Spaltenindex muss grÃ¶ÃŸer als oder gleich 0 sein, ist aber " + columnIndex;
     assert columnIndex < size.getUnitSize() : "Spaltenindex muss kleiner als " + size.getUnitSize()
         + " sein, ist aber " + columnIndex;
     return board[rowIndex][columnIndex];
   }
 
   public Collection<Cell> getCellByRowAndBlock(final int rowIndex, final int blockIndex) {
-    assert rowIndex >= 0 : "Zeilenindex muss größer als oder gleich 0 sein, ist aber " + rowIndex;
+    assert rowIndex >= 0 : "Zeilenindex muss grÃ¶ÃŸer als oder gleich 0 sein, ist aber " + rowIndex;
     assert rowIndex < size.getUnitSize() : "Zeilenindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
         + rowIndex;
-    assert blockIndex >= 0 : "Blockindex muss größer als oder gleich 0 sein, ist aber " + blockIndex;
+    assert blockIndex >= 0 : "Blockindex muss grÃ¶ÃŸer als oder gleich 0 sein, ist aber " + blockIndex;
     assert blockIndex < size.getUnitSize() : "Blockindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
         + blockIndex;
     final Collection<Cell> result = new ArrayList<Cell>();
@@ -193,10 +193,10 @@ public final class Sudoku {
   }
 
   public Collection<Cell> getCellByColumnAndBlock(final int columnIndex, final int blockIndex) {
-    assert columnIndex >= 0 : "Spaltenindex muss größer als oder gleich 0 sein, ist aber " + columnIndex;
+    assert columnIndex >= 0 : "Spaltenindex muss grÃ¶ÃŸer als oder gleich 0 sein, ist aber " + columnIndex;
     assert columnIndex < size.getUnitSize() : "Spaltenindex muss kleiner als " + size.getUnitSize()
         + " sein, ist aber " + columnIndex;
-    assert blockIndex >= 0 : "Blockindex muss größer als oder gleich 0 sein, ist aber " + blockIndex;
+    assert blockIndex >= 0 : "Blockindex muss grÃ¶ÃŸer als oder gleich 0 sein, ist aber " + blockIndex;
     assert blockIndex < size.getUnitSize() : "Blockindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
         + blockIndex;
     final Collection<Cell> result = new ArrayList<Cell>();
@@ -212,7 +212,7 @@ public final class Sudoku {
   /**
    * @param number
    *          Die Nummer der Zelle. Rechnet die Nummer in Spalte und Zeile um und rufe {@link #getCell(int, int)} auf.
-   * @return Gibt eine Zelle zurück.
+   * @return Gibt eine Zelle zurÃ¼ck.
    */
   public Cell getCell(final int number) {
     assert number >= 0 : number + " must be greater or equals than 0";
@@ -253,7 +253,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt eine Liste aller Zellen zurück.
+   * @return Gibt eine Liste aller Zellen zurÃ¼ck.
    */
   public Collection<Cell> getCells() {
     final List<Cell> cells = new ArrayList<Cell>(size.getTotalSize());
@@ -266,7 +266,7 @@ public final class Sudoku {
   /**
    * @param literal
    *          Der Wert, den eine einzelne Zelle haben muss.
-   * @return Gibt eine Liste aller Zellen mit einem bestimmten Wert zurück.
+   * @return Gibt eine Liste aller Zellen mit einem bestimmten Wert zurÃ¼ck.
    */
   public Collection<Cell> getCellsByValue(final Literal literal) {
     final CellByValue cellByValue = new CellByValue(literal);
@@ -275,7 +275,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt eine Liste aller Blöcke zurück.
+   * @return Gibt eine Liste aller BlÃ¶cke zurÃ¼ck.
    */
   public Collection<Block> getBlocks() {
     final List<Block> blocks = new ArrayList<Block>(size.getUnitSize());
@@ -286,7 +286,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt eine Liste aller Spalten zurück.
+   * @return Gibt eine Liste aller Spalten zurÃ¼ck.
    */
   public Collection<Column> getColumns() {
     final List<Column> columns = new ArrayList<Column>(size.getUnitSize());
@@ -297,7 +297,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt eine Liste aller Zeilen zurück.
+   * @return Gibt eine Liste aller Zeilen zurÃ¼ck.
    */
   public Collection<Row> getRows() {
     final List<Row> rows = new ArrayList<Row>(size.getUnitSize());
@@ -311,7 +311,7 @@ public final class Sudoku {
    * Gibt ein Sudoku in mehreren Zeilen aus. Pro Zeile wird eine Zelle inkl. Kandidaten ausgegeben. Wird vermutlich
    * nicht mehr verwendet. Inzwischen kann das Sudoku besser visualisiert werden.
    * 
-   * @return Gibt einen String des Sudokus zurück, für Debugging-Zwecke.
+   * @return Gibt einen String des Sudokus zurÃ¼ck, fÃ¼r Debugging-Zwecke.
    * @see LongString
    */
   public String toLongString() {
@@ -321,7 +321,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt einen String des Sudokus in einer Zeile zurück.
+   * @return Gibt einen String des Sudokus in einer Zeile zurÃ¼ck.
    * @see ShortString
    */
   public String toShortString() {
@@ -331,7 +331,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt einen String des Sudokus in einer Zeile zurück. Die Zellen sind mit Komma getrennt, die Kandidaten
+   * @return Gibt einen String des Sudokus in einer Zeile zurÃ¼ck. Die Zellen sind mit Komma getrennt, die Kandidaten
    *         sind mit Bindestrich getrennt.
    * @see ShortStringWithCandidates
    */
@@ -342,7 +342,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt den Schwierigkeitsgrad des Sudokus zurück.
+   * @return Gibt den Schwierigkeitsgrad des Sudokus zurÃ¼ck.
    */
   public Level getLevel() {
     if (level == null) {
@@ -360,15 +360,15 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt die Größe des Sudokus zurück.
+   * @return Gibt die GrÃ¶ÃŸe des Sudokus zurÃ¼ck.
    */
   public SudokuSize getSize() {
     return size;
   }
 
   /**
-   * @return <code>true</code>, wenn alle Einheiten ({@link Unit}), also Blöcke ({@link Block}), Zeilen ({@link Row})
-   *         und Spalten ({@link Column}) gültig sind. Darf nur aufgerufen werden, wenn das Sudoku initialisiert ist.
+   * @return <code>true</code>, wenn alle Einheiten ({@link Unit}), also BlÃ¶cke ({@link Block}), Zeilen ({@link Row})
+   *         und Spalten ({@link Column}) gÃ¼ltig sind. Darf nur aufgerufen werden, wenn das Sudoku initialisiert ist.
    * @see Unit#isValid()
    */
   public boolean isValid() {
@@ -392,7 +392,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return <code>true</code>, wenn die Anzahl der besetzten Zellen ({@link Cell}) größer oder gleich der Anzahl der
+   * @return <code>true</code>, wenn die Anzahl der besetzten Zellen ({@link Cell}) grÃ¶ÃŸer oder gleich der Anzahl der
    *         Zellen ist, sonst <code>false</code>.
    */
   public boolean isSolved() {
@@ -400,7 +400,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return <code>true</code>, wenn die Prüfsummen der aller Blöcke, Spalten und Zeilen korrekt sind, sonst
+   * @return <code>true</code>, wenn die PrÃ¼fsummen der aller BlÃ¶cke, Spalten und Zeilen korrekt sind, sonst
    *         <code>false</code>.
    */
   public boolean isSolvedByCheckSum() {
@@ -409,7 +409,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt die Anzahl der besetzen Zellen zurück.
+   * @return Gibt die Anzahl der besetzen Zellen zurÃ¼ck.
    */
   public int getNumberOfFixed() {
     if (fixedCounter == null) {
@@ -420,7 +420,7 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt die Anzahl der freien Zellen zurück.
+   * @return Gibt die Anzahl der freien Zellen zurÃ¼ck.
    */
   public int getNumberOfCandidates() {
     if (candidateCounter == null) {
@@ -431,7 +431,7 @@ public final class Sudoku {
   }
 
   /**
-   * Setzt die Kandidaten der freien Zellen zurück und entfernt die Kandidaten, für die feste Werte in den gleichen
+   * Setzt die Kandidaten der freien Zellen zurÃ¼ck und entfernt die Kandidaten, fÃ¼r die feste Werte in den gleichen
    * Einheiten (Zeile, Spalte, Block) vorliegen.
    * 
    * @see #clear()
@@ -450,7 +450,7 @@ public final class Sudoku {
   }
 
   /**
-   * Setzt die Kandidaten der freien Zellen zurück.
+   * Setzt die Kandidaten der freien Zellen zurÃ¼ck.
    * 
    * @see #resetAndClearCandidatesOfNonFixed()
    * @see ResetCell

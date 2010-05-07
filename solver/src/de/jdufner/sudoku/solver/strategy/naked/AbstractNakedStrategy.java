@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -60,7 +60,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
   private transient StrategyNameEnum strategyNameEnum;
 
   /**
-   * In dieser Zuordnung werden pro Einheit die Kandidaten gespeichert, die bereits in der Strategie geprüft wurden.
+   * In dieser Zuordnung werden pro Einheit die Kandidaten gespeichert, die bereits in der Strategie geprÃ¼ft wurden.
    */
   private final transient Map<Unit, List<SortedCandidates<Literal>>> allreadyHandledCandidatesPerUnit = new HashMap<Unit, List<SortedCandidates<Literal>>>();
 
@@ -141,7 +141,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
   /**
    * @param unit
    * @param candidates
-   * @return <code>true</code>, wenn für die angegebene Einheit bereits die Kandidaten vorhanden sind, sonst
+   * @return <code>true</code>, wenn fÃ¼r die angegebene Einheit bereits die Kandidaten vorhanden sind, sonst
    *         <code>false</code>
    */
   protected boolean areCandidatesAllreadyHandled(final Unit unit, final Collection<Literal> candidates) {

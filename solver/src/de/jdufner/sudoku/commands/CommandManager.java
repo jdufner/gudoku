@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -30,7 +30,7 @@ import java.util.Stack;
 import de.jdufner.sudoku.common.board.Sudoku;
 
 /**
- * Der CommandManager führt Befehle ({@link AbstractCommand}) aus oder macht sie rückgängig, wenn möglich.
+ * Der CommandManager fÃ¼hrt Befehle ({@link AbstractCommand}) aus oder macht sie rÃ¼ckgÃ¤ngig, wenn mÃ¶glich.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -39,19 +39,19 @@ import de.jdufner.sudoku.common.board.Sudoku;
 public class CommandManager {
 
   /**
-   * Die bereits ausgeführten Befehle ({@link Command})
+   * Die bereits ausgefÃ¼hrten Befehle ({@link Command})
    */
   private final transient Stack<Command> previousCommands = new Stack<Command>();
   /**
-   * Die noch auszuführenden Befehle ({@link Command}).
+   * Die noch auszufÃ¼hrenden Befehle ({@link Command}).
    */
   private final transient Stack<Command> nextCommands = new Stack<Command>();
 
   /**
-   * Führt den nächsten Befehl aus.
+   * FÃ¼hrt den nÃ¤chsten Befehl aus.
    * 
    * @param sudoku
-   *          Das {@link Sudoku}, auf dem der Befehl ({@link AbstractCommand}) auszuführen ist.
+   *          Das {@link Sudoku}, auf dem der Befehl ({@link AbstractCommand}) auszufÃ¼hren ist.
    * @return Der oberste Befehl ({@link AbstractCommand}) auf dem Stapel.
    */
   public Command redoCommand(final Sudoku sudoku) {
@@ -65,7 +65,7 @@ public class CommandManager {
   }
 
   /**
-   * @return <code>true</code>, wenn Befehle ({@link AbstractCommand}) zur Ausführung vorliegen, sonst
+   * @return <code>true</code>, wenn Befehle ({@link AbstractCommand}) zur AusfÃ¼hrung vorliegen, sonst
    *         <code>false</code>.
    */
   public boolean isRedoPossible() {
@@ -73,11 +73,11 @@ public class CommandManager {
   }
 
   /**
-   * Macht den letzten Befehl ({@link AbstractCommand})rückgängig.
+   * Macht den letzten Befehl ({@link AbstractCommand})rÃ¼ckgÃ¤ngig.
    * 
    * @param sudoku
-   *          Das {@link Sudoku}, auf dem der Befehl ({@link AbstractCommand}) rückgängig gemacht werden soll.
-   * @return Der der letzte Befehl ({@link AbstractCommand}), der rückgängig zu machen ist.
+   *          Das {@link Sudoku}, auf dem der Befehl ({@link AbstractCommand}) rÃ¼ckgÃ¤ngig gemacht werden soll.
+   * @return Der der letzte Befehl ({@link AbstractCommand}), der rÃ¼ckgÃ¤ngig zu machen ist.
    */
   public Command undoCommand(final Sudoku sudoku) {
     Command command = null;
@@ -90,7 +90,7 @@ public class CommandManager {
   }
 
   /**
-   * @return <code>true</code>, wenn Befehle ({@link AbstractCommand}) rückgängig gemacht werden können, sonst
+   * @return <code>true</code>, wenn Befehle ({@link AbstractCommand}) rÃ¼ckgÃ¤ngig gemacht werden kÃ¶nnen, sonst
    *         <code>false</code>.
    */
   public boolean isUndoPossible() {

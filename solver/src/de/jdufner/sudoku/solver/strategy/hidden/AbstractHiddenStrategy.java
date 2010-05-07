@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -97,13 +97,13 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
   }
 
   /**
-   * Ermittle alle Kandidaten, die genau so häufig, wie die angegebene Anzahl {@link #getSize()} vorkommen. Diese
-   * Kandidaten müssen in gleicher Anzahl Zellen auftreten. In Zellen, die mindestens alle Kandidaten gleichzeitig
-   * enthalten, können alle weiteren Kandidaten gelöscht werden. Mit anderen Worten, nur die Kandidaten müssen in den
+   * Ermittle alle Kandidaten, die genau so hÃ¤ufig, wie die angegebene Anzahl {@link #getSize()} vorkommen. Diese
+   * Kandidaten mÃ¼ssen in gleicher Anzahl Zellen auftreten. In Zellen, die mindestens alle Kandidaten gleichzeitig
+   * enthalten, kÃ¶nnen alle weiteren Kandidaten gelÃ¶scht werden. Mit anderen Worten, nur die Kandidaten mÃ¼ssen in den
    * Zellen verbleiben.
    */
   public void handleUnit(final Unit unit) {
-    assert getSize() >= 2 && getSize() <= 4 : "Größe des Subsets muss zwischen 2 und 4 liegen.";
+    assert getSize() >= 2 && getSize() <= 4 : "GrÃ¶ÃŸe des Subsets muss zwischen 2 und 4 liegen.";
     if (LOG.isDebugEnabled()) {
       LOG.debug("Handle Unit " + unit);
     }
@@ -129,7 +129,7 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
     if (cells.size() == getSize()) {
       for (Cell cell : cells) {
         if (cell.getCandidates().size() > getSize()) {
-          if (LOG.isDebugEnabled()) { // NOPMD by Jürgen on 08.11.09 00:23
+          if (LOG.isDebugEnabled()) { // NOPMD by JÃ¼rgen on 08.11.09 00:23
             LOG.debug("Remove other candidates than " + kombination + " in cell " + cell);
           }
           final Command cmd = new RetainCandidatesCommandBuilder(strategyNameEnum, cell).addCandidate(kombination)

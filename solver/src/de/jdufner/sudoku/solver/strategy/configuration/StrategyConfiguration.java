@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -29,14 +29,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Diese Klasse repräsentiert die Konfiguration eines Sudoku-Knackers. Die Konfiguration ist selbst unabhängig von der
- * Implementierung der Lösungsstrategien. Sie kennt allerdings die Lösungstechniken, die für die Lösung von Sudokus
- * angewendet werden können.
+ * Diese Klasse reprÃ¤sentiert die Konfiguration eines Sudoku-Knackers. Die Konfiguration ist selbst unabhÃ¤ngig von der
+ * Implementierung der LÃ¶sungsstrategien. Sie kennt allerdings die LÃ¶sungstechniken, die fÃ¼r die LÃ¶sung von Sudokus
+ * angewendet werden kÃ¶nnen.
  * 
- * Derzeit ist es noch unklar, ob die Lösungstechniken in einer bestimmten Reihenfolge ausgeführt werden müssen oder die
- * Auswahl der Lösungstechniken vollkommen frei ist. Das soll bedeuten, wenn in der Konfiguration die Lösungstechnik
- * {@link StrategyNameEnum#XWING} ausgewählt wurde, ob vorher irgendwelche anderen Lösungstechniken ausprobiert werden
- * müssen.
+ * Derzeit ist es noch unklar, ob die LÃ¶sungstechniken in einer bestimmten Reihenfolge ausgefÃ¼hrt werden mÃ¼ssen oder die
+ * Auswahl der LÃ¶sungstechniken vollkommen frei ist. Das soll bedeuten, wenn in der Konfiguration die LÃ¶sungstechnik
+ * {@link StrategyNameEnum#XWING} ausgewÃ¤hlt wurde, ob vorher irgendwelche anderen LÃ¶sungstechniken ausprobiert werden
+ * mÃ¼ssen.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2009-11-24
@@ -48,7 +48,7 @@ public final class StrategyConfiguration {
   private final transient StrategyThreadingEnum threading;
 
   /**
-   * Erzeugt eine Konfiguration. Es ist eine zwingende Angabe, ob die Lösung serial oder parallel berechnet werden soll.
+   * Erzeugt eine Konfiguration. Es ist eine zwingende Angabe, ob die LÃ¶sung serial oder parallel berechnet werden soll.
    * 
    * @param strategyThreadingEnum
    */
@@ -57,10 +57,10 @@ public final class StrategyConfiguration {
   }
 
   /**
-   * Fügt eine Lösungstechnik ein.
+   * FÃ¼gt eine LÃ¶sungstechnik ein.
    * 
    * @param strategyNameEnum
-   * @return Die Konfiguration selbst, wodurch Fluent-API möglich sein soll.
+   * @return Die Konfiguration selbst, wodurch Fluent-API mÃ¶glich sein soll.
    */
   public StrategyConfiguration add(final StrategyNameEnum strategyNameEnum) {
     strategies.add(strategyNameEnum);
@@ -68,10 +68,10 @@ public final class StrategyConfiguration {
   }
 
   /**
-   * Entfernt eine Lösungstechnik.
+   * Entfernt eine LÃ¶sungstechnik.
    * 
    * @param strategyNameEnum
-   * @return Die Konfiguration selbst, wodurch Fluent-API möglich sein soll.
+   * @return Die Konfiguration selbst, wodurch Fluent-API mÃ¶glich sein soll.
    */
   public StrategyConfiguration remove(final StrategyNameEnum strategyNameEnum) {
     strategies.remove(strategyNameEnum);
@@ -79,10 +79,10 @@ public final class StrategyConfiguration {
   }
 
   /**
-   * Fügt ein Array von Lösungstechniken ein.
+   * FÃ¼gt ein Array von LÃ¶sungstechniken ein.
    * 
    * @param strategyNameEnums
-   * @return Die Konfiguration selbst, wodurch Fluent-API möglich sein soll.
+   * @return Die Konfiguration selbst, wodurch Fluent-API mÃ¶glich sein soll.
    */
   public StrategyConfiguration add(final StrategyNameEnum[] strategyNameEnums) {
     for (StrategyNameEnum strategyNameEnum : strategyNameEnums) {
@@ -92,8 +92,8 @@ public final class StrategyConfiguration {
   }
 
   /**
-   * @return Die Menge (keine doppelten) der aktuell ausgewählten Lösungstechniken. Wenn keine eingefügt wurde, wird
-   *         eine leere Menge zurück geliefert.
+   * @return Die Menge (keine doppelten) der aktuell ausgewÃ¤hlten LÃ¶sungstechniken. Wenn keine eingefÃ¼gt wurde, wird
+   *         eine leere Menge zurÃ¼ck geliefert.
    */
   public Set<StrategyNameEnum> getStrategies() {
     return strategies;
@@ -101,7 +101,7 @@ public final class StrategyConfiguration {
 
   /**
    * 
-   * @return Die ausgewählte Nebenläufigkeit.
+   * @return Die ausgewÃ¤hlte NebenlÃ¤ufigkeit.
    */
   public StrategyThreadingEnum getThreading() {
     return threading;

@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -44,7 +44,7 @@ import java.util.TreeSet;
  */
 public abstract class Unit implements Comparable<Unit> {
   /**
-   * Die Größe ({@link SudokuSize}) des Sudokus.
+   * Die GrÃ¶ÃŸe ({@link SudokuSize}) des Sudokus.
    */
   protected transient SudokuSize sudokuSize;
   /**
@@ -58,7 +58,7 @@ public abstract class Unit implements Comparable<Unit> {
 
   /**
    * @param sudokuSize
-   *          Das Größe des Sudokus.
+   *          Das GrÃ¶ÃŸe des Sudokus.
    * @param index
    *          Der Index der Einheit.
    * @param cells
@@ -127,7 +127,7 @@ public abstract class Unit implements Comparable<Unit> {
   /**
    * @param numberCandidates
    *          Die Anzahl der Kandidaten in einer Zelle.
-   * @return Die noch nicht gesetzen Zellen mit der übergebenen Anzahl an Kandidaten.
+   * @return Die noch nicht gesetzen Zellen mit der Ã¼bergebenen Anzahl an Kandidaten.
    */
   public SortedSet<Cell> getNonFixed(final int numberCandidates) {
     final SortedSet<Cell> nonFixedCells = new TreeSet<Cell>();
@@ -153,7 +153,7 @@ public abstract class Unit implements Comparable<Unit> {
   }
 
   /**
-   * @return <code>true</code>, wenn alle Zellen ({@link Cell}) gültig sind und jede gesetzte höchstens einmal gesetzt
+   * @return <code>true</code>, wenn alle Zellen ({@link Cell}) gÃ¼ltig sind und jede gesetzte hÃ¶chstens einmal gesetzt
    *         ist und jedes Literal mindestens einmal vorhanden ist, sonst <code>false</code>.
    * @see Cell#isValid()
    */
@@ -168,7 +168,7 @@ public abstract class Unit implements Comparable<Unit> {
         if (fixedCounter.get(cell.getValue()) == null) {
           fixedCounter.put(cell.getValue(), 0);
         } else {
-          // Einheit kann nicht gültig sein, wenn bereits eine besetzte Zelle
+          // Einheit kann nicht gÃ¼ltig sein, wenn bereits eine besetzte Zelle
           // mit diesem Wert vorhanden ist.
           return false;
         }

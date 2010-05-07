@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -38,20 +38,20 @@ import de.jdufner.sudoku.common.misc.Level;
 public interface Strategy {
 
   /**
-   * @return Gibt den Schwierigkeitsgrad der Strategie zurück.
+   * @return Gibt den Schwierigkeitsgrad der Strategie zurÃ¼ck.
    */
   Level getLevel();
 
   /**
-   * Führt eine konkrete Strategie.
+   * FÃ¼hrt eine konkrete Strategie.
    * 
-   * @return Gibt beliebig viele {@link AbstractCommand}-Objekte zurück.
+   * @return Gibt beliebig viele {@link AbstractCommand}-Objekte zurÃ¼ck.
    */
   StrategyResult execute();
 
   /**
    * 
-   * @return <code>true</code>, wenn für das bearbeitete Sudoku genau ein Lösung existiert, sonst <code>false</code>.
+   * @return <code>true</code>, wenn fÃ¼r das bearbeitete Sudoku genau ein LÃ¶sung existiert, sonst <code>false</code>.
    */
   boolean isSudokuUnique();
 

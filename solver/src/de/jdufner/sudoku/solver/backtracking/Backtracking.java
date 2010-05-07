@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  *
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der
  * GNU General Public License, wie von der Free Software Foundation
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
@@ -50,19 +50,19 @@ public final class Backtracking {
   private static SudokuPool sudokuPool = null;
 
   /**
-   * Die vorige Instanz aus dem Stapel von {@link Backtracking}, wie das in Backtracking üblich ist, wird ein Stapel von
+   * Die vorige Instanz aus dem Stapel von {@link Backtracking}, wie das in Backtracking Ã¼blich ist, wird ein Stapel von
    * Backtracking-Instanzen aufgebaut.
    */
   private transient Backtracking previousInstance = null;
 
   /**
-   * Das Backtracking wird solange durchgeführt, bis die Grenze erreicht ist. Ist der Wert kleiner oder gleich 0, werden
-   * alle Lösungen gesucht. Ist der Wert 1 wird nur die erste Lösung gesucht, etc.
+   * Das Backtracking wird solange durchgefÃ¼hrt, bis die Grenze erreicht ist. Ist der Wert kleiner oder gleich 0, werden
+   * alle LÃ¶sungen gesucht. Ist der Wert 1 wird nur die erste LÃ¶sung gesucht, etc.
    */
   private int solutionLimit = 1;
 
   /**
-   * Werden im Rahmen des Backtrackings mehrere Lösungen gefunden, werden diese in der untersten Instanz im Stapel
+   * Werden im Rahmen des Backtrackings mehrere LÃ¶sungen gefunden, werden diese in der untersten Instanz im Stapel
    * gespeichert.
    */
   private transient List<Sudoku> solutions = null;
@@ -73,7 +73,7 @@ public final class Backtracking {
   private final transient Sudoku sudoku;
 
   /**
-   * Die Höhe des Stapels.
+   * Die HÃ¶he des Stapels.
    */
   private final transient int stackSize;
 
@@ -90,7 +90,7 @@ public final class Backtracking {
     this.sudoku.resetAndClearCandidatesOfNonFixed();
     this.stackSize = stackSize;
     if (!sudoku.isValid()) {
-      throw new IllegalStateException("Das übergebene Sudoku ist in keinem gültigen Zustand!");
+      throw new IllegalStateException("Das Ã¼bergebene Sudoku ist in keinem gÃ¼ltigen Zustand!");
     }
   }
 
@@ -108,14 +108,14 @@ public final class Backtracking {
   public int countSolutions() {
     setSolutionLimit(Integer.MAX_VALUE);
     findSolutions2();
-    assert solutionCounter == getSolutions().size() : "Der Zähler muss genau soviele Lösungen haben, wie gefunden wurden.";
+    assert solutionCounter == getSolutions().size() : "Der ZÃ¤hler muss genau soviele LÃ¶sungen haben, wie gefunden wurden.";
     return solutionCounter;
   }
 
   public boolean isUnique() {
     setSolutionLimit(2);
     findSolutions2();
-    assert solutionCounter == getSolutions().size() : "Der Zähler muss genau soviele Lösungen haben, wie gefunden wurden.";
+    assert solutionCounter == getSolutions().size() : "Der ZÃ¤hler muss genau soviele LÃ¶sungen haben, wie gefunden wurden.";
     return solutionCounter == 1;
   }
 
@@ -129,7 +129,7 @@ public final class Backtracking {
     LOG.debug("mySolution" + mySolution);
     LOG.debug("solutionCounter" + solutionCounter);
     LOG.debug("getSolutions()" + getSolutions());
-    assert solutionCounter == getSolutions().size() : "Der Zähler muss genau soviele Lösungen haben, wie gefunden wurden.";
+    assert solutionCounter == getSolutions().size() : "Der ZÃ¤hler muss genau soviele LÃ¶sungen haben, wie gefunden wurden.";
     return mySolution;
   }
 
@@ -141,43 +141,43 @@ public final class Backtracking {
   }
 
   private Sudoku findSolutions2() {
-    assert sudoku.isValid() : "Sudoku ist ungültig!";
-    // assert !sudoku.isSolved() : "Sudoku ist bereits gelöst!";
+    assert sudoku.isValid() : "Sudoku ist ungÃ¼ltig!";
+    // assert !sudoku.isSolved() : "Sudoku ist bereits gelÃ¶st!";
     if (LOG.isDebugEnabled()) {
       LOG.debug("Stacksize=" + stackSize);
     }
 
-    // Wenn das Sudoku gelöst ist, dann nicht weitermachen
+    // Wenn das Sudoku gelÃ¶st ist, dann nicht weitermachen
     if (sudoku.isSolved()) {
       if (LOG.isInfoEnabled()) {
         LOG.info("Wird diese Stelle '1' in Praxis verwendet?");
       }
-      // Eine Kopie der Lösung anlegen und zurückgeben
-      // Muss die Lösung selbst zurück in den Pool?
+      // Eine Kopie der LÃ¶sung anlegen und zurÃ¼ckgeben
+      // Muss die LÃ¶sung selbst zurÃ¼ck in den Pool?
       Sudoku result = new Sudoku(sudoku);
-      // Zur Konsistenz auch in Solutions eintragen und Counter erhöhen
+      // Zur Konsistenz auch in Solutions eintragen und Counter erhÃ¶hen
       increaseSolutionCounter();
       addSolutions(result);
       return result;
     }
 
-    // Finde Zelle, über deren Kandidaten iteriert wird
+    // Finde Zelle, Ã¼ber deren Kandidaten iteriert wird
     final Cell cell = getFirstNonFixed(startPosition);
     // assert !cell.isFixed() : "Die Zelle darf nicht besetzt sein!";
     if (cell == null) {
       // Es ist keine weitere Zelle zu besetzen
       if (sudoku.isSolved()) {
-        // Entweder ist das Sudoku gelöst
+        // Entweder ist das Sudoku gelÃ¶st
         if (LOG.isInfoEnabled()) {
           LOG.info("Wird diese Stelle '2' in Praxis verwendet?");
         }
-        // Eine Kopie der Lösung anlegen und zurückgeben
-        // Muss die Lösung selbst zurück in den Pool?
+        // Eine Kopie der LÃ¶sung anlegen und zurÃ¼ckgeben
+        // Muss die LÃ¶sung selbst zurÃ¼ck in den Pool?
         return new Sudoku(sudoku);
       } else {
-        // Oder alle Zellen sind besetzt und das Sudoku ist ungültig
-        LOG.equals("Alle Zellen sind besetzt, aber das Sudoku ist nicht gelöst.");
-        throw new IllegalStateException("Alle Zellen sind besetzt, aber das Sudoku ist nicht gelöst.");
+        // Oder alle Zellen sind besetzt und das Sudoku ist ungÃ¼ltig
+        LOG.equals("Alle Zellen sind besetzt, aber das Sudoku ist nicht gelÃ¶st.");
+        throw new IllegalStateException("Alle Zellen sind besetzt, aber das Sudoku ist nicht gelÃ¶st.");
       }
     } else {
       // Diese Zelle muss einen Wert aus den Kandidaten haben
@@ -189,7 +189,7 @@ public final class Backtracking {
         nextCell.setValue(candidate);
         if (removeCandidate(nextSudoku, nextCell, candidate) && nextSudoku.isValid()) {
           // Zelle gesetzt
-          // Sudoku gelöst
+          // Sudoku gelÃ¶st
           if (nextSudoku.isSolvedByCheckSum()) {
             solution = new Sudoku(nextSudoku);
             if (LOG.isDebugEnabled()) {
@@ -213,20 +213,20 @@ public final class Backtracking {
             solution = backtracking.findSolutions2();
             if (solution == null) {
               LOG.debug("Totes Ende.");
-              // teste nächsten Kandidat
+              // teste nÃ¤chsten Kandidat
             } else {
               if (getSolutionCounter() >= getSolutionLimit()) {
-                assert solution.isValid() : "Sudoku muss gültig sein!";
-                assert solution.isSolved() : "Sudoku muss gelöst sein!";
-                assert solution.isSolvedByCheckSum() : "Sudoku muss gelöst sein!";
-                LOG.debug("Eine Lösung gefunden.");
+                assert solution.isValid() : "Sudoku muss gÃ¼ltig sein!";
+                assert solution.isSolved() : "Sudoku muss gelÃ¶st sein!";
+                assert solution.isSolvedByCheckSum() : "Sudoku muss gelÃ¶st sein!";
+                LOG.debug("Eine LÃ¶sung gefunden.");
                 getSudokuPool().returnSudoku(nextSudoku);
                 return solution;
               }
             }
           }
         } else {
-          // nextSudoku verwerfen, Instanz zurück in Pool legen
+          // nextSudoku verwerfen, Instanz zurÃ¼ck in Pool legen
           LOG.debug(nextSudoku.isValid());
         }
         getSudokuPool().returnSudoku(nextSudoku);
@@ -237,13 +237,13 @@ public final class Backtracking {
 
   /**
    * Entfernt den Kandidat in allen unbesetzten Zellen desselben Blocks, Zeile und Spalte. Wenn der Kandidat erfolgreich
-   * entfernt werden konnte, dann gibt die Methode <code>true</code> zurück, sonst <code>false</code>.
+   * entfernt werden konnte, dann gibt die Methode <code>true</code> zurÃ¼ck, sonst <code>false</code>.
    * 
    * @param cell
    *          Die Zelle, die besetzt wurde.
    * @param candidate
    *          Der Kandidat, der entfernt werden soll.
-   * @return <code>true</code>, wenn der Kandidat erfolgreich entfernt werden konnte und das Sudoku weiterhin gültig
+   * @return <code>true</code>, wenn der Kandidat erfolgreich entfernt werden konnte und das Sudoku weiterhin gÃ¼ltig
    *         ist, sonst <code>false</code>.
    */
   private boolean removeCandidate(final Sudoku sudoku, final Cell cell, final Literal candidate) {
@@ -257,14 +257,14 @@ public final class Backtracking {
   }
 
   /**
-   * Entfernt den Kandidat in allen unbesetzten Zellen der Einheit und gibt <code>true</code> zurück, wenn alle Zellen
-   * noch gültig sind, sonst <code>false</code>.
+   * Entfernt den Kandidat in allen unbesetzten Zellen der Einheit und gibt <code>true</code> zurÃ¼ck, wenn alle Zellen
+   * noch gÃ¼ltig sind, sonst <code>false</code>.
    * 
    * @param unit
-   *          Die Einheit, dessen Zellen vom Kandidat entfernt werden soll und dessen Gültigkeit geprüft wird.
+   *          Die Einheit, dessen Zellen vom Kandidat entfernt werden soll und dessen GÃ¼ltigkeit geprÃ¼ft wird.
    * @param candidate
    *          Der Kandidat, der entfernt werden soll.
-   * @return <code>true</code>, wenn nach dem Entfernen des Kandidaten die Einheit noch gültig ist, sonst
+   * @return <code>true</code>, wenn nach dem Entfernen des Kandidaten die Einheit noch gÃ¼ltig ist, sonst
    *         <code>false</code>.
    */
   private boolean removeCandidateAndTestValidityInUnit(final Unit unit, final Literal candidate) {
@@ -282,10 +282,10 @@ public final class Backtracking {
   /**
    * @param number
    *          Nummer der Zelle mit 0 beginnend.
-   * @return Die erste nicht besetzte Zelle ab der (einschließlich) angegebenen Nummer.
+   * @return Die erste nicht besetzte Zelle ab der (einschlieÃŸlich) angegebenen Nummer.
    */
   private Cell getFirstNonFixed(final int number) {
-    assert number >= 0 : "Zellennummer muss größer oder gleich 0 sein.";
+    assert number >= 0 : "Zellennummer muss grÃ¶ÃŸer oder gleich 0 sein.";
     assert number < sudoku.getSize().getTotalSize() : "Zellennummer muss kleiner als "
         + sudoku.getSize().getTotalSize() + " sein.";
     for (int i = number; i < sudoku.getSize().getTotalSize(); i++) {

@@ -26,7 +26,7 @@ public abstract class AbstractParallelStrategy extends AbstractStrategy {
 
   private static final Logger LOG = Logger.getLogger(AbstractParallelStrategy.class);
 
-  private final Collection<Callable<Collection<Command>>> callables = new ArrayList<Callable<Collection<Command>>>(); // NOPMD by Jürgen on 08.11.09 21:30
+  private final Collection<Callable<Collection<Command>>> callables = new ArrayList<Callable<Collection<Command>>>(); // NOPMD by JÃ¼rgen on 08.11.09 21:30
 
   public AbstractParallelStrategy(final Sudoku sudoku) {
     super(sudoku);
@@ -37,7 +37,7 @@ public abstract class AbstractParallelStrategy extends AbstractStrategy {
   }
 
   /**
-   * Sammelt die {@link AbstractCommand}-Objekte der parallel ausgeführten Strategien ein.
+   * Sammelt die {@link AbstractCommand}-Objekte der parallel ausgefÃ¼hrten Strategien ein.
    */
   protected void gatherCommandsFromCallables() {
     try {
