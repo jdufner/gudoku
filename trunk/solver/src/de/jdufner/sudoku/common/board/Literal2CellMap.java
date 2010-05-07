@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -33,7 +33,7 @@ import java.util.TreeSet;
 
 
 /**
- * Erstellt eine Map in der jedes Literal als Schlüssel dient und als Wert eine Liste der Zellen hat, in welchen das
+ * Erstellt eine Map in der jedes Literal als SchlÃ¼ssel dient und als Wert eine Liste der Zellen hat, in welchen das
  * Literal existiert.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -42,10 +42,10 @@ import java.util.TreeSet;
  */
 public final class Literal2CellMap {
 
-  private final Map<Literal, SortedSet<Cell>> map = new HashMap<Literal, SortedSet<Cell>>(); // NOPMD by Jürgen on 11.11.09 22:11
+  private final Map<Literal, SortedSet<Cell>> map = new HashMap<Literal, SortedSet<Cell>>(); // NOPMD by JÃ¼rgen on 11.11.09 22:11
 
   /**
-   * Erzeugt eine Map aus den übergebenen Zellen.
+   * Erzeugt eine Map aus den Ã¼bergebenen Zellen.
    * 
    * TODO Sollte der Parameter nicht besser Unit sein?
    * 
@@ -55,7 +55,7 @@ public final class Literal2CellMap {
     for (Cell cell : cells) {
       for (Literal literal : cell.getCandidates()) {
         if (map.get(literal) == null) {
-          map.put(literal, new TreeSet<Cell>()); // NOPMD by Jürgen on 11.11.09 22:14
+          map.put(literal, new TreeSet<Cell>()); // NOPMD by JÃ¼rgen on 11.11.09 22:14
         }
         map.get(literal).add(cell);
       }
@@ -63,14 +63,14 @@ public final class Literal2CellMap {
   }
 
   /**
-   * Gibt die Anzahl der Zellen zurück, die das übergebene Literal enthalten. Wenn das Literal nicht vorhanden ist, wird
-   * der Wert 0 zurückgegeben. Es findet keine Prüfung statt, ob das übergeben Literal innerhalb definierter Grenzen
+   * Gibt die Anzahl der Zellen zurÃ¼ck, die das Ã¼bergebene Literal enthalten. Wenn das Literal nicht vorhanden ist, wird
+   * der Wert 0 zurÃ¼ckgegeben. Es findet keine PrÃ¼fung statt, ob das Ã¼bergeben Literal innerhalb definierter Grenzen
    * liegt.
    * 
    * @param literal
-   *          Gesuchtes Literal. Keine Prüfung, ob das Literal innerhalb definierter Grenzen liegt.
-   * @return Die Anzahl der Zellen, die das übergebene Literal enthalten. Wenn das Literal nicht vorhanden ist, wird der
-   *         Wert 0 zurückgegeben.
+   *          Gesuchtes Literal. Keine PrÃ¼fung, ob das Literal innerhalb definierter Grenzen liegt.
+   * @return Die Anzahl der Zellen, die das Ã¼bergebene Literal enthalten. Wenn das Literal nicht vorhanden ist, wird der
+   *         Wert 0 zurÃ¼ckgegeben.
    */
   public int getNumber(final Literal literal) {
     if (getCellsContainingLiteral(literal) == null) {
@@ -84,11 +84,11 @@ public final class Literal2CellMap {
   }
 
   /**
-   * Gibt die Kandidaten zurück, die in der übergebenen Anzahl in der Map vorkommen.
+   * Gibt die Kandidaten zurÃ¼ck, die in der Ã¼bergebenen Anzahl in der Map vorkommen.
    * 
    * @param number
-   *          Die Häufigkeit, wie oft ein Literal vorkommen soll.
-   * @return Die Kandidaten, die in der übergebenen Anzahl in der Map vorkommen.
+   *          Die HÃ¤ufigkeit, wie oft ein Literal vorkommen soll.
+   * @return Die Kandidaten, die in der Ã¼bergebenen Anzahl in der Map vorkommen.
    */
   public SortedSet<Literal> getCandidatesByNumber(final int number) {
     final SortedSet<Literal> literals = new TreeSet<Literal>();
@@ -102,7 +102,7 @@ public final class Literal2CellMap {
 
   @Override
   public String toString() {
-    final StringBuilder sb = new StringBuilder(); // NOPMD by Jürgen on 11.11.09 22:52
+    final StringBuilder sb = new StringBuilder(); // NOPMD by JÃ¼rgen on 11.11.09 22:52
     for (Literal literal : map.keySet()) {
       sb.append(literal).append(": ");
       for (Cell cell : map.get(literal)) {

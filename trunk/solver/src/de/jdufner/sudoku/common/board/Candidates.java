@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -34,11 +34,11 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.common.collections.SortedCandidates;
 
 /**
- * Die Klasse Candidates ist die normale Repräsentation der Kandidaten einer Zelle {@link Cell}. Daneben gibt es nocht
- * die sortierten Kandidaten {@link Candidates}, die allerdings nur für spezielle Algorithmen benötigt werden. Diese
- * Implementierung wird standardmäßig verwendet, weil die {@link #add(Object)}-Operation schneller sind.
+ * Die Klasse Candidates ist die normale ReprÃ¤sentation der Kandidaten einer Zelle {@link Cell}. Daneben gibt es nocht
+ * die sortierten Kandidaten {@link Candidates}, die allerdings nur fÃ¼r spezielle Algorithmen benÃ¶tigt werden. Diese
+ * Implementierung wird standardmÃ¤ÃŸig verwendet, weil die {@link #add(Object)}-Operation schneller sind.
  * 
- * TODO Künftig nicht mehr von {@link ArrayList} ableiten. Problem: Literale können doppelt hinzugefügt werden.
+ * TODO KÃ¼nftig nicht mehr von {@link ArrayList} ableiten. Problem: Literale kÃ¶nnen doppelt hinzugefÃ¼gt werden.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -70,7 +70,7 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
   }
 
   /**
-   * Konstruktor für eine Collection.
+   * Konstruktor fÃ¼r eine Collection.
    * 
    * @param collection
    *          Collection mit Elementen, kann auch leer sein.
@@ -81,7 +81,7 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
 
   /**
    * 
-   * @return Gibt die Kandidaten als {@link SortedSet} zurück.
+   * @return Gibt die Kandidaten als {@link SortedSet} zurÃ¼ck.
    */
   public SortedCandidates<T> getSorted() {
     return new SortedCandidates<T>(this);
@@ -89,7 +89,7 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
 
   /**
    * @param cell
-   * @return <code>true</code>, genau dann wenn die Kandidaten der mit denen des übergebenen Felds gleich sind, sonst
+   * @return <code>true</code>, genau dann wenn die Kandidaten der mit denen des Ã¼bergebenen Felds gleich sind, sonst
    *         <code>false</code>.
    */
   public boolean isEquals(final Collection<T> that) {
@@ -107,7 +107,7 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
 
   /**
    * @param testCandidates
-   * @return <code>true</code>, genau dann wenn höchstens die übergebenen Testkandidaten vorhanden in den Kandidaten der
+   * @return <code>true</code>, genau dann wenn hÃ¶chstens die Ã¼bergebenen Testkandidaten vorhanden in den Kandidaten der
    *         Zelle enthalten sind, sonst <code>false</code>, also es existiert mindestens ein Zellkandidat, der nicht in
    *         der Liste der Testkandidaten enthalten ist.
    */
@@ -122,7 +122,7 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
 
   /**
    * @param testCandidates
-   * @return <code>true</code>, genau dann wenn mindestens die übergebenen Testkandidaten in den Kandidaten der Zelle
+   * @return <code>true</code>, genau dann wenn mindestens die Ã¼bergebenen Testkandidaten in den Kandidaten der Zelle
    *         enthalten sind, sonst <code>false</code>, also es existiert mindestens ein Testkandidat, der in der Liste
    *         der Zellkandidaten nicht enthalten ist.
    */
@@ -138,7 +138,7 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
   @Override
   public void add(final int index, final T element) {
     if (contains(element)) {
-      LOG.info(this + " enthält bereits " + element + " und wird nicht erneut hinzugefügt.");
+      LOG.info(this + " enthÃ¤lt bereits " + element + " und wird nicht erneut hinzugefÃ¼gt.");
     } else {
       super.add(index, element);
     }
@@ -147,7 +147,7 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
   @Override
   public boolean add(final T element) {
     if (contains(element)) {
-      LOG.info(this + " enthält bereits " + element + " und wird nicht erneut hinzugefügt.");
+      LOG.info(this + " enthÃ¤lt bereits " + element + " und wird nicht erneut hinzugefÃ¼gt.");
       return false;
     } else {
       return super.add(element);

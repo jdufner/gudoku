@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -28,7 +28,7 @@ package de.jdufner.sudoku.solver.service;
 import de.jdufner.sudoku.common.board.Sudoku;
 
 /**
- * Einfache Service zum Lösen von Sudokus.
+ * Einfache Service zum LÃ¶sen von Sudokus.
  * 
  * Es existieren zwei einfache Implementierungen dazu:
  * <ul>
@@ -36,7 +36,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
  * <li>Intelligente Variante (aktuell nur eine parallele Implementierung)</li>
  * </ul>
  * 
- * TODO Muss ich diese Liste selbst schreiben oder kann das javadoc selbst erledigen? Eigentlich gehört das ja nicht in
+ * TODO Muss ich diese Liste selbst schreiben oder kann das javadoc selbst erledigen? Eigentlich gehÃ¶rt das ja nicht in
  * diese Klasse.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -46,7 +46,7 @@ import de.jdufner.sudoku.common.board.Sudoku;
 public interface Solver {
 
   /**
-   * Liefert <code>true</code> zurück, wenn ein Sudoku überhaupt eine Lösung, sonst <code>false</code>. Der
+   * Liefert <code>true</code> zurÃ¼ck, wenn ein Sudoku Ã¼berhaupt eine LÃ¶sung, sonst <code>false</code>. Der
    * Rechenaufwand ist derselbe wie bei {@link #solve(Sudoku)}
    * 
    * TODO throws InvalidSudokuException
@@ -69,14 +69,14 @@ public interface Solver {
   Sudoku solve(Sudoku sudoku);
 
   /**
-   * Liefert <code>true</code> zurück, wenn genau eine Lösung existiert, sonst <code>false</code>.
+   * Liefert <code>true</code> zurÃ¼ck, wenn genau eine LÃ¶sung existiert, sonst <code>false</code>.
    * 
    * TODO throws InvalidSudokuException
    * 
    * TODO throws NoSolutionFoundException
    * 
    * @param sudoku
-   * @return <code>true</code>, wenn das Sudoku genau eine Lösung hat, sonst <code>false</code>.
+   * @return <code>true</code>, wenn das Sudoku genau eine LÃ¶sung hat, sonst <code>false</code>.
    */
   boolean isUnique(Sudoku sudoku);
 

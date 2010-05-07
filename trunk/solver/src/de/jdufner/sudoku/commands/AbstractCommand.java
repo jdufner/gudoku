@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -39,9 +39,9 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
- * Ein Befehl ist eine Aktion, die auf einem Sudoku ausgeführt werden kann. Es sind mehrere Aktionen auf einem Sudoku
- * möglich. Setzen einer Zelle, Elemieren einer oder mehrerer Kandidaten. Ein Befehl muss nicht immer erfolgreich sein,
- * das bedeutet, dass die Aktion nicht tatsächlich zu einer Elimination führt oder ein Feld setzt.
+ * Ein Befehl ist eine Aktion, die auf einem Sudoku ausgefÃ¼hrt werden kann. Es sind mehrere Aktionen auf einem Sudoku
+ * mÃ¶glich. Setzen einer Zelle, Elemieren einer oder mehrerer Kandidaten. Ein Befehl muss nicht immer erfolgreich sein,
+ * das bedeutet, dass die Aktion nicht tatsÃ¤chlich zu einer Elimination fÃ¼hrt oder ein Feld setzt.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -59,7 +59,7 @@ public abstract class AbstractCommand implements Command {
   protected transient boolean successfully = false;
 
   /**
-   * Konstruktor mit Information über den Erzeuger.
+   * Konstruktor mit Information Ã¼ber den Erzeuger.
    * 
    * @param strategyName
    *          Der Erzeuger des Befehls.
@@ -73,7 +73,7 @@ public abstract class AbstractCommand implements Command {
     freeze(sudoku);
     executeCommand(sudoku);
     if (!getCell(sudoku).isValid()) {
-      LOG.warn(getCell(sudoku) + " ist nach Ausführung von " + this + " nicht mehr gültig.");
+      LOG.warn(getCell(sudoku) + " ist nach AusfÃ¼hrung von " + this + " nicht mehr gÃ¼ltig.");
     }
   }
 
@@ -88,7 +88,7 @@ public abstract class AbstractCommand implements Command {
   public void unexecute(final Sudoku sudoku) {
     unexecuteCommand(sudoku);
     if (!getCell(sudoku).isValid()) {
-      LOG.warn(getCell(sudoku) + " ist nach Rücknahme von " + this + " nicht mehr gültig.");
+      LOG.warn(getCell(sudoku) + " ist nach RÃ¼cknahme von " + this + " nicht mehr gÃ¼ltig.");
     }
   }
 
@@ -168,7 +168,7 @@ public abstract class AbstractCommand implements Command {
   @Override
   public int hashCode() {
     int hashCode = 17;
-    final int hashMultiplier = 31; // NOPMD Jürgen Dufner 14.03.2010
+    final int hashMultiplier = 31; // NOPMD JÃ¼rgen Dufner 14.03.2010
     hashCode *= hashMultiplier + (strategyNameEnum == null ? 0 : strategyNameEnum.hashCode());
     hashCode *= hashMultiplier + rowIndex;
     hashCode *= hashMultiplier + columnIndex;

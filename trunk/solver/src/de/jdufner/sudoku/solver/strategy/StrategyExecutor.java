@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  *
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der
  * GNU General Public License, wie von der Free Software Foundation
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
@@ -79,9 +79,9 @@ public final class StrategyExecutor {
   public StrategyExecutor(final Sudoku sudoku, final StrategyConfiguration configuration) {
     this.sudoku = sudoku;
     this.configuration = configuration;
-    // Die folgende Prüfung ist so wichtig, dass ein assert nicht ausreicht.
+    // Die folgende PrÃ¼fung ist so wichtig, dass ein assert nicht ausreicht.
     if (!sudoku.isValid()) {
-      throw new IllegalStateException("Das übergebene Sudoku ist in keinem gültigen Zustand!");
+      throw new IllegalStateException("Das Ã¼bergebene Sudoku ist in keinem gÃ¼ltigen Zustand!");
     }
   }
 
@@ -97,20 +97,20 @@ public final class StrategyExecutor {
       //LOG.info("Sudoku vor Iteration " + zaehler + ": " + getSudoku());
       final StrategyResult strategyResult = executeStrategy();
       if (strategyResult == null) {
-        LOG.info("Keinen weiteren Lösungschrift gefunden. Sudoku nicht gelöst!");
+        LOG.info("Keinen weiteren LÃ¶sungschrift gefunden. Sudoku nicht gelÃ¶st!");
         doExecute = false;
       } else {
         result.add(strategyResult);
       }
       if (getSudoku().isSolved()) {
         if (getSudoku().isValid() && getSudoku().isSolvedByCheckSum()) {
-          LOG.debug("Sudoku gelöst! " + getSudoku());
+          LOG.debug("Sudoku gelÃ¶st! " + getSudoku());
           doExecute = false;
         } else {
-          LOG.warn("Sudoku scheint gelöst zu sein, aber irgendwas ist schief gelaufen.");
+          LOG.warn("Sudoku scheint gelÃ¶st zu sein, aber irgendwas ist schief gelaufen.");
         }
       } else {
-        LOG.debug("Sudoku noch nicht gelöst, weitermachen.");
+        LOG.debug("Sudoku noch nicht gelÃ¶st, weitermachen.");
       }
     }
     return result;
@@ -123,14 +123,14 @@ public final class StrategyExecutor {
       if (LOG.isDebugEnabled()) {
         LOG.debug("Sudoku " + getSudoku());
         if (getSudoku().isValid()) {
-          LOG.debug("Sudoku ist gültig.");
+          LOG.debug("Sudoku ist gÃ¼ltig.");
         } else {
-          LOG.debug("Sudoku ist nicht gültig!");
+          LOG.debug("Sudoku ist nicht gÃ¼ltig!");
         }
         if (getSudoku().isSolvedByCheckSum()) {
-          LOG.debug("Sudoku ist gelöst und durch Prüfsummen bestätigt.");
+          LOG.debug("Sudoku ist gelÃ¶st und durch PrÃ¼fsummen bestÃ¤tigt.");
         } else {
-          LOG.debug("Sudoku ist nicht gelöst.");
+          LOG.debug("Sudoku ist nicht gelÃ¶st.");
         }
       }
       if (strategyResult.getCommands().size() > 0) {
@@ -156,7 +156,7 @@ public final class StrategyExecutor {
 
   /**
    * TODO Performancetest: Ist es sinnvoll den alten Befehl oder den umfassenderen Befehl zu suchen oder ist es billiger
-   * das Kommando auszuführen, auch wenn es nutzlos ist.
+   * das Kommando auszufÃ¼hren, auch wenn es nutzlos ist.
    * 
    * @param commands
    */
@@ -215,7 +215,7 @@ public final class StrategyExecutor {
     return sudoku;
   }
 
-  private List<Class<? extends AbstractStrategy>> getStrategies() { // NOPMD by Jürgen on 24.11.09 22:10
+  private List<Class<? extends AbstractStrategy>> getStrategies() { // NOPMD by JÃ¼rgen on 24.11.09 22:10
     final List<Class<? extends AbstractStrategy>> strategies = new ArrayList<Class<? extends AbstractStrategy>>();
     if (getConfiguration().getThreading().equals(StrategyThreadingEnum.SERIAL)) {
       if (getConfiguration().getStrategies().contains(StrategyNameEnum.SIMPLE)) {

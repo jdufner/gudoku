@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -32,8 +32,8 @@ import java.util.Set;
 
 
 /**
- * Die Kombination erzeugt alle Kombinationen aus einer übergebenen {@link Collection}. In der {@link Collection} können
- * doppelte Elemente enthalten sein, aber diese werden ignoriert. Besser wäre es hier ein {@link Set} im Konstruktor
+ * Die Kombination erzeugt alle Kombinationen aus einer Ã¼bergebenen {@link Collection}. In der {@link Collection} kÃ¶nnen
+ * doppelte Elemente enthalten sein, aber diese werden ignoriert. Besser wÃ¤re es hier ein {@link Set} im Konstruktor
  * {@link #Kombination(Collection, int)} zu verwenden.
  * 
  * @param <T>
@@ -53,7 +53,7 @@ public final class Kombination<T extends Comparable<? super T>> {
   private T current;
 
   /**
-   * Der Konstruktor erzeugt eine Instanz von Kombination. Damit sind noch keine Kombinationen erzeugt. Diese müssen mit
+   * Der Konstruktor erzeugt eine Instanz von Kombination. Damit sind noch keine Kombinationen erzeugt. Diese mÃ¼ssen mit
    * {@link #getKombination()} oder {@link #buildNextKombination()} erzeugt werden.
    * 
    * @param collection
@@ -76,7 +76,7 @@ public final class Kombination<T extends Comparable<? super T>> {
   }
 
   /**
-   * Gibt die aktuelle Kombination zurück.
+   * Gibt die aktuelle Kombination zurÃ¼ck.
    * 
    * @return
    */
@@ -95,10 +95,10 @@ public final class Kombination<T extends Comparable<? super T>> {
   }
 
   /**
-   * Erzeugt die nächtste mögliche Kombination. Mit {@link #getKombination()} kann die Kombination dann geholt werden.
+   * Erzeugt die nÃ¤chtste mÃ¶gliche Kombination. Mit {@link #getKombination()} kann die Kombination dann geholt werden.
    */
   public void buildNextKombination() {
-    if (!initialized) { // NOPMD by Jürgen on 11.11.09 22:55
+    if (!initialized) { // NOPMD by JÃ¼rgen on 11.11.09 22:55
       initialize();
     } else {
       determineCurrent();
@@ -130,7 +130,7 @@ public final class Kombination<T extends Comparable<? super T>> {
   }
 
   /**
-   * Prüft ob die noch eine weitere, nicht bereits erzeugte, Kombination möglich ist.
+   * PrÃ¼ft ob die noch eine weitere, nicht bereits erzeugte, Kombination mÃ¶glich ist.
    * 
    * @return <code>true</code>, wenn eine weitere Kombination erzeugt werden kann, sonst <code>false</code>.
    */
@@ -159,7 +159,7 @@ public final class Kombination<T extends Comparable<? super T>> {
 
   @Override
   public String toString() {
-    final StringBuilder sb = new StringBuilder(); // NOPMD by Jürgen on 11.11.09 22:54
+    final StringBuilder sb = new StringBuilder(); // NOPMD by JÃ¼rgen on 11.11.09 22:54
     sb.append("Kombination=").append(kombination).append("; ");
     sb.append("Rest=").append(rest).append("; ");
     return sb.toString();

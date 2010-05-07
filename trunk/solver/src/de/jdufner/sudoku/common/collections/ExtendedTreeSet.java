@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -56,7 +56,7 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * Konstruktor für eine Collection.
+   * Konstruktor fÃ¼r eine Collection.
    * 
    * @param collection
    *          Collection mit Elementen, kann auch leer sein.
@@ -66,7 +66,7 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * Gibt das nächstgrößere Element als das übergebene zurück. Wenn kein größeres Element existiert, wird
+   * Gibt das nÃ¤chstgrÃ¶ÃŸere Element als das Ã¼bergebene zurÃ¼ck. Wenn kein grÃ¶ÃŸeres Element existiert, wird
    * <code>null</code> geliefert.
    * 
    * @param searchElement
@@ -131,8 +131,8 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * Gibt die <code>numberOfElements</code> nächstgrößeren Element nach <code>e</code> zurück. Wenn es weniger als die
-   * gewünschte Anzahl <code>numberOfElements</code> von Elementen gibt, wird <code>null</code> geliefert.
+   * Gibt die <code>numberOfElements</code> nÃ¤chstgrÃ¶ÃŸeren Element nach <code>e</code> zurÃ¼ck. Wenn es weniger als die
+   * gewÃ¼nschte Anzahl <code>numberOfElements</code> von Elementen gibt, wird <code>null</code> geliefert.
    * 
    * @param searchElement
    * @param numberOfElements
@@ -155,7 +155,7 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * Gibt das größte Element, das kleiner ist als das übergebene Element <code>e</code> ist, zurück.
+   * Gibt das grÃ¶ÃŸte Element, das kleiner ist als das Ã¼bergebene Element <code>e</code> ist, zurÃ¼ck.
    * 
    * @param searchElement
    * @return
@@ -169,10 +169,10 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * <code>TRUE</code>, wenn in der Menge mindestends ein Element enthalten ist, das größer sind als <code>e</code>.
+   * <code>TRUE</code>, wenn in der Menge mindestends ein Element enthalten ist, das grÃ¶ÃŸer sind als <code>e</code>.
    * 
    * @param searchElement
-   * @return <code>true</code>, wenn es mindestens ein Element existiert, das größer ist als das Übergebene, sonst
+   * @return <code>true</code>, wenn es mindestens ein Element existiert, das grÃ¶ÃŸer ist als das Ãœbergebene, sonst
    *         <code>false</code>.
    */
   public boolean containsGreaterElementThan(final E searchElement) {

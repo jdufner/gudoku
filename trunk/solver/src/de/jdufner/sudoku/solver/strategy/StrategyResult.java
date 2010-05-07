@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  *
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der
  * GNU General Public License, wie von der Free Software Foundation
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
@@ -67,23 +67,23 @@ public final class StrategyResult {
   }
 
   /**
-   * Startet die Zeitmessung für die Ausführung einer Strategie.
+   * Startet die Zeitmessung fÃ¼r die AusfÃ¼hrung einer Strategie.
    */
   protected void start() {
     startTime = System.currentTimeMillis();
   }
 
   /**
-   * Stoppt die Zeitmessung für die Ausführung einer Strategie.
+   * Stoppt die Zeitmessung fÃ¼r die AusfÃ¼hrung einer Strategie.
    */
   protected void stop() {
     endTime = System.currentTimeMillis();
   }
 
   /**
-   * Liefert die Dauer für die Ausführung einer Strategie in Millisekunden.
+   * Liefert die Dauer fÃ¼r die AusfÃ¼hrung einer Strategie in Millisekunden.
    * 
-   * @return Ausführungsdauer einer Strategie in Millisekunden.
+   * @return AusfÃ¼hrungsdauer einer Strategie in Millisekunden.
    */
   public long getDurationInMillis() {
     if (startTime == 0) {
@@ -112,7 +112,7 @@ public final class StrategyResult {
 
   public int getNumberEleminatedCandidates() {
     if (numberCandidatesAfter > numberCandidatesBefore) {
-      throw new IllegalStateException("Die Anzahl der Kandidaten ist nach Ausführung einer Strategie größer als zuvor.");
+      throw new IllegalStateException("Die Anzahl der Kandidaten ist nach AusfÃ¼hrung einer Strategie grÃ¶ÃŸer als zuvor.");
     }
     return numberCandidatesBefore - numberCandidatesAfter;
   }
@@ -120,7 +120,7 @@ public final class StrategyResult {
   public int getNumberNewlyFixedCells() {
     if (numberFixedAfter < numberFixedBefore) {
       throw new IllegalStateException(
-          "Die Anzahl der gesetzten Zellen ist nach der Ausführung einer Strategie kleiner als zuvor.");
+          "Die Anzahl der gesetzten Zellen ist nach der AusfÃ¼hrung einer Strategie kleiner als zuvor.");
     }
     return numberFixedAfter - numberFixedBefore;
   }

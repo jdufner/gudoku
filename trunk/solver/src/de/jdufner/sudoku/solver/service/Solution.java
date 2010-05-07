@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  *
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der
  * GNU General Public License, wie von der Free Software Foundation
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
@@ -36,10 +36,10 @@ import de.jdufner.sudoku.solver.strategy.StrategyResult;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
- * Diese Klasse beschreibt eine Lösung eines Sudokus. Eine Lösung setzt sich aus mehreren Einzelschritten zusammen. Eine
- * vorhandene Lösung ist eine nur eine Lösung, möglicherweise existieren weitere Lösungen, sowohl in dem Sinne, dass
- * dieselbe Lösung anders erzeugt werden kann durch andere Lösungsschritte als auch, dass möglicherweise das Sudoku
- * unterbestimmt ist und weitere Lösungen existieren.
+ * Diese Klasse beschreibt eine LÃ¶sung eines Sudokus. Eine LÃ¶sung setzt sich aus mehreren Einzelschritten zusammen. Eine
+ * vorhandene LÃ¶sung ist eine nur eine LÃ¶sung, mÃ¶glicherweise existieren weitere LÃ¶sungen, sowohl in dem Sinne, dass
+ * dieselbe LÃ¶sung anders erzeugt werden kann durch andere LÃ¶sungsschritte als auch, dass mÃ¶glicherweise das Sudoku
+ * unterbestimmt ist und weitere LÃ¶sungen existieren.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -55,7 +55,7 @@ public class Solution {
 
   /**
    * @param quest
-   *          Das Start-Sudoku, für das die Lösung berechnet werden. Hier muss schon eine Kopie / Klon übergeben werden.
+   *          Das Start-Sudoku, fÃ¼r das die LÃ¶sung berechnet werden. Hier muss schon eine Kopie / Klon Ã¼bergeben werden.
    */
   public Solution(final Sudoku quest) {
     this.quest = quest;
@@ -113,8 +113,8 @@ public class Solution {
   public String toString() {
     final String lineSeparator = System.getProperty("line.separator");
     final StringBuilder sb = new StringBuilder(this.getClass().getSimpleName()).append(lineSeparator);
-    sb.append("Rätsel: ").append(getQuest()).append(lineSeparator);
-    sb.append("Lösung: ").append(getResult()).append(lineSeparator);
+    sb.append("RÃ¤tsel: ").append(getQuest()).append(lineSeparator);
+    sb.append("LÃ¶sung: ").append(getResult()).append(lineSeparator);
     sb.append("Eindeutigkeit: ").append(isUnique()).append(lineSeparator);
     sb.append("Schwierigkeitsgrad: ").append(getLevel()).append(lineSeparator);
 

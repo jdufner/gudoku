@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  *
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der
  * GNU General Public License, wie von der Free Software Foundation
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
@@ -37,8 +37,8 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
- * Entfernt alle Kandidaten {@link Candidates} von einer Zelle, außer die übergebenen Kandidaten auf der {@link Cell}.
- * Die übergebenen Kandidaten verbleiben in der Zelle.
+ * Entfernt alle Kandidaten {@link Candidates} von einer Zelle, auÃŸer die Ã¼bergebenen Kandidaten auf der {@link Cell}.
+ * Die Ã¼bergebenen Kandidaten verbleiben in der Zelle.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -58,12 +58,12 @@ public final class RetainCandidatesCommand extends AbstractCommand {
   private final transient Collection<Literal> candidatesToRemove = new Candidates<Literal>();
 
   /**
-   * Konstruktor eines Befehls, welcher alle anderen Kandiaten entfernt, außer die übergebenen.
+   * Konstruktor eines Befehls, welcher alle anderen Kandiaten entfernt, auÃŸer die Ã¼bergebenen.
    * 
    * @param strategyNameEnum
    *          Der Erzeuger des Befehls.
    * @param cell
-   *          Die Zelle auf welcher der Befehl ausgeführt werden soll.
+   *          Die Zelle auf welcher der Befehl ausgefÃ¼hrt werden soll.
    * @param candidates
    *          Die Kandidaten, welche beibehalten werden sollen.
    */
@@ -112,7 +112,7 @@ public final class RetainCandidatesCommand extends AbstractCommand {
   }
 
   @Override
-  public boolean equals(final Object other) { // NOPMD Jürgen Dufner 15.03.2010
+  public boolean equals(final Object other) { // NOPMD JÃ¼rgen Dufner 15.03.2010
     if (this == other) {
       return true;
     }
@@ -179,11 +179,11 @@ public final class RetainCandidatesCommand extends AbstractCommand {
 
     public Command build() {
       if (candidates.isEmpty()) {
-        throw new IllegalStateException("Es wurden keine Kandidaten hinzugefügt, Command kann nicht erzeugt werden.");
+        throw new IllegalStateException("Es wurden keine Kandidaten hinzugefÃ¼gt, Command kann nicht erzeugt werden.");
       }
       if (cell == null && rowIndex < 0 && columnIndex < 0) {
         throw new IllegalStateException(
-            "Es wurde keine Zelle hinzugefügt oder Zellkoordinaten angegeben, Command kann nicht erzeugt werden.");
+            "Es wurde keine Zelle hinzugefÃ¼gt oder Zellkoordinaten angegeben, Command kann nicht erzeugt werden.");
       }
       if (cell == null) {
         cell = new Cell(rowIndex, columnIndex, Literal.EMPTY, SudokuSize.DEFAULT);

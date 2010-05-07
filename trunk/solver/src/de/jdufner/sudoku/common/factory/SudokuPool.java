@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -33,7 +33,7 @@ import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
 
 /**
- * Implementiert einen Pool voller Sudokus. Der Pool ist endlich groß und wird im <code>solver-context.xml</code>
+ * Implementiert einen Pool voller Sudokus. Der Pool ist endlich groÃŸ und wird im <code>solver-context.xml</code>
  * konfiguriert. Sind alle Elemente aus dem Pool verbraucht, tritt eine Exception auf, wenn ein weiteres Sudoku
  * angefordert wird.
  * 
@@ -82,7 +82,7 @@ public final class SudokuPool {
   }
 
   /**
-   * Holt ein Sudoku aus dem Pool und initialisiert des Sudoku mit den Werten des übergebenen Sudokus.
+   * Holt ein Sudoku aus dem Pool und initialisiert des Sudoku mit den Werten des Ã¼bergebenen Sudokus.
    * 
    * @param sudoku
    * @return
@@ -119,7 +119,7 @@ public final class SudokuPool {
   }
 
   /**
-   * Gibt die Anzahl der verfügbaren Sudokus im Pool an.
+   * Gibt die Anzahl der verfÃ¼gbaren Sudokus im Pool an.
    * 
    * @return
    */
@@ -128,7 +128,7 @@ public final class SudokuPool {
   }
 
   /**
-   * Legt ein Sudoku zurück in den Pool, dabei wird es zurückgesetzt.
+   * Legt ein Sudoku zurÃ¼ck in den Pool, dabei wird es zurÃ¼ckgesetzt.
    * 
    * @param sudoku
    * @throws Exception
