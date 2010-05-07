@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -132,7 +132,7 @@ public final class TransformationUtil {
   }
 
   private static int[] getTwoRandomNumbersBetween(int min, int max) {
-    assert max > min : "max: " + max + " muss größer als min: " + min + " sein.";
+    assert max > min : "max: " + max + " muss grÃ¶ÃŸer als min: " + min + " sein.";
     int number1 = getRandomNumberBetween(min, max);
     int number2;
     do {
@@ -152,7 +152,7 @@ public final class TransformationUtil {
    * @return A arbitrary integer value between min (inclusive) and max (exclusive).
    */
   private static int getRandomNumberBetween(int min, int max) {
-    assert max > min : "max: " + max + " muss größer als min: " + min + " sein.";
+    assert max > min : "max: " + max + " muss grÃ¶ÃŸer als min: " + min + " sein.";
     return random.nextInt(max - min) + min;
   }
 
@@ -301,7 +301,7 @@ public final class TransformationUtil {
   /**
    * @param sudoku
    * @param block
-   * @return Gibt den kleinsten Spaltenindex eines Blocks zurück.
+   * @return Gibt den kleinsten Spaltenindex eines Blocks zurÃ¼ck.
    */
   private static int getSmallestColumnIndexOfBlock(Sudoku sudoku, int block) {
     assert block >= 0 && block < sudoku.getSize().getBlockWidth();
@@ -311,7 +311,7 @@ public final class TransformationUtil {
   /**
    * @param sudoku
    * @param block
-   * @return Gibt den größten Spaltenindex eines Blocks zurück.
+   * @return Gibt den grÃ¶ÃŸten Spaltenindex eines Blocks zurÃ¼ck.
    */
   private static int getLargestColumnIndexOfBlock(Sudoku sudoku, int block) {
     assert block >= 0 && block < sudoku.getSize().getBlockWidth();
@@ -321,7 +321,7 @@ public final class TransformationUtil {
   /**
    * @param sudoku
    * @param block
-   * @return Gibt den kleinsten Zeilenindex eines Blocks zurück.
+   * @return Gibt den kleinsten Zeilenindex eines Blocks zurÃ¼ck.
    */
   private static int getSmallestRowIndexOfBlock(Sudoku sudoku, int block) {
     assert block >= 0 && block < sudoku.getSize().getBlockHeight();
@@ -331,7 +331,7 @@ public final class TransformationUtil {
   /**
    * @param sudoku
    * @param block
-   * @return Gibt den größten Zeilenindex eines Blocks zurück.
+   * @return Gibt den grÃ¶ÃŸten Zeilenindex eines Blocks zurÃ¼ck.
    */
   private static int getLargestRowIndexOfBlock(Sudoku sudoku, int block) {
     assert block >= 0 && block < sudoku.getSize().getBlockHeight();
@@ -473,7 +473,7 @@ public final class TransformationUtil {
     try {
       methodNumber = getRandomNumberBetween(0, transformationMethods.size());
       arbitraryTransformation = transformationMethods.get(methodNumber);
-      log.debug("Führe beliebige Transformation aus: " + arbitraryTransformation.getName());
+      log.debug("FÃ¼hre beliebige Transformation aus: " + arbitraryTransformation.getName());
       return (Sudoku) arbitraryTransformation.invoke(null, new Object[] { sudoku });
     } catch (IllegalAccessException iae) {
       log.error(iae.getMessage() + " methodNumber=" + methodNumber + ", arbitraryTransformation="

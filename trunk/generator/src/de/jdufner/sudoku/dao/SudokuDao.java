@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -35,7 +35,7 @@ import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.service.Solution;
 
 /**
- * Das <code>SudokuDao</code> stellt Dienste zum Lesen und Schreiben von Sudokus in die Datenbank zur Verfügung.
+ * Das <code>SudokuDao</code> stellt Dienste zum Lesen und Schreiben von Sudokus in die Datenbank zur VerfÃ¼gung.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
@@ -44,7 +44,7 @@ import de.jdufner.sudoku.solver.service.Solution;
 public interface SudokuDao {
 
   /**
-   * Löscht ein Sudoku in der Datenbank.
+   * LÃ¶scht ein Sudoku in der Datenbank.
    * 
    * @param id
    *          Die ID des Sudoku.
@@ -52,7 +52,7 @@ public interface SudokuDao {
   SudokuData deleteSudoku(int id);
 
   /**
-   * Liefert eine Liste der Sudokus zurück. Mit dieser Methoden können über alle Sudokus in der Datenbank iteriert
+   * Liefert eine Liste der Sudokus zurÃ¼ck. Mit dieser Methoden kÃ¶nnen Ã¼ber alle Sudokus in der Datenbank iteriert
    * werden.
    * 
    * @param index
@@ -66,7 +66,7 @@ public interface SudokuDao {
   /**
    * 
    * @param size
-   *          Größe der zu findenden Sudokus.
+   *          GrÃ¶ÃŸe der zu findenden Sudokus.
    * @param level
    *          Schwierigkeitsgrad der zu findenden Sudokus.
    * @param number
@@ -76,22 +76,22 @@ public interface SudokuDao {
   List<SudokuData> findSudokus(SudokuSize size, Level level, int number, Boolean printed);
 
   /**
-   * Lädt ein Sudoku aus der Datenbank.
+   * LÃ¤dt ein Sudoku aus der Datenbank.
    * 
    * @param id
    *          Die ID des Sudoku.
-   * @return Gibt das Sudoku zur ID zurück.
+   * @return Gibt das Sudoku zur ID zurÃ¼ck.
    */
   SudokuData loadSudoku(int id);
 
   /**
    * 
-   * @return Gibt das aktuellste Sudoku zurück.
+   * @return Gibt das aktuellste Sudoku zurÃ¼ck.
    */
   Sudoku loadSudokuOfDay();
 
   /**
-   * Speichert das übergebene Sudoku samt einiger Kennzahlen.
+   * Speichert das Ã¼bergebene Sudoku samt einiger Kennzahlen.
    * 
    * @param solution
    *          Das Sudoku inkl. einiger Kennzahlen.
