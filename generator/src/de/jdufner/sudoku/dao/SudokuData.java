@@ -3,20 +3,20 @@
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
  * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
- * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
+ * (http://code.google.com/webtoolkit/). Die LÃ¶sungsalgorithmen in Java laufen 
+ * parallel. Die Sudoku-RÃ¤tsel werden mittels JDBC in einer Datenbank
  * gespeichert.
  * 
- * Copyright (C) 2008 Jürgen Dufner
+ * Copyright (C) 2008 JÃ¼rgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
+ * Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der 
  * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
- * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+ * verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 3 
+ * der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
+ * Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen 
  * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN 
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
  * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
@@ -42,8 +42,8 @@ import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 
 /**
- * Das ist die persistente Repräsentation eines Sudokus. Diese Klasse enthält das {@link Sudoku} als {@link String},
- * welches mittels {@link SudokuFactory} erzeugt werden muss. Aus Gründen der Übersichtlichkeit ist die Persistenz von
+ * Das ist die persistente ReprÃ¤sentation eines Sudokus. Diese Klasse enthÃ¤lt das {@link Sudoku} als {@link String},
+ * welches mittels {@link SudokuFactory} erzeugt werden muss. Aus GrÃ¼nden der Ãœbersichtlichkeit ist die Persistenz von
  * der Klasse {@link Sudoku} getrennt.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
