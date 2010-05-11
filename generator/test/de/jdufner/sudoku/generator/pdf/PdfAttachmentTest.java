@@ -45,18 +45,18 @@ public final class PdfAttachmentTest extends AbstractGeneratorTestCase {
 
   public void testAttach1() throws Exception {
     Document document = new Document(PageSize.A4, 10, 10, 10, 10);
-    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("E:\\tmp\\PdfAttachmentTest.pdf"));
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\tmp\\PdfAttachmentTest.pdf"));
     document.open();
     document.addCreationDate();
     document.addCreator("de.jdufner.sudoku.Generator");
     document.add(new Paragraph("PdfAttachmentTest"));
     document.close();
-    writer.addFileAttachment("Eingebundenes HTML", null, "E:\\tmp\\Sudoku.html", "Sudoku.html");
+    writer.addFileAttachment("Eingebundenes HTML", null, "D:\\tmp\\Sudoku.html", "Sudoku.html");
     writer.close();
   }
 
   private StringBuffer readFile() throws FileNotFoundException, IOException {
-    FileInputStream fis = new FileInputStream("E:\\tmp\\Sudoku.html");
+    FileInputStream fis = new FileInputStream("D:\\tmp\\Sudoku.html");
     InputStreamReader isr = new InputStreamReader(fis);
     BufferedReader br = new BufferedReader(isr);
     String line = null;
@@ -72,7 +72,7 @@ public final class PdfAttachmentTest extends AbstractGeneratorTestCase {
   public void testAttach2() throws Exception {
     StringBuffer sb = readFile();
     Document document = new Document(PageSize.A4, 10, 10, 10, 10);
-    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("E:\\tmp\\PdfAttachmentTest.pdf"));
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\tmp\\PdfAttachmentTest.pdf"));
     document.open();
     document.addCreationDate();
     document.addCreator("de.jdufner.sudoku.Generator");
@@ -83,9 +83,9 @@ public final class PdfAttachmentTest extends AbstractGeneratorTestCase {
   }
 
   public void testAttach3() throws Exception {
-    PdfStamper pdfStamper = new PdfStamper(new PdfReader("E:\\tmp\\Sudoku.pdf"), new FileOutputStream(
-        "E:\\tmp\\PdfAttachmentTest.pdf"));
-    pdfStamper.addFileAttachment("Eingebundenes HTML", null, "E:\\tmp\\Sudoku.html", "Sudoku.html");
+    PdfStamper pdfStamper = new PdfStamper(new PdfReader("D:\\tmp\\Sudoku.pdf"), new FileOutputStream(
+        "D:\\tmp\\PdfAttachmentTest.pdf"));
+    pdfStamper.addFileAttachment("Eingebundenes HTML", null, "D:\\tmp\\Sudoku.html", "Sudoku.html");
     //pdfStamper.makePackage(PdfName.T);
     pdfStamper.close();
   }

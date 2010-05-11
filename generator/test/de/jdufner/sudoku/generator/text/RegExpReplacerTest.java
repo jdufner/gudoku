@@ -32,6 +32,6 @@ import de.jdufner.sudoku.test.AbstractGeneratorTestCase;
 public final class RegExpReplacerTest extends AbstractGeneratorTestCase {
 
   public void testReplace() throws IOException {
-    RegExpReplacer.replace("E:\\tmp\\sudoku_nneeuu.html", "Sudoku_123", "JavaScript-Code");
+    RegExpReplacer.replace("D:\\tmp\\sudoku_nneeuu.html", "Sudoku_123", "JavaScript-Code");
   }
 }
