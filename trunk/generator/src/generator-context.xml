@@ -43,7 +43,7 @@
     <property name="sudokuDao" ref="sudokuDao" />
     <property name="solver" ref="strategySolverWithBacktracking" />
     <!-- Configuration -->
-    <property name="fileDirectory" value="E:\tmp" />
+    <property name="fileDirectory" value="D:\tmp" />
     <property name="filePattern" value="'Sudoku_'yyyy-MM-dd'T'kkmmss" />
   </bean>
 

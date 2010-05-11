@@ -67,7 +67,7 @@ public final class PdfPrinterImplTest extends TestCase {
     sudokus.add(sudokuData);
     sudokus.add(sudokuData);
     sudokus.add(sudokuData);
-    String fileName = "E:\\tmp\\PdfPrinterImplTest.pdf";
+    String fileName = "D:\\tmp\\PdfPrinterImplTest.pdf";
     PdfPrinter pdfPrinter = (PdfPrinter) GeneratorServiceFactory.INSTANCE.getBean(PdfPrinter.class);
     pdfPrinter.printQuests(sudokus, fileName);
   }

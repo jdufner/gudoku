@@ -2,10 +2,10 @@
 <html>
   <head>
     <title>Sudoku 2010-02</title>
-    <meta name="author" content="Jürgen Dufner"/>
+    <meta name="author" content="JÃŒrgen Dufner"/>
     <meta name="description" content="Sudoku"/>
     <meta name="keywords" content="Sudoku"/>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-15"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
 <!--
 * {
@@ -35,7 +35,7 @@ td.fixed {
 }
 td.candidate {
   font-size: 9px;
-  font-weight: normal; 
+  font-weight: normal;
   text-align: center;
   vertical-align: middle;
   width: 13px;
@@ -107,14 +107,14 @@ div.candidateButtonOn {
       <!-- float:left; margin-left:10px; -->
       <div style="">
         <fieldset>
-          <legend>Lösung (<span id="solution" style="cursor:default;" onclick="switchVisibility('solution');">+</span>)</legend>
+          <legend>LÃ¶sung (<span id="solution" style="cursor:default;" onclick="switchVisibility('solution');">+</span>)</legend>
           <div id="solutionBlock" style="visibility:hidden; display:none;">
             <div id="steps" style="height:220px; min-height:220px; max-height:220px; width:600px; min-width:600px; max-width:600px; overflow:auto;"></div>
           </div>
         </fieldset>
       </div>
     </div>
-    
+
     <div id="candidateButtons" style="float:left; margin-left:10px;"></div>
     <div id="buttons" style="clear:both; width:100%; margin-top:10px;">
       <select id="quests" name="quests" size="1"></select>
@@ -123,12 +123,12 @@ div.candidateButtonOn {
       <input id="incloseCandidates" type="checkbox">inkl. Kandidaten</input><input type="button" value="Laden" onclick="loadSudoku()"/><input type="button" value="Speichern" onclick="saveSudoku()"/><br/>
       <input type="button" value="Kandidaten entfernen" onclick="removeAllCandidates()"/><input type="button" value="Reset" onclick="resetAllCandidates()"/><input type="button" value="Leeren" onclick="emptyCandidates()"/><input id="hideButton" type="button" value="Ausblenden" onclick="hideCandidates()"/><br/>
       <input type="button" value="Aus Cookie laden" onclick="loadSudokuFromCookie()"/><input type="button" value="In Cookie speichern" onclick="saveSudokuInCookie()"/><br/>
-      <input id="undoButton" type="button" value="&lt;&lt; Zurück &lt;&lt;" onclick="undoCommand();"/><input id="doButton" type="button" value="&gt;&gt; Vor &gt;&gt;" onclick="doCommand();"/><br/>
+      <input id="undoButton" type="button" value="&lt;&lt; ZurÃŒck &lt;&lt;" onclick="undoCommand();"/><input id="doButton" type="button" value="&gt;&gt; Vor &gt;&gt;" onclick="doCommand();"/><br/>
       <fieldset style="width:45%;">
         <legend>Spielhilfe (<span id="configHelp" style="cursor:default;" onclick="switchVisibility('configHelp');">+</span>)</legend>
         <div id="configHelpBlock" style="visibility:hidden; display:none;">
           <input id="showConflicts" type="checkbox" checked="true" onclick="turnShowConflicts();saveConfig();">Konflikte zwischen Zellen anzeigen</input><br/>
-          <input id="showErrors" type="checkbox" checked="true" onclick="turnShowErrors();saveConfig();">Fehler zur Lösung anzeigen</input><br/>
+          <input id="showErrors" type="checkbox" checked="true" onclick="turnShowErrors();saveConfig();">Fehler zur LÃ¶sung anzeigen</input><br/>
           <input id="kandidatenEntfernen" type="radio" name="spielweise" value="kandidatenEntfernen" checked="true" onclick="saveConfig();">Kandidaten entfernen</input>
           <input id="kandidatenSetzen" type="radio" name="spielweise" value="kandidatenSetzen" onclick="saveConfig();">Kandidaten setzen</input>
         </div>
@@ -302,7 +302,7 @@ function doCommand() {
     undoCmd.push(cmd);
     ableCmdButtons();
   } else {
-    alert("Es liegen keine Befehle zur Ausführung vor.");
+    alert("Es liegen keine Befehle zur AusfÃŒhrung vor.");
   }
 }
 
@@ -313,7 +313,7 @@ function undoCommand() {
     doCmd.push(cmd);
     ableCmdButtons();
   } else {
-    alert("Es liegen keine Rückgängig-Befehle zur Ausführung vor.");
+    alert("Es liegen keine RÃŒckgÃ€ngig-Befehle zur AusfÃŒhrung vor.");
   }
 }
 
@@ -528,7 +528,7 @@ function loadSudoku() {
     }
   } else {
     if (!parseSudokuString(document.getElementById("sudokuAsString").value)) {
-      alert("Sudoku ist ungültig!");
+      alert("Sudoku ist ungÃŒltig!");
     }
   }
   resetCmdHistory();
