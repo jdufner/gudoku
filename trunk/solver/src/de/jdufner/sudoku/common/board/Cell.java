@@ -41,7 +41,7 @@ import org.apache.log4j.Logger;
  * @since 0.1
  * @version $Revision$
  */
-public final class Cell implements Cloneable, Comparable<Cell> {
+public final class Cell implements Comparable<Cell> {
 
   private static final Logger LOG = Logger.getLogger(Cell.class);
   private static final Random RANDOM = new Random();
@@ -237,11 +237,6 @@ public final class Cell implements Cloneable, Comparable<Cell> {
 
   public int compareTo(final Cell other) {
     return getNumber() - other.getNumber();
-  }
-
-  @Override
-  public Cell clone() { // NOPMD by Jürgen on 08.11.09 00:21
-    return new Cell(this);
   }
 
   /**
