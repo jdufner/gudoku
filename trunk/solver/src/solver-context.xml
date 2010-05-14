@@ -1,118 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<!-- $Id$ -->
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+  <!-- $Id$ -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-	<!--
-		bean id="log4jInitializer"
-		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-		<property name="staticMethod"> <value>
-		org.springframework.util.Log4jConfigurer.initLogging </value>
-		</property> <property name="arguments"> <list>
-		<value>classpath:log4j.properties</value> <value>10000</value> </list>
-		</property> </bean
-	-->
+  <!--
+    bean id="log4jInitializer" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"> <property
+    name="staticMethod"> <value> org.springframework.util.Log4jConfigurer.initLogging </value> </property> <property
+    name="arguments"> <list> <value>classpath:log4j.properties</value> <value>10000</value> </list> </property> </bean
+  -->
 
-  <bean id="randomGenerator" class="org.apache.commons.math.random.JDKRandomGenerator"/>
+  <bean id="randomGenerator" class="org.apache.commons.math.random.JDKRandomGenerator" />
 
   <bean id="randomData" class="org.apache.commons.math.random.RandomDataImpl">
-    <constructor-arg ref="randomGenerator"/>
+    <constructor-arg ref="randomGenerator" />
   </bean>
 
-	<bean id="objectPool" class="org.apache.commons.pool.impl.GenericObjectPool">
-		<!--
-			constructor-arg> <bean class="de.jdufner.sudoku.common.SudokuFactory"
-			/> </constructor-arg
-		-->
-		<property name="factory">
-			<bean class="de.jdufner.sudoku.common.factory.SudokuFactory" />
-		</property>
-		<property name="maxActive">
-			<value>100</value>
-		</property>
-		<property name="whenExhaustedAction">
-			<!-- 
-        0 = FAIL
-        1 = BLOCK
-        2 = GROW 
-      -->
-			<value>0</value>
-		</property>
-		<property name="maxWait">
-			<value>0</value>
-		</property>
-		<property name="maxIdle">
-			<value>100</value>
-		</property>
-		<property name="testOnBorrow">
-			<value>false</value>
-		</property>
-		<property name="testOnReturn">
-			<value>false</value>
-		</property>
-	</bean>
+  <bean id="clockInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverClock" />
 
-	<bean id="sudokuPool" class="de.jdufner.sudoku.common.factory.SudokuPool">
-		<property name="objectPool" ref="objectPool" />
-	</bean>
+  <bean id="loggerInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverLogger" />
 
-	<bean id="clockInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverClock" />
+  <bean id="strategySolverTarget" class="de.jdufner.sudoku.solver.service.StrategySolver">
+    <property name="useBacktracking" value="false"></property>
+  </bean>
 
-	<bean id="loggerInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverLogger" />
+  <bean id="strategySolver" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="target">
+      <ref local="strategySolverTarget" />
+    </property>
+    <property name="interceptorNames">
+      <list>
+        <value>clockInterceptor</value>
+        <value>loggerInterceptor</value>
+      </list>
+    </property>
+  </bean>
 
-	<bean id="strategySolverTarget" class="de.jdufner.sudoku.solver.service.StrategySolver">
-		<property name="useBacktracking" value="false"></property>
-	</bean>
+  <bean id="strategySolverTargetWithBacktracking" class="de.jdufner.sudoku.solver.service.StrategySolver">
+    <property name="useBacktracking" value="true"></property>
+  </bean>
 
-	<bean id="strategySolver" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<property name="target">
-			<ref local="strategySolverTarget" />
-		</property>
-		<property name="interceptorNames">
-			<list>
-				<value>clockInterceptor</value>
-				<value>loggerInterceptor</value>
-			</list>
-		</property>
-	</bean>
+  <bean id="strategySolverWithBacktracking" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="target">
+      <ref local="strategySolverTargetWithBacktracking" />
+    </property>
+    <property name="interceptorNames">
+      <list>
+        <value>clockInterceptor</value>
+        <value>loggerInterceptor</value>
+      </list>
+    </property>
+  </bean>
 
-	<bean id="strategySolverTargetWithBacktracking" class="de.jdufner.sudoku.solver.service.StrategySolver">
-		<property name="useBacktracking" value="true"></property>
-	</bean>
+  <bean id="backtrackingSolverTarget" class="de.jdufner.sudoku.solver.service.BacktrackingSolver" />
 
-	<bean id="strategySolverWithBacktracking" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<property name="target">
-			<ref local="strategySolverTargetWithBacktracking" />
-		</property>
-		<property name="interceptorNames">
-			<list>
-				<value>clockInterceptor</value>
-				<value>loggerInterceptor</value>
-			</list>
-		</property>
-	</bean>
+  <bean id="backtrackingSolver" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="target">
+      <ref local="backtrackingSolverTarget" />
+    </property>
+    <property name="interceptorNames">
+      <list>
+        <value>clockInterceptor</value>
+        <value>loggerInterceptor</value>
+      </list>
+    </property>
+  </bean>
 
-	<bean id="backtrackingSolverTarget"
-		class="de.jdufner.sudoku.solver.service.BacktrackingSolver" />
-
-	<bean id="backtrackingSolver" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<property name="target">
-			<ref local="backtrackingSolverTarget" />
-		</property>
-		<property name="interceptorNames">
-			<list>
-				<value>clockInterceptor</value>
-				<value>loggerInterceptor</value>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="sudokuValidator"
-		class="de.jdufner.sudoku.common.validator.impl.SerialSudokuValidator" />
+  <bean id="sudokuValidator" class="de.jdufner.sudoku.common.validator.impl.SerialSudokuValidator" />
 
 </beans>

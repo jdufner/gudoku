@@ -156,41 +156,8 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
     rcc5.execute(sudoku);
     assertTrue(rcc5.isSuccessfully());
     assertTrue(cell.isValid());
-    assertEquals(1, cell.getCandidates().size());
-    assertFalse(cell.isFixed());
-  }
-
-  public void testRemoveAll() {
-    Cell cell = sudoku.getCell(0, 2);
-
-    assertEquals(9, cell.getCandidates().size());
-
-    Candidates<Literal> candidates1 = new Candidates<Literal>();
-    candidates1.add(Literal.getInstance(1));
-    candidates1.add(Literal.getInstance(2));
-    candidates1.add(Literal.getInstance(3));
-    candidates1.add(Literal.getInstance(4));
-    candidates1.add(Literal.getInstance(5));
-    candidates1.add(Literal.getInstance(6));
-    candidates1.add(Literal.getInstance(7));
-    candidates1.add(Literal.getInstance(8));
-    candidates1.add(Literal.getInstance(9));
-
-    Command rcc1 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates1).build();
-    assertNull(rcc1.getFrozenString());
-    rcc1.execute(sudoku);
-    assertTrue(rcc1.isSuccessfully());
-    assertFalse(cell.isValid());
-    assertTrue(rcc1.reversible());
-    LOG.debug(rcc1.getFrozenString());
-    assertEquals(
-        "null: Entferne Kandidaten [1, 2, 3, 4, 5, 6, 7, 8, 9] in Zelle 0 (0, 2, 0) [1, 2, 3, 4, 5, 6, 7, 8, 9]", rcc1
-            .getFrozenString());
     assertEquals(0, cell.getCandidates().size());
-
-    rcc1.unexecute(sudoku);
-    assertTrue(cell.isValid());
-    assertEquals(9, cell.getCandidates().size());
+    assertTrue(cell.isFixed());
   }
 
   public void testRemoveDuplicate() {
