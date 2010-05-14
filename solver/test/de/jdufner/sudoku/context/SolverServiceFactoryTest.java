@@ -25,18 +25,10 @@
  */
 package de.jdufner.sudoku.context;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-
 import junit.framework.TestCase;
 
 import org.apache.commons.math.random.RandomData;
 import org.apache.log4j.Logger;
-
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
-import de.jdufner.sudoku.common.factory.SudokuPool;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -46,40 +38,6 @@ import de.jdufner.sudoku.common.factory.SudokuPool;
 public final class SolverServiceFactoryTest extends TestCase {
 
   private static final Logger LOG = Logger.getLogger(SolverServiceFactoryTest.class);
-
-  public void testInstantiateObjectPool1() {
-    SolverServiceFactory.INSTANCE.getBean(SudokuPool.class);
-  }
-
-  public void testInstantiateObjectPool2() {
-    SudokuPool pool = (SudokuPool) SolverServiceFactory.INSTANCE.getBean(SudokuPool.class);
-    Sudoku s = pool.borrowSudoku();
-    pool.returnSudoku(s);
-  }
-
-  public void testInstantiateObjectPool3() {
-    SudokuPool pool = (SudokuPool) SolverServiceFactory.INSTANCE.getBean(SudokuPool.class);
-    List<Sudoku> sudokus = new ArrayList<Sudoku>();
-    try {
-      for (int i = 0; i <= 100; i++) {
-        sudokus.add(pool.borrowSudoku());
-      }
-      fail("'NoSuchElementException: Pool exhausted' expected");
-    } catch (SudokuRuntimeException sre) {
-      if (sre.getCause() != null && sre.getCause() instanceof NoSuchElementException) {
-        NoSuchElementException nse = (NoSuchElementException) sre.getCause();
-        LOG.debug(nse.getMessage(), nse);
-      } else {
-        throw sre;
-      }
-    } catch (NoSuchElementException nse) {
-      LOG.debug(nse.getMessage(), nse);
-    } finally {
-      for (Sudoku s : sudokus) {
-        pool.returnSudoku(s);
-      }
-    }
-  }
 
   public void testLogger() {
     LOG.debug("LLOOGGG__DDEEBBUUGG");
