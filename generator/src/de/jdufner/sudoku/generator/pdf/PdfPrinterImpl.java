@@ -129,7 +129,7 @@ public final class PdfPrinterImpl implements PdfPrinter {
     einzelnesSudoku.addCell(obereZelle);
     PdfCellHandler pdfCellHandler = new PdfCellHandler(SudokuSize.getByUnitSize(sudokuData.getSize()), getPdfStyle());
     pdfCellHandler.initialize();
-    HandlerUtil.forEachCell(SudokuFactory.buildSudoku(sudokuData.getSudokuAsString()), pdfCellHandler);
+    HandlerUtil.forEachCell(SudokuFactory.INSTANCE.buildSudoku(sudokuData.getSudokuAsString()), pdfCellHandler);
     PdfPCell untereZelle = new PdfPCell(pdfCellHandler.getTable());
     untereZelle.setBorder(0);
     einzelnesSudoku.addCell(untereZelle);

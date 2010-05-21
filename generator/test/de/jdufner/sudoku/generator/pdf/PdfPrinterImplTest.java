@@ -52,7 +52,7 @@ public final class PdfPrinterImplTest extends TestCase {
   public void testPrint() throws FileNotFoundException, DocumentException {
     SudokuData sudokuData = new SudokuData();
     sudokuData.setSudokuAsString(EXAMPLE);
-    Sudoku s = SudokuFactory.buildSudoku(sudokuData.getSudokuAsString());
+    Sudoku s = SudokuFactory.INSTANCE.buildSudoku(sudokuData.getSudokuAsString());
     sudokuData.setFixed(s.getNumberOfFixed());
     sudokuData.setGeneratedAt(new Date());
     sudokuData.setLevel(5);

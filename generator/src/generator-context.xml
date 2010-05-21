@@ -14,7 +14,6 @@
   <import resource="solver-context.xml" />
 
   <bean id="abstractBuilder" abstract="true" class="de.jdufner.sudoku.builder.AbstractBuilder">
-    <property name="randomData" ref="randomData" />
     <property name="strategySolverWithBacktracking" ref="strategySolverWithBacktracking" />
   </bean>
 

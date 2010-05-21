@@ -36,6 +36,7 @@ import de.jdufner.sudoku.builder.transformation.TransformationUtil;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Sudoku;
 import de.jdufner.sudoku.common.board.SudokuSize;
+import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.service.Solution;
 
@@ -77,8 +78,7 @@ public abstract class EleminationBuilder extends AbstractBuilder {
         }
       }
     }
-    //    RandomData randomData = new RandomDataImpl();
-    Object[] objs = getRandomData().nextSample(felder, felder.size());
+    Object[] objs = SudokuFactory.INSTANCE.getRandomData().nextSample(felder, felder.size());
     List<Cell> arbitraryPermution = new ArrayList<Cell>();
     for (int i = 0; i < objs.length; i++) {
       arbitraryPermution.add((Cell) objs[i]);
@@ -95,8 +95,7 @@ public abstract class EleminationBuilder extends AbstractBuilder {
         }
       }
     }
-    //    RandomData randomData = new RandomDataImpl();
-    Object[] objs = getRandomData().nextSample(felder, felder.size());
+    Object[] objs = SudokuFactory.INSTANCE.getRandomData().nextSample(felder, felder.size());
     List<Cell> arbitraryPermution = new ArrayList<Cell>();
     for (int i = 0; i < objs.length; i++) {
       arbitraryPermution.add((Cell) objs[i]);
