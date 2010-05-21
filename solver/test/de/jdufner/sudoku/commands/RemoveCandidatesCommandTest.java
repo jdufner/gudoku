@@ -48,7 +48,7 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(RemoveCandidatesCommandTest.class);
 
-  private Sudoku sudoku = SudokuFactory.buildSudoku(Examples.ING_DIBA);
+  private Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.ING_DIBA);
 
   public void setUp() {
     LOG.debug(sudoku);

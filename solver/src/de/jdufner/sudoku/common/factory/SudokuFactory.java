@@ -29,9 +29,9 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.math.random.JDKRandomGenerator;
 import org.apache.commons.math.random.RandomData;
 import org.apache.commons.math.random.RandomDataImpl;
-import org.apache.commons.pool.PoolableObjectFactory;
 
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
@@ -45,7 +45,9 @@ import de.jdufner.sudoku.common.board.SudokuSize;
  * @since 0.1
  * @version $Revision$
  */
-public class SudokuFactory implements PoolableObjectFactory {
+public enum SudokuFactory {
+
+  INSTANCE;
 
   private static final Pattern SIZE_PATTERN = Pattern.compile("^(\\d+):");
   private static final Pattern CELLS_PATTERN = Pattern.compile(":([0-9,]+)$");
@@ -53,8 +55,9 @@ public class SudokuFactory implements PoolableObjectFactory {
   private static final Pattern CANDIDATES_PATTERN_2 = Pattern.compile("^\\((\\d+)\\)$");
 
   private SudokuSize size = SudokuSize.DEFAULT;
+  private RandomData randomData = new RandomDataImpl(new JDKRandomGenerator());
 
-  public static Sudoku buildSudoku(final String sudokuAsString) {
+  public Sudoku buildSudoku(final String sudokuAsString) {
     if (SIZE_PATTERN.matcher(sudokuAsString).find()) {
       final Sudoku sudoku = new Sudoku(getGroesseFromString(sudokuAsString), getFelderFromString(sudokuAsString));
       if (!sudoku.isValid()) {
@@ -91,7 +94,7 @@ public class SudokuFactory implements PoolableObjectFactory {
     }
   }
 
-  private static Sudoku buildSudokuFrom81Chars(final String sudokuAsString) {
+  private Sudoku buildSudokuFrom81Chars(final String sudokuAsString) {
     final char[] chars = sudokuAsString.toCharArray();
     Integer[] felder = new Integer[chars.length];
     for (int i = 0; i < chars.length; i++) {
@@ -105,7 +108,7 @@ public class SudokuFactory implements PoolableObjectFactory {
     return sudoku;
   }
 
-  protected static SudokuSize getGroesseFromString(final String boardAsString) {
+  private SudokuSize getGroesseFromString(final String boardAsString) {
     final Matcher matcher = SIZE_PATTERN.matcher(boardAsString);
     if (matcher.find()) {
       final int unitSize = Integer.parseInt(matcher.group(1));
@@ -114,7 +117,7 @@ public class SudokuFactory implements PoolableObjectFactory {
     return SudokuSize.DEFAULT;
   }
 
-  protected static Integer[] getFelderFromString(final String spielfeldAsString) {
+  private Integer[] getFelderFromString(final String spielfeldAsString) {
     final Matcher matcher = CELLS_PATTERN.matcher(spielfeldAsString);
     if (matcher.find()) {
       final String felderAsString = matcher.group(1);
@@ -128,7 +131,7 @@ public class SudokuFactory implements PoolableObjectFactory {
     throw new IllegalStateException("Sudoku-Zeichenkette konnte nicht geparst werden.");
   }
 
-  public static Sudoku buildEmpty(final SudokuSize sudokuSize) {
+  public Sudoku buildEmpty(final SudokuSize sudokuSize) {
     final Integer[] felder = new Integer[sudokuSize.getTotalSize()];
     for (int i = 0; i < sudokuSize.getTotalSize(); i++) {
       felder[i] = Integer.valueOf(0);
@@ -142,7 +145,7 @@ public class SudokuFactory implements PoolableObjectFactory {
    * @param sudokuSize
    * @return
    */
-  public static Sudoku buildFilled(final SudokuSize sudokuSize) {
+  public Sudoku buildFilled(final SudokuSize sudokuSize) {
     final Sudoku sudoku = buildEmpty(sudokuSize);
     for (int i = 0; i < sudokuSize.getUnitSize(); i++) {
       for (int j = 0; j < sudokuSize.getUnitSize(); j++) {
@@ -161,7 +164,7 @@ public class SudokuFactory implements PoolableObjectFactory {
     return sudoku;
   }
 
-  public static Sudoku buildShuffled(final SudokuSize sudokuSize, final RandomData randomData) {
+  private Sudoku buildShuffled(final SudokuSize sudokuSize, final RandomData randomData) {
     final Sudoku sudoku = buildEmpty(sudokuSize);
     final int[] literal = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
     final int[] columnIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
@@ -178,38 +181,8 @@ public class SudokuFactory implements PoolableObjectFactory {
    * @param sudokuSize
    * @return
    */
-  public static Sudoku buildShuffled(final SudokuSize sudokuSize) {
-    // TODO Aus Factory Singleton machen und RandomDataImpl halten
-    return buildShuffled(sudokuSize, new RandomDataImpl());
-  }
-
-  @Override
-  public void activateObject(final Object obj) {
-    // Sudoku sudoku = (Sudoku) obj;
-    // Nix zu machen!!!
-  }
-
-  @Override
-  public void destroyObject(final Object obj) {
-    // Sudoku sudoku = (Sudoku) obj;
-    // Nix zu machen!!!
-  }
-
-  @Override
-  public Object makeObject() {
-    return SudokuFactory.buildEmpty(size);
-  }
-
-  @Override
-  public void passivateObject(final Object obj) {
-    final Sudoku sudoku = (Sudoku) obj;
-    sudoku.clear();
-  }
-
-  @Override
-  public boolean validateObject(final Object obj) {
-    final Sudoku sudoku = (Sudoku) obj;
-    return sudoku.isValid();
+  public Sudoku buildShuffled(final SudokuSize sudokuSize) {
+    return buildShuffled(sudokuSize, randomData);
   }
 
   public SudokuSize getSize() {
@@ -218,6 +191,10 @@ public class SudokuFactory implements PoolableObjectFactory {
 
   public void setSize(final SudokuSize size) {
     this.size = size;
+  }
+
+  public RandomData getRandomData() {
+    return randomData;
   }
 
 }

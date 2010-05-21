@@ -55,7 +55,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:0,0,0,0,0,4,0,0,7,2,0,0,0,0,0,8,0,6,0,0,0,0,0,3,0,0,0,0,3,0,0,0,0,0,5,0,0,0,4,0,8,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,9,6,0,2,0,0,1,4,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0");
     Sudoku result = solver.solve(sudoku);
     if (LOG.isDebugEnabled()) {
@@ -70,7 +70,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver1() {
-    Sudoku sudoku = SudokuFactory.buildSudoku(Examples.SCHWER);
+    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.SCHWER);
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
     assertTrue(solver.isSolvable(sudoku));
@@ -78,7 +78,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver2() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:7,0,0,1,0,8,0,0,0,0,9,0,0,0,0,0,3,2,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,1,0,0,9,6,0,0,2,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,1,0,0,0,3,2,0,0,0,0,0,0,6");
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
@@ -87,7 +87,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver3() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:0,8,2,0,1,0,0,0,0,7,0,0,0,0,0,0,3,0,0,0,0,0,0,6,0,0,5,0,0,0,0,0,0,0,8,0,3,0,0,7,0,0,0,0,0,0,0,0,0,0,0,1,0,4,4,0,1,0,0,0,0,0,6,0,0,0,0,5,0,0,0,0,0,0,0,8,0,0,0,0,0");
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
@@ -100,7 +100,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver4() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:9,0,0,1,0,0,3,0,0,4,0,0,0,0,0,0,5,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,4,0,0,6,8,0,0,0,0,0,0,0,0,0,0,0,0,6,7,8,3,2,0,0,7,0,0,0,0,0,0,0,0,0,0,1,0,0");
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
@@ -109,7 +109,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver5() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:9,2,1,6,8,3,0,5,0,5,8,6,9,7,4,1,3,2,3,4,7,5,0,0,9,6,8,7,1,8,4,5,6,2,9,3,4,6,0,0,0,0,8,0,5,2,0,5,8,0,0,0,0,0,8,0,4,0,6,0,5,2,1,6,5,2,1,0,8,0,4,0,1,7,0,2,4,5,0,8,0");
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
@@ -118,7 +118,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver6() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:8,0,0,0,0,3,9,6,2,0,6,2,8,0,0,7,0,0,0,9,0,0,0,0,5,0,8,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,9,0,0,5,1,8,0,6,2,0,3,0,0,4,0,9");
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
@@ -129,7 +129,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver7() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku(".8...97...1..8.9..49..53.28.2.5.738.83.92.547.7.83.2...6.415892249378.5.158692473");
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
@@ -140,7 +140,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver8() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku("7.4..9.125.9..1.8782176....152347968697...134483196725245913876.16.7.25..78652..1");
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
@@ -151,7 +151,7 @@ public class StrategyTest extends AbstractSolverTestCase {
   }
 
   public void testStrategySolver9() {
-    Sudoku sudoku = SudokuFactory
+    Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku("3.152..644.5...32.26.3.4851714239586.264.5.135..16.24.15..436.2..2...4..64...21..");
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result);
