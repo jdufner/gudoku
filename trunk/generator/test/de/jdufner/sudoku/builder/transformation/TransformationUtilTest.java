@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -43,7 +43,7 @@ public final class TransformationUtilTest extends TestCase {
   private static final Logger log = Logger.getLogger(TransformationUtilTest.class);
 
   public void testSwapColumns() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.swapColumns(original, 0, 1);
     assertEquals(original.getCell(0, 0).getValue(), swapped.getCell(0, 1).getValue());
     assertEquals(original.getCell(1, 0).getValue(), swapped.getCell(1, 1).getValue());
@@ -57,7 +57,7 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testSwapRows() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.swapRows(original, 1, 2);
     assertEquals(original.getCell(2, 0).getValue(), swapped.getCell(1, 0).getValue());
     assertEquals(original.getCell(2, 1).getValue(), swapped.getCell(1, 1).getValue());
@@ -71,7 +71,7 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testSwapColumBlocks() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     log.debug("original");
     log.debug(original);
     Sudoku swapped = TransformationUtil.swapColumnBlock(original, 1, 2);
@@ -107,12 +107,8 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testSwapRowBlocks() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
-    // log.debug("original");
-    // log.debug(original);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.swapRowBlock(original, 1, 2);
-    // log.debug("swapped");
-    // log.debug(swapped);
     assertEquals(original.getCell(3, 0).getValue(), swapped.getCell(6, 0).getValue());
     assertEquals(original.getCell(4, 0).getValue(), swapped.getCell(7, 0).getValue());
     assertEquals(original.getCell(5, 0).getValue(), swapped.getCell(8, 0).getValue());
@@ -143,12 +139,8 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testRotateQuarterClockwise() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
-    // log.debug("original");
-    // log.debug(original);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.rotateBlockClockwise(original);
-    // log.debug("swapped");
-    // log.debug(swapped);
     assertEquals(original.getCell(0, 0).getValue(), swapped.getCell(0, 8).getValue());
     assertEquals(original.getCell(0, 1).getValue(), swapped.getCell(1, 8).getValue());
     assertEquals(original.getCell(0, 2).getValue(), swapped.getCell(2, 8).getValue());
@@ -158,12 +150,8 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testRotateQuarterCounterClockwise() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
-    // log.debug("original");
-    // log.debug(original);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.rotateBlockCounterClockwise(original);
-    // log.debug("swapped");
-    // log.debug(swapped);
     assertEquals(original.getCell(0, 0).getValue(), swapped.getCell(8, 0).getValue());
     assertEquals(original.getCell(0, 1).getValue(), swapped.getCell(7, 0).getValue());
     assertEquals(original.getCell(0, 2).getValue(), swapped.getCell(6, 0).getValue());
@@ -173,12 +161,8 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testRotateHalfClockwise() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
-    // log.debug("original");
-    // log.debug(original);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.rotateHalfClockwise(original);
-    // log.debug("swapped");
-    // log.debug(swapped);
     assertEquals(original.getCell(0, 0).getValue(), swapped.getCell(8, 8).getValue());
     assertEquals(original.getCell(0, 1).getValue(), swapped.getCell(8, 7).getValue());
     assertEquals(original.getCell(0, 2).getValue(), swapped.getCell(8, 6).getValue());
@@ -188,12 +172,8 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testMirrorVertically() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
-    // log.debug("original");
-    // log.debug(original);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.mirrorVertically(original);
-    // log.debug("swapped");
-    // log.debug(swapped);
     assertEquals(original.getCell(0, 0).getValue(), swapped.getCell(0, 8).getValue());
     assertEquals(original.getCell(0, 1).getValue(), swapped.getCell(0, 7).getValue());
     assertEquals(original.getCell(0, 2).getValue(), swapped.getCell(0, 6).getValue());
@@ -203,12 +183,8 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testMirrorHorizontally() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
-    // log.debug("original");
-    // log.debug(original);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.mirrorHorizontally(original);
-    // log.debug("swapped");
-    // log.debug(swapped);
     assertEquals(original.getCell(0, 0).getValue(), swapped.getCell(8, 0).getValue());
     assertEquals(original.getCell(0, 1).getValue(), swapped.getCell(8, 1).getValue());
     assertEquals(original.getCell(0, 2).getValue(), swapped.getCell(8, 2).getValue());
@@ -218,12 +194,8 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testMirrorDiagonally() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
-    // log.debug("original");
-    // log.debug(original);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.mirrorDiagonally(original);
-    // log.debug("swapped");
-    // log.debug(swapped);
     assertEquals(original.getCell(0, 0).getValue(), swapped.getCell(8, 8).getValue());
     assertEquals(original.getCell(0, 1).getValue(), swapped.getCell(7, 8).getValue());
     assertEquals(original.getCell(0, 2).getValue(), swapped.getCell(6, 8).getValue());
@@ -233,12 +205,8 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testMirrorCounterDiagonally() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
-    // log.debug("original");
-    // log.debug(original);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = TransformationUtil.mirrorCounterDiagonally(original);
-    // log.debug("swapped");
-    // log.debug(swapped);
     assertEquals(original.getCell(0, 0).getValue(), swapped.getCell(0, 0).getValue());
     assertEquals(original.getCell(0, 1).getValue(), swapped.getCell(1, 0).getValue());
     assertEquals(original.getCell(0, 2).getValue(), swapped.getCell(2, 0).getValue());
@@ -248,14 +216,14 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testSwapArbitraryColumns() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     for (int i = 0; i < 10; i++) {
       TransformationUtil.swapArbitraryColumns(original);
     }
   }
 
   public void testArbitraryTransformation1() {
-    Sudoku original = SudokuFactory.buildSudoku(Examples.LEICHT);
+    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
     Sudoku swapped = original;
     log.debug(original);
     for (int i = 0; i < 100; i++) {
@@ -265,7 +233,7 @@ public final class TransformationUtilTest extends TestCase {
   }
 
   public void testArbitraryTransformation2() {
-    Sudoku original = SudokuFactory.buildFilled(SudokuSize.DEFAULT);
+    Sudoku original = SudokuFactory.INSTANCE.buildFilled(SudokuSize.DEFAULT);
     Sudoku swapped = original;
     log.debug(original);
     for (int i = 0; i < 100; i++) {

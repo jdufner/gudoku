@@ -90,7 +90,7 @@ public final class PdfGeneratorService {
     int index = 0;
     for (SudokuData sudokuData : allSudokuQuests) {
       SudokuData sudokuData2 = new SudokuData();
-      Solution solution = solver.getSolution(SudokuFactory.buildSudoku(sudokuData.getSudokuAsString()));
+      Solution solution = solver.getSolution(SudokuFactory.INSTANCE.buildSudoku(sudokuData.getSudokuAsString()));
       allSolutions.add(new PdfSolution(sudokuData, solution));
       sudokuData2.setId(sudokuData.getId());
       sudokuData2.setLevel(sudokuData.getLevel());

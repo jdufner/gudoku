@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -88,7 +88,7 @@ public final class TransformationUtil {
         + " sind nicht im selben Quandranten.";
     assert column1 < column2 : column1 + " ist nicht kleiner als " + column2;
     log.debug("Tausche Spalte " + column1 + " und " + column2);
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         if (j == column1) {
@@ -160,7 +160,7 @@ public final class TransformationUtil {
     assert sudoku.getBlock(0, row1) == sudoku.getBlock(0, row2);
     assert row1 < row2;
     log.debug("Tausche Zeilen " + row1 + " und " + row2);
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         if (i == row1) {
@@ -187,7 +187,7 @@ public final class TransformationUtil {
     assert columnBlock1 >= 0 && columnBlock1 < sudoku.getSize().getBlockHeight();
     assert columnBlock2 >= 0 && columnBlock2 < sudoku.getSize().getBlockHeight();
     assert columnBlock1 < columnBlock2;
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         if (isColumnIndexInBlock(j, sudoku, columnBlock1)) {
@@ -228,7 +228,7 @@ public final class TransformationUtil {
     assert rowBlock1 >= 0 && rowBlock1 < sudoku.getSize().getBlockHeight();
     assert rowBlock2 >= 0 && rowBlock2 < sudoku.getSize().getBlockHeight();
     assert rowBlock1 < rowBlock2;
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         if (isRowIndexInBlock(i, sudoku, rowBlock1)) {
@@ -341,7 +341,7 @@ public final class TransformationUtil {
   @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku rotateBlockClockwise(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         newSudoku.getCell(j, sudoku.getSize().getUnitSize() - i - 1).setValue(sudoku.getCell(i, j).getValue());
@@ -355,7 +355,7 @@ public final class TransformationUtil {
   @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku rotateBlockCounterClockwise(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         newSudoku.getCell(sudoku.getSize().getUnitSize() - j - 1, i).setValue(sudoku.getCell(i, j).getValue());
@@ -369,7 +369,7 @@ public final class TransformationUtil {
   @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku rotateHalfClockwise(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         newSudoku.getCell(sudoku.getSize().getUnitSize() - i - 1, sudoku.getSize().getUnitSize() - j - 1).setValue(
@@ -384,7 +384,7 @@ public final class TransformationUtil {
   @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku mirrorVertically(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         newSudoku.getCell(i, sudoku.getSize().getUnitSize() - j - 1).setValue(sudoku.getCell(i, j).getValue());
@@ -398,7 +398,7 @@ public final class TransformationUtil {
   @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku mirrorHorizontally(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         newSudoku.getCell(sudoku.getSize().getUnitSize() - i - 1, j).setValue(sudoku.getCell(i, j).getValue());
@@ -412,7 +412,7 @@ public final class TransformationUtil {
   @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku mirrorDiagonally(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         newSudoku.getCell(sudoku.getSize().getUnitSize() - j - 1, sudoku.getSize().getUnitSize() - i - 1).setValue(
@@ -427,7 +427,7 @@ public final class TransformationUtil {
   @ArbitraryTransformation
   @SymetricTransformation
   public static Sudoku mirrorCounterDiagonally(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         newSudoku.getCell(j, i).setValue(sudoku.getCell(i, j).getValue());
@@ -450,7 +450,7 @@ public final class TransformationUtil {
   }
 
   private static Sudoku swapValues(Sudoku sudoku, Literal l1, Literal l2) {
-    Sudoku newSudoku = SudokuFactory.buildEmpty(sudoku.getSize());
+    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
         if (sudoku.getCell(i, j).getValue().equals(l1)) {
