@@ -51,7 +51,7 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    sudoku = SudokuFactory.buildSudoku(getSudokuAsString());
+    sudoku = SudokuFactory.INSTANCE.buildSudoku(getSudokuAsString());
     strategy = getStrategy();
     LOG.debug("Vorher: " + sudoku);
   }

@@ -14,12 +14,6 @@
     name="arguments"> <list> <value>classpath:log4j.properties</value> <value>10000</value> </list> </property> </bean
   -->
 
-  <bean id="randomGenerator" class="org.apache.commons.math.random.JDKRandomGenerator" />
-
-  <bean id="randomData" class="org.apache.commons.math.random.RandomDataImpl">
-    <constructor-arg ref="randomGenerator" />
-  </bean>
-
   <bean id="clockInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverClock" />
 
   <bean id="loggerInterceptor" class="de.jdufner.sudoku.solver.aspects.SolverLogger" />

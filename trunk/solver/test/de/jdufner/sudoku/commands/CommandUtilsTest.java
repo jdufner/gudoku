@@ -77,7 +77,7 @@ public final class CommandUtilsTest extends AbstractSolverTestCase {
   }
 
   public void testAggregateCommands() {
-    final Sudoku sudoku = SudokuFactory
+    final Sudoku sudoku = SudokuFactory.INSTANCE
         .buildSudoku(".5..9...2.6..2...8..7...9...81.............5...69.3......7.2..5...6..4..8.9.5...3");
     final SimpleSerialStrategy simpleSerialStrategy = new SimpleSerialStrategy(sudoku);
     final Collection<Command> commands = simpleSerialStrategy.executeStrategy();

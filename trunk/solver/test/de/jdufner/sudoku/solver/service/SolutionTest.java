@@ -37,7 +37,7 @@ public class SolutionTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(SolutionTest.class);
 
   public void testToString() {
-    Sudoku quest = SudokuFactory
+    Sudoku quest = SudokuFactory.INSTANCE
         .buildSudoku(".1...4..3.3..5..7.74....1.......25....1...6....35.......2....47.9..7..2.4..3...1.");
     Solution solution = new Solution(quest);
     solution.setLevel(Level.SEHR_SCHWER);

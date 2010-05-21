@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -58,7 +58,7 @@ public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
         "3,0,0,1,9,0,0,0,0," + //
         "0,4,1,0,0,0,6,0,0," + //
         "0,9,2,0,0,0,5,0,0"; //
-    Sudoku sudoku = SudokuFactory.buildSudoku(mySudoku);
+    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     Solver solver = new StrategySolver();
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result.toString());
@@ -76,7 +76,7 @@ public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
         "0,0,0,0,0,0,0,1,0," + //
         "7,0,0,0,6,3,8,9,2," + //
         "0,2,0,0,0,0,4,0,0"; //
-    Sudoku sudoku = SudokuFactory.buildSudoku(mySudoku);
+    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     Solver solver = new StrategySolver();
     Sudoku result = solver.solve(sudoku);
     LOG.debug(result.toString());
@@ -94,7 +94,7 @@ public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
         "8,0,0,0,0,7,0,0,0," + //
         "0,1,0,0,4,0,0,0,6," + //
         "0,0,0,3,0,0,5,0,0"; //
-    Sudoku sudoku = SudokuFactory.buildSudoku(mySudoku);
+    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     Solver solver = null;
 
     // ohne Backtracking
@@ -121,7 +121,7 @@ public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
         "8,0,0,0,0,7,0,0,0," + //
         "0,1,0,0,4,0,0,0,6," + //
         "0,0,0,3,0,0,5,0,0"; //
-    Sudoku sudoku = SudokuFactory.buildSudoku(mySudoku);
+    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     ExtendedSolver extendedSolver = getStrategySolver();
     Solution solution = extendedSolver.getSolution(sudoku);
     LOG.debug(solution.toString());

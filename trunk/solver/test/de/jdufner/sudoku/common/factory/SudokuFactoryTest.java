@@ -2,24 +2,24 @@
 
 /*
  * Gudoku (http://sourceforge.net/projects/gudoku)
- * Sudoku-Implementierung auf Basis des Google Webtoolkit 
- * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen 
+ * Sudoku-Implementierung auf Basis des Google Webtoolkit
+ * (http://code.google.com/webtoolkit/). Die Lösungsalgorithmen in Java laufen
  * parallel. Die Sudoku-Rätsel werden mittels JDBC in einer Datenbank
  * gespeichert.
- * 
+ *
  * Copyright (C) 2008 Jürgen Dufner
  *
- * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der 
- * GNU General Public License, wie von der Free Software Foundation 
- * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3 
+ * Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+ * GNU General Public License, wie von der Free Software Foundation
+ * veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 3
  * der Lizenz oder (nach Ihrer Option) jeder späteren Version.
  *
- * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen 
- * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die 
- * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN 
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen
+ * von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die
+ * implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
  * BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
  *
- * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem 
+ * Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
@@ -42,7 +42,7 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(SudokuFactoryTest.class);
 
   public void testBuildFilledNeun() {
-    Sudoku sudoku = SudokuFactory.buildFilled(SudokuSize.NEUN);
+    Sudoku sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.NEUN);
     LOG.debug(sudoku.toLongString());
     LOG.debug(sudoku.toShortString());
     assertTrue(sudoku.isValid());
@@ -59,7 +59,7 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
   }
 
   public void testBuildFilledZehn() {
-    Sudoku sudoku = SudokuFactory.buildFilled(SudokuSize.ZEHN);
+    Sudoku sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.ZEHN);
     LOG.debug(sudoku.toLongString());
     LOG.debug(sudoku.toShortString());
     assertTrue(sudoku.isValid());
@@ -77,15 +77,15 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
   }
 
   public void testBuildShuffled() {
-    Sudoku sudoku = SudokuFactory.buildShuffled(SudokuSize.NEUN);
+    Sudoku sudoku = SudokuFactory.INSTANCE.buildShuffled(SudokuSize.NEUN);
     LOG.debug(sudoku);
   }
 
   public void testSudokuStringWithCandidates() {
-    final Sudoku sudoku = SudokuFactory.buildSudoku(Examples.ING_DIBA);
+    final Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.ING_DIBA);
     final String sudokuAsStringWithCandidates = sudoku.toShortStringWithCandidates();
     LOG.debug(sudokuAsStringWithCandidates);
-    final Sudoku sudoku2 = SudokuFactory.buildSudoku(sudokuAsStringWithCandidates);
+    final Sudoku sudoku2 = SudokuFactory.INSTANCE.buildSudoku(sudokuAsStringWithCandidates);
     assertEquals(sudoku, sudoku2);
     assertNotSame(sudoku, sudoku2);
   }

@@ -27,7 +27,6 @@ package de.jdufner.sudoku.context;
 
 import junit.framework.TestCase;
 
-import org.apache.commons.math.random.RandomData;
 import org.apache.log4j.Logger;
 
 /**
@@ -45,14 +44,6 @@ public final class SolverServiceFactoryTest extends TestCase {
     LOG.warn("LLOOGGG__WWAARRNN");
     LOG.error("LLOOGGG__EERROORRRR");
     LOG.fatal("LLOOGGG__FFAATTAALL");
-  }
-
-  public void testRandomData() {
-    RandomData randomData = (RandomData) SolverServiceFactory.INSTANCE.getBean(RandomData.class);
-    int i = randomData.nextInt(1, 100);
-    LOG.debug(i);
-    assertTrue(i >= 1);
-    assertTrue(i <= 100);
   }
 
 }
