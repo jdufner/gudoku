@@ -31,7 +31,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * Implementiert die Logik für <a href="http://www.sudopedia.org/wiki/Hidden_Subset">Hidden Subset
  * http://www.sudopedia.org/wiki/Hidden_Subset</a>.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.2
  * @version $Revision$
  */

@@ -38,7 +38,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
  * Die Logik wird nicht redundant implementiert, sondern aus {@link AbstractHiddenStrategy} und Subklassen
  * wiederverwendet.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.2
  * @version $Revision$
  */

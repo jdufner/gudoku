@@ -30,7 +30,7 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

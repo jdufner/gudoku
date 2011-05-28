@@ -36,7 +36,7 @@ import java.util.TreeSet;
  * Erstellt eine Map in der jedes Literal als Schlüssel dient und als Wert eine Liste der Zellen hat, in welchen das
  * Literal existiert.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

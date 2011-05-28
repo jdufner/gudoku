@@ -31,7 +31,7 @@ import java.util.List;
  * A block represents a unit of m x n cells. It spans about several columns and
  * rown and contains each literal one time.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  * @see <a

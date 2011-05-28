@@ -39,7 +39,7 @@ import de.jdufner.sudoku.common.board.Grid;
  * TODO Muss ich diese Liste selbst schreiben oder kann das javadoc selbst erledigen? Eigentlich gehört das ja nicht in
  * diese Klasse.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

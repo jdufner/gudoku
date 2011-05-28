@@ -41,7 +41,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * dieselbe Lösung anders erzeugt werden kann durch andere Lösungsschritte als auch, dass möglicherweise das Sudoku
  * unterbestimmt ist und weitere Lösungen existieren.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

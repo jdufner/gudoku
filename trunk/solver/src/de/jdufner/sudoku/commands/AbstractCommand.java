@@ -43,7 +43,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * möglich. Setzen einer Zelle, Elemieren einer oder mehrerer Kandidaten. Ein Befehl muss nicht immer erfolgreich sein,
  * das bedeutet, dass die Aktion nicht tatsächlich zu einer Elimination führt oder ein Feld setzt.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

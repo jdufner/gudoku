@@ -35,7 +35,7 @@ import java.util.TreeSet;
  * Das ist eine Erweiterung des Klasse {@link TreeSet} und bietet weitere Methoden an um Elemente aus einem TreeSet,
  * also einer sortierten Menge, zu holen.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  * @param <E>

@@ -36,7 +36,7 @@ import java.util.TreeSet;
 /**
  * A House contains each {@link Literal} one time.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  * @see <a

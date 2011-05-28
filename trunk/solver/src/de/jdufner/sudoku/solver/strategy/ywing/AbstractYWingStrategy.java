@@ -36,7 +36,7 @@ import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 
 /**
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 2010-02-21
  * @version $Revision$
  * 

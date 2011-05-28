@@ -32,7 +32,7 @@ import de.jdufner.sudoku.common.board.Grid;
 /**
  * Der CommandManager führt Befehle ({@link AbstractCommand}) aus oder macht sie rückgängig, wenn möglich.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

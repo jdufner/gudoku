@@ -37,7 +37,7 @@ import de.jdufner.sudoku.common.board.Grid;
  * Führt die <a href="http://www.sudopedia.org/wiki/Hidden_Subset">Hidden Subset</a> Strategie konfigurierbar auf einem
  * <a href="http://www.sudopedia.org/wiki/Box">Block</a> aus.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

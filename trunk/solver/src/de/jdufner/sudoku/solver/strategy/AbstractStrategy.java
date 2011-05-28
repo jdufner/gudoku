@@ -44,7 +44,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * TODO Trotzdem muss ein Interface Strategy eingeführt werden, damit klar wird welche Methoden von außen aufgerufen
  * werden und welche für interne Zwecke da sind.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

@@ -31,7 +31,7 @@ import java.util.Iterator;
 /**
  * Diese Klasse repräsentiert die Kandidaten einer Zelle. Derzeit ist es praktisch nur ein Marker.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  * @param <T>

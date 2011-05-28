@@ -48,11 +48,11 @@ import de.jdufner.sudoku.common.validator.SudokuValidator;
 import de.jdufner.sudoku.context.SolverServiceFactory;
 
 /**
- * Diese Klasse kapselt das Spielfeld mit Zeilen, Spalten und Blöcken.
+ * Diese Klasse kapselt das Spielfeld mit Zeilen, Spalten und Blï¿½cken.
  * 
  * TODO Methode clone() und Interface Cloneable entfernen
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">JÃ¼rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  * @see <a

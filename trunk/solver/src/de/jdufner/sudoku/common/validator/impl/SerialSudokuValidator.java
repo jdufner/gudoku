@@ -31,7 +31,7 @@ import de.jdufner.sudoku.common.validator.SudokuValidator;
 /**
  * Prüft mit einem seriellen Algorithmus ob das Sudoku gültig ist.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

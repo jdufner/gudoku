@@ -37,7 +37,7 @@ import de.jdufner.sudoku.solver.service.ExtendedSolver;
 /**
  * Das Spiel ({@link Game}) ist die zentrale Schnittstelle zur Steuerung des Sudokus.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

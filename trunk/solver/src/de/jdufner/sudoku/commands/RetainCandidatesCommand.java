@@ -40,7 +40,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * Entfernt alle Kandidaten {@link Candidates} von einer Zelle, außer die übergebenen Kandidaten auf der {@link Cell}.
  * Die übergebenen Kandidaten verbleiben in der Zelle.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
