@@ -43,7 +43,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * Setzt einen einzelnen verbleibenden Kandidaten als festen Wert. Diese Strategie wird zur Zeit nicht benötigt, weil
  * das immer beim Entfernen automatisch geprüft und ggf. durchgeführt wird.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 03.04.2010
  * @version $Revision$
  */

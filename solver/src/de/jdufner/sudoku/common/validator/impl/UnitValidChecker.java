@@ -34,7 +34,7 @@ import de.jdufner.sudoku.common.board.House;
 /**
  * Die Klasse prüft ob die übergebenen Einheit gültig sind.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

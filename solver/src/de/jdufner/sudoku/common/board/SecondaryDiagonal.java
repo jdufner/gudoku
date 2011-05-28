@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * Die Nebendiagonale läuft von unten links nach oben rechts.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 2010-01-15
  * @version $Revision$
  */

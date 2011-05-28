@@ -38,7 +38,7 @@ import java.util.Set;
  * {@link StrategyNameEnum#XWING} ausgewählt wurde, ob vorher irgendwelche anderen Lösungstechniken ausprobiert werden
  * müssen.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 2009-11-24
  * @version $Revision$
  */

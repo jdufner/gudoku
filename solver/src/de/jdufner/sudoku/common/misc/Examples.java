@@ -3,7 +3,7 @@ package de.jdufner.sudoku.common.misc;
 /**
  * Diese Klasse erzeugt verschiedene Spielfelder mit unterschiedlichen Schwierigkeitsgraden.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 2009-11-29
  * @version $Revision$
  */

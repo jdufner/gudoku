@@ -39,7 +39,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 /**
  * Entfernt einen oder mehrere {@link Literal} aus der Liste der {@link Candidates}.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

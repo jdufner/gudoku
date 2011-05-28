@@ -4,7 +4,7 @@ package de.jdufner.sudoku.common.board;
 import java.util.List;
 
 /**
- * @author <a href="mailto:juergen@jdufner.de">Jürgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 28.05.2011
  * @see <a
  *      href="http://sudopedia.org/wiki/Line">http://sudopedia.org/wiki/Line</a>

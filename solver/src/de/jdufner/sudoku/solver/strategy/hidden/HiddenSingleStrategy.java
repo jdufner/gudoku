@@ -48,7 +48,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * Wird diese Klasse überhaupt benötigt? Dieser Fall tritt ein, wenn nur ein Kandidat, der in keiner anderen Zelle in
  * derselben Unit vorkommt, existiert.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

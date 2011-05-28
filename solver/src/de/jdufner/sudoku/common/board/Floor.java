@@ -1,0 +1,14 @@
+// $Id$
+package de.jdufner.sudoku.common.board;
+
+/**
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
+ * @since 29.05.2011
+ * @see <a
+ *      href="http://sudopedia.org/wiki/Floor">http://sudopedia.org/wiki/Floor</a>
+ */
+public final class Floor extends Chute {
+
+  // TODO getRows
+
+}

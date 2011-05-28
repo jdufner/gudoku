@@ -38,7 +38,7 @@ import java.util.Set;
  * 
  * @param <T>
  *          Eine Klasse die das Interface {@link Comparable} implementiert.
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */

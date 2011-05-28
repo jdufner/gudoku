@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * A column represents a unit of cells in one column.
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  * @see <a

@@ -18,7 +18,7 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
 
 /**
  * 
- * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
+ * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.2
  * @version $Revision$
  */
