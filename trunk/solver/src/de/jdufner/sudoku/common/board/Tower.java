@@ -10,6 +10,12 @@ package de.jdufner.sudoku.common.board;
  */
 public final class Tower extends Chute {
 
+  @Override
+  protected boolean isUnique() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
   // TODO getColumns
 
 }
