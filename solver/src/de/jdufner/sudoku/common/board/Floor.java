@@ -9,6 +9,12 @@ package de.jdufner.sudoku.common.board;
  */
 public final class Floor extends Chute {
 
+  @Override
+  protected boolean isUnique() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
   // TODO getRows
 
 }

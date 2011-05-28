@@ -14,4 +14,6 @@ public abstract class Chute {
 
   private List<House> houses;
 
+  protected abstract boolean isUnique();
+
 }

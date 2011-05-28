@@ -53,7 +53,6 @@ public final class Cell implements Comparable<Cell> {
   private final transient int rowIndex;
   private final transient int columnIndex;
   private final transient int blockIndex;
-  private transient Integer number;
   private Literal value;
   private Candidates<Literal> candidates = new Candidates<Literal>();
 
