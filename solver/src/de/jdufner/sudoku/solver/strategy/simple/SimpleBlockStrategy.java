@@ -29,10 +29,10 @@ import java.util.Collection;
 import java.util.concurrent.Callable;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Block;
-import de.jdufner.sudoku.common.board.BlockHandler;
+import de.jdufner.sudoku.common.board.Box;
+import de.jdufner.sudoku.common.board.BoxHandler;
 import de.jdufner.sudoku.common.board.HandlerUtil;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
 
 /**
@@ -40,12 +40,12 @@ import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
  * @since 0.1
  * @version $Revision$
  */
-public final class SimpleBlockStrategy extends AbstractSimpleStrategy implements BlockHandler,
+public final class SimpleBlockStrategy extends AbstractSimpleStrategy implements BoxHandler,
     Callable<Collection<Command>> {
 
   // private static final Logger LOG = Logger.getLogger(SimpleBlockStrategy.class);
 
-  public SimpleBlockStrategy(final Sudoku sudoku) {
+  public SimpleBlockStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -60,7 +60,7 @@ public final class SimpleBlockStrategy extends AbstractSimpleStrategy implements
     return getCommands();
   }
 
-  public void handleBlock(final Block block) {
+  public void handleBlock(final Box block) {
     handleUnit(block);
   }
 

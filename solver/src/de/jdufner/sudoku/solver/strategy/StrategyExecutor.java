@@ -34,7 +34,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
 import de.jdufner.sudoku.solver.strategy.backtracking.BacktrackingStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyConfiguration;
@@ -71,12 +71,12 @@ public final class StrategyExecutor {
 
   private static final Logger LOG = Logger.getLogger(StrategyExecutor.class);
 
-  final private transient Sudoku sudoku;
+  final private transient Grid sudoku;
   final private transient StrategyConfiguration configuration;
 
   final private transient List<StrategyResult> result = new ArrayList<StrategyResult>();
 
-  public StrategyExecutor(final Sudoku sudoku, final StrategyConfiguration configuration) {
+  public StrategyExecutor(final Grid sudoku, final StrategyConfiguration configuration) {
     this.sudoku = sudoku;
     this.configuration = configuration;
     // Die folgende Prüfung ist so wichtig, dass ein assert nicht ausreicht.
@@ -174,7 +174,7 @@ public final class StrategyExecutor {
    * @param sudoku
    * @return
    */
-  private Strategy instantiateStrategy(final Class<? extends AbstractStrategy> clazz, final Sudoku sudoku) {
+  private Strategy instantiateStrategy(final Class<? extends AbstractStrategy> clazz, final Grid sudoku) {
     try {
       return instantiateStrategyThrowingExceptions(clazz, sudoku);
     } catch (Exception e) {
@@ -196,10 +196,10 @@ public final class StrategyExecutor {
    * @throws InvocationTargetException
    */
   private AbstractStrategy instantiateStrategyThrowingExceptions(final Class<? extends AbstractStrategy> strategyClass,
-      final Sudoku sudoku) throws SecurityException, NoSuchMethodException, IllegalArgumentException,
+      final Grid sudoku) throws SecurityException, NoSuchMethodException, IllegalArgumentException,
       InstantiationException, IllegalAccessException, InvocationTargetException {
     final Constructor<? extends AbstractStrategy> strategyConstructor = strategyClass
-        .getConstructor(new Class[] { Sudoku.class });
+        .getConstructor(new Class[] { Grid.class });
     final AbstractStrategy strategy = strategyConstructor.newInstance(new Object[] { sudoku });
     if (LOG.isDebugEnabled()) {
       LOG.debug("Strategie " + strategy + " erfolgreicht instanziiert.");
@@ -211,7 +211,7 @@ public final class StrategyExecutor {
     return configuration;
   }
 
-  public Sudoku getSudoku() {
+  public Grid getSudoku() {
     return sudoku;
   }
 

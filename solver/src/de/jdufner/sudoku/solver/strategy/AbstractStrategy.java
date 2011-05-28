@@ -31,7 +31,7 @@ import java.util.HashSet;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.service.StrategySolver;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -52,7 +52,7 @@ public abstract class AbstractStrategy implements Strategy {
 
   private static final Logger LOG = Logger.getLogger(AbstractStrategy.class);
 
-  private final transient Sudoku sudoku;
+  private final transient Grid sudoku;
   private transient Collection<Command> commands = new HashSet<Command>();
 
   /**
@@ -60,12 +60,12 @@ public abstract class AbstractStrategy implements Strategy {
    * 
    * @param sudoku
    */
-  protected AbstractStrategy(final Sudoku sudoku) {
+  protected AbstractStrategy(final Grid sudoku) {
     this.sudoku = sudoku;
     assert sudoku.isValid() : "Das übergebene Sudoku ist in keinem gültigen Zustand!";
   }
 
-  protected Sudoku getSudoku() {
+  protected Grid getSudoku() {
     return sudoku;
   }
 

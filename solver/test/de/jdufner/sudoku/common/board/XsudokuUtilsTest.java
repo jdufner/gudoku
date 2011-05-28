@@ -41,7 +41,7 @@ public final class XsudokuUtilsTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(XsudokuUtilsTest.class);
 
   public void testBuildMainDiagonal() {
-    Sudoku sudoku = SudokuFactory.INSTANCE
+    Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku("1.......2.3.....4...5...6.....7.8.......9.......1.2.....3...4...5.....6.7.......8");
     MainDiagonal mainDiagonal = XsudokuUtils.buildMainDiagonal(sudoku);
     LOG.debug(mainDiagonal);
@@ -50,7 +50,7 @@ public final class XsudokuUtilsTest extends AbstractSolverTestCase {
   }
 
   public void testBuildSecondaryDiagonal() {
-    Sudoku sudoku = SudokuFactory.INSTANCE
+    Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku("1.......2.3.....4...5...6.....7.8.......9.......1.2.....3...4...5.....6.7.......8");
     SecondaryDiagonal secondaryDiagonal = XsudokuUtils.buildSecondaryDiagonal(sudoku);
     LOG.debug(secondaryDiagonal);

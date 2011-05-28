@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.strategy.swordfish;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -39,7 +39,7 @@ public final class SwordFishParallelStrategy extends AbstractParallelStrategy {
 
   // private static final Logger log = Logger.getLogger(SwordFishStrategy.class);
 
-  public SwordFishParallelStrategy(final Sudoku sudoku) {
+  public SwordFishParallelStrategy(final Grid sudoku) {
     super(sudoku);
     getCallables().add(new SwordFishColumnStrategy(sudoku));
     getCallables().add(new SwordFishRowStrategy(sudoku));

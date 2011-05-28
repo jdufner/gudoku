@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.ddt;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.service.Solver;
 
@@ -45,9 +45,9 @@ public final class SudokuSolverTest extends AbstractSolverExcelTestCase {
   private boolean solveable;
 
   public void testStrategySolver() {
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(sudokuAsString);
+    Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(sudokuAsString);
     Solver solver = getStrategySolver();
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     if (LOG.isDebugEnabled()) {
       LOG.debug(result.toString());
     }

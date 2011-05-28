@@ -26,7 +26,7 @@
 package de.jdufner.sudoku.commands;
 
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -47,12 +47,12 @@ public final class UnsetCandidateCommand extends AbstractSingleValueCommand {
   }
 
   @Override
-  public void executeCommand(final Sudoku sudoku) {
+  public void executeCommand(final Grid sudoku) {
     successfully = sudoku.getCell(rowIndex, columnIndex).getCandidates().remove(value);
   }
 
   @Override
-  public void unexecuteCommand(final Sudoku sudoku) {
+  public void unexecuteCommand(final Grid sudoku) {
     sudoku.getCell(rowIndex, columnIndex).getCandidates().add(value);
   }
 
@@ -67,7 +67,7 @@ public final class UnsetCandidateCommand extends AbstractSingleValueCommand {
   }
 
   @Override
-  protected String toString(final Sudoku sudoku) {
+  protected String toString(final Grid sudoku) {
     return getStrategyName() + ": Entferne Kandidat " + value + " aus Zelle " + getCell(sudoku);
   }
 

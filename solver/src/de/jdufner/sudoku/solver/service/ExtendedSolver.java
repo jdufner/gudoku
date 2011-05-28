@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.service;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * Erweiterter Solver, speziell für eine intelligente Lösung, keine Brute Force-Methode.
@@ -51,6 +51,6 @@ public interface ExtendedSolver extends Solver {
    * @param sudoku
    * @return
    */
-  Solution getSolution(Sudoku sudoku);
+  Solution getSolution(Grid sudoku);
 
 }

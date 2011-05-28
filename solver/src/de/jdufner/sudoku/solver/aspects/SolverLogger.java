@@ -29,7 +29,7 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.solver.service.Solution;
 
 /**
@@ -45,14 +45,14 @@ public final class SolverLogger implements MethodInterceptor {
   private static final String NICHT_GELOEST = "nicht gelöst!";
 
   public Object invoke(final MethodInvocation methodInvocation) throws Throwable {
-    final Sudoku sudoku = (Sudoku) methodInvocation.getArguments()[0];
+    final Grid sudoku = (Grid) methodInvocation.getArguments()[0];
     LOG.info(ERGEBNIS + sudoku.toShortString());
     final Object obj = methodInvocation.proceed();
     if (obj instanceof Solution) {
       final Solution solution = (Solution) obj;
       LOG.info(solution);
-    } else if (obj instanceof Sudoku) {
-      final Sudoku result = (Sudoku) obj;
+    } else if (obj instanceof Grid) {
+      final Grid result = (Grid) obj;
       if (result == null) {
         LOG.info(ERGEBNIS + NICHT_GELOEST);
       } else {

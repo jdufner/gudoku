@@ -33,7 +33,7 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-import de.jdufner.sudoku.common.board.BlockUtils;
+import de.jdufner.sudoku.common.board.BoxUtils;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.CellHandler;
 import de.jdufner.sudoku.common.board.SudokuSize;
@@ -74,7 +74,7 @@ public final class PdfCellHandler implements CellHandler {
 
   @Override
   public void initialize() {
-    table = new PdfPTable(getSudokuSize().getUnitSize());
+    table = new PdfPTable(getSudokuSize().getHouseSize());
   }
 
   public PdfPTable getTable() {
@@ -82,7 +82,7 @@ public final class PdfCellHandler implements CellHandler {
   }
 
   private boolean isEvenBlockIndex(final int rowIndex, final int columnIndex) {
-    if (BlockUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, getSudokuSize()) % 2 == 0) {
+    if (BoxUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, getSudokuSize()) % 2 == 0) {
       return true;
     }
     return false;
@@ -108,22 +108,22 @@ public final class PdfCellHandler implements CellHandler {
           Integer.parseInt(getPdfStyle().getProperty("sudoku.board.background.even.color.blue"))));
     }
     cell.setBorderWidth(PdfConstants.RAHMEN_DUENN);
-    if (BlockUtils.isFirstRowInBlock(zeile, getSudokuSize())) {
+    if (BoxUtils.isFirstRowInBlock(zeile, getSudokuSize())) {
       cell.setBorderWidthTop(PdfConstants.RAHMEN_DICK);
     } else {
       cell.setBorderWidthTop(PdfConstants.RAHMEN_DUENN);
     }
-    if (BlockUtils.isLastColumnInRow(spalte, getSudokuSize())) {
+    if (BoxUtils.isLastColumnInRow(spalte, getSudokuSize())) {
       cell.setBorderWidthRight(PdfConstants.RAHMEN_DICK);
     } else {
       cell.setBorderWidthRight(PdfConstants.RAHMEN_DUENN);
     }
-    if (BlockUtils.isLastRowInColumn(zeile, getSudokuSize())) {
+    if (BoxUtils.isLastRowInColumn(zeile, getSudokuSize())) {
       cell.setBorderWidthBottom(PdfConstants.RAHMEN_DICK);
     } else {
       cell.setBorderWidthBottom(PdfConstants.RAHMEN_DUENN);
     }
-    if (BlockUtils.isFirstColumnInBlock(spalte, getSudokuSize())) {
+    if (BoxUtils.isFirstColumnInBlock(spalte, getSudokuSize())) {
       cell.setBorderWidthLeft(PdfConstants.RAHMEN_DICK);
     } else {
       cell.setBorderWidthLeft(PdfConstants.RAHMEN_DUENN);

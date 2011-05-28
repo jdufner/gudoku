@@ -30,7 +30,7 @@ import org.apache.commons.math.stat.inference.TTest;
 import org.apache.commons.math.stat.inference.TTestImpl;
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
 import de.jdufner.sudoku.common.validator.SudokuValidator;
@@ -50,7 +50,7 @@ public final class SudokuPerformanceTest extends AbstractSolverTestCase {
   private static double[] parallelResults = new double[TEST_ITERATIONS];
   private static double[] serialResults = new double[TEST_ITERATIONS];
 
-  private Sudoku sudoku = null;
+  private Grid sudoku = null;
   private SudokuValidator serial = new SerialSudokuValidator();
   private SudokuValidator parallel = new ParallelSudokuValidator();
   private long startTime = 0;

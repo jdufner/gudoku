@@ -42,7 +42,7 @@ import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Literal2CellMap;
 import de.jdufner.sudoku.common.board.Row;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -58,7 +58,7 @@ public final class XWingColumnStrategy extends AbstractStrategy implements Colum
 
   private transient List<List<XWingColumnCandidate>> xWingColumnCandidates;
 
-  public XWingColumnStrategy(final Sudoku sudoku) {
+  public XWingColumnStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

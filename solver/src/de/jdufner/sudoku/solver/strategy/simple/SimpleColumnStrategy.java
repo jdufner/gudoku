@@ -32,7 +32,7 @@ import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.common.board.Column;
 import de.jdufner.sudoku.common.board.ColumnHandler;
 import de.jdufner.sudoku.common.board.HandlerUtil;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -44,7 +44,7 @@ public final class SimpleColumnStrategy extends AbstractSimpleStrategy implement
 
   // private static final Logger LOG = Logger.getLogger(SimpleColumnStrategy.class);
 
-  public SimpleColumnStrategy(final Sudoku sudoku) {
+  public SimpleColumnStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

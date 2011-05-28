@@ -36,8 +36,8 @@ import de.jdufner.sudoku.test.AbstractSolverTestCase;
 public final class CellTest extends AbstractSolverTestCase {
   // private static final Logger log = Logger.getLogger(CellTest.class);
 
-  private Sudoku sudoku9x9;
-  private Sudoku sudoku10x10;
+  private Grid sudoku9x9;
+  private Grid sudoku10x10;
   private Cell cell;
 
   @Override

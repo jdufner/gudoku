@@ -33,7 +33,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * Stellt Funktionen zur Prüfung gleicher Nachbarschaften in einem Sudoku zur Verfügung.
@@ -53,7 +53,7 @@ public final class NachbarschaftUtils {
    *          Das zu prüfende Sudoku.
    * @return <code>true</code>, wenn eine Nachbarschaft maximal 2-mal im Sudoku existiert, sonst <code>false</code>.
    */
-  public static boolean checkNachbarschaft(final Sudoku sudoku) {
+  public static boolean checkNachbarschaft(final Grid sudoku) {
     final int maxAllowedSimilarNeighbors = 6;
     return checkColumnNachbarschaft(sudoku, maxAllowedSimilarNeighbors)
         && checkRowNachbarschaft(sudoku, maxAllowedSimilarNeighbors);
@@ -71,7 +71,7 @@ public final class NachbarschaftUtils {
    * @return <code>true</code>, ein jede existierende Nachbarschaft maximal so häufig wie erlaubt existiert, sonst
    *         <code>false</code>.
    */
-  private static boolean checkColumnNachbarschaft(final Sudoku sudoku, final int maxAllowedSimilarNeighbors) {
+  private static boolean checkColumnNachbarschaft(final Grid sudoku, final int maxAllowedSimilarNeighbors) {
     Map<Nachbarschaft, Integer> column = new HashMap<Nachbarschaft, Integer>();
     for (Cell cell : sudoku.getCells()) {
       Nachbarschaft columnNachbarschaft = new Nachbarschaft(cell, getColumnNachbarschaft(sudoku, cell));
@@ -102,7 +102,7 @@ public final class NachbarschaftUtils {
    * @return <code>true</code>, ein jede existierende Nachbarschaft maximal so häufig wie erlaubt existiert, sonst
    *         <code>false</code>.
    */
-  private static boolean checkRowNachbarschaft(final Sudoku sudoku, final int maxAllowedSimilarNeighbors) {
+  private static boolean checkRowNachbarschaft(final Grid sudoku, final int maxAllowedSimilarNeighbors) {
     Map<Nachbarschaft, Integer> row = new HashMap<Nachbarschaft, Integer>();
     for (Cell cell : sudoku.getCells()) {
       Nachbarschaft rowNachbarschaft = new Nachbarschaft(cell, getRowNachbarschaft(sudoku, cell));
@@ -141,11 +141,11 @@ public final class NachbarschaftUtils {
    *          Die Zelle aus dem Sudoku.
    * @return Eine Sammlung von Nachbar-Zellen.
    */
-  private static Collection<Cell> getRowNachbarschaft(final Sudoku sudoku, final Cell cell) {
-    Collection<Cell> nachbarn = new HashSet<Cell>(sudoku.getSize().getUnitSize() - 1);
+  private static Collection<Cell> getRowNachbarschaft(final Grid sudoku, final Cell cell) {
+    Collection<Cell> nachbarn = new HashSet<Cell>(sudoku.getSize().getHouseSize() - 1);
     int columnIndexIncrementer = 1;
     while (cell.getColumnIndex() + columnIndexIncrementer >= 0
-        && cell.getColumnIndex() + columnIndexIncrementer < sudoku.getSize().getUnitSize()
+        && cell.getColumnIndex() + columnIndexIncrementer < sudoku.getSize().getHouseSize()
         && cell.getBlockIndex() == sudoku.getCell(cell.getRowIndex(), cell.getColumnIndex() + columnIndexIncrementer)
             .getBlockIndex()) {
       nachbarn.add(sudoku.getCell(cell.getRowIndex(), cell.getColumnIndex() + columnIndexIncrementer));
@@ -153,7 +153,7 @@ public final class NachbarschaftUtils {
     }
     int columnIndexDecrementer = 1;
     while (cell.getColumnIndex() - columnIndexDecrementer >= 0
-        && cell.getColumnIndex() - columnIndexDecrementer < sudoku.getSize().getUnitSize()
+        && cell.getColumnIndex() - columnIndexDecrementer < sudoku.getSize().getHouseSize()
         && cell.getBlockIndex() == sudoku.getCell(cell.getRowIndex(), cell.getColumnIndex() - columnIndexDecrementer)
             .getBlockIndex()) {
       nachbarn.add(sudoku.getCell(cell.getRowIndex(), cell.getColumnIndex() - columnIndexDecrementer));
@@ -181,11 +181,11 @@ public final class NachbarschaftUtils {
    *          Die Zelle aus dem Sudoku.
    * @return Eine Sammlung von Nachbar-Zellen.
    */
-  private static Collection<Cell> getColumnNachbarschaft(final Sudoku sudoku, final Cell cell) {
-    Collection<Cell> nachbarn = new HashSet<Cell>(sudoku.getSize().getUnitSize() - 1);
+  private static Collection<Cell> getColumnNachbarschaft(final Grid sudoku, final Cell cell) {
+    Collection<Cell> nachbarn = new HashSet<Cell>(sudoku.getSize().getHouseSize() - 1);
     int rowIndexIncrementer = 1;
     while (cell.getRowIndex() + rowIndexIncrementer >= 0
-        && cell.getRowIndex() + rowIndexIncrementer < sudoku.getSize().getUnitSize()
+        && cell.getRowIndex() + rowIndexIncrementer < sudoku.getSize().getHouseSize()
         && cell.getBlockIndex() == sudoku.getCell(cell.getRowIndex() + rowIndexIncrementer, cell.getColumnIndex())
             .getBlockIndex()) {
       nachbarn.add(sudoku.getCell(cell.getRowIndex() + rowIndexIncrementer, cell.getColumnIndex()));
@@ -193,7 +193,7 @@ public final class NachbarschaftUtils {
     }
     int rowIndexDecrementer = 1;
     while (cell.getRowIndex() - rowIndexDecrementer >= 0
-        && cell.getRowIndex() - rowIndexDecrementer < sudoku.getSize().getUnitSize()
+        && cell.getRowIndex() - rowIndexDecrementer < sudoku.getSize().getHouseSize()
         && cell.getBlockIndex() == sudoku.getCell(cell.getRowIndex() - rowIndexDecrementer, cell.getColumnIndex())
             .getBlockIndex()) {
       nachbarn.add(sudoku.getCell(cell.getRowIndex() - rowIndexDecrementer, cell.getColumnIndex()));

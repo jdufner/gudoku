@@ -27,7 +27,7 @@ package de.jdufner.sudoku.common.cellhandlerimpls;
 
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.CellHandler;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -38,12 +38,12 @@ public final class LongString implements CellHandler {
 
   private static String lineSeparator = System.getProperty("line.separator");
 
-  private final transient Sudoku sudoku;
+  private final transient Grid sudoku;
   private final transient StringBuilder stringBuilder = new StringBuilder();
   private transient int countValues = 0;
   private transient int possibleValues = 0;
 
-  public LongString(final Sudoku sudoku) {
+  public LongString(final Grid sudoku) {
     this.sudoku = sudoku;
   }
 

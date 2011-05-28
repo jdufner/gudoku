@@ -36,43 +36,43 @@ public enum SudokuSize {
 
   public static final SudokuSize DEFAULT = NEUN;
 
-  private final int blockWidth;
+  private final int boxWidth;
 
-  private final int blockHeight;
+  private final int boxHeight;
 
-  private final int unitSize;
+  private final int houseSize;
 
   private final int totalSize;
 
   private final int unitChecksum;
 
   private SudokuSize(final int blockWidth, final int blockHeight) {
-    this.blockWidth = blockWidth;
-    this.blockHeight = blockHeight;
-    this.unitSize = blockWidth * blockHeight;
-    this.totalSize = unitSize * unitSize;
-    this.unitChecksum = (unitSize * (unitSize + 1)) / 2;
+    this.boxWidth = blockWidth;
+    this.boxHeight = blockHeight;
+    this.houseSize = blockWidth * blockHeight;
+    this.totalSize = houseSize * houseSize;
+    this.unitChecksum = (houseSize * (houseSize + 1)) / 2;
   }
 
   /**
    * @return The width of one block.
    */
-  public int getBlockWidth() {
-    return blockWidth;
+  public int getBoxWidth() {
+    return boxWidth;
   }
 
   /**
    * @return The height of one block.
    */
-  public int getBlockHeight() {
-    return blockHeight;
+  public int getBoxHeight() {
+    return boxHeight;
   }
 
   /**
    * @return The number of cells in one unit.
    */
-  public int getUnitSize() {
-    return unitSize;
+  public int getHouseSize() {
+    return houseSize;
   }
 
   /**
@@ -95,7 +95,7 @@ public enum SudokuSize {
    */
   public static SudokuSize getByUnitSize(final int unitSize) {
     for (int i = 0; i < SudokuSize.values().length; i++) {
-      if (SudokuSize.values()[i].unitSize == unitSize) {
+      if (SudokuSize.values()[i].houseSize == unitSize) {
         return SudokuSize.values()[i];
       }
     }
@@ -107,7 +107,7 @@ public enum SudokuSize {
    */
   public Candidates<Literal> initializeCandidates() {
     final Candidates<Literal> candidates = new Candidates<Literal>();
-    for (int i = 1; i <= getUnitSize(); i++) {
+    for (int i = 1; i <= getHouseSize(); i++) {
       candidates.add(Literal.getInstance(i));
     }
     return candidates;

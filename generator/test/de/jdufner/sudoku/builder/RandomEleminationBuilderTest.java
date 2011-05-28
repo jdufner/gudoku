@@ -29,7 +29,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
@@ -54,7 +54,7 @@ public final class RandomEleminationBuilderTest extends AbstractGeneratorTestCas
   }
 
   public void testBuild() throws Exception {
-    Sudoku sudoku = builder.build();
+    Grid sudoku = builder.build();
     assertTrue(sudoku.isValid());
     assertFalse(sudoku.isSolved());
     assertTrue(getStrategySolverWithBacktracking().isUnique(sudoku));
@@ -67,14 +67,14 @@ public final class RandomEleminationBuilderTest extends AbstractGeneratorTestCas
     LOG.debug(map.size() + " Sudokus gefunden.");
     for (Level level : map.keySet()) {
       if (level.equals(Level.SEHR_SCHWER)) {
-        Sudoku result = getStrategySolverWithBacktracking().solve(map.get(level).getQuest());
+        Grid result = getStrategySolverWithBacktracking().solve(map.get(level).getQuest());
         assertTrue(result.isSolved());
         assertTrue(result.isSolvedByCheckSum());
         assertTrue(result.isValid());
         assertNotNull(map.get(level).getLevel());
         assertTrue(Level.UNBEKANNT.compareTo(map.get(level).getLevel()) < 0);
       } else {
-        Sudoku result = getStrategySolverWithBacktracking().solve(map.get(level).getQuest());
+        Grid result = getStrategySolverWithBacktracking().solve(map.get(level).getQuest());
         assertTrue(result.isSolved());
         assertTrue(result.isSolvedByCheckSum());
         assertTrue(result.isValid());

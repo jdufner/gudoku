@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.strategy.naked;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
 
@@ -38,7 +38,7 @@ public abstract class AbstractNakedParallelStrategy extends AbstractParallelStra
 
   //  private static final Logger LOG = Logger.getLogger(AbstractNakedParallelStrategy.class);
 
-  protected AbstractNakedParallelStrategy(final Sudoku sudoku) {
+  protected AbstractNakedParallelStrategy(final Grid sudoku) {
     super(sudoku);
     final NakedBlockStrategy nakedBlockStrategy = new NakedBlockStrategy(sudoku);
     nakedBlockStrategy.setSize(getSize());

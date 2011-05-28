@@ -27,7 +27,7 @@ package de.jdufner.sudoku.common.cellhandlerimpls;
 
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.CellHandler;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * Dieser {@link CellHandler} setzt alle ungesetzten Felder eines Sudokus zurück und entfernt die Kandidaten, die
@@ -43,9 +43,9 @@ import de.jdufner.sudoku.common.board.Sudoku;
 public final class ResetAndRemoveCandidates implements CellHandler {
   // TODO Die besetzten Zellen der Blöcke, Spalten und Zeilen zwischenspeichern.
 
-  private Sudoku sudoku;
+  private Grid sudoku;
 
-  public ResetAndRemoveCandidates(Sudoku sudoku) {
+  public ResetAndRemoveCandidates(Grid sudoku) {
     this.sudoku = sudoku;
   }
 

@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.AbstractCommand;
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.exceptions.SudokuRuntimeException;
 import de.jdufner.sudoku.context.SolverServiceFactory;
 
@@ -28,7 +28,7 @@ public abstract class AbstractParallelStrategy extends AbstractStrategy {
 
   private final Collection<Callable<Collection<Command>>> callables = new ArrayList<Callable<Collection<Command>>>(); // NOPMD by Jürgen on 08.11.09 21:30
 
-  public AbstractParallelStrategy(final Sudoku sudoku) {
+  public AbstractParallelStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

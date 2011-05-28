@@ -28,7 +28,7 @@ package de.jdufner.sudoku;
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.commands.CommandManager;
 import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.context.SolverServiceFactory;
 import de.jdufner.sudoku.file.PropertiesLoader;
@@ -44,8 +44,8 @@ import de.jdufner.sudoku.solver.service.ExtendedSolver;
 public final class Game {
 
   final private int id;
-  final private Sudoku quest;
-  final private Sudoku solution;
+  final private Grid quest;
+  final private Grid solution;
   final private CommandManager commandManager;
 
   public Game(final int id) {
@@ -67,11 +67,11 @@ public final class Game {
     return id;
   }
 
-  public Sudoku getQuest() {
+  public Grid getQuest() {
     return quest;
   }
 
-  public Sudoku getSolution() {
+  public Grid getSolution() {
     return solution;
   }
 

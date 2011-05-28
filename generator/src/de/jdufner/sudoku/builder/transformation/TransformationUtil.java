@@ -34,11 +34,11 @@ import java.util.Random;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.BlockUtils;
+import de.jdufner.sudoku.common.board.BoxUtils;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
-import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.board.House;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 
 /**
@@ -83,14 +83,14 @@ public final class TransformationUtil {
    * @param column2
    * @return Tauscht zwei Spalten innerhalb eines Blocks.
    */
-  static Sudoku swapColumns(Sudoku sudoku, int column1, int column2) {
+  static Grid swapColumns(Grid sudoku, int column1, int column2) {
     assert sudoku.getBlock(0, column1) == sudoku.getBlock(0, column2) : column1 + " und " + column2
         + " sind nicht im selben Quandranten.";
     assert column1 < column2 : column1 + " ist nicht kleiner als " + column2;
     log.debug("Tausche Spalte " + column1 + " und " + column2);
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (j == column1) {
           newSudoku.getCell(i, column2).setValue(sudoku.getCell(i, column1).getValue());
         } else if (j == column2) {
@@ -106,29 +106,29 @@ public final class TransformationUtil {
   }
 
   @ArbitraryTransformation
-  public static Sudoku swapArbitraryColumns(Sudoku sudoku) {
+  public static Grid swapArbitraryColumns(Grid sudoku) {
     int[] twoColumns = getTwoNumbersInOneColumnBlock(sudoku);
     return swapColumns(sudoku, twoColumns[0], twoColumns[1]);
   }
 
-  private static int[] getTwoNumbersInOneColumnBlock(Sudoku sudoku) {
-    int block = random.nextInt(sudoku.getSize().getBlockHeight()) * sudoku.getSize().getBlockWidth();
+  private static int[] getTwoNumbersInOneColumnBlock(Grid sudoku) {
+    int block = random.nextInt(sudoku.getSize().getBoxHeight()) * sudoku.getSize().getBoxWidth();
     int[] numbers = getTwoRandomNumbersByBlockWidth(sudoku);
     return new int[] { block + numbers[0], block + numbers[1] };
   }
 
-  private static int[] getTwoNumbersInOneRowBlock(Sudoku sudoku) {
-    int block = random.nextInt(sudoku.getSize().getBlockWidth()) * sudoku.getSize().getBlockHeight();
+  private static int[] getTwoNumbersInOneRowBlock(Grid sudoku) {
+    int block = random.nextInt(sudoku.getSize().getBoxWidth()) * sudoku.getSize().getBoxHeight();
     int[] numbers = getTwoRandomNumbersByBlockHeight(sudoku);
     return new int[] { block + numbers[0], block + numbers[1] };
   }
 
-  private static int[] getTwoRandomNumbersByBlockWidth(Sudoku sudoku) {
-    return getTwoRandomNumbersBetween(0, sudoku.getSize().getBlockWidth());
+  private static int[] getTwoRandomNumbersByBlockWidth(Grid sudoku) {
+    return getTwoRandomNumbersBetween(0, sudoku.getSize().getBoxWidth());
   }
 
-  private static int[] getTwoRandomNumbersByBlockHeight(Sudoku sudoku) {
-    return getTwoRandomNumbersBetween(0, sudoku.getSize().getBlockHeight());
+  private static int[] getTwoRandomNumbersByBlockHeight(Grid sudoku) {
+    return getTwoRandomNumbersBetween(0, sudoku.getSize().getBoxHeight());
   }
 
   private static int[] getTwoRandomNumbersBetween(int min, int max) {
@@ -156,13 +156,13 @@ public final class TransformationUtil {
     return random.nextInt(max - min) + min;
   }
 
-  static Sudoku swapRows(Sudoku sudoku, int row1, int row2) {
+  static Grid swapRows(Grid sudoku, int row1, int row2) {
     assert sudoku.getBlock(0, row1) == sudoku.getBlock(0, row2);
     assert row1 < row2;
     log.debug("Tausche Zeilen " + row1 + " und " + row2);
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (i == row1) {
           newSudoku.getCell(row2, j).setValue(sudoku.getCell(row1, j).getValue());
         } else if (i == row2) {
@@ -178,23 +178,23 @@ public final class TransformationUtil {
   }
 
   @ArbitraryTransformation
-  public static Sudoku swapArbitraryRows(Sudoku sudoku) {
+  public static Grid swapArbitraryRows(Grid sudoku) {
     int[] twoRows = getTwoNumbersInOneRowBlock(sudoku);
     return swapRows(sudoku, twoRows[0], twoRows[1]);
   }
 
-  static Sudoku swapColumnBlock(Sudoku sudoku, int columnBlock1, int columnBlock2) {
-    assert columnBlock1 >= 0 && columnBlock1 < sudoku.getSize().getBlockHeight();
-    assert columnBlock2 >= 0 && columnBlock2 < sudoku.getSize().getBlockHeight();
+  static Grid swapColumnBlock(Grid sudoku, int columnBlock1, int columnBlock2) {
+    assert columnBlock1 >= 0 && columnBlock1 < sudoku.getSize().getBoxHeight();
+    assert columnBlock2 >= 0 && columnBlock2 < sudoku.getSize().getBoxHeight();
     assert columnBlock1 < columnBlock2;
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (isColumnIndexInBlock(j, sudoku, columnBlock1)) {
-          newSudoku.getCell(i, j + (columnBlock2 - columnBlock1) * sudoku.getSize().getBlockWidth()).setValue(
+          newSudoku.getCell(i, j + (columnBlock2 - columnBlock1) * sudoku.getSize().getBoxWidth()).setValue(
               sudoku.getCell(i, j).getValue());
         } else if (isColumnIndexInBlock(j, sudoku, columnBlock2)) {
-          newSudoku.getCell(i, j - (columnBlock2 - columnBlock1) * sudoku.getSize().getBlockWidth()).setValue(
+          newSudoku.getCell(i, j - (columnBlock2 - columnBlock1) * sudoku.getSize().getBoxWidth()).setValue(
               sudoku.getCell(i, j).getValue());
         } else {
           newSudoku.getCell(i, j).setValue(sudoku.getCell(i, j).getValue());
@@ -207,35 +207,35 @@ public final class TransformationUtil {
   }
 
   @ArbitraryTransformation
-  public static Sudoku swapArbitraryColumnBlocks(Sudoku sudoku) {
+  public static Grid swapArbitraryColumnBlocks(Grid sudoku) {
     int[] twoColumnBlocks = getTwoRandomNumbersByBlockHeight(sudoku);
     return swapColumnBlock(sudoku, twoColumnBlocks[0], twoColumnBlocks[1]);
   }
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku swapSymetricColumnBlocks(Sudoku sudoku) {
-    int block = getRandomNumberBetween(0, (sudoku.getSize().getUnitSize() - 1) / 2);
-    int[] columns = BlockUtils.getColumnsByBlock(block, sudoku.getSize());
-    Sudoku result = sudoku;
+  public static Grid swapSymetricColumnBlocks(Grid sudoku) {
+    int block = getRandomNumberBetween(0, (sudoku.getSize().getHouseSize() - 1) / 2);
+    int[] columns = BoxUtils.getColumnsByBlock(block, sudoku.getSize());
+    Grid result = sudoku;
     for (int i = 0; i < columns.length; i++) {
-      result = swapColumns(result, columns[i], sudoku.getSize().getUnitSize() - columns[i] - 1);
+      result = swapColumns(result, columns[i], sudoku.getSize().getHouseSize() - columns[i] - 1);
     }
     return result;
   }
 
-  static Sudoku swapRowBlock(Sudoku sudoku, int rowBlock1, int rowBlock2) {
-    assert rowBlock1 >= 0 && rowBlock1 < sudoku.getSize().getBlockHeight();
-    assert rowBlock2 >= 0 && rowBlock2 < sudoku.getSize().getBlockHeight();
+  static Grid swapRowBlock(Grid sudoku, int rowBlock1, int rowBlock2) {
+    assert rowBlock1 >= 0 && rowBlock1 < sudoku.getSize().getBoxHeight();
+    assert rowBlock2 >= 0 && rowBlock2 < sudoku.getSize().getBoxHeight();
     assert rowBlock1 < rowBlock2;
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (isRowIndexInBlock(i, sudoku, rowBlock1)) {
-          newSudoku.getCell(i + (rowBlock2 - rowBlock1) * sudoku.getSize().getBlockHeight(), j).setValue(
+          newSudoku.getCell(i + (rowBlock2 - rowBlock1) * sudoku.getSize().getBoxHeight(), j).setValue(
               sudoku.getCell(i, j).getValue());
         } else if (isRowIndexInBlock(i, sudoku, rowBlock2)) {
-          newSudoku.getCell(i - (rowBlock2 - rowBlock1) * sudoku.getSize().getBlockHeight(), j).setValue(
+          newSudoku.getCell(i - (rowBlock2 - rowBlock1) * sudoku.getSize().getBoxHeight(), j).setValue(
               sudoku.getCell(i, j).getValue());
         } else {
           newSudoku.getCell(i, j).setValue(sudoku.getCell(i, j).getValue());
@@ -248,19 +248,19 @@ public final class TransformationUtil {
   }
 
   @ArbitraryTransformation
-  public static Sudoku swapArbitraryRowBlocks(Sudoku sudoku) {
+  public static Grid swapArbitraryRowBlocks(Grid sudoku) {
     int[] twoRowBlocks = getTwoRandomNumbersByBlockWidth(sudoku);
     return swapRowBlock(sudoku, twoRowBlocks[0], twoRowBlocks[1]);
   }
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku swapSymetricRowBlocks(Sudoku sudoku) {
-    int block = getRandomNumberBetween(0, (sudoku.getSize().getUnitSize() - 1) / 2);
-    int[] columns = BlockUtils.getColumnsByBlock(block, sudoku.getSize());
-    Sudoku result = sudoku;
+  public static Grid swapSymetricRowBlocks(Grid sudoku) {
+    int block = getRandomNumberBetween(0, (sudoku.getSize().getHouseSize() - 1) / 2);
+    int[] columns = BoxUtils.getColumnsByBlock(block, sudoku.getSize());
+    Grid result = sudoku;
     for (int i = 0; i < columns.length; i++) {
-      result = swapRows(result, columns[i], sudoku.getSize().getUnitSize() - columns[i] - 1);
+      result = swapRows(result, columns[i], sudoku.getSize().getHouseSize() - columns[i] - 1);
     }
     return result;
   }
@@ -269,12 +269,12 @@ public final class TransformationUtil {
    * @param columnIndex
    *          Spaltenindex
    * @param sudoku
-   *          Ein {@link Sudoku}, das eine Referenz auf eine {@link SudokuSize} hat.
+   *          Ein {@link Grid}, das eine Referenz auf eine {@link SudokuSize} hat.
    * @param block
-   *          Blockindex im Sinne von {@link Unit#getIndex()}
+   *          Blockindex im Sinne von {@link House#getIndex()}
    * @return <code>true</code>, wenn der Spaltenindex im angegebenen Block ist, sonst <code>false</code>.
    */
-  private static boolean isColumnIndexInBlock(int columnIndex, Sudoku sudoku, int block) {
+  private static boolean isColumnIndexInBlock(int columnIndex, Grid sudoku, int block) {
     if (columnIndex >= getSmallestColumnIndexOfBlock(sudoku, block)
         && columnIndex <= getLargestColumnIndexOfBlock(sudoku, block)) {
       return true;
@@ -286,12 +286,12 @@ public final class TransformationUtil {
    * @param rowIndex
    *          Zeilenindex
    * @param sudoku
-   *          Ein {@link Sudoku}, das eine Referenz auf eine {@link SudokuSize} hat.
+   *          Ein {@link Grid}, das eine Referenz auf eine {@link SudokuSize} hat.
    * @param block
-   *          Blockindex im Sinne von {@link Unit#getIndex()}
+   *          Blockindex im Sinne von {@link House#getIndex()}
    * @return <code>true</code>, wenn der Zeilenindex im angegebenen Block ist, sonst <code>false</code>.
    */
-  private static boolean isRowIndexInBlock(int rowIndex, Sudoku sudoku, int block) {
+  private static boolean isRowIndexInBlock(int rowIndex, Grid sudoku, int block) {
     if (rowIndex >= getSmallestRowIndexOfBlock(sudoku, block) && rowIndex <= getLargestRowIndexOfBlock(sudoku, block)) {
       return true;
     }
@@ -303,9 +303,9 @@ public final class TransformationUtil {
    * @param block
    * @return Gibt den kleinsten Spaltenindex eines Blocks zurück.
    */
-  private static int getSmallestColumnIndexOfBlock(Sudoku sudoku, int block) {
-    assert block >= 0 && block < sudoku.getSize().getBlockWidth();
-    return sudoku.getSize().getBlockWidth() * block;
+  private static int getSmallestColumnIndexOfBlock(Grid sudoku, int block) {
+    assert block >= 0 && block < sudoku.getSize().getBoxWidth();
+    return sudoku.getSize().getBoxWidth() * block;
   }
 
   /**
@@ -313,9 +313,9 @@ public final class TransformationUtil {
    * @param block
    * @return Gibt den größten Spaltenindex eines Blocks zurück.
    */
-  private static int getLargestColumnIndexOfBlock(Sudoku sudoku, int block) {
-    assert block >= 0 && block < sudoku.getSize().getBlockWidth();
-    return sudoku.getSize().getBlockWidth() * (block + 1) - 1;
+  private static int getLargestColumnIndexOfBlock(Grid sudoku, int block) {
+    assert block >= 0 && block < sudoku.getSize().getBoxWidth();
+    return sudoku.getSize().getBoxWidth() * (block + 1) - 1;
   }
 
   /**
@@ -323,9 +323,9 @@ public final class TransformationUtil {
    * @param block
    * @return Gibt den kleinsten Zeilenindex eines Blocks zurück.
    */
-  private static int getSmallestRowIndexOfBlock(Sudoku sudoku, int block) {
-    assert block >= 0 && block < sudoku.getSize().getBlockHeight();
-    return sudoku.getSize().getBlockHeight() * block;
+  private static int getSmallestRowIndexOfBlock(Grid sudoku, int block) {
+    assert block >= 0 && block < sudoku.getSize().getBoxHeight();
+    return sudoku.getSize().getBoxHeight() * block;
   }
 
   /**
@@ -333,18 +333,18 @@ public final class TransformationUtil {
    * @param block
    * @return Gibt den größten Zeilenindex eines Blocks zurück.
    */
-  private static int getLargestRowIndexOfBlock(Sudoku sudoku, int block) {
-    assert block >= 0 && block < sudoku.getSize().getBlockHeight();
-    return sudoku.getSize().getBlockHeight() * (block + 1) - 1;
+  private static int getLargestRowIndexOfBlock(Grid sudoku, int block) {
+    assert block >= 0 && block < sudoku.getSize().getBoxHeight();
+    return sudoku.getSize().getBoxHeight() * (block + 1) - 1;
   }
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku rotateBlockClockwise(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
-        newSudoku.getCell(j, sudoku.getSize().getUnitSize() - i - 1).setValue(sudoku.getCell(i, j).getValue());
+  public static Grid rotateBlockClockwise(Grid sudoku) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
+        newSudoku.getCell(j, sudoku.getSize().getHouseSize() - i - 1).setValue(sudoku.getCell(i, j).getValue());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -354,11 +354,11 @@ public final class TransformationUtil {
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku rotateBlockCounterClockwise(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
-        newSudoku.getCell(sudoku.getSize().getUnitSize() - j - 1, i).setValue(sudoku.getCell(i, j).getValue());
+  public static Grid rotateBlockCounterClockwise(Grid sudoku) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
+        newSudoku.getCell(sudoku.getSize().getHouseSize() - j - 1, i).setValue(sudoku.getCell(i, j).getValue());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -368,11 +368,11 @@ public final class TransformationUtil {
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku rotateHalfClockwise(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
-        newSudoku.getCell(sudoku.getSize().getUnitSize() - i - 1, sudoku.getSize().getUnitSize() - j - 1).setValue(
+  public static Grid rotateHalfClockwise(Grid sudoku) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
+        newSudoku.getCell(sudoku.getSize().getHouseSize() - i - 1, sudoku.getSize().getHouseSize() - j - 1).setValue(
             sudoku.getCell(i, j).getValue());
       }
     }
@@ -383,11 +383,11 @@ public final class TransformationUtil {
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku mirrorVertically(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
-        newSudoku.getCell(i, sudoku.getSize().getUnitSize() - j - 1).setValue(sudoku.getCell(i, j).getValue());
+  public static Grid mirrorVertically(Grid sudoku) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
+        newSudoku.getCell(i, sudoku.getSize().getHouseSize() - j - 1).setValue(sudoku.getCell(i, j).getValue());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -397,11 +397,11 @@ public final class TransformationUtil {
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku mirrorHorizontally(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
-        newSudoku.getCell(sudoku.getSize().getUnitSize() - i - 1, j).setValue(sudoku.getCell(i, j).getValue());
+  public static Grid mirrorHorizontally(Grid sudoku) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
+        newSudoku.getCell(sudoku.getSize().getHouseSize() - i - 1, j).setValue(sudoku.getCell(i, j).getValue());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -411,11 +411,11 @@ public final class TransformationUtil {
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku mirrorDiagonally(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
-        newSudoku.getCell(sudoku.getSize().getUnitSize() - j - 1, sudoku.getSize().getUnitSize() - i - 1).setValue(
+  public static Grid mirrorDiagonally(Grid sudoku) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
+        newSudoku.getCell(sudoku.getSize().getHouseSize() - j - 1, sudoku.getSize().getHouseSize() - i - 1).setValue(
             sudoku.getCell(i, j).getValue());
       }
     }
@@ -426,10 +426,10 @@ public final class TransformationUtil {
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku mirrorCounterDiagonally(Sudoku sudoku) {
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
+  public static Grid mirrorCounterDiagonally(Grid sudoku) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         newSudoku.getCell(j, i).setValue(sudoku.getCell(i, j).getValue());
       }
     }
@@ -440,19 +440,19 @@ public final class TransformationUtil {
 
   @ArbitraryTransformation
   @SymetricTransformation
-  public static Sudoku swapValues(Sudoku sudoku) {
-    int randomNumber[] = getTwoRandomNumbersBetween(1, sudoku.getSize().getUnitSize());
-    assert randomNumber[0] >= 1 && randomNumber[0] <= sudoku.getSize().getUnitSize();
+  public static Grid swapValues(Grid sudoku) {
+    int randomNumber[] = getTwoRandomNumbersBetween(1, sudoku.getSize().getHouseSize());
+    assert randomNumber[0] >= 1 && randomNumber[0] <= sudoku.getSize().getHouseSize();
     Literal l1 = Literal.getInstance(randomNumber[0]);
-    assert randomNumber[1] >= 1 && randomNumber[1] <= sudoku.getSize().getUnitSize();
+    assert randomNumber[1] >= 1 && randomNumber[1] <= sudoku.getSize().getHouseSize();
     Literal l2 = Literal.getInstance(randomNumber[1]);
     return swapValues(sudoku, l1, l2);
   }
 
-  private static Sudoku swapValues(Sudoku sudoku, Literal l1, Literal l2) {
-    Sudoku newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
+  private static Grid swapValues(Grid sudoku, Literal l1, Literal l2) {
+    Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (sudoku.getCell(i, j).getValue().equals(l1)) {
           newSudoku.getCell(i, j).setValue(l2);
         } else if (sudoku.getCell(i, j).getValue().equals(l2)) {
@@ -467,14 +467,14 @@ public final class TransformationUtil {
     return newSudoku;
   }
 
-  public static Sudoku arbitraryTransformation(Sudoku sudoku) {
+  public static Grid arbitraryTransformation(Grid sudoku) {
     int methodNumber = 0;
     Method arbitraryTransformation = null;
     try {
       methodNumber = getRandomNumberBetween(0, transformationMethods.size());
       arbitraryTransformation = transformationMethods.get(methodNumber);
       log.debug("Führe beliebige Transformation aus: " + arbitraryTransformation.getName());
-      return (Sudoku) arbitraryTransformation.invoke(null, new Object[] { sudoku });
+      return (Grid) arbitraryTransformation.invoke(null, new Object[] { sudoku });
     } catch (IllegalAccessException iae) {
       log.error(iae.getMessage() + " methodNumber=" + methodNumber + ", arbitraryTransformation="
           + arbitraryTransformation, iae);
@@ -487,8 +487,8 @@ public final class TransformationUtil {
     return null;
   }
 
-  public static Sudoku arbitraryTransformation(Sudoku sudoku, int numberTransformation) {
-    Sudoku newSudoku = sudoku;
+  public static Grid arbitraryTransformation(Grid sudoku, int numberTransformation) {
+    Grid newSudoku = sudoku;
     for (int i = 0; i < numberTransformation; i++) {
       newSudoku = arbitraryTransformation(newSudoku);
     }

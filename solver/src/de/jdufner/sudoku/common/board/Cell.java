@@ -33,13 +33,16 @@ import java.util.Random;
 import org.apache.log4j.Logger;
 
 /**
- * A cell is a field at the sudoku board. It has either a fixed value or a list of at least two candidates. A cell has
- * two coordinates: row index, column index. Each cell has a unique pair of row and cell index. Out of the row and
+ * A cell is a field at the sudoku board. It has either a fixed value or a list
+ * of at least two candidates. A cell has two coordinates: row index, column
+ * index. Each cell has a unique pair of row and cell index. Out of the row and
  * column index it is possible to compute the block index.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see <a
+ *      href="http://sudopedia.org/wiki/Cell">http://sudopedia.org/wiki/Cell</a>
  */
 public final class Cell implements Comparable<Cell> {
 
@@ -57,7 +60,7 @@ public final class Cell implements Comparable<Cell> {
   public Cell(final int rowIndex, final int columnIndex, final Literal value, final SudokuSize sudokuSize) {
     this.rowIndex = rowIndex;
     this.columnIndex = columnIndex;
-    this.blockIndex = BlockUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, sudokuSize);
+    this.blockIndex = BoxUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, sudokuSize);
     this.sudokuSize = sudokuSize;
     setValue(value, false);
   }
@@ -74,13 +77,13 @@ public final class Cell implements Comparable<Cell> {
   public Cell(final int number, final Literal value, final List<Literal> candidates, final SudokuSize sudokuSize) {
     this.rowIndex = CellUtils.getRowIndex(number, sudokuSize);
     this.columnIndex = CellUtils.getColumnIndex(number, sudokuSize);
-    this.blockIndex = BlockUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, sudokuSize);
+    this.blockIndex = BoxUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, sudokuSize);
     this.sudokuSize = sudokuSize;
     if (value == null) {
-      //      if (candidates != null && candidates.length > 0) {
+      // if (candidates != null && candidates.length > 0) {
       setValue(Literal.EMPTY, false);
       setCandidates(new Candidates<Literal>(candidates));
-      //      }
+      // }
     } else {
       setValue(value, false);
     }
@@ -143,9 +146,9 @@ public final class Cell implements Comparable<Cell> {
   public void setValue(final Literal value, final boolean isInitialized) {
     assert value != null : "Value in Cell.setValue() is null.";
     assert value.getValue() >= 0 : value + " is lower or equals than 0.";
-    assert value.getValue() <= sudokuSize.getUnitSize() : value + " is greater or equals than "
-        + sudokuSize.getUnitSize();
-    //assert isAllowed(value) : value + " is " + this + " not allowed!";
+    assert value.getValue() <= sudokuSize.getHouseSize() : value + " is greater or equals than "
+        + sudokuSize.getHouseSize();
+    // assert isAllowed(value) : value + " is " + this + " not allowed!";
     if (value == null) {
       LOG.warn("Tried to set " + value + " (null)");
     }
@@ -153,12 +156,12 @@ public final class Cell implements Comparable<Cell> {
       LOG.debug("Set " + value + " to " + this);
     }
     this.value = value;
-    //    sudoku.setNumberOfFixedDirty(true);
+    // sudoku.setNumberOfFixedDirty(true);
     if (value.equals(Literal.EMPTY)) {
       resetCandidates();
     } else {
       if (candidates == null) {
-        candidates = new Candidates<Literal>(sudokuSize.getUnitSize());
+        candidates = new Candidates<Literal>(sudokuSize.getHouseSize());
       } else {
         candidates.clear();
       }
@@ -183,8 +186,8 @@ public final class Cell implements Comparable<Cell> {
   }
 
   /**
-   * @return <code>true</code> if either is fixed and has no candidates or is not fixed and has candidates, else
-   *         <code>false</code>
+   * @return <code>true</code> if either is fixed and has no candidates or is
+   *         not fixed and has candidates, else <code>false</code>
    */
   public boolean isValid() {
     return (isFixed() && getCandidates().size() <= 0) || (!isFixed() && getCandidates().size() > 0);
@@ -251,13 +254,13 @@ public final class Cell implements Comparable<Cell> {
    * Resets the candidates by inserting all literals in the list of candidates.
    */
   public void resetCandidates() {
-    if (value.getValue() <= 0 || value.getValue() > sudokuSize.getUnitSize()) {
+    if (value.getValue() <= 0 || value.getValue() > sudokuSize.getHouseSize()) {
       if (candidates == null) {
-        candidates = new Candidates<Literal>(sudokuSize.getUnitSize());
+        candidates = new Candidates<Literal>(sudokuSize.getHouseSize());
       } else {
         candidates.clear();
       }
-      for (int i = 0; i < sudokuSize.getUnitSize(); i++) {
+      for (int i = 0; i < sudokuSize.getHouseSize(); i++) {
         candidates.add(Literal.getInstance(i + 1));
       }
     }
@@ -277,15 +280,16 @@ public final class Cell implements Comparable<Cell> {
   }
 
   /**
-   * @return <code>true</code>, genau dann wenn dieses Cell in der ersten Hälfte einschließlich des mittleren Felds ist,
-   *         sonst <code>false</code>.
+   * @return <code>true</code>, genau dann wenn dieses Cell in der ersten Hälfte
+   *         einschließlich des mittleren Felds ist, sonst <code>false</code>.
    */
   public boolean isInFirstHalf() {
     return getNumber() <= sudokuSize.getTotalSize() / 2;
   }
 
   /**
-   * @return <code>true</code>, wenn die Zelle die letzte Zelle im Sudoku ist, sonst <code>false</code>.
+   * @return <code>true</code>, wenn die Zelle die letzte Zelle im Sudoku ist,
+   *         sonst <code>false</code>.
    */
   public boolean isLastField() {
     if (getNumber() >= sudokuSize.getTotalSize() - 1) {
@@ -307,28 +311,28 @@ public final class Cell implements Comparable<Cell> {
   }
 
   public boolean isTop() {
-    if (getRowIndex() % sudokuSize.getBlockHeight() == 0) {
+    if (getRowIndex() % sudokuSize.getBoxHeight() == 0) {
       return true;
     }
     return false;
   }
 
   public boolean isRight() {
-    if (getColumnIndex() % sudokuSize.getBlockWidth() == sudokuSize.getBlockWidth() - 1) {
+    if (getColumnIndex() % sudokuSize.getBoxWidth() == sudokuSize.getBoxWidth() - 1) {
       return true;
     }
     return false;
   }
 
   public boolean isBottom() {
-    if (getRowIndex() % sudokuSize.getBlockHeight() == sudokuSize.getBlockHeight() - 1) {
+    if (getRowIndex() % sudokuSize.getBoxHeight() == sudokuSize.getBoxHeight() - 1) {
       return true;
     }
     return false;
   }
 
   public boolean isLeft() {
-    if (getColumnIndex() % sudokuSize.getBlockWidth() == 0) {
+    if (getColumnIndex() % sudokuSize.getBoxWidth() == 0) {
       return true;
     }
     return false;

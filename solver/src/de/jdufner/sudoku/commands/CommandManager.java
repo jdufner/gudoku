@@ -27,7 +27,7 @@ package de.jdufner.sudoku.commands;
 
 import java.util.Stack;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * Der CommandManager führt Befehle ({@link AbstractCommand}) aus oder macht sie rückgängig, wenn möglich.
@@ -51,10 +51,10 @@ public class CommandManager {
    * Führt den nächsten Befehl aus.
    * 
    * @param sudoku
-   *          Das {@link Sudoku}, auf dem der Befehl ({@link AbstractCommand}) auszuführen ist.
+   *          Das {@link Grid}, auf dem der Befehl ({@link AbstractCommand}) auszuführen ist.
    * @return Der oberste Befehl ({@link AbstractCommand}) auf dem Stapel.
    */
-  public Command redoCommand(final Sudoku sudoku) {
+  public Command redoCommand(final Grid sudoku) {
     Command command = null;
     if (isRedoPossible()) {
       command = nextCommands.pop();
@@ -76,10 +76,10 @@ public class CommandManager {
    * Macht den letzten Befehl ({@link AbstractCommand})rückgängig.
    * 
    * @param sudoku
-   *          Das {@link Sudoku}, auf dem der Befehl ({@link AbstractCommand}) rückgängig gemacht werden soll.
+   *          Das {@link Grid}, auf dem der Befehl ({@link AbstractCommand}) rückgängig gemacht werden soll.
    * @return Der der letzte Befehl ({@link AbstractCommand}), der rückgängig zu machen ist.
    */
-  public Command undoCommand(final Sudoku sudoku) {
+  public Command undoCommand(final Grid sudoku) {
     Command command = null;
     if (isUndoPossible()) {
       command = previousCommands.pop();
@@ -101,7 +101,7 @@ public class CommandManager {
    * @param sudoku
    * @param command
    */
-  public void doCommand(final Sudoku sudoku, final Command command) {
+  public void doCommand(final Grid sudoku, final Command command) {
     command.execute(sudoku);
     previousCommands.push(command);
     nextCommands.clear();

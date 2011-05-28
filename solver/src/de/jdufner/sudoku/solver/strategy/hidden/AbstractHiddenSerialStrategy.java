@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.strategy.hidden;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractSerialStrategy;
 
@@ -46,7 +46,7 @@ public abstract class AbstractHiddenSerialStrategy extends AbstractSerialStrateg
 
   private static final Logger LOG = Logger.getLogger(AbstractHiddenSerialStrategy.class);
 
-  protected AbstractHiddenSerialStrategy(final Sudoku sudoku) {
+  protected AbstractHiddenSerialStrategy(final Grid sudoku) {
     super(sudoku);
     final HiddenBlockStrategy hiddenBlockStrategy = new HiddenBlockStrategy(sudoku);
     hiddenBlockStrategy.setSize(getSize());

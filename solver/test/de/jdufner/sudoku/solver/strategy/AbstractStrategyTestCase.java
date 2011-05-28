@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.commands.CommandUtils;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
@@ -45,7 +45,7 @@ public abstract class AbstractStrategyTestCase extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(AbstractStrategyTestCase.class);
 
-  protected transient Sudoku sudoku;
+  protected transient Grid sudoku;
   protected transient Strategy strategy;
 
   @Override

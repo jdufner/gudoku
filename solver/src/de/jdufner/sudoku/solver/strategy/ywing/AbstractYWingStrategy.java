@@ -30,8 +30,8 @@ import java.util.Collection;
 
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.board.Grid;
+import de.jdufner.sudoku.common.board.House;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 
 /**
@@ -43,11 +43,11 @@ import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
  */
 public abstract class AbstractYWingStrategy extends AbstractStrategy {
 
-  public AbstractYWingStrategy(final Sudoku sudoku) {
+  public AbstractYWingStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
-  private Collection<Cell> findCellsByCandidates(final Collection<Literal> searchCandidates, final Unit unit) {
+  private Collection<Cell> findCellsByCandidates(final Collection<Literal> searchCandidates, final House unit) {
     final Collection<Cell> foundCells = new ArrayList<Cell>();
     for (Cell cell : unit.getNonFixed(searchCandidates.size())) {
       if (cell.getCandidates().containsAll(searchCandidates)) {

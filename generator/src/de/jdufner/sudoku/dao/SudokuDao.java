@@ -29,7 +29,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.service.Solution;
@@ -88,7 +88,7 @@ public interface SudokuDao {
    * 
    * @return Gibt das aktuellste Sudoku zurück.
    */
-  Sudoku loadSudokuOfDay();
+  Grid loadSudokuOfDay();
 
   /**
    * Speichert das übergebene Sudoku samt einiger Kennzahlen.

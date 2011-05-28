@@ -27,7 +27,7 @@ package de.jdufner.sudoku.common.cellhandlerimpls;
 
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.CellHandler;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 
 /**
@@ -40,7 +40,7 @@ public final class ShortString implements CellHandler {
   private final transient SudokuSize groesse;
   private transient StringBuilder stringBuilder = null;
 
-  public ShortString(final Sudoku sudoku) {
+  public ShortString(final Grid sudoku) {
     groesse = sudoku.getSize();
   }
 
@@ -59,7 +59,7 @@ public final class ShortString implements CellHandler {
       }
     } else {
       stringBuilder.append(cell.getValue().getValue());
-      if (!(cell.getRowIndex() >= groesse.getUnitSize() - 1 && cell.getColumnIndex() >= groesse.getUnitSize() - 1)) {
+      if (!(cell.getRowIndex() >= groesse.getHouseSize() - 1 && cell.getColumnIndex() >= groesse.getHouseSize() - 1)) {
         stringBuilder.append(',');
       }
     }

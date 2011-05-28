@@ -38,13 +38,13 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 
 /**
- * Das ist die persistente Repräsentation eines Sudokus. Diese Klasse enthält das {@link Sudoku} als {@link String},
+ * Das ist die persistente Repräsentation eines Sudokus. Diese Klasse enthält das {@link Grid} als {@link String},
  * welches mittels {@link SudokuFactory} erzeugt werden muss. Aus Gründen der Übersichtlichkeit ist die Persistenz von
- * der Klasse {@link Sudoku} getrennt.
+ * der Klasse {@link Grid} getrennt.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1

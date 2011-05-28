@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.strategy;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
 import de.jdufner.sudoku.solver.service.Solution;
@@ -58,9 +58,9 @@ public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
         "3,0,0,1,9,0,0,0,0," + //
         "0,4,1,0,0,0,6,0,0," + //
         "0,9,2,0,0,0,5,0,0"; //
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
+    Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     Solver solver = new StrategySolver();
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result.toString());
     assertTrue(result.isSolved());
   }
@@ -76,9 +76,9 @@ public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
         "0,0,0,0,0,0,0,1,0," + //
         "7,0,0,0,6,3,8,9,2," + //
         "0,2,0,0,0,0,4,0,0"; //
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
+    Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     Solver solver = new StrategySolver();
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result.toString());
     assertTrue(result.isSolved());
   }
@@ -94,18 +94,18 @@ public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
         "8,0,0,0,0,7,0,0,0," + //
         "0,1,0,0,4,0,0,0,6," + //
         "0,0,0,3,0,0,5,0,0"; //
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
+    Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     Solver solver = null;
 
     // ohne Backtracking
     solver = getStrategySolver();
-    Sudoku result1 = solver.solve(sudoku);
+    Grid result1 = solver.solve(sudoku);
     LOG.debug(result1.toString());
     assertTrue(result1.isSolved());
 
     // mit Backtracking
     solver = getStrategySolver();
-    Sudoku result2 = solver.solve(sudoku);
+    Grid result2 = solver.solve(sudoku);
     LOG.debug(result2.toString());
     assertTrue(result2.isSolved());
   }
@@ -121,7 +121,7 @@ public final class HandelsblattSudokuTest extends AbstractSolverTestCase {
         "8,0,0,0,0,7,0,0,0," + //
         "0,1,0,0,4,0,0,0,6," + //
         "0,0,0,3,0,0,5,0,0"; //
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
+    Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     ExtendedSolver extendedSolver = getStrategySolver();
     Solution solution = extendedSolver.getSolution(sudoku);
     LOG.debug(solution.toString());

@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.strategy.simple;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -39,7 +39,7 @@ public final class SimpleParallelStrategy extends AbstractParallelStrategy {
 
   //  private static final Logger LOG = Logger.getLogger(SimpleParallelStrategy.class);
 
-  public SimpleParallelStrategy(final Sudoku sudoku) {
+  public SimpleParallelStrategy(final Grid sudoku) {
     super(sudoku);
     getCallables().add(new SimpleBlockStrategy(sudoku));
     getCallables().add(new SimpleColumnStrategy(sudoku));

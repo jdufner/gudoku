@@ -34,7 +34,7 @@ import java.util.List;
  * @since 2010-01-15
  * @version $Revision$
  */
-public final class MainDiagonal extends Unit {
+public final class MainDiagonal extends House {
 
   public MainDiagonal(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
     super(sudokuSize, index, cells);

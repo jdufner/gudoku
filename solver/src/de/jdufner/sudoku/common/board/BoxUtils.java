@@ -29,22 +29,24 @@ package de.jdufner.sudoku.common.board;
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see Box
  */
-public final class BlockUtils {
+public final class BoxUtils {
 
-  private BlockUtils() {
+  private BoxUtils() {
   }
 
   public static int[] getColumnsByBlock(final int block, final SudokuSize sudokuSize) {
-    int[] columns = new int[sudokuSize.getBlockWidth()];
-    for (int i = 0; i < sudokuSize.getBlockWidth(); i++) {
-      columns[i] = block * sudokuSize.getBlockWidth() + i;
+    int[] columns = new int[sudokuSize.getBoxWidth()];
+    for (int i = 0; i < sudokuSize.getBoxWidth(); i++) {
+      columns[i] = block * sudokuSize.getBoxWidth() + i;
     }
     return columns;
   }
 
   /**
-   * Liefert den Blockindex zu einer Zelle (genauer Zeilen- und Spaltenindex) in Abhängigkeit der Größe zurück.
+   * Liefert den Blockindex zu einer Zelle (genauer Zeilen- und Spaltenindex) in
+   * Abhängigkeit der Größe zurück.
    * 
    * @param rowIndex
    * @param columnIndex
@@ -53,33 +55,33 @@ public final class BlockUtils {
    */
   public static int getBlockIndexByRowIndexAndColumnIndex(final int rowIndex, final int columnIndex,
       final SudokuSize sudokuSize) {
-    return (rowIndex / sudokuSize.getBlockHeight()) * sudokuSize.getBlockHeight()
-        + (columnIndex / sudokuSize.getBlockWidth());
+    return (rowIndex / sudokuSize.getBoxHeight()) * sudokuSize.getBoxHeight()
+        + (columnIndex / sudokuSize.getBoxWidth());
   }
 
   public static boolean isFirstColumnInBlock(final int columnIndex, final SudokuSize sudokuSize) {
-    if (columnIndex % sudokuSize.getBlockWidth() == 0) {
+    if (columnIndex % sudokuSize.getBoxWidth() == 0) {
       return true;
     }
     return false;
   }
 
   public static boolean isFirstRowInBlock(final int rowIndex, final SudokuSize sudokuSize) {
-    if (rowIndex % sudokuSize.getBlockHeight() == 0) {
+    if (rowIndex % sudokuSize.getBoxHeight() == 0) {
       return true;
     }
     return false;
   }
 
   public static boolean isLastColumnInRow(final int columnIndex, final SudokuSize sudokuSize) {
-    if (columnIndex == sudokuSize.getUnitSize() - 1) {
+    if (columnIndex == sudokuSize.getHouseSize() - 1) {
       return true;
     }
     return false;
   }
 
   public static boolean isLastRowInColumn(final int rowIndex, final SudokuSize sudokuSize) {
-    if (rowIndex == sudokuSize.getUnitSize() - 1) {
+    if (rowIndex == sudokuSize.getHouseSize() - 1) {
       return true;
     }
     return false;

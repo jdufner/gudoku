@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * 
@@ -43,7 +43,7 @@ public abstract class AbstractSerialStrategy extends AbstractStrategy {
 
   private final transient Collection<AbstractStrategy> strategies = new ArrayList<AbstractStrategy>();
 
-  public AbstractSerialStrategy(final Sudoku sudoku) {
+  public AbstractSerialStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

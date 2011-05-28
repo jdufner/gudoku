@@ -45,7 +45,7 @@ import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Literal2CellMap;
 import de.jdufner.sudoku.common.board.Row;
 import de.jdufner.sudoku.common.board.RowHandler;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.collections.Kombination;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
@@ -62,7 +62,7 @@ public final class SwordFishRowStrategy extends AbstractStrategy implements RowH
 
   private final transient Map<Literal, List<SwordFishRowCandidate>> literal2SwordFishRowCandidates = new HashMap<Literal, List<SwordFishRowCandidate>>();
 
-  public SwordFishRowStrategy(final Sudoku sudoku) {
+  public SwordFishRowStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

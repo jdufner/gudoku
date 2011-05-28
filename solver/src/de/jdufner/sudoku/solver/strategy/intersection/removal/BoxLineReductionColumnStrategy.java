@@ -32,14 +32,14 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
-import de.jdufner.sudoku.common.board.Block;
+import de.jdufner.sudoku.common.board.Box;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Column;
 import de.jdufner.sudoku.common.board.ColumnHandler;
 import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Literal2CellMap;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -51,7 +51,7 @@ public final class BoxLineReductionColumnStrategy extends AbstractBoxLineReducti
     Callable<Collection<Command>> {
   private static final Logger LOG = Logger.getLogger(BoxLineReductionColumnStrategy.class);
 
-  public BoxLineReductionColumnStrategy(final Sudoku sudoku) {
+  public BoxLineReductionColumnStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -66,7 +66,7 @@ public final class BoxLineReductionColumnStrategy extends AbstractBoxLineReducti
     for (Literal testCandidate : column.getCandidates()) {
       if (literal2CellMapColumn.getCellsContainingLiteral(testCandidate).size() > 1
           && literal2CellMapColumn.getCellsContainingLiteral(testCandidate).size() <= getSudoku().getSize()
-              .getBlockHeight()) {
+              .getBoxHeight()) {
         if (areCellsInSameBlock(literal2CellMapColumn.getCellsContainingLiteral(testCandidate))) {
           if (LOG.isDebugEnabled()) {
             LOG.debug("Found candidate "
@@ -89,7 +89,7 @@ public final class BoxLineReductionColumnStrategy extends AbstractBoxLineReducti
     return executeStrategy();
   }
 
-  private void removeCandidateInBlockExceptInColumn(final Literal testCandidate, final Block block, final Column column) {
+  private void removeCandidateInBlockExceptInColumn(final Literal testCandidate, final Box block, final Column column) {
     for (Cell cell : block.getNonFixed()) {
       if (!getSudoku().getColumn(cell.getColumnIndex()).equals(column) && cell.getCandidates().contains(testCandidate)) {
         getCommands().add(

@@ -26,26 +26,25 @@
 package de.jdufner.sudoku.common.board;
 
 /**
- * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2010-03-10
  * @version $Revision$
+ * @see Cell
  */
 public final class CellUtils {
 
   private CellUtils() {
-
   }
 
   public static int getRowIndex(final int number, final SudokuSize sudokuSize) {
-    return number / sudokuSize.getUnitSize();
+    return number / sudokuSize.getHouseSize();
   }
 
   public static int getColumnIndex(final int number, final SudokuSize sudokuSize) {
-    return number % sudokuSize.getUnitSize();
+    return number % sudokuSize.getHouseSize();
   }
 
   public static int getNumber(final int rowIndex, final int columnIndex, final SudokuSize sudokuSize) {
-    return rowIndex * sudokuSize.getUnitSize() + columnIndex;
+    return rowIndex * sudokuSize.getHouseSize() + columnIndex;
   }
 }

@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.strategy;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.service.Solver;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
@@ -46,26 +46,26 @@ public class FixNpeStrategyTest extends AbstractSolverTestCase {
   }
 
   public void testFirstSolution1() {
-    Sudoku sudoku = SudokuFactory.INSTANCE
+    Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:0,2,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,3,0,7,4,0,8,0,0,0,0,0,0,0,0,0,3,0,0,2,0,8,0,0,4,0,0,1,0,6,0,0,5,0,0,0,0,0,0,0,0,0,1,0,7,8,0,5,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,4,0");
     Solver solver = getStrategySolver();
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result);
   }
 
   public void testFirstSolution2() {
-    Sudoku sudoku = SudokuFactory.INSTANCE
+    Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:0,0,0,0,0,9,7,0,0,0,1,0,0,0,0,9,0,0,4,0,0,0,5,3,0,2,0,0,0,0,0,0,7,0,0,0,0,3,0,0,0,0,0,4,0,0,0,0,8,0,0,0,0,0,0,6,0,4,1,0,0,0,2,0,0,9,0,0,0,0,5,0,0,0,8,6,0,0,0,0,0");
     Solver solver = getStrategySolver();
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result);
   }
 
   public void testFirstSolutionHelper() {
-    Sudoku sudoku = SudokuFactory.INSTANCE
+    Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:0,2,6,0,0,0,0,0,0,0,0,0,6,0,0,0,0,3,0,7,4,0,8,0,0,0,0,0,0,0,0,0,3,0,0,2,0,8,0,0,4,0,0,1,7,6,0,0,5,0,0,0,0,0,0,0,0,0,1,0,7,8,0,5,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,4,0");
     Solver solver = getStrategySolver();
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result);
   }
 

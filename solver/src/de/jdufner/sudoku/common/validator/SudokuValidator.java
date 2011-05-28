@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.common.validator;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * Strategie-Schnittstelle zur Implementierung der Prüfung ob ein Sudoku gültig ist.
@@ -39,6 +39,6 @@ public interface SudokuValidator {
   /**
    * @return <code>true</code>, wenn das Sudoku gültig ist, sonst <code>false</code>.
    */
-  boolean isValid(Sudoku sudoku);
+  boolean isValid(Grid sudoku);
 
 }

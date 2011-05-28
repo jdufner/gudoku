@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.strategy.hidden;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -37,7 +37,7 @@ public final class HiddenTripleParallelStrategy extends AbstractHiddenParallelSt
 
   private static final int SIZE = 3;
 
-  public HiddenTripleParallelStrategy(final Sudoku sudoku) {
+  public HiddenTripleParallelStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

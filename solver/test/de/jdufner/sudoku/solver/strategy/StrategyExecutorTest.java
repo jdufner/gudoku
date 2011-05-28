@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.strategy;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyConfiguration;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -58,7 +58,7 @@ public class StrategyExecutorTest extends AbstractSolverTestCase {
   //"..3.8...1.5.14..7.7..5..4...9.7....21.2.3............8.3...4.....8..........5.12.";
   "..2..3.7.7.62...1..4.17.2.3...4381....3...5....4651...3.1.84.5..9...73.1.5.3..9..";
 
-  private transient Sudoku sudoku;
+  private transient Grid sudoku;
 
   public StrategyExecutorTest(final String name) {
     super(name);

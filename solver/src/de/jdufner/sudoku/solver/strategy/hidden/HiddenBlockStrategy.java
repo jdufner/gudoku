@@ -28,10 +28,10 @@ package de.jdufner.sudoku.solver.strategy.hidden;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Block;
-import de.jdufner.sudoku.common.board.BlockHandler;
+import de.jdufner.sudoku.common.board.Box;
+import de.jdufner.sudoku.common.board.BoxHandler;
 import de.jdufner.sudoku.common.board.HandlerUtil;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * Führt die <a href="http://www.sudopedia.org/wiki/Hidden_Subset">Hidden Subset</a> Strategie konfigurierbar auf einem
@@ -41,11 +41,11 @@ import de.jdufner.sudoku.common.board.Sudoku;
  * @since 0.1
  * @version $Revision$
  */
-public class HiddenBlockStrategy extends AbstractHiddenStrategy implements BlockHandler {
+public class HiddenBlockStrategy extends AbstractHiddenStrategy implements BoxHandler {
 
   //private static final Logger LOG = Logger.getLogger(HiddenBlockStrategy.class);
 
-  protected HiddenBlockStrategy(final Sudoku sudoku) {
+  protected HiddenBlockStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -56,10 +56,10 @@ public class HiddenBlockStrategy extends AbstractHiddenStrategy implements Block
   }
 
   /**
-   * @see BlockHandler#handleBlock(Block)
+   * @see BoxHandler#handleBlock(Box)
    * @see AbstractHiddenStrategy#handleUnit(de.jdufner.sudoku.common.Unit)
    */
-  public void handleBlock(final Block block) {
+  public void handleBlock(final Box block) {
     handleUnit(block);
   }
 

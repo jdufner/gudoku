@@ -32,8 +32,8 @@ import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesComman
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.board.Grid;
+import de.jdufner.sudoku.common.board.House;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -49,7 +49,7 @@ public abstract class AbstractSimpleStrategy extends AbstractStrategy {
 
   private static final Logger LOG = Logger.getLogger(AbstractSimpleStrategy.class);
 
-  public AbstractSimpleStrategy(final Sudoku sudoku) {
+  public AbstractSimpleStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -63,7 +63,7 @@ public abstract class AbstractSimpleStrategy extends AbstractStrategy {
     return StrategyNameEnum.SIMPLE;
   }
 
-  public void handleUnit(final Unit unit) {
+  public void handleUnit(final House unit) {
     final Candidates<Literal> fixed = new Candidates<Literal>();
     fixed.addAll(unit.getFixedAsLiteral());
     for (Cell cell : unit.getNonFixed()) {

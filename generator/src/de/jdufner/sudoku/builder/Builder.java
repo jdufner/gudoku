@@ -27,7 +27,7 @@ package de.jdufner.sudoku.builder;
 
 import java.util.Map;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.service.Solution;
@@ -48,17 +48,17 @@ public interface Builder {
   public void setSize(SudokuSize sudokuSize);
 
   /**
-   * @return Gibt das letzte und damit das schwierigste {@link Sudoku} zurück.
+   * @return Gibt das letzte und damit das schwierigste {@link Grid} zurück.
    */
-  public Sudoku build();
+  public Grid build();
 
   /**
-   * Gibt das letzte jeweils zu einem Schwierigkeitsgrad ({@link Level}) gefundene {@link Sudoku} zurück. Wird zu einem
+   * Gibt das letzte jeweils zu einem Schwierigkeitsgrad ({@link Level}) gefundene {@link Grid} zurück. Wird zu einem
    * {@link Level} kein Sudoku gefunden, wird dafür eben auch keins zurückgegeben, mit anderen Worten es werden also
-   * maximal soviele {@link Sudoku} zurückgegeben, wie es {@link Level} gibt.
+   * maximal soviele {@link Grid} zurückgegeben, wie es {@link Level} gibt.
    * 
    * @return Eine Map, bestehend aus dem {@link Level} und dem letzen zu diesem {@link Level} gefundenen
-   *         {@link Solution} inkl. {@link Sudoku}.
+   *         {@link Solution} inkl. {@link Grid}.
    */
   public Map<Level, Solution> buildSudokus();
 

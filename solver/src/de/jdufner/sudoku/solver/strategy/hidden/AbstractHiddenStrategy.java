@@ -36,8 +36,8 @@ import de.jdufner.sudoku.commands.RetainCandidatesCommand.RetainCandidatesComman
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Literal2CellMap;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.board.Grid;
+import de.jdufner.sudoku.common.board.House;
 import de.jdufner.sudoku.common.board.UnitHandler;
 import de.jdufner.sudoku.common.collections.Kombination;
 import de.jdufner.sudoku.common.misc.Level;
@@ -60,7 +60,7 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
   private transient int size;
   private transient StrategyNameEnum strategyNameEnum;
 
-  protected AbstractHiddenStrategy(final Sudoku sudoku) {
+  protected AbstractHiddenStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -102,7 +102,7 @@ public abstract class AbstractHiddenStrategy extends AbstractStrategy implements
    * enthalten, können alle weiteren Kandidaten gelöscht werden. Mit anderen Worten, nur die Kandidaten müssen in den
    * Zellen verbleiben.
    */
-  public void handleUnit(final Unit unit) {
+  public void handleUnit(final House unit) {
     assert getSize() >= 2 && getSize() <= 4 : "Größe des Subsets muss zwischen 2 und 4 liegen.";
     if (LOG.isDebugEnabled()) {
       LOG.debug("Handle Unit " + unit);

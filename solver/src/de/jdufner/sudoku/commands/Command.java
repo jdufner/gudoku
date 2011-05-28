@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.commands;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * 
@@ -36,22 +36,22 @@ import de.jdufner.sudoku.common.board.Sudoku;
 public interface Command {
 
   /**
-   * Führt den Befehl auf dem übergebenen {@link Sudoku} aus.
+   * Führt den Befehl auf dem übergebenen {@link Grid} aus.
    * 
    * TODO Prüfen, dass nach Ausführung eines Commands die Zelle, der Block, die Spalte und die Reihe valide sind.
    * 
    * @param sudoku
    *          Das Sudoku auf dem der Befehl ausgeführt werden soll.
    */
-  void execute(Sudoku sudoku);
+  void execute(Grid sudoku);
 
   /**
-   * Macht den Befehl auf dem übergebenen {@link Sudoku} rückgängig.
+   * Macht den Befehl auf dem übergebenen {@link Grid} rückgängig.
    * 
    * @param sodoku
    *          Das Sudoku auf dem der Befehl rückgängig gemacht werden soll.
    */
-  void unexecute(Sudoku sudoku);
+  void unexecute(Grid sudoku);
 
   /**
    * Gibt an, ob der Befehl rückgängig gemacht werden kann.

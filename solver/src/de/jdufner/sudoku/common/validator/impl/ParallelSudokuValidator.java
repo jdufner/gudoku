@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.validator.SudokuValidator;
 import de.jdufner.sudoku.context.SolverServiceFactory;
 
@@ -44,10 +44,10 @@ import de.jdufner.sudoku.context.SolverServiceFactory;
  */
 public final class ParallelSudokuValidator implements SudokuValidator {
 
-  private static final Logger LOG = Logger.getLogger(Sudoku.class);
+  private static final Logger LOG = Logger.getLogger(Grid.class);
 
   @Override
-  public boolean isValid(final Sudoku sudoku) {
+  public boolean isValid(final Grid sudoku) {
     try {
       final AtomicBoolean validity = new AtomicBoolean(true);
       final Collection<UnitValidChecker> checkTasks = new ArrayList<UnitValidChecker>();

@@ -40,7 +40,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.service.Solution;
@@ -93,7 +93,7 @@ public final class SudokuDaoImpl implements SudokuDao {
       }
     }
     sb.append("order by s.fixed asc, s.generatedAt asc");
-    List<SudokuData> sudokuDataList = hibernateTemplate.find(sb.toString(), new Object[] { size.getUnitSize(),
+    List<SudokuData> sudokuDataList = hibernateTemplate.find(sb.toString(), new Object[] { size.getHouseSize(),
         level.getValue() });
     return sudokuDataList;
   }
@@ -105,7 +105,7 @@ public final class SudokuDaoImpl implements SudokuDao {
 
   @Override
   @SuppressWarnings("unchecked")
-  public Sudoku loadSudokuOfDay() {
+  public Grid loadSudokuOfDay() {
     hibernateTemplate.setFetchSize(1);
     hibernateTemplate.setMaxResults(1);
     List<SudokuData> sudokus = hibernateTemplate
