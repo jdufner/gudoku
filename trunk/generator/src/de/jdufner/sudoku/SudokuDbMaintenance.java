@@ -29,7 +29,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.context.SolverServiceFactory;
@@ -76,7 +76,7 @@ public final class SudokuDbMaintenance extends AbstractMainClass {
     do {
       List<SudokuData> sudokuDataList = sudokuDao.findSudokus(index, number);
       for (SudokuData sudokuData : sudokuDataList) {
-        Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(sudokuData.getSudokuAsString());
+        Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(sudokuData.getSudokuAsString());
         Solution solution = solver.getSolution(sudoku);
         SudokuMapper.map(sudokuData, solution);
       }

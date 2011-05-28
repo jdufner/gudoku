@@ -34,7 +34,7 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.builder.transformation.TransformationUtil;
 import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Level;
@@ -71,8 +71,8 @@ public abstract class EleminationBuilder extends AbstractBuilder {
 
   protected List<Cell> buildRandomPermutationOfFixed() {
     List<Cell> felder = new ArrayList<Cell>();
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (sudoku.getCell(i, j).isFixed()) {
           felder.add(sudoku.getCell(i, j));
         }
@@ -88,8 +88,8 @@ public abstract class EleminationBuilder extends AbstractBuilder {
 
   protected List<Cell> buildRandomPermutationOfFixedOfFirstHalf() {
     List<Cell> felder = new ArrayList<Cell>();
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      for (int j = 0; j < sudoku.getSize().getUnitSize(); j++) {
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (sudoku.getCell(i, j).isInFirstHalf() && sudoku.getCell(i, j).isFixed()) {
           felder.add(sudoku.getCell(i, j));
         }
@@ -129,7 +129,7 @@ public abstract class EleminationBuilder extends AbstractBuilder {
 
   protected abstract void executeBuilder();
 
-  public Sudoku build() {
+  public Grid build() {
     shuffleSudoku();
     executeBuilder();
     if (LOG.isInfoEnabled()) {

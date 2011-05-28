@@ -30,7 +30,7 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.commands.RetainCandidatesCommand.RetainCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
@@ -39,7 +39,7 @@ public final class RetainCandidatesCommandTest extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(RetainCandidatesCommandTest.class);
 
-  private Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.ING_DIBA);
+  private Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.ING_DIBA);
 
   public void setUp() {
     LOG.debug(sudoku);

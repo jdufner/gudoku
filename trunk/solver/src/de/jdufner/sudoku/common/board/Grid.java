@@ -48,17 +48,19 @@ import de.jdufner.sudoku.common.validator.SudokuValidator;
 import de.jdufner.sudoku.context.SolverServiceFactory;
 
 /**
- * Diese Klasse kapselt das Spielfeld mit Zeilen, Spalten und Blöcken.
+ * Diese Klasse kapselt das Spielfeld mit Zeilen, Spalten und Bl�cken.
  * 
  * TODO Methode clone() und Interface Cloneable entfernen
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see <a
+ *      href="http://sudopedia.org/wiki/Grid">http://sudopedia.org/wiki/Grid</a>
  */
-public final class Sudoku {
+public final class Grid {
 
-  private static final Logger LOG = Logger.getLogger(Sudoku.class);
+  private static final Logger LOG = Logger.getLogger(Grid.class);
   /**
    * Anzahl der Zellen in dem Sudoku.
    */
@@ -72,13 +74,14 @@ public final class Sudoku {
    */
   private final transient Cell[][] board;
   /**
-   * <code>true</code>, wenn der Konstruktor durchlaufen wurde, sonst <code>false</code>
+   * <code>true</code>, wenn der Konstruktor durchlaufen wurde, sonst
+   * <code>false</code>
    */
   private transient boolean initialized = false;
   /**
    * Speichert die Blöcke für den schnelleren Zugriff.
    */
-  private final transient Map<Integer, Block> blockMap = new HashMap<Integer, Block>();
+  private final transient Map<Integer, Box> blockMap = new HashMap<Integer, Box>();
   /**
    * Speichert die Spalten für den schnelleren Zugriff.
    */
@@ -101,14 +104,14 @@ public final class Sudoku {
    * @param original
    *          Das Original vom dem dieses Sudoku kopiert wird.
    */
-  public Sudoku(final Sudoku original) {
+  public Grid(final Grid original) {
     if (LOG.isDebugEnabled()) {
       LOG.debug("Erzeuge Kopie eines Sudokus");
     }
     size = original.size;
-    board = new Cell[size.getUnitSize()][size.getUnitSize()];
-    for (int i = 0; i < size.getUnitSize(); i++) {
-      for (int j = 0; j < size.getUnitSize(); j++) {
+    board = new Cell[size.getHouseSize()][size.getHouseSize()];
+    for (int i = 0; i < size.getHouseSize(); i++) {
+      for (int j = 0; j < size.getHouseSize(); j++) {
         board[i][j] = new Cell(original.board[i][j]);
         addToUnits(board[i][j]);
       }
@@ -122,17 +125,17 @@ public final class Sudoku {
    * @param size
    * @param values
    */
-  public Sudoku(final SudokuSize size, final Integer[] values) {
+  public Grid(final SudokuSize size, final Integer[] values) {
     assert size.getTotalSize() == values.length : "Es werden " + size.getTotalSize()
         + " Werte erwartet, aber es wurden " + values.length + " Werte übergeben.";
     if (LOG.isDebugEnabled()) {
       LOG.debug("Erzeuge neues Sudoku");
     }
     this.size = size;
-    board = new Cell[size.getUnitSize()][size.getUnitSize()];
+    board = new Cell[size.getHouseSize()][size.getHouseSize()];
     int index = 0;
-    for (int i = 0; i < size.getUnitSize(); i++) {
-      for (int j = 0; j < size.getUnitSize(); j++) {
+    for (int i = 0; i < size.getHouseSize(); i++) {
+      for (int j = 0; j < size.getHouseSize(); j++) {
         board[i][j] = new Cell(i, j, Literal.getInstance(values[index]), size);
         addToUnits(board[i][j]);
         index++;
@@ -141,16 +144,16 @@ public final class Sudoku {
     initialized = true;
   }
 
-  public Sudoku(final SudokuSize size, final Cell[] cells) {
+  public Grid(final SudokuSize size, final Cell[] cells) {
     assert size.getTotalSize() == cells.length : "Es werden " + size.getTotalSize()
         + " Zellen erwartet, aber es wurden " + cells.length + " Zellen übergeben.";
     if (LOG.isDebugEnabled()) {
       LOG.debug("Erzeuge neues Sudoku");
     }
     this.size = size;
-    board = new Cell[size.getUnitSize()][size.getUnitSize()];
-    for (int i = 0; i < size.getUnitSize(); i++) {
-      for (int j = 0; j < size.getUnitSize(); j++) {
+    board = new Cell[size.getHouseSize()][size.getHouseSize()];
+    for (int i = 0; i < size.getHouseSize(); i++) {
+      for (int j = 0; j < size.getHouseSize(); j++) {
         board[i][j] = cells[CellUtils.getNumber(i, j, size)];
         addToUnits(board[i][j]);
       }
@@ -167,23 +170,23 @@ public final class Sudoku {
    */
   public Cell getCell(final int rowIndex, final int columnIndex) {
     assert rowIndex >= 0 : "Zeilenindex muss größer als oder gleich 0 sein, ist aber " + rowIndex;
-    assert rowIndex < size.getUnitSize() : "Zeilenindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
+    assert rowIndex < size.getHouseSize() : "Zeilenindex muss kleiner als " + size.getHouseSize() + " sein, ist aber "
         + rowIndex;
     assert columnIndex >= 0 : "Spaltenindex muss größer als oder gleich 0 sein, ist aber " + columnIndex;
-    assert columnIndex < size.getUnitSize() : "Spaltenindex muss kleiner als " + size.getUnitSize()
+    assert columnIndex < size.getHouseSize() : "Spaltenindex muss kleiner als " + size.getHouseSize()
         + " sein, ist aber " + columnIndex;
     return board[rowIndex][columnIndex];
   }
 
   public Collection<Cell> getCellByRowAndBlock(final int rowIndex, final int blockIndex) {
     assert rowIndex >= 0 : "Zeilenindex muss größer als oder gleich 0 sein, ist aber " + rowIndex;
-    assert rowIndex < size.getUnitSize() : "Zeilenindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
+    assert rowIndex < size.getHouseSize() : "Zeilenindex muss kleiner als " + size.getHouseSize() + " sein, ist aber "
         + rowIndex;
     assert blockIndex >= 0 : "Blockindex muss größer als oder gleich 0 sein, ist aber " + blockIndex;
-    assert blockIndex < size.getUnitSize() : "Blockindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
+    assert blockIndex < size.getHouseSize() : "Blockindex muss kleiner als " + size.getHouseSize() + " sein, ist aber "
         + blockIndex;
     final Collection<Cell> result = new ArrayList<Cell>();
-    for (int i = 0; i < size.getUnitSize(); i++) {
+    for (int i = 0; i < size.getHouseSize(); i++) {
       final Cell cell = board[rowIndex][i];
       if (cell.getBlockIndex() == blockIndex) {
         result.add(cell);
@@ -194,13 +197,13 @@ public final class Sudoku {
 
   public Collection<Cell> getCellByColumnAndBlock(final int columnIndex, final int blockIndex) {
     assert columnIndex >= 0 : "Spaltenindex muss größer als oder gleich 0 sein, ist aber " + columnIndex;
-    assert columnIndex < size.getUnitSize() : "Spaltenindex muss kleiner als " + size.getUnitSize()
+    assert columnIndex < size.getHouseSize() : "Spaltenindex muss kleiner als " + size.getHouseSize()
         + " sein, ist aber " + columnIndex;
     assert blockIndex >= 0 : "Blockindex muss größer als oder gleich 0 sein, ist aber " + blockIndex;
-    assert blockIndex < size.getUnitSize() : "Blockindex muss kleiner als " + size.getUnitSize() + " sein, ist aber "
+    assert blockIndex < size.getHouseSize() : "Blockindex muss kleiner als " + size.getHouseSize() + " sein, ist aber "
         + blockIndex;
     final Collection<Cell> result = new ArrayList<Cell>();
-    for (int i = 0; i < size.getUnitSize(); i++) {
+    for (int i = 0; i < size.getHouseSize(); i++) {
       final Cell cell = board[i][columnIndex];
       if (cell.getBlockIndex() == blockIndex) {
         result.add(cell);
@@ -211,14 +214,15 @@ public final class Sudoku {
 
   /**
    * @param number
-   *          Die Nummer der Zelle. Rechnet die Nummer in Spalte und Zeile um und rufe {@link #getCell(int, int)} auf.
+   *          Die Nummer der Zelle. Rechnet die Nummer in Spalte und Zeile um
+   *          und rufe {@link #getCell(int, int)} auf.
    * @return Gibt eine Zelle zurück.
    */
   public Cell getCell(final int number) {
     assert number >= 0 : number + " must be greater or equals than 0";
     assert number < size.getTotalSize() : number + " must be lower than " + size.getTotalSize();
-    final int row = number / size.getUnitSize();
-    final int column = number % size.getUnitSize();
+    final int row = number / size.getHouseSize();
+    final int column = number % size.getHouseSize();
     return getCell(row, column);
   }
 
@@ -226,9 +230,9 @@ public final class Sudoku {
    * @param blockIndex
    * @return the cells in the given block
    */
-  public Block getBlock(final int blockIndex) {
+  public Box getBlock(final int blockIndex) {
     assert blockIndex >= 0;
-    assert blockIndex < size.getUnitSize();
+    assert blockIndex < size.getHouseSize();
     return blockMap.get(blockIndex);
   }
 
@@ -238,7 +242,7 @@ public final class Sudoku {
    */
   public Column getColumn(final int columnIndex) {
     assert columnIndex >= 0;
-    assert columnIndex < size.getUnitSize();
+    assert columnIndex < size.getHouseSize();
     return columnMap.get(columnIndex);
   }
 
@@ -248,7 +252,7 @@ public final class Sudoku {
    */
   public Row getRow(final int rowIndex) {
     assert rowIndex >= 0;
-    assert rowIndex < size.getUnitSize();
+    assert rowIndex < size.getHouseSize();
     return rowMap.get(rowIndex);
   }
 
@@ -277,9 +281,9 @@ public final class Sudoku {
   /**
    * @return Gibt eine Liste aller Blöcke zurück.
    */
-  public Collection<Block> getBlocks() {
-    final List<Block> blocks = new ArrayList<Block>(size.getUnitSize());
-    for (int i = 0; i < size.getUnitSize(); i++) {
+  public Collection<Box> getBlocks() {
+    final List<Box> blocks = new ArrayList<Box>(size.getHouseSize());
+    for (int i = 0; i < size.getHouseSize(); i++) {
       blocks.add(getBlock(i));
     }
     return blocks;
@@ -289,8 +293,8 @@ public final class Sudoku {
    * @return Gibt eine Liste aller Spalten zurück.
    */
   public Collection<Column> getColumns() {
-    final List<Column> columns = new ArrayList<Column>(size.getUnitSize());
-    for (int i = 0; i < size.getUnitSize(); i++) {
+    final List<Column> columns = new ArrayList<Column>(size.getHouseSize());
+    for (int i = 0; i < size.getHouseSize(); i++) {
       columns.add(getColumn(i));
     }
     return columns;
@@ -300,16 +304,17 @@ public final class Sudoku {
    * @return Gibt eine Liste aller Zeilen zurück.
    */
   public Collection<Row> getRows() {
-    final List<Row> rows = new ArrayList<Row>(size.getUnitSize());
-    for (int i = 0; i < size.getUnitSize(); i++) {
+    final List<Row> rows = new ArrayList<Row>(size.getHouseSize());
+    for (int i = 0; i < size.getHouseSize(); i++) {
       rows.add(getRow(i));
     }
     return rows;
   }
 
   /**
-   * Gibt ein Sudoku in mehreren Zeilen aus. Pro Zeile wird eine Zelle inkl. Kandidaten ausgegeben. Wird vermutlich
-   * nicht mehr verwendet. Inzwischen kann das Sudoku besser visualisiert werden.
+   * Gibt ein Sudoku in mehreren Zeilen aus. Pro Zeile wird eine Zelle inkl.
+   * Kandidaten ausgegeben. Wird vermutlich nicht mehr verwendet. Inzwischen
+   * kann das Sudoku besser visualisiert werden.
    * 
    * @return Gibt einen String des Sudokus zurück, für Debugging-Zwecke.
    * @see LongString
@@ -331,8 +336,9 @@ public final class Sudoku {
   }
 
   /**
-   * @return Gibt einen String des Sudokus in einer Zeile zurück. Die Zellen sind mit Komma getrennt, die Kandidaten
-   *         sind mit Bindestrich getrennt.
+   * @return Gibt einen String des Sudokus in einer Zeile zurück. Die Zellen
+   *         sind mit Komma getrennt, die Kandidaten sind mit Bindestrich
+   *         getrennt.
    * @see ShortStringWithCandidates
    */
   public String toShortStringWithCandidates() {
@@ -353,7 +359,8 @@ public final class Sudoku {
 
   /**
    * @param level
-   *          Setzt den Schwierigkeitsgrad des Sudokus. Sollte nicht verwendet werden, wird nur vom Generator verwendet.
+   *          Setzt den Schwierigkeitsgrad des Sudokus. Sollte nicht verwendet
+   *          werden, wird nur vom Generator verwendet.
    */
   public void setLevel(final Level level) {
     this.level = level;
@@ -367,9 +374,11 @@ public final class Sudoku {
   }
 
   /**
-   * @return <code>true</code>, wenn alle Einheiten ({@link Unit}), also Blöcke ({@link Block}), Zeilen ({@link Row})
-   *         und Spalten ({@link Column}) gültig sind. Darf nur aufgerufen werden, wenn das Sudoku initialisiert ist.
-   * @see Unit#isValid()
+   * @return <code>true</code>, wenn alle Einheiten ({@link House}), also
+   *         Blöcke ({@link Box}), Zeilen ({@link Row}) und Spalten (
+   *         {@link Column}) gültig sind. Darf nur aufgerufen werden, wenn das
+   *         Sudoku initialisiert ist.
+   * @see House#isValid()
    */
   public boolean isValid() {
     assert initialized : "Das Sudoku muss initialisiert sein.";
@@ -385,23 +394,25 @@ public final class Sudoku {
   }
 
   /**
-   * @return <code>true</code>, wenn das Sudoku initializiert ist, sonst <code>false</code>.
+   * @return <code>true</code>, wenn das Sudoku initializiert ist, sonst
+   *         <code>false</code>.
    */
   public boolean isInitialized() {
     return initialized;
   }
 
   /**
-   * @return <code>true</code>, wenn die Anzahl der besetzten Zellen ({@link Cell}) größer oder gleich der Anzahl der
-   *         Zellen ist, sonst <code>false</code>.
+   * @return <code>true</code>, wenn die Anzahl der besetzten Zellen (
+   *         {@link Cell}) größer oder gleich der Anzahl der Zellen ist, sonst
+   *         <code>false</code>.
    */
   public boolean isSolved() {
     return getNumberOfFixed() >= getSize().getTotalSize();
   }
 
   /**
-   * @return <code>true</code>, wenn die Prüfsummen der aller Blöcke, Spalten und Zeilen korrekt sind, sonst
-   *         <code>false</code>.
+   * @return <code>true</code>, wenn die Prüfsummen der aller Blöcke, Spalten
+   *         und Zeilen korrekt sind, sonst <code>false</code>.
    */
   public boolean isSolvedByCheckSum() {
     // assert isSolved();
@@ -431,8 +442,9 @@ public final class Sudoku {
   }
 
   /**
-   * Setzt die Kandidaten der freien Zellen zurück und entfernt die Kandidaten, für die feste Werte in den gleichen
-   * Einheiten (Zeile, Spalte, Block) vorliegen.
+   * Setzt die Kandidaten der freien Zellen zurück und entfernt die Kandidaten,
+   * für die feste Werte in den gleichen Einheiten (Zeile, Spalte, Block)
+   * vorliegen.
    * 
    * @see #clear()
    * @see ResetAndRemoveCandidates
@@ -462,8 +474,8 @@ public final class Sudoku {
     HandlerUtil.forEachCell(this, resetCell);
   }
 
-  public Block getBlock(final int rowIndex, final int columnIndex) {
-    return getBlock(BlockUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, size));
+  public Box getBlock(final int rowIndex, final int columnIndex) {
+    return getBlock(BoxUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, size));
   }
 
   @Override
@@ -488,8 +500,8 @@ public final class Sudoku {
     if (other == null) {
       return false;
     }
-    if (other instanceof Sudoku) {
-      final Sudoku that = (Sudoku) other;
+    if (other instanceof Grid) {
+      final Grid that = (Grid) other;
       return toShortString().equals(that.toShortString());
     }
     return false;
@@ -502,7 +514,7 @@ public final class Sudoku {
 
   private boolean areAllBlocksSolved() {
     boolean solved = true;
-    for (int i = 0; i < size.getUnitSize(); i++) {
+    for (int i = 0; i < size.getHouseSize(); i++) {
       solved = solved && getBlock(i).isSolved();
       if (!solved) {
         break;
@@ -513,7 +525,7 @@ public final class Sudoku {
 
   private boolean areAllColumnsSolved() {
     boolean solved = true;
-    for (int i = 0; i < size.getUnitSize(); i++) {
+    for (int i = 0; i < size.getHouseSize(); i++) {
       solved = solved && getColumn(i).isSolved();
       if (!solved) {
         break;
@@ -524,7 +536,7 @@ public final class Sudoku {
 
   private boolean areAllRowsSolved() {
     boolean solved = true;
-    for (int i = 0; i < size.getUnitSize(); i++) {
+    for (int i = 0; i < size.getHouseSize(); i++) {
       solved = solved && getRow(i).isSolved();
       if (!solved) {
         break;
@@ -540,9 +552,9 @@ public final class Sudoku {
   }
 
   private void addToBlock(final Cell cell) {
-    Block block = blockMap.get(cell.getBlockIndex());
+    Box block = blockMap.get(cell.getBlockIndex());
     if (block == null) {
-      block = new Block(size, cell.getBlockIndex(), new ArrayList<Cell>());
+      block = new Box(size, cell.getBlockIndex(), new ArrayList<Cell>());
       blockMap.put(cell.getBlockIndex(), block);
     }
     block.getCells().add(cell);

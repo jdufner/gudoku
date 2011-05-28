@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyConfiguration;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -50,7 +50,7 @@ public class StrategyExecutorHandleExceptionTest extends AbstractSolverTestCase 
    */
   private static final String SUDOKU_AS_STRING = ".5..9...2.6..2...8..7...9...81.............5...69.3......7.2..5...6..4..8.9.5...3";
 
-  private Sudoku sudoku;
+  private Grid sudoku;
 
   public StrategyExecutorHandleExceptionTest(String name) {
     super(name);

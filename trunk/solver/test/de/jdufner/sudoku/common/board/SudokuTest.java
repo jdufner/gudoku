@@ -51,12 +51,12 @@ public final class SudokuTest extends AbstractSolverTestCase {
         "0,0,0,0"; // 0
     final int myFixed = 10;
 
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
+    Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
     assertEquals(1, sudoku.getCell(0, 0).getValue().getValue());
     assertEquals(0, sudoku.getCell(0, 0).getCandidates().size());
     assertEquals(myFixed, sudoku.getNumberOfFixed());
     LOG.debug(sudoku.getNumberOfCandidates());
-    assertEquals((sudoku.getSize().getTotalSize() - myFixed) * sudoku.getSize().getUnitSize(), sudoku
+    assertEquals((sudoku.getSize().getTotalSize() - myFixed) * sudoku.getSize().getHouseSize(), sudoku
         .getNumberOfCandidates());
     assertTrue(sudoku.isValid());
     assertEquals(false, sudoku.isSolved());
@@ -76,7 +76,7 @@ public final class SudokuTest extends AbstractSolverTestCase {
         "1,0,0,0,0,7,2,0,5"; // 4
     final int myFixed = 43;
 
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
+    Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
 
     Cell cell = sudoku.getCell(0, 0);
     assertEquals(0, cell.getRowIndex());
@@ -94,7 +94,7 @@ public final class SudokuTest extends AbstractSolverTestCase {
 
     assertEquals(myFixed, sudoku.getNumberOfFixed());
     LOG.debug(sudoku.getNumberOfCandidates());
-    assertEquals((sudoku.getSize().getTotalSize() - myFixed) * sudoku.getSize().getUnitSize(), sudoku
+    assertEquals((sudoku.getSize().getTotalSize() - myFixed) * sudoku.getSize().getHouseSize(), sudoku
         .getNumberOfCandidates());
     assertTrue(sudoku.isValid());
     assertEquals(false, sudoku.isSolved());
@@ -104,12 +104,12 @@ public final class SudokuTest extends AbstractSolverTestCase {
   }
 
   public void testReadSudokuEmpty() {
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildEmpty(SudokuSize.NEUN);
+    Grid sudoku = SudokuFactory.INSTANCE.buildEmpty(SudokuSize.NEUN);
     final int myFixed = 0;
 
     assertEquals(myFixed, sudoku.getNumberOfFixed());
     LOG.debug(sudoku.getNumberOfCandidates());
-    assertEquals((sudoku.getSize().getTotalSize() - myFixed) * sudoku.getSize().getUnitSize(), sudoku
+    assertEquals((sudoku.getSize().getTotalSize() - myFixed) * sudoku.getSize().getHouseSize(), sudoku
         .getNumberOfCandidates());
     assertTrue(sudoku.isValid());
     assertEquals(false, sudoku.isSolved());
@@ -119,12 +119,12 @@ public final class SudokuTest extends AbstractSolverTestCase {
   }
 
   public void testReadSudoku9Filled() {
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.NEUN);
+    Grid sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.NEUN);
     final int myFixed = 81;
 
     assertEquals(myFixed, sudoku.getNumberOfFixed());
     LOG.debug(sudoku.getNumberOfCandidates());
-    assertEquals((sudoku.getSize().getTotalSize() - myFixed) * sudoku.getSize().getUnitSize(), sudoku
+    assertEquals((sudoku.getSize().getTotalSize() - myFixed) * sudoku.getSize().getHouseSize(), sudoku
         .getNumberOfCandidates());
     assertTrue(sudoku.isValid());
     assertEquals(true, sudoku.isSolved());
@@ -134,8 +134,8 @@ public final class SudokuTest extends AbstractSolverTestCase {
   }
 
   public void testClone() {
-    Sudoku original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
-    Sudoku kopie = new Sudoku(original);
+    Grid original = SudokuFactory.INSTANCE.buildSudoku(Examples.LEICHT);
+    Grid kopie = new Grid(original);
     assertNotSame(original, kopie);
     assertNotSame(original.getCell(0, 0), kopie.getCell(0, 0));
     assertEquals(original.getCell(0, 0).getValue(), kopie.getCell(0, 0).getValue());

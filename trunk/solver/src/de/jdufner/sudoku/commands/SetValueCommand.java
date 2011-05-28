@@ -28,7 +28,7 @@ package de.jdufner.sudoku.commands;
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -55,7 +55,7 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
   }
 
   @Override
-  public void executeCommand(final Sudoku sudoku) {
+  public void executeCommand(final Grid sudoku) {
     if (sudoku.getCell(rowIndex, columnIndex).isFixed()) {
       successfully = false;
     } else {
@@ -66,7 +66,7 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
   }
 
   @Override
-  public void unexecuteCommand(final Sudoku sudoku) {
+  public void unexecuteCommand(final Grid sudoku) {
     sudoku.getCell(rowIndex, columnIndex).setValue(Literal.EMPTY);
     sudoku.getCell(rowIndex, columnIndex).setCandidates(candidates);
   }
@@ -82,7 +82,7 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
   }
 
   @Override
-  protected String toString(final Sudoku sudoku) {
+  protected String toString(final Grid sudoku) {
     return getStrategyName() + ": Setze Wert " + value + " in Zelle " + getCell(sudoku);
   }
 

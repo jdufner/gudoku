@@ -29,7 +29,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
@@ -45,7 +45,7 @@ public final class LiteralEleminationBuilderTest extends AbstractGeneratorTestCa
   private static final Logger LOG = Logger.getLogger(LiteralEleminationBuilderTest.class);
 
   private Builder builder;
-  private Sudoku sudoku;
+  private Grid sudoku;
 
   @Override
   public void setUp() throws Exception {

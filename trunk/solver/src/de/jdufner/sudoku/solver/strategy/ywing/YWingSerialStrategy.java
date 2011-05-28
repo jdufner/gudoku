@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.strategy.ywing;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractSerialStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -42,7 +42,7 @@ public final class YWingSerialStrategy extends AbstractSerialStrategy {
 
   private static final Logger LOG = Logger.getLogger(YWingSerialStrategy.class);
 
-  public YWingSerialStrategy(final Sudoku sudoku) {
+  public YWingSerialStrategy(final Grid sudoku) {
     super(sudoku);
     getStrategies().add(new YWingColumnStrategy(sudoku));
     getStrategies().add(new YWingRowStrategy(sudoku));

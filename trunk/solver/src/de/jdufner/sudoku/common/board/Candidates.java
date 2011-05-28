@@ -34,15 +34,20 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.common.collections.SortedCandidates;
 
 /**
- * Die Klasse Candidates ist die normale Repräsentation der Kandidaten einer Zelle {@link Cell}. Daneben gibt es nocht
- * die sortierten Kandidaten {@link Candidates}, die allerdings nur für spezielle Algorithmen benötigt werden. Diese
- * Implementierung wird standardmäßig verwendet, weil die {@link #add(Object)}-Operation schneller sind.
+ * Die Klasse Candidates ist die normale Repräsentation der Kandidaten einer
+ * Zelle {@link Cell}. Daneben gibt es nocht die sortierten Kandidaten
+ * {@link Candidates}, die allerdings nur für spezielle Algorithmen benötigt
+ * werden. Diese Implementierung wird standardmäßig verwendet, weil die
+ * {@link #add(Object)}-Operation schneller sind.
  * 
- * TODO Künftig nicht mehr von {@link ArrayList} ableiten. Problem: Literale können doppelt hinzugefügt werden.
+ * TODO Künftig nicht mehr von {@link ArrayList} ableiten. Problem: Literale
+ * können doppelt hinzugefügt werden.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see <a
+ *      href="http://sudopedia.org/wiki/Candidate">http://sudopedia.org/wiki/Candidate</a>
  */
 public final class Candidates<T extends Comparable<? super T>> extends ArrayList<T> implements Cloneable {
 
@@ -89,8 +94,8 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
 
   /**
    * @param cell
-   * @return <code>true</code>, genau dann wenn die Kandidaten der mit denen des übergebenen Felds gleich sind, sonst
-   *         <code>false</code>.
+   * @return <code>true</code>, genau dann wenn die Kandidaten der mit denen des
+   *         übergebenen Felds gleich sind, sonst <code>false</code>.
    */
   public boolean isEquals(final Collection<T> that) {
     if (this == that) {
@@ -107,9 +112,11 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
 
   /**
    * @param testCandidates
-   * @return <code>true</code>, genau dann wenn höchstens die übergebenen Testkandidaten vorhanden in den Kandidaten der
-   *         Zelle enthalten sind, sonst <code>false</code>, also es existiert mindestens ein Zellkandidat, der nicht in
-   *         der Liste der Testkandidaten enthalten ist.
+   * @return <code>true</code>, genau dann wenn höchstens die übergebenen
+   *         Testkandidaten vorhanden in den Kandidaten der Zelle enthalten
+   *         sind, sonst <code>false</code>, also es existiert mindestens ein
+   *         Zellkandidat, der nicht in der Liste der Testkandidaten enthalten
+   *         ist.
    */
   public boolean containsAtMost(final Collection<T> testCandidates) {
     for (T thisCandidate : this) {
@@ -122,9 +129,10 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
 
   /**
    * @param testCandidates
-   * @return <code>true</code>, genau dann wenn mindestens die übergebenen Testkandidaten in den Kandidaten der Zelle
-   *         enthalten sind, sonst <code>false</code>, also es existiert mindestens ein Testkandidat, der in der Liste
-   *         der Zellkandidaten nicht enthalten ist.
+   * @return <code>true</code>, genau dann wenn mindestens die übergebenen
+   *         Testkandidaten in den Kandidaten der Zelle enthalten sind, sonst
+   *         <code>false</code>, also es existiert mindestens ein Testkandidat,
+   *         der in der Liste der Zellkandidaten nicht enthalten ist.
    */
   public boolean containsAtLeastOneOf(final Collection<T> testCandidates) {
     for (T testCandidate : testCandidates) {

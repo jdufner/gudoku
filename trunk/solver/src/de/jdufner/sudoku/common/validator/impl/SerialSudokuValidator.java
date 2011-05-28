@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.common.validator.impl;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.validator.SudokuValidator;
 
 /**
@@ -38,9 +38,9 @@ import de.jdufner.sudoku.common.validator.SudokuValidator;
 public final class SerialSudokuValidator implements SudokuValidator {
 
   @Override
-  public boolean isValid(final Sudoku sudoku) {
+  public boolean isValid(final Grid sudoku) {
     boolean result = true;
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       result = result && sudoku.getBlock(i).isValid() && sudoku.getColumn(i).isValid() && sudoku.getRow(i).isValid();
       if (!result) {
         break;

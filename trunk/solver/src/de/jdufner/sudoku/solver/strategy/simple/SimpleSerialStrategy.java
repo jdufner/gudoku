@@ -28,7 +28,7 @@ package de.jdufner.sudoku.solver.strategy.simple;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractSerialStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -43,7 +43,7 @@ public final class SimpleSerialStrategy extends AbstractSerialStrategy {
 
   //  private static final Logger LOG = Logger.getLogger(SimpleSerialStrategy.class);
 
-  public SimpleSerialStrategy(final Sudoku sudoku) {
+  public SimpleSerialStrategy(final Grid sudoku) {
     super(sudoku);
     getStrategies().add(new SimpleBlockStrategy(sudoku));
     getStrategies().add(new SimpleColumnStrategy(sudoku));

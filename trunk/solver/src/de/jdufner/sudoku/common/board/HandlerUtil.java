@@ -36,33 +36,33 @@ public final class HandlerUtil {
   private HandlerUtil() {
   }
 
-  public static void forEachBlock(final Sudoku sudoku, final BlockHandler blockHandler) {
-    for (Block block : sudoku.getBlocks()) {
+  public static void forEachBlock(final Grid sudoku, final BoxHandler blockHandler) {
+    for (Box block : sudoku.getBlocks()) {
       blockHandler.handleBlock(block);
     }
   }
 
-  public static void forEachCell(final Sudoku sudoku, final CellHandler cellHandler) {
+  public static void forEachCell(final Grid sudoku, final CellHandler cellHandler) {
     cellHandler.initialize();
     for (Cell cell : sudoku.getCells()) {
       cellHandler.handleCell(cell);
     }
   }
 
-  public static void forEachColumn(final Sudoku sudoku, final ColumnHandler columnHandler) {
+  public static void forEachColumn(final Grid sudoku, final ColumnHandler columnHandler) {
     for (Column column : sudoku.getColumns()) {
       columnHandler.handleColumn(column);
     }
   }
 
-  public static void forEachRow(final Sudoku sudoku, final RowHandler rowHandler) {
+  public static void forEachRow(final Grid sudoku, final RowHandler rowHandler) {
     for (Row row : sudoku.getRows()) {
       rowHandler.handleRow(row);
     }
   }
 
-  public static void forEachUnit(final Sudoku sudoku, final UnitHandler unitHandler) {
-    for (Block block : sudoku.getBlocks()) {
+  public static void forEachUnit(final Grid sudoku, final UnitHandler unitHandler) {
+    for (Box block : sudoku.getBlocks()) {
       unitHandler.handleUnit(block);
     }
     for (Column column : sudoku.getColumns()) {

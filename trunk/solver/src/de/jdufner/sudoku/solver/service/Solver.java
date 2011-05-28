@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.service;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * Einfache Service zum Lösen von Sudokus.
@@ -47,14 +47,14 @@ public interface Solver {
 
   /**
    * Liefert <code>true</code> zurück, wenn ein Sudoku überhaupt eine Lösung, sonst <code>false</code>. Der
-   * Rechenaufwand ist derselbe wie bei {@link #solve(Sudoku)}
+   * Rechenaufwand ist derselbe wie bei {@link #solve(Grid)}
    * 
    * TODO throws InvalidSudokuException
    * 
    * @param sudoku
    * @return <code>true</code> if Sudoku is solvable, else <code>false</code>
    */
-  boolean isSolvable(Sudoku sudoku);
+  boolean isSolvable(Grid sudoku);
 
   /**
    * Finds a solution of the Sudoku, if exists. Maybe there are more than one solution.
@@ -66,7 +66,7 @@ public interface Solver {
    * @param sudoku
    * @return A solution, if exists.
    */
-  Sudoku solve(Sudoku sudoku);
+  Grid solve(Grid sudoku);
 
   /**
    * Liefert <code>true</code> zurück, wenn genau eine Lösung existiert, sonst <code>false</code>.
@@ -78,6 +78,6 @@ public interface Solver {
    * @param sudoku
    * @return <code>true</code>, wenn das Sudoku genau eine Lösung hat, sonst <code>false</code>.
    */
-  boolean isUnique(Sudoku sudoku);
+  boolean isUnique(Grid sudoku);
 
 }

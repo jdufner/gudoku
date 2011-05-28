@@ -28,15 +28,16 @@ package de.jdufner.sudoku.common.board;
 import java.util.List;
 
 /**
- * A block represents a unit of m x n cells. It spans about several columns and rown and contains each literal one time.
- * 
- * TODO Umbenennen in Box http://www.sudopedia.org/wiki/Box
+ * A block represents a unit of m x n cells. It spans about several columns and
+ * rown and contains each literal one time.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see <a
+ *      href="http://sudopedia.org/wiki/Box">http://sudopedia.org/wiki/Box</a>
  */
-public final class Block extends Unit {
+public final class Box extends House {
 
   /**
    * @param sudoku
@@ -46,7 +47,7 @@ public final class Block extends Unit {
    * @param cells
    *          Eine Liste aller Zellen, die in diesem Block enthalten sind.
    */
-  public Block(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
+  public Box(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
     super(sudokuSize, index, cells);
   }
 
@@ -54,9 +55,9 @@ public final class Block extends Unit {
    * @return
    */
   public int[] getColumnIndexes() {
-    final int startIndex = (index % sudokuSize.getBlockHeight()) + sudokuSize.getBlockWidth();
-    int[] columnIndexes = new int[sudokuSize.getBlockWidth()];
-    for (int i = 0; i < sudokuSize.getBlockWidth(); i++) {
+    final int startIndex = (index % sudokuSize.getBoxHeight()) + sudokuSize.getBoxWidth();
+    int[] columnIndexes = new int[sudokuSize.getBoxWidth()];
+    for (int i = 0; i < sudokuSize.getBoxWidth(); i++) {
       columnIndexes[i] = startIndex + i;
     }
     return columnIndexes;
@@ -66,17 +67,18 @@ public final class Block extends Unit {
    * @return
    */
   public int[] getRowIndexes() {
-    final int startIndex = (index / sudokuSize.getBlockHeight()) * sudokuSize.getBlockHeight();
-    int[] rowIndexes = new int[sudokuSize.getBlockHeight()];
-    for (int i = 0; i < sudokuSize.getBlockHeight(); i++) {
+    final int startIndex = (index / sudokuSize.getBoxHeight()) * sudokuSize.getBoxHeight();
+    int[] rowIndexes = new int[sudokuSize.getBoxHeight()];
+    for (int i = 0; i < sudokuSize.getBoxHeight(); i++) {
       rowIndexes[i] = startIndex + i;
     }
     return rowIndexes;
   }
 
   @Override
-  public boolean equals(final Object other) { // NOPMD by Jürgen on 16.11.09 00:23
-    if (other instanceof Block) {
+  public boolean equals(final Object other) { // NOPMD by Jürgen on 16.11.09
+    // 00:23
+    if (other instanceof Box) {
       return super.equals(other);
     }
     return false;

@@ -28,7 +28,7 @@ package de.jdufner.sudoku.generator.pdf;
 import java.util.Date;
 import java.util.List;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.dao.SudokuData;
 import de.jdufner.sudoku.solver.service.Solution;
@@ -53,11 +53,11 @@ public final class PdfSolution {
     return solution.getNumberSuccessfulCommand(strategyNameEnum);
   }
 
-  public Sudoku getQuest() {
+  public Grid getQuest() {
     return solution.getQuest();
   }
 
-  public Sudoku getResult() {
+  public Grid getResult() {
     return solution.getResult();
   }
 
@@ -73,7 +73,7 @@ public final class PdfSolution {
     solution.setLevel(level);
   }
 
-  public void setResult(Sudoku result) {
+  public void setResult(Grid result) {
     solution.setResult(result);
   }
 

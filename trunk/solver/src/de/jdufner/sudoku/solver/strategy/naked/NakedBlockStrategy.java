@@ -29,21 +29,21 @@ import java.util.Collection;
 import java.util.concurrent.Callable;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Block;
-import de.jdufner.sudoku.common.board.BlockHandler;
+import de.jdufner.sudoku.common.board.Box;
+import de.jdufner.sudoku.common.board.BoxHandler;
 import de.jdufner.sudoku.common.board.HandlerUtil;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
  */
-public class NakedBlockStrategy extends AbstractNakedStrategy implements BlockHandler, Callable<Collection<Command>> {
+public class NakedBlockStrategy extends AbstractNakedStrategy implements BoxHandler, Callable<Collection<Command>> {
 
   //  private static final Logger LOG = Logger.getLogger(NakedBlockStrategy.class);
 
-  protected NakedBlockStrategy(final Sudoku sudoku) {
+  protected NakedBlockStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -53,7 +53,7 @@ public class NakedBlockStrategy extends AbstractNakedStrategy implements BlockHa
     return getCommands();
   }
 
-  public final void handleBlock(final Block block) {
+  public final void handleBlock(final Box block) {
     handleUnit(block);
   }
 

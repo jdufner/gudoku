@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.service;
 
 import java.util.List;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.StrategyExecutor;
 import de.jdufner.sudoku.solver.strategy.StrategyResult;
@@ -48,21 +48,21 @@ public final class StrategySolver implements ExtendedSolver {
 
   // Solver
   @Override
-  public Sudoku solve(final Sudoku sudoku) {
-    final Sudoku sudokuResult = new Sudoku(sudoku);
+  public Grid solve(final Grid sudoku) {
+    final Grid sudokuResult = new Grid(sudoku);
     final StrategyExecutor executor = new StrategyExecutor(sudokuResult, getConfiguration());
     executor.execute();
     return sudokuResult;
   }
 
   // Solver
-  public boolean isSolvable(final Sudoku sudoku) {
+  public boolean isSolvable(final Grid sudoku) {
     return solve(sudoku).isSolved();
   }
 
   // Solver
-  public boolean isUnique(final Sudoku sudoku) {
-    final Sudoku sudokuResult = new Sudoku(sudoku);
+  public boolean isUnique(final Grid sudoku) {
+    final Grid sudokuResult = new Grid(sudoku);
     final StrategyConfiguration configuration = getConfiguration();
     final StrategyExecutor executor = new StrategyExecutor(sudokuResult, configuration);
     final List<StrategyResult> results = executor.execute();
@@ -70,9 +70,9 @@ public final class StrategySolver implements ExtendedSolver {
   }
 
   // ExtendedSolver
-  public Solution getSolution(final Sudoku sudoku) {
-    final Sudoku sudokuQuest = new Sudoku(sudoku);
-    final Sudoku sudokuResult = new Sudoku(sudoku);
+  public Solution getSolution(final Grid sudoku) {
+    final Grid sudokuQuest = new Grid(sudoku);
+    final Grid sudokuResult = new Grid(sudoku);
     final StrategyConfiguration configuration = getConfiguration();
     final StrategyExecutor executor = new StrategyExecutor(sudokuResult, configuration);
     final List<StrategyResult> results = executor.execute();

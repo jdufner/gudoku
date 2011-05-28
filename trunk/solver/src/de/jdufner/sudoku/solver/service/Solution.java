@@ -30,7 +30,7 @@ import java.util.List;
 
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.commands.CommandUtils;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.StrategyResult;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -47,8 +47,8 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  */
 public class Solution {
 
-  private final transient Sudoku quest;
-  private transient Sudoku result;
+  private final transient Grid quest;
+  private transient Grid result;
   private transient boolean unique;
   private transient Level level;
   private transient List<StrategyResult> results;
@@ -57,7 +57,7 @@ public class Solution {
    * @param quest
    *          Das Start-Sudoku, für das die Lösung berechnet werden. Hier muss schon eine Kopie / Klon übergeben werden.
    */
-  public Solution(final Sudoku quest) {
+  public Solution(final Grid quest) {
     this.quest = quest;
   }
 
@@ -73,15 +73,15 @@ public class Solution {
     return number;
   }
 
-  public Sudoku getQuest() {
+  public Grid getQuest() {
     return quest;
   }
 
-  public Sudoku getResult() {
+  public Grid getResult() {
     return result;
   }
 
-  public void setResult(final Sudoku result) {
+  public void setResult(final Grid result) {
     this.result = result;
   }
 

@@ -32,15 +32,15 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
-import de.jdufner.sudoku.common.board.Block;
-import de.jdufner.sudoku.common.board.BlockHandler;
+import de.jdufner.sudoku.common.board.Box;
+import de.jdufner.sudoku.common.board.BoxHandler;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Column;
 import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Literal2CellMap;
 import de.jdufner.sudoku.common.board.Row;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -50,11 +50,11 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  * @since 0.1
  * @version $Revision$
  */
-public final class PointingPairStrategy extends AbstractStrategy implements BlockHandler, Callable<Collection<Command>> {
+public final class PointingPairStrategy extends AbstractStrategy implements BoxHandler, Callable<Collection<Command>> {
 
   private static final Logger LOG = Logger.getLogger(PointingPairStrategy.class);
 
-  public PointingPairStrategy(final Sudoku sudoku) {
+  public PointingPairStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -74,7 +74,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
     return getCommands();
   }
 
-  public void handleBlock(final Block block) {
+  public void handleBlock(final Box block) {
     final Literal2CellMap literal2CellMapBlock = new Literal2CellMap(block.getCells());
     for (Literal testCandidate : block.getCandidates()) {
       checkColumn(literal2CellMapBlock, testCandidate);
@@ -89,7 +89,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
   private void checkColumn(final Literal2CellMap literal2CellMapBlock, final Literal testCandidate) {
     if (literal2CellMapBlock.getCellsContainingLiteral(testCandidate).size() > 1
         && literal2CellMapBlock.getCellsContainingLiteral(testCandidate).size() < getSudoku().getSize()
-            .getBlockHeight()) {
+            .getBoxHeight()) {
       if (areCellsInSameColumn(literal2CellMapBlock.getCellsContainingLiteral(testCandidate))) {
         if (LOG.isDebugEnabled()) {
           LOG.debug("Found candidate "
@@ -121,7 +121,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
     return true;
   }
 
-  private void removeCandidateInColumnExceptInBlock(final Literal testCandidate, final Column column, final Block block) {
+  private void removeCandidateInColumnExceptInBlock(final Literal testCandidate, final Column column, final Box block) {
     for (Cell cell : column.getNonFixed()) {
       if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block) && cell.getCandidates().contains(testCandidate)) {
         getCommands().add(
@@ -133,7 +133,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
 
   private void checkRow(final Literal2CellMap literal2CellMapBlock, final Literal testCandidate) {
     if (literal2CellMapBlock.getCellsContainingLiteral(testCandidate).size() > 1
-        && literal2CellMapBlock.getCellsContainingLiteral(testCandidate).size() < getSudoku().getSize().getBlockWidth()) {
+        && literal2CellMapBlock.getCellsContainingLiteral(testCandidate).size() < getSudoku().getSize().getBoxWidth()) {
       if (areCellsInSameRow(literal2CellMapBlock.getCellsContainingLiteral(testCandidate))) {
         if (LOG.isDebugEnabled()) {
           LOG.debug("Found candidate "
@@ -164,7 +164,7 @@ public final class PointingPairStrategy extends AbstractStrategy implements Bloc
     return true;
   }
 
-  private void removeCandidateInRowExceptInBlock(final Literal testCandidate, final Row row, final Block block) {
+  private void removeCandidateInRowExceptInBlock(final Literal testCandidate, final Row row, final Box block) {
     for (Cell cell : row.getNonFixed()) {
       if (!getSudoku().getBlock(cell.getBlockIndex()).equals(block) && cell.getCandidates().contains(testCandidate)) {
         getCommands().add(

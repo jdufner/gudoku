@@ -31,7 +31,7 @@ import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesComman
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
@@ -48,7 +48,7 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(RemoveCandidatesCommandTest.class);
 
-  private Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.ING_DIBA);
+  private Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.ING_DIBA);
 
   public void setUp() {
     LOG.debug(sudoku);

@@ -34,7 +34,7 @@ import junit.framework.TestCase;
 
 import com.lowagie.text.DocumentException;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.context.GeneratorServiceFactory;
 import de.jdufner.sudoku.dao.SudokuData;
@@ -52,11 +52,11 @@ public final class PdfPrinterImplTest extends TestCase {
   public void testPrint() throws FileNotFoundException, DocumentException {
     SudokuData sudokuData = new SudokuData();
     sudokuData.setSudokuAsString(EXAMPLE);
-    Sudoku s = SudokuFactory.INSTANCE.buildSudoku(sudokuData.getSudokuAsString());
+    Grid s = SudokuFactory.INSTANCE.buildSudoku(sudokuData.getSudokuAsString());
     sudokuData.setFixed(s.getNumberOfFixed());
     sudokuData.setGeneratedAt(new Date());
     sudokuData.setLevel(5);
-    sudokuData.setSize(s.getSize().getUnitSize());
+    sudokuData.setSize(s.getSize().getHouseSize());
     List<SudokuData> sudokus = new ArrayList<SudokuData>();
     sudokus.add(sudokuData);
     sudokus.add(sudokuData);

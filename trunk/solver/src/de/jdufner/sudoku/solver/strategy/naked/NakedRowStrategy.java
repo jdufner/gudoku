@@ -32,7 +32,7 @@ import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Row;
 import de.jdufner.sudoku.common.board.RowHandler;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -43,7 +43,7 @@ public class NakedRowStrategy extends AbstractNakedStrategy implements RowHandle
 
   //  private static final Logger LOG = Logger.getLogger(NakedRowStrategy.class);
 
-  protected NakedRowStrategy(final Sudoku sudoku) {
+  protected NakedRowStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

@@ -34,15 +34,15 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * A Unit contains each {@link Literal} one time.
- * 
- * TODO Umbenennen in House http://www.sudopedia.org/wiki/House
+ * A House contains each {@link Literal} one time.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see <a
+ *      href="http://sudopedia.org/wiki/House">http://sudopedia.org/wiki/House</a>
  */
-public abstract class Unit implements Comparable<Unit> {
+public abstract class House implements Comparable<House> {
   /**
    * Die Größe ({@link SudokuSize}) des Sudokus.
    */
@@ -64,7 +64,7 @@ public abstract class Unit implements Comparable<Unit> {
    * @param cells
    *          Eine Liste aller Zellen, die in dieser Einheit enthalten sind.
    */
-  public Unit(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
+  public House(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
     this.sudokuSize = sudokuSize;
     this.index = index;
     this.cells = cells;
@@ -127,7 +127,8 @@ public abstract class Unit implements Comparable<Unit> {
   /**
    * @param numberCandidates
    *          Die Anzahl der Kandidaten in einer Zelle.
-   * @return Die noch nicht gesetzen Zellen mit der übergebenen Anzahl an Kandidaten.
+   * @return Die noch nicht gesetzen Zellen mit der übergebenen Anzahl an
+   *         Kandidaten.
    */
   public SortedSet<Cell> getNonFixed(final int numberCandidates) {
     final SortedSet<Cell> nonFixedCells = new TreeSet<Cell>();
@@ -153,12 +154,13 @@ public abstract class Unit implements Comparable<Unit> {
   }
 
   /**
-   * @return <code>true</code>, wenn alle Zellen ({@link Cell}) gültig sind und jede gesetzte höchstens einmal gesetzt
-   *         ist und jedes Literal mindestens einmal vorhanden ist, sonst <code>false</code>.
+   * @return <code>true</code>, wenn alle Zellen ({@link Cell}) gültig sind und
+   *         jede gesetzte höchstens einmal gesetzt ist und jedes Literal
+   *         mindestens einmal vorhanden ist, sonst <code>false</code>.
    * @see Cell#isValid()
    */
   public boolean isValid() {
-    boolean candidates[] = new boolean[sudokuSize.getUnitSize()];
+    boolean candidates[] = new boolean[sudokuSize.getHouseSize()];
     final Map<Literal, Integer> fixedCounter = new HashMap<Literal, Integer>();
     for (Cell cell : cells) {
       if (!cell.isValid()) {
@@ -168,7 +170,8 @@ public abstract class Unit implements Comparable<Unit> {
         if (fixedCounter.get(cell.getValue()) == null) {
           fixedCounter.put(cell.getValue(), 0);
         } else {
-          // Einheit kann nicht gültig sein, wenn bereits eine besetzte Zelle
+          // Einheit kann nicht gültig sein, wenn bereits eine
+          // besetzte Zelle
           // mit diesem Wert vorhanden ist.
           return false;
         }
@@ -190,7 +193,8 @@ public abstract class Unit implements Comparable<Unit> {
   /**
    * Sums the fixed cells and returns the comparison to the checksum.
    * 
-   * @return <code>true</code> if the sum of the fixed cell is equals to the checksum, else <code>false</code>
+   * @return <code>true</code> if the sum of the fixed cell is equals to the
+   *         checksum, else <code>false</code>
    */
   public boolean isSolved() {
     int sum = 0;
@@ -205,7 +209,8 @@ public abstract class Unit implements Comparable<Unit> {
 
   /**
    * @param literal
-   * @return A list of cells that part of the unit and that candidates contains the given literal.
+   * @return A list of cells that part of the unit and that candidates contains
+   *         the given literal.
    */
   public SortedSet<Cell> getCellsThooseCandidatesContains(final Literal literal) {
     final SortedSet<Cell> cells2 = new TreeSet<Cell>();
@@ -219,7 +224,8 @@ public abstract class Unit implements Comparable<Unit> {
 
   /**
    * @param literals
-   * @return A list of cells that part of the unit and that candidates contains the given literals.
+   * @return A list of cells that part of the unit and that candidates contains
+   *         the given literals.
    */
   public SortedSet<Cell> getCellsThooseCandidatesContains(final Collection<Literal> literals) {
     final SortedSet<Cell> cells2 = new TreeSet<Cell>();
@@ -239,8 +245,8 @@ public abstract class Unit implements Comparable<Unit> {
     if (other == null) {
       return false;
     }
-    if (other instanceof Unit) {
-      final Unit that = (Unit) other;
+    if (other instanceof House) {
+      final House that = (House) other;
       return this.index == that.index;
     }
     return false;
@@ -259,7 +265,7 @@ public abstract class Unit implements Comparable<Unit> {
   }
 
   @Override
-  public int compareTo(final Unit other) {
+  public int compareTo(final House other) {
     return index - other.index;
   }
 

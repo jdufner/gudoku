@@ -37,8 +37,8 @@ import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Literal2CellMap;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.board.Grid;
+import de.jdufner.sudoku.common.board.House;
 import de.jdufner.sudoku.common.board.UnitHandler;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
@@ -55,7 +55,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 public final class HiddenSingleStrategy extends AbstractStrategy implements UnitHandler {
   private static final Logger LOG = Logger.getLogger(HiddenSingleStrategy.class);
 
-  public HiddenSingleStrategy(final Sudoku sudoku) {
+  public HiddenSingleStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -75,7 +75,7 @@ public final class HiddenSingleStrategy extends AbstractStrategy implements Unit
     return getCommands();
   }
 
-  public void handleUnit(final Unit unit) {
+  public void handleUnit(final House unit) {
     final Literal2CellMap literal2CellMap = new Literal2CellMap(unit.getCells());
     for (Literal single : literal2CellMap.getCandidatesByNumber(1)) {
       if (LOG.isDebugEnabled()) {

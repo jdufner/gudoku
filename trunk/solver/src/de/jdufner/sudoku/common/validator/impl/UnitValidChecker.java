@@ -29,7 +29,7 @@ import java.util.Collection;
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.board.House;
 
 /**
  * Die Klasse prüft ob die übergebenen Einheit gültig sind.
@@ -42,16 +42,16 @@ public final class UnitValidChecker implements Callable<Boolean> {
   // private static final Logger LOG = Logger.getLogger(UnitValidChecker.class);
 
   private final transient AtomicBoolean validity;
-  private final transient Collection<? extends Unit> units;
+  private final transient Collection<? extends House> units;
 
-  public UnitValidChecker(final AtomicBoolean validity, final Collection<? extends Unit> units) {
+  public UnitValidChecker(final AtomicBoolean validity, final Collection<? extends House> units) {
     this.validity = validity;
     this.units = units;
   }
 
   @Override
   public Boolean call() {
-    for (Unit unit : units) {
+    for (House unit : units) {
       if (validity.get()) {
         final boolean unitValidity = unit.isValid();
         if (!unitValidity) {

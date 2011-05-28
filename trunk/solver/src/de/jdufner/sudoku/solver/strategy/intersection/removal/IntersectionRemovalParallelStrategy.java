@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.strategy.intersection.removal;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -37,7 +37,7 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  */
 public final class IntersectionRemovalParallelStrategy extends AbstractParallelStrategy {
 
-  public IntersectionRemovalParallelStrategy(final Sudoku sudoku) {
+  public IntersectionRemovalParallelStrategy(final Grid sudoku) {
     super(sudoku);
     getCallables().add(new BoxLineReductionColumnStrategy(sudoku));
     getCallables().add(new BoxLineReductionRowStrategy(sudoku));

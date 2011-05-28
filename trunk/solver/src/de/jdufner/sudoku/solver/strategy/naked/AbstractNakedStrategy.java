@@ -38,8 +38,8 @@ import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesComman
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.board.Grid;
+import de.jdufner.sudoku.common.board.House;
 import de.jdufner.sudoku.common.board.UnitHandler;
 import de.jdufner.sudoku.common.collections.SortedCandidates;
 import de.jdufner.sudoku.common.misc.Level;
@@ -62,9 +62,9 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
   /**
    * In dieser Zuordnung werden pro Einheit die Kandidaten gespeichert, die bereits in der Strategie geprüft wurden.
    */
-  private final transient Map<Unit, List<SortedCandidates<Literal>>> allreadyHandledCandidatesPerUnit = new HashMap<Unit, List<SortedCandidates<Literal>>>();
+  private final transient Map<House, List<SortedCandidates<Literal>>> allreadyHandledCandidatesPerUnit = new HashMap<House, List<SortedCandidates<Literal>>>();
 
-  protected AbstractNakedStrategy(final Sudoku sudoku) {
+  protected AbstractNakedStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -94,7 +94,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
   }
 
   @Override
-  public void handleUnit(final Unit unit) {
+  public void handleUnit(final House unit) {
     final SortedSet<Cell> nonFixed = unit.getNonFixed();
     if (nonFixed.size() == getSize()) {
       if (LOG.isDebugEnabled()) {
@@ -128,7 +128,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
    * @param unit
    * @param candidates
    */
-  protected void putCandidatesIntoMap(final Unit unit, final SortedCandidates<Literal> candidates) {
+  protected void putCandidatesIntoMap(final House unit, final SortedCandidates<Literal> candidates) {
     if (allreadyHandledCandidatesPerUnit.get(unit) == null) {
       final List<SortedCandidates<Literal>> setOfCandidates = new ArrayList<SortedCandidates<Literal>>();
       allreadyHandledCandidatesPerUnit.put(unit, setOfCandidates);
@@ -144,7 +144,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
    * @return <code>true</code>, wenn für die angegebene Einheit bereits die Kandidaten vorhanden sind, sonst
    *         <code>false</code>
    */
-  protected boolean areCandidatesAllreadyHandled(final Unit unit, final Collection<Literal> candidates) {
+  protected boolean areCandidatesAllreadyHandled(final House unit, final Collection<Literal> candidates) {
     if (allreadyHandledCandidatesPerUnit.get(unit) == null) {
       return false;
     }
@@ -161,7 +161,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
    * @param unit
    * @return
    */
-  protected final Candidates<Cell> findCellsWithSameCandidatesInUnit(final Cell cell, final Unit unit) {
+  protected final Candidates<Cell> findCellsWithSameCandidatesInUnit(final Cell cell, final House unit) {
     final Candidates<Cell> cells = new Candidates<Cell>();
     for (Cell cell2 : unit.getNonFixed()) {
       if (cell2.getCandidates().containsAtMost(cell.getCandidates())) {
@@ -177,7 +177,7 @@ public abstract class AbstractNakedStrategy extends AbstractStrategy implements 
    * @param unit
    */
   protected final void removeCandidatesInOtherCells(final Candidates<Literal> candidates,
-      final List<Cell> excludedCells, final Unit unit) {
+      final List<Cell> excludedCells, final House unit) {
     for (Cell cell : unit.getNonFixed()) {
       if (!excludedCells.contains(cell) && cell.getCandidates().containsAtLeastOneOf(candidates)) {
         getCommands().add(new RemoveCandidatesCommandBuilder(strategyNameEnum, cell).addCandidate(candidates).build());

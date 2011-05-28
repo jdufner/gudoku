@@ -27,7 +27,7 @@ package de.jdufner.sudoku.builder.utils;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.service.Solver;
@@ -52,14 +52,14 @@ public class NachbarschaftUtilsTest extends AbstractGeneratorTestCase {
   }
 
   public void testCheckNachbarschaft1() {
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.DEFAULT);
+    Grid sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.DEFAULT);
     LOG.debug(sudoku);
     assertFalse(NachbarschaftUtils.checkNachbarschaft(sudoku));
   }
 
   public void testCheckNachbachschaft2() {
-    Sudoku underDeterminedSudoku = SudokuFactory.INSTANCE.buildShuffled(SudokuSize.DEFAULT);
-    Sudoku sudoku = solver.solve(underDeterminedSudoku);
+    Grid underDeterminedSudoku = SudokuFactory.INSTANCE.buildShuffled(SudokuSize.DEFAULT);
+    Grid sudoku = solver.solve(underDeterminedSudoku);
     LOG.debug(sudoku);
     assertTrue(NachbarschaftUtils.checkNachbarschaft(sudoku));
   }

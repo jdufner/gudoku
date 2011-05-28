@@ -34,7 +34,7 @@ import java.util.List;
  * @since 2010-01-15
  * @version $Revision$
  */
-public final class SecondaryDiagonal extends Unit {
+public final class SecondaryDiagonal extends House {
 
   public SecondaryDiagonal(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
     super(sudokuSize, index, cells);

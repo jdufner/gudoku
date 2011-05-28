@@ -33,8 +33,10 @@ import java.util.List;
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see <a
+ *      href="http://sudopedia.org/wiki/Column">http://sudopedia.org/wiki/Column</a>
  */
-public final class Column extends Unit {
+public final class Column extends Line {
 
   public Column(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
     super(sudokuSize, index, cells);
@@ -44,8 +46,8 @@ public final class Column extends Unit {
    * @return
    */
   public int[] getBlockIndexes() {
-    final int startIndex = (index / sudokuSize.getBlockWidth()) * sudokuSize.getBlockWidth();
-    int[] blockIndexes = new int[sudokuSize.getBlockWidth()];
+    final int startIndex = (index / sudokuSize.getBoxWidth()) * sudokuSize.getBoxWidth();
+    int[] blockIndexes = new int[sudokuSize.getBoxWidth()];
     for (int i = 0; i < blockIndexes.length; i++) {
       blockIndexes[i] = startIndex + i;
     }
@@ -53,7 +55,8 @@ public final class Column extends Unit {
   }
 
   @Override
-  public boolean equals(final Object other) { // NOPMD by Jürgen on 16.11.09 00:23
+  public boolean equals(final Object other) { // NOPMD by Jürgen on 16.11.09
+                                              // 00:23
     if (other instanceof Column) {
       return super.equals(other);
     }

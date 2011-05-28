@@ -32,8 +32,8 @@ import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
-import de.jdufner.sudoku.common.board.Unit;
+import de.jdufner.sudoku.common.board.Grid;
+import de.jdufner.sudoku.common.board.House;
 
 /**
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
@@ -61,25 +61,25 @@ public final class Backtracking {
    * Werden im Rahmen des Backtrackings mehrere Lösungen gefunden, werden diese in der untersten Instanz im Stapel
    * gespeichert.
    */
-  private transient List<Sudoku> solutions = null;
+  private transient List<Grid> solutions = null;
 
   /**
-   * Das {@link Sudoku} der aktuellen Instanz, also auf der obersten Instanz auf dem Stapel.
+   * Das {@link Grid} der aktuellen Instanz, also auf der obersten Instanz auf dem Stapel.
    */
-  private final transient Sudoku sudoku;
+  private final transient Grid sudoku;
 
   /**
    * Die Höhe des Stapels.
    */
   private final transient int stackSize;
 
-  private transient Sudoku solution = null;
+  private transient Grid solution = null;
 
   private transient int solutionCounter = 0;
 
   private transient int startPosition = 0;
 
-  public Backtracking(final Sudoku sudoku, final int stackSize) {
+  public Backtracking(final Grid sudoku, final int stackSize) {
     assert stackSize <= sudoku.getSize().getTotalSize() : "stackSize is " + stackSize
         + ", but must be smaller or equals " + sudoku.getSize().getTotalSize();
     this.sudoku = sudoku;
@@ -90,7 +90,7 @@ public final class Backtracking {
     }
   }
 
-  public Backtracking(final Backtracking previousInstance, final Sudoku sudoku, final int stackSize,
+  public Backtracking(final Backtracking previousInstance, final Grid sudoku, final int stackSize,
       final int solutionCounter, final int startPosition) {
     assert stackSize <= sudoku.getSize().getTotalSize() : "stackSize is " + stackSize
         + ", but must be smaller or equals " + sudoku.getSize().getTotalSize();
@@ -119,9 +119,9 @@ public final class Backtracking {
    * @return First (found) solution via backtracking algorithm, <code>null</code> if no solution exists.
    * @throws CloneNotSupportedException
    */
-  public Sudoku firstSolution() {
+  public Grid firstSolution() {
     setSolutionLimit(1);
-    final Sudoku mySolution = findSolutions2();
+    final Grid mySolution = findSolutions2();
     LOG.debug("mySolution" + mySolution);
     LOG.debug("solutionCounter" + solutionCounter);
     LOG.debug("getSolutions()" + getSolutions());
@@ -130,13 +130,13 @@ public final class Backtracking {
   }
 
   // TODO Dokumentieren und testen.
-  public List<Sudoku> firstSolutions(final int maxNumberOfSolutions) {
+  public List<Grid> firstSolutions(final int maxNumberOfSolutions) {
     setSolutionLimit(maxNumberOfSolutions);
     findSolutions2();
     return getSolutions();
   }
 
-  private Sudoku findSolutions2() {
+  private Grid findSolutions2() {
     assert sudoku.isValid() : "Sudoku ist ungültig!";
     // assert !sudoku.isSolved() : "Sudoku ist bereits gelöst!";
     if (LOG.isDebugEnabled()) {
@@ -150,7 +150,7 @@ public final class Backtracking {
       }
       // Eine Kopie der Lösung anlegen und zurückgeben
       // Muss die Lösung selbst zurück in den Pool?
-      Sudoku result = new Sudoku(sudoku);
+      Grid result = new Grid(sudoku);
       // Zur Konsistenz auch in Solutions eintragen und Counter erhöhen
       increaseSolutionCounter();
       addSolutions(result);
@@ -169,7 +169,7 @@ public final class Backtracking {
         }
         // Eine Kopie der Lösung anlegen und zurückgeben
         // Muss die Lösung selbst zurück in den Pool?
-        return new Sudoku(sudoku);
+        return new Grid(sudoku);
       } else {
         // Oder alle Zellen sind besetzt und das Sudoku ist ungültig
         LOG.equals("Alle Zellen sind besetzt, aber das Sudoku ist nicht gelöst.");
@@ -178,16 +178,16 @@ public final class Backtracking {
     } else {
       // Diese Zelle muss einen Wert aus den Kandidaten haben
       for (Literal candidate : cell.getCandidates()) {
-        Sudoku nextSudoku = null;
+        Grid nextSudoku = null;
         Cell nextCell = null;
-        nextSudoku = new Sudoku(sudoku);
+        nextSudoku = new Grid(sudoku);
         nextCell = nextSudoku.getCell(cell.getNumber());
         nextCell.setValue(candidate);
         if (removeCandidate(nextSudoku, nextCell, candidate) && nextSudoku.isValid()) {
           // Zelle gesetzt
           // Sudoku gelöst
           if (nextSudoku.isSolvedByCheckSum()) {
-            solution = new Sudoku(nextSudoku);
+            solution = new Grid(nextSudoku);
             if (LOG.isDebugEnabled()) {
               LOG.debug("Found a solution #" + solutionCounter);
               LOG.debug(nextSudoku.toShortString());
@@ -239,11 +239,11 @@ public final class Backtracking {
    * @return <code>true</code>, wenn der Kandidat erfolgreich entfernt werden konnte und das Sudoku weiterhin gültig
    *         ist, sonst <code>false</code>.
    */
-  private boolean removeCandidate(final Sudoku sudoku, final Cell cell, final Literal candidate) {
+  private boolean removeCandidate(final Grid sudoku, final Cell cell, final Literal candidate) {
     return removeCandidateSerial(sudoku, cell, candidate);
   }
 
-  private boolean removeCandidateSerial(final Sudoku sudoku, final Cell cell, final Literal candidate) {
+  private boolean removeCandidateSerial(final Grid sudoku, final Cell cell, final Literal candidate) {
     return removeCandidateAndTestValidityInUnit(sudoku.getBlock(cell.getBlockIndex()), candidate)
         && removeCandidateAndTestValidityInUnit(sudoku.getColumn(cell.getColumnIndex()), candidate)
         && removeCandidateAndTestValidityInUnit(sudoku.getRow(cell.getRowIndex()), candidate);
@@ -260,7 +260,7 @@ public final class Backtracking {
    * @return <code>true</code>, wenn nach dem Entfernen des Kandidaten die Einheit noch gültig ist, sonst
    *         <code>false</code>.
    */
-  private boolean removeCandidateAndTestValidityInUnit(final Unit unit, final Literal candidate) {
+  private boolean removeCandidateAndTestValidityInUnit(final House unit, final Literal candidate) {
     for (Cell cell : unit.getCells()) {
       if (!cell.isFixed()) {
         cell.getCandidates().remove(candidate);
@@ -323,17 +323,17 @@ public final class Backtracking {
     previousInstance.setSolutionLimit(mySolutionLimit);
   }
 
-  public List<Sudoku> getSolutions() {
+  public List<Grid> getSolutions() {
     if (previousInstance == null) {
       return solutions;
     }
     return previousInstance.getSolutions();
   }
 
-  public void addSolutions(final Sudoku mySolution) {
+  public void addSolutions(final Grid mySolution) {
     if (previousInstance == null) {
       if (solutions == null) {
-        solutions = new ArrayList<Sudoku>();
+        solutions = new ArrayList<Grid>();
       }
       solutions.add(mySolution);
       return;

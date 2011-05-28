@@ -25,13 +25,13 @@
  */
 package de.jdufner.sudoku.common.board;
 
-
 /**
  * Candidate for common package, but currently not used.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see Row
  */
 public interface RowHandler {
 

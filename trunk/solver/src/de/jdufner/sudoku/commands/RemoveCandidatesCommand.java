@@ -32,7 +32,7 @@ import java.util.Set;
 import de.jdufner.sudoku.common.board.Candidates;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
@@ -83,13 +83,13 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
   }
 
   @Override
-  public void executeCommand(final Sudoku sudoku) {
+  public void executeCommand(final Grid sudoku) {
     successfully = sudoku.getCell(getCell(sudoku).getNumber()).removeCandidatesAndSetIfOnlyOneRemains(candidates);
     assert getCell(sudoku).isValid() : "Zelle ist in keinem gültigen Zustand.";
   }
 
   @Override
-  public void unexecuteCommand(final Sudoku sudoku) {
+  public void unexecuteCommand(final Grid sudoku) {
     if (getCell(sudoku).isFixed()) {
       getCell(sudoku).setValue(Literal.EMPTY);
       getCell(sudoku).setCandidates(new Candidates<Literal>(this.candidates));
@@ -110,7 +110,7 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
   }
 
   @Override
-  protected String toString(final Sudoku sudoku) {
+  protected String toString(final Grid sudoku) {
     return getStrategyName() + ": Entferne Kandidaten " + candidates + " in Zelle " + getCell(sudoku);
   }
 

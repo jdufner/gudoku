@@ -39,7 +39,7 @@ import de.jdufner.sudoku.common.board.Column;
 import de.jdufner.sudoku.common.board.ColumnHandler;
 import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
@@ -55,7 +55,7 @@ public final class YWingColumnStrategy extends AbstractYWingStrategy implements 
 
   private static final Logger LOG = Logger.getLogger(YWingColumnStrategy.class);
 
-  public YWingColumnStrategy(final Sudoku sudoku) {
+  public YWingColumnStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

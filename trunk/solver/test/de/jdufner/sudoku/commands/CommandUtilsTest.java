@@ -32,7 +32,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 import de.jdufner.sudoku.solver.strategy.simple.SimpleSerialStrategy;
@@ -77,7 +77,7 @@ public final class CommandUtilsTest extends AbstractSolverTestCase {
   }
 
   public void testAggregateCommands() {
-    final Sudoku sudoku = SudokuFactory.INSTANCE
+    final Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku(".5..9...2.6..2...8..7...9...81.............5...69.3......7.2..5...6..4..8.9.5...3");
     final SimpleSerialStrategy simpleSerialStrategy = new SimpleSerialStrategy(sudoku);
     final Collection<Command> commands = simpleSerialStrategy.executeStrategy();

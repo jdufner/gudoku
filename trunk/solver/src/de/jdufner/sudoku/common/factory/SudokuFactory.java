@@ -35,7 +35,7 @@ import org.apache.commons.math.random.RandomDataImpl;
 
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 
 /**
@@ -57,9 +57,9 @@ public enum SudokuFactory {
   private SudokuSize size = SudokuSize.DEFAULT;
   private RandomData randomData = new RandomDataImpl(new JDKRandomGenerator());
 
-  public Sudoku buildSudoku(final String sudokuAsString) {
+  public Grid buildSudoku(final String sudokuAsString) {
     if (SIZE_PATTERN.matcher(sudokuAsString).find()) {
-      final Sudoku sudoku = new Sudoku(getGroesseFromString(sudokuAsString), getFelderFromString(sudokuAsString));
+      final Grid sudoku = new Grid(getGroesseFromString(sudokuAsString), getFelderFromString(sudokuAsString));
       if (!sudoku.isValid()) {
         throw new IllegalArgumentException("Das eingegebene Sudoku ist nicht gültig.");
       }
@@ -83,9 +83,9 @@ public enum SudokuFactory {
             cells[i] = new Cell(i, Literal.getInstance(Integer.parseInt(felderAsStrings[i])), null, SudokuSize.DEFAULT);
           }
         }
-        return new Sudoku(SudokuSize.DEFAULT, cells);
+        return new Grid(SudokuSize.DEFAULT, cells);
       } else {
-        final Sudoku sudoku = buildSudokuFrom81Chars(sudokuAsString);
+        final Grid sudoku = buildSudokuFrom81Chars(sudokuAsString);
         if (!sudoku.isValid()) {
           throw new IllegalArgumentException("Das eingegebene Sudoku ist nicht gültig.");
         }
@@ -94,7 +94,7 @@ public enum SudokuFactory {
     }
   }
 
-  private Sudoku buildSudokuFrom81Chars(final String sudokuAsString) {
+  private Grid buildSudokuFrom81Chars(final String sudokuAsString) {
     final char[] chars = sudokuAsString.toCharArray();
     Integer[] felder = new Integer[chars.length];
     for (int i = 0; i < chars.length; i++) {
@@ -104,7 +104,7 @@ public enum SudokuFactory {
         felder[i] = Integer.valueOf(String.valueOf(chars[i]));
       }
     }
-    final Sudoku sudoku = new Sudoku(SudokuSize.NEUN, felder);
+    final Grid sudoku = new Grid(SudokuSize.NEUN, felder);
     return sudoku;
   }
 
@@ -131,12 +131,12 @@ public enum SudokuFactory {
     throw new IllegalStateException("Sudoku-Zeichenkette konnte nicht geparst werden.");
   }
 
-  public Sudoku buildEmpty(final SudokuSize sudokuSize) {
+  public Grid buildEmpty(final SudokuSize sudokuSize) {
     final Integer[] felder = new Integer[sudokuSize.getTotalSize()];
     for (int i = 0; i < sudokuSize.getTotalSize(); i++) {
       felder[i] = Integer.valueOf(0);
     }
-    return new Sudoku(sudokuSize, felder);
+    return new Grid(sudokuSize, felder);
   }
 
   /**
@@ -145,18 +145,18 @@ public enum SudokuFactory {
    * @param sudokuSize
    * @return
    */
-  public Sudoku buildFilled(final SudokuSize sudokuSize) {
-    final Sudoku sudoku = buildEmpty(sudokuSize);
-    for (int i = 0; i < sudokuSize.getUnitSize(); i++) {
-      for (int j = 0; j < sudokuSize.getUnitSize(); j++) {
-        final int shiftLeft = (i % sudokuSize.getBlockHeight()) * sudokuSize.getBlockWidth();
-        final int block = i / sudokuSize.getBlockHeight();
+  public Grid buildFilled(final SudokuSize sudokuSize) {
+    final Grid sudoku = buildEmpty(sudokuSize);
+    for (int i = 0; i < sudokuSize.getHouseSize(); i++) {
+      for (int j = 0; j < sudokuSize.getHouseSize(); j++) {
+        final int shiftLeft = (i % sudokuSize.getBoxHeight()) * sudokuSize.getBoxWidth();
+        final int block = i / sudokuSize.getBoxHeight();
         int column = j - shiftLeft + block;
-        if (column >= sudokuSize.getUnitSize()) {
-          column -= sudokuSize.getUnitSize();
+        if (column >= sudokuSize.getHouseSize()) {
+          column -= sudokuSize.getHouseSize();
         }
         if (column < 0) {
-          column += sudokuSize.getUnitSize();
+          column += sudokuSize.getHouseSize();
         }
         sudoku.getCell(i, column).setValue(Literal.getInstance(j + 1));
       }
@@ -164,12 +164,12 @@ public enum SudokuFactory {
     return sudoku;
   }
 
-  private Sudoku buildShuffled(final SudokuSize sudokuSize, final RandomData randomData) {
-    final Sudoku sudoku = buildEmpty(sudokuSize);
-    final int[] literal = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
-    final int[] columnIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
-    final int[] rowIndex = randomData.nextPermutation(sudokuSize.getUnitSize(), sudokuSize.getUnitSize());
-    for (int i = 0; i < sudokuSize.getUnitSize(); i++) {
+  private Grid buildShuffled(final SudokuSize sudokuSize, final RandomData randomData) {
+    final Grid sudoku = buildEmpty(sudokuSize);
+    final int[] literal = randomData.nextPermutation(sudokuSize.getHouseSize(), sudokuSize.getHouseSize());
+    final int[] columnIndex = randomData.nextPermutation(sudokuSize.getHouseSize(), sudokuSize.getHouseSize());
+    final int[] rowIndex = randomData.nextPermutation(sudokuSize.getHouseSize(), sudokuSize.getHouseSize());
+    for (int i = 0; i < sudokuSize.getHouseSize(); i++) {
       sudoku.getCell(rowIndex[i], columnIndex[i]).setValue(Literal.getInstance(literal[i] + 1));
     }
     return sudoku;
@@ -181,7 +181,7 @@ public enum SudokuFactory {
    * @param sudokuSize
    * @return
    */
-  public Sudoku buildShuffled(final SudokuSize sudokuSize) {
+  public Grid buildShuffled(final SudokuSize sudokuSize) {
     return buildShuffled(sudokuSize, randomData);
   }
 

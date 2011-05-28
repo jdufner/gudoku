@@ -51,7 +51,7 @@ public final class NotStarted implements CellHandler {
 
   @Override
   public void handleCell(final Cell cell) {
-    if (booleanValue && !cell.isFixed() && cell.getCandidates().size() != sudokuSize.getUnitSize()) {
+    if (booleanValue && !cell.isFixed() && cell.getCandidates().size() != sudokuSize.getHouseSize()) {
       booleanValue = false;
     }
   }

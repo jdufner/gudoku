@@ -31,8 +31,9 @@ import java.util.List;
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 0.1
  * @version $Revision$
+ * @see http://sudopedia.org/wiki/Row
  */
-public final class Row extends Unit {
+public final class Row extends Line {
 
   public Row(final SudokuSize sudokuSize, final int index, final List<Cell> cells) {
     super(sudokuSize, index, cells);
@@ -42,8 +43,8 @@ public final class Row extends Unit {
    * @return
    */
   public int[] getBlockIndexes() {
-    final int startIndex = (index / sudokuSize.getBlockHeight()) * sudokuSize.getBlockHeight();
-    int[] blockIndexes = new int[sudokuSize.getBlockHeight()];
+    final int startIndex = (index / sudokuSize.getBoxHeight()) * sudokuSize.getBoxHeight();
+    int[] blockIndexes = new int[sudokuSize.getBoxHeight()];
     for (int i = 0; i < blockIndexes.length; i++) {
       blockIndexes[i] = startIndex + i;
     }
@@ -51,7 +52,8 @@ public final class Row extends Unit {
   }
 
   @Override
-  public boolean equals(final Object other) { // NOPMD by Jürgen on 16.11.09 00:23
+  public boolean equals(final Object other) { // NOPMD by Jürgen on 16.11.09
+                                              // 00:23
     if (other instanceof Row) {
       return super.equals(other);
     }

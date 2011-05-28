@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.service;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.solver.backtracking.Backtracking;
 
 /**
@@ -35,17 +35,17 @@ import de.jdufner.sudoku.solver.backtracking.Backtracking;
  */
 public final class BacktrackingSolver implements Solver {
 
-  public Sudoku solve(final Sudoku sudoku) {
+  public Grid solve(final Grid sudoku) {
     final Backtracking backtracking = new Backtracking(sudoku, 1);
     return backtracking.firstSolution();
   }
 
-  public boolean isSolvable(final Sudoku sudoku) {
+  public boolean isSolvable(final Grid sudoku) {
     final Backtracking backtracking = new Backtracking(sudoku, 1);
     return backtracking.firstSolution() == null ? false : true;
   }
 
-  public boolean isUnique(final Sudoku sudoku) {
+  public boolean isUnique(final Grid sudoku) {
     final Backtracking backtracking = new Backtracking(sudoku, 1);
     return backtracking.isUnique();
   }

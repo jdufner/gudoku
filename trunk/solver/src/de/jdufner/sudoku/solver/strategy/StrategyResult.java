@@ -28,7 +28,7 @@ package de.jdufner.sudoku.solver.strategy;
 import java.util.Collection;
 
 import de.jdufner.sudoku.commands.Command;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
@@ -98,13 +98,13 @@ public final class StrategyResult {
     return endTime - startTime;
   }
 
-  protected void storeStateBefore(final Sudoku sudoku) {
+  protected void storeStateBefore(final Grid sudoku) {
     sudokuBefore = sudoku.toString();
     numberCandidatesBefore = sudoku.getNumberOfCandidates();
     numberFixedBefore = sudoku.getNumberOfFixed();
   }
 
-  protected void storeStateAfter(final Sudoku sudoku) {
+  protected void storeStateAfter(final Grid sudoku) {
     sudokuAfter = sudoku.toString();
     numberCandidatesAfter = sudoku.getNumberOfCandidates();
     numberFixedAfter = sudoku.getNumberOfFixed();

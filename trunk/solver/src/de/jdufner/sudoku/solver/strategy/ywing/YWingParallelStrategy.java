@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.strategy.ywing;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -42,7 +42,7 @@ public final class YWingParallelStrategy extends AbstractParallelStrategy {
 
   private static final Logger LOG = Logger.getLogger(YWingParallelStrategy.class);
 
-  public YWingParallelStrategy(final Sudoku sudoku) {
+  public YWingParallelStrategy(final Grid sudoku) {
     super(sudoku);
     getCallables().add(new YWingColumnStrategy(sudoku));
     getCallables().add(new YWingRowStrategy(sudoku));

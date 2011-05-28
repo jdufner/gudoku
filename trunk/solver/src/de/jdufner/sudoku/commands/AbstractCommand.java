@@ -34,7 +34,7 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.CellUtils;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
@@ -69,7 +69,7 @@ public abstract class AbstractCommand implements Command {
   }
 
   @Override
-  public void execute(final Sudoku sudoku) {
+  public void execute(final Grid sudoku) {
     freeze(sudoku);
     executeCommand(sudoku);
     if (!getCell(sudoku).isValid()) {
@@ -78,14 +78,14 @@ public abstract class AbstractCommand implements Command {
   }
 
   /**
-   * Interne Implementierung der {@link #execute(Sudoku)}-Methode, die von den Subklassen implementiert werden muss.
+   * Interne Implementierung der {@link #execute(Grid)}-Methode, die von den Subklassen implementiert werden muss.
    * 
    * @param sudoku
    */
-  protected abstract void executeCommand(final Sudoku sudoku);
+  protected abstract void executeCommand(final Grid sudoku);
 
   @Override
-  public void unexecute(final Sudoku sudoku) {
+  public void unexecute(final Grid sudoku) {
     unexecuteCommand(sudoku);
     if (!getCell(sudoku).isValid()) {
       LOG.warn(getCell(sudoku) + " ist nach Rücknahme von " + this + " nicht mehr gültig.");
@@ -93,11 +93,11 @@ public abstract class AbstractCommand implements Command {
   }
 
   /**
-   * Interne Implementierung der {@link #unexecute(Sudoku)}-Methode, die von den Subklassen implementiert werden muss.
+   * Interne Implementierung der {@link #unexecute(Grid)}-Methode, die von den Subklassen implementiert werden muss.
    * 
    * @param sudoku
    */
-  protected abstract void unexecuteCommand(final Sudoku sudoku);
+  protected abstract void unexecuteCommand(final Grid sudoku);
 
   @Override
   public abstract boolean reversible();
@@ -119,13 +119,13 @@ public abstract class AbstractCommand implements Command {
    * Speichert den Inhalt der {@link #toString()}-Methode des Objekts im Attribut {@link #frozenString} ab und kann mit
    * {@link #getFrozenString()} abgerufen werden. Diese Methode ist nach Erzeugung des Objekts aufzurufen.
    */
-  protected void freeze(final Sudoku sudoku) {
+  protected void freeze(final Grid sudoku) {
     if (frozenString == null || frozenString.length() <= 0) {
       frozenString = this.toString(sudoku);
     }
   }
 
-  protected abstract String toString(Sudoku sudoku);
+  protected abstract String toString(Grid sudoku);
 
   @Override
   public String getFrozenString() {
@@ -142,7 +142,7 @@ public abstract class AbstractCommand implements Command {
     return rowIndex;
   }
 
-  protected Cell getCell(final Sudoku sudoku) {
+  protected Cell getCell(final Grid sudoku) {
     return sudoku.getCell(getRowIndex(), getColumnIndex());
   }
 

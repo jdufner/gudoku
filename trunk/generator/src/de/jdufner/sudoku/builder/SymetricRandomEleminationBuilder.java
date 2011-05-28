@@ -45,8 +45,8 @@ public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
 
   public Cell symetricCell(Cell cell) {
     return sudoku.getCell(//
-        sudoku.getSize().getUnitSize() - 1 - cell.getRowIndex(), //
-        sudoku.getSize().getUnitSize() - 1 - cell.getColumnIndex());
+        sudoku.getSize().getHouseSize() - 1 - cell.getRowIndex(), //
+        sudoku.getSize().getHouseSize() - 1 - cell.getColumnIndex());
   }
 
   @Override

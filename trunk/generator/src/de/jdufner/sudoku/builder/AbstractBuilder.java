@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.builder;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.service.ExtendedSolver;
@@ -37,14 +37,14 @@ import de.jdufner.sudoku.solver.service.ExtendedSolver;
  */
 public abstract class AbstractBuilder implements Builder {
 
-  protected Sudoku sudoku;
+  protected Grid sudoku;
   protected ExtendedSolver strategySolverWithBacktracking;
 
   public AbstractBuilder() {
   }
 
   public void setSize(SudokuSize sudokuSize) {
-    Sudoku underDeterminedSudoku = SudokuFactory.INSTANCE.buildShuffled(sudokuSize);
+    Grid underDeterminedSudoku = SudokuFactory.INSTANCE.buildShuffled(sudokuSize);
     sudoku = getStrategySolverWithBacktracking().solve(underDeterminedSudoku);
   }
 

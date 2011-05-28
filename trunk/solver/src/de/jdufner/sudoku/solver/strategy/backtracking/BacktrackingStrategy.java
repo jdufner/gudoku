@@ -33,7 +33,7 @@ import de.jdufner.sudoku.commands.SetValueCommand.SetValueCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.CellHandler;
 import de.jdufner.sudoku.common.board.HandlerUtil;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.backtracking.Backtracking;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
@@ -46,10 +46,10 @@ import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
  */
 public final class BacktrackingStrategy extends AbstractStrategy implements CellHandler {
 
-  private transient Sudoku result = null;
+  private transient Grid result = null;
   private transient boolean sudokuUnique = true;
 
-  public BacktrackingStrategy(final Sudoku sudoku) {
+  public BacktrackingStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -71,7 +71,7 @@ public final class BacktrackingStrategy extends AbstractStrategy implements Cell
   @Override
   public Collection<Command> executeStrategy() {
     final Backtracking backtracking = new Backtracking(getSudoku(), 1);
-    final List<Sudoku> results = backtracking.firstSolutions(2);
+    final List<Grid> results = backtracking.firstSolutions(2);
     result = results.get(0);
     if (results.size() > 1) {
       sudokuUnique = false;

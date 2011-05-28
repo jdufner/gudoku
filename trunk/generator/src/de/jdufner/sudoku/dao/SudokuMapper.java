@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.dao;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.XsudokuUtils;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.solver.service.Solution;
@@ -43,7 +43,7 @@ public final class SudokuMapper {
   private SudokuMapper() {
   }
 
-  public static Sudoku map(SudokuData sudokuData) {
+  public static Grid map(SudokuData sudokuData) {
     return SudokuFactory.INSTANCE.buildSudoku(sudokuData.getSudokuAsString());
   }
 
@@ -56,7 +56,7 @@ public final class SudokuMapper {
   public static void map(SudokuData to, Solution from) {
     to.setFixed(from.getQuest().getNumberOfFixed());
     to.setLevel(from.getLevel().getValue());
-    to.setSize(from.getQuest().getSize().getUnitSize());
+    to.setSize(from.getQuest().getSize().getHouseSize());
     to.setSudokuAsString(from.getQuest().toShortString());
     to.setxSudoku(XsudokuUtils.isXsudoku(from.getResult()) ? "J" : "N");
     to.setStrategySimple(from.getNumberSuccessfulCommand(StrategyNameEnum.SIMPLE));

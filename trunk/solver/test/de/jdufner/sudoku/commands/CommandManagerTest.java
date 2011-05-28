@@ -31,7 +31,7 @@ import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesComman
 import de.jdufner.sudoku.commands.SetValueCommand.SetValueCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.Literal;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
@@ -45,7 +45,7 @@ public class CommandManagerTest extends AbstractSolverTestCase {
 
   private static final Logger LOG = Logger.getLogger(CommandManagerTest.class);
 
-  private Sudoku sudoku;
+  private Grid sudoku;
   private CommandManager commandManager;
 
   @Override

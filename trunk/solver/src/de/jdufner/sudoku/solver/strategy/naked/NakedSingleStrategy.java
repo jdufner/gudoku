@@ -34,7 +34,7 @@ import de.jdufner.sudoku.commands.SetValueCommand.SetValueCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.CellHandler;
 import de.jdufner.sudoku.common.board.HandlerUtil;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -51,7 +51,7 @@ public final class NakedSingleStrategy extends AbstractStrategy implements CellH
 
   private static final Logger LOG = Logger.getLogger(NakedSingleStrategy.class);
 
-  public NakedSingleStrategy(final Sudoku sudoku) {
+  public NakedSingleStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.backtracking;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.common.misc.Examples;
@@ -56,27 +56,27 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
   }
 
   public void testProblem() {
-    Sudoku sudoku1 = SudokuFactory.INSTANCE
+    Grid sudoku1 = SudokuFactory.INSTANCE
         .buildSudoku("9:0,0,0,0,4,0,0,3,0,9,8,0,6,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,4,0,5,0,7,0,0,6,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,9,0,8,0,7,6,0,7,0,0,3,0,0,0,0");
     Backtracking backtracking = new Backtracking(sudoku1, 1);
-    Sudoku result1 = backtracking.firstSolution();
+    Grid result1 = backtracking.firstSolution();
     assertNotNull(result1);
     assertTrue(result1.isSolved());
     assertTrue(result1.isSolvedByCheckSum());
     assertTrue(result1.isValid());
 
     Solver s = getBacktrackingSolver();
-    Sudoku sudoku2 = SudokuFactory.INSTANCE
+    Grid sudoku2 = SudokuFactory.INSTANCE
         .buildSudoku("9:0,0,0,0,4,0,0,3,0,9,8,0,6,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,4,0,5,0,7,0,0,6,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,9,0,8,0,7,6,0,7,0,0,3,0,0,0,0");
-    Sudoku result2 = s.solve(sudoku2);
+    Grid result2 = s.solve(sudoku2);
     assertTrue(result2.isSolved());
     assertTrue(result2.isSolvedByCheckSum());
     assertTrue(result2.isValid());
   }
 
   public void testFirstSolution1() {
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.SCHWER);
-    Sudoku result = solver.solve(sudoku);
+    Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.SCHWER);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result);
     assertTrue(result.isSolved());
     assertTrue(result.isSolvedByCheckSum());
@@ -93,9 +93,9 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
    * @throws Exception
    */
   public void testFirstSolution2() {
-    Sudoku sudoku = SudokuFactory.INSTANCE
+    Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:7,0,0,1,0,8,0,0,0,0,9,0,0,0,0,0,3,2,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,1,0,0,9,6,0,0,2,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,1,0,0,0,3,2,0,0,0,0,0,0,6");
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result);
     assertTrue(result.isSolved());
     assertTrue(result.isSolvedByCheckSum());
@@ -107,9 +107,9 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
   }
 
   public void testFirstSolution3() {
-    Sudoku sudoku = SudokuFactory.INSTANCE
+    Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:0,8,2,0,1,0,0,0,0,7,0,0,0,0,0,0,3,0,0,0,0,0,0,6,0,0,5,0,0,0,0,0,0,0,8,0,3,0,0,7,0,0,0,0,0,0,0,0,0,0,0,1,0,4,4,0,1,0,0,0,0,0,6,0,0,0,0,5,0,0,0,0,0,0,0,8,0,0,0,0,0");
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result);
     assertTrue(result.isSolved());
     assertTrue(result.isSolvedByCheckSum());
@@ -127,9 +127,9 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
    */
   public void testFirstSolution4() {
     if (!SHORT_TEST) {
-      Sudoku sudoku = SudokuFactory.INSTANCE
+      Grid sudoku = SudokuFactory.INSTANCE
           .buildSudoku("9:9,0,0,1,0,0,3,0,0,4,0,0,0,0,0,0,5,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,4,0,0,6,8,0,0,0,0,0,0,0,0,0,0,0,0,6,7,8,3,2,0,0,7,0,0,0,0,0,0,0,0,0,0,1,0,0");
-      Sudoku result = solver.solve(sudoku);
+      Grid result = solver.solve(sudoku);
       LOG.debug(result);
       assertTrue(result.isSolved());
       assertTrue(result.isSolvedByCheckSum());
@@ -140,9 +140,9 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
   }
 
   public void testFirstSolution5() {
-    Sudoku sudoku = SudokuFactory.INSTANCE
+    Grid sudoku = SudokuFactory.INSTANCE
         .buildSudoku("9:9,2,1,6,8,3,0,5,0,5,8,6,9,7,4,1,3,2,3,4,7,5,0,0,9,6,8,7,1,8,4,5,6,2,9,3,4,6,0,0,0,0,8,0,5,2,0,5,8,0,0,0,0,0,8,0,4,0,6,0,5,2,1,6,5,2,1,0,8,0,4,0,1,7,0,2,4,5,0,8,0");
-    Sudoku result = solver.solve(sudoku);
+    Grid result = solver.solve(sudoku);
     LOG.debug(result);
     assertTrue(result.isSolved());
     assertTrue(result.isSolvedByCheckSum());
@@ -155,7 +155,7 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
 
   public void testCountSolutions() {
     if (!SHORT_TEST) {
-      Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.SCHWER);
+      Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.SCHWER);
       Backtracking backtracking = new Backtracking(sudoku, 1);
       int numberSolutions = backtracking.countSolutions();
       LOG.debug("SCHWER numberSolutions=" + numberSolutions);
@@ -164,7 +164,7 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
 
   public void testCountSolutions1() {
     if (!SHORT_TEST) {
-      Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.KLEIN_EINDEUTIG);
+      Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.KLEIN_EINDEUTIG);
       Backtracking backtracking = new Backtracking(sudoku, 1);
       int numberSolutions = backtracking.countSolutions();
       LOG.debug("KLEIN_EINDEUTIG numberSolutions=" + numberSolutions);
@@ -174,7 +174,7 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
 
   public void testCountSolutions2() {
     if (!SHORT_TEST) {
-      Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.KLEIN_MEHRDEUTIG_1);
+      Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.KLEIN_MEHRDEUTIG_1);
       Backtracking backtracking = new Backtracking(sudoku, 1);
       int numberSolutions = backtracking.countSolutions();
       LOG.debug("KLEIN_MEHRDEUTIG_1 numberSolutions=" + numberSolutions);
@@ -184,7 +184,7 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
 
   public void testCountSolutions3() {
     if (!SHORT_TEST) {
-      Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.KLEIN_MEHRDEUTIG_2);
+      Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.KLEIN_MEHRDEUTIG_2);
       Backtracking backtracking = new Backtracking(sudoku, 1);
       int numberSolutions = backtracking.countSolutions();
       LOG.debug("KLEIN_MEHRDEUTIG_2 numberSolutions=" + numberSolutions);
@@ -194,7 +194,7 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
 
   public void testCountSolutions4() {
     if (!SHORT_TEST) {
-      Sudoku sudoku = SudokuFactory.INSTANCE.buildEmpty(SudokuSize.VIER);
+      Grid sudoku = SudokuFactory.INSTANCE.buildEmpty(SudokuSize.VIER);
       Backtracking backtracking = new Backtracking(sudoku, 1);
       int numberSolutions = backtracking.countSolutions();
       LOG.debug("EMPTY_VIER numberSolutions=" + numberSolutions);
@@ -203,10 +203,10 @@ public final class BacktrackingTest extends AbstractSolverTestCase {
   }
 
   public void testFirstSolutionOfShuffled() {
-    Sudoku underDeterminedSudoku = SudokuFactory.INSTANCE.buildShuffled(SudokuSize.DEFAULT);
+    Grid underDeterminedSudoku = SudokuFactory.INSTANCE.buildShuffled(SudokuSize.DEFAULT);
     LOG.debug(underDeterminedSudoku);
     Backtracking backtracking = new Backtracking(underDeterminedSudoku, 1);
-    Sudoku firstSolution = backtracking.firstSolution();
+    Grid firstSolution = backtracking.firstSolution();
     LOG.debug(firstSolution);
   }
 }

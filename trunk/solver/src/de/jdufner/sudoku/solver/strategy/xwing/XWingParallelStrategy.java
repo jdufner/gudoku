@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.strategy.xwing;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractParallelStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -39,7 +39,7 @@ public final class XWingParallelStrategy extends AbstractParallelStrategy {
 
   // private static final Logger log = Logger.getLogger(XWingStrategy.class);
 
-  public XWingParallelStrategy(final Sudoku sudoku) {
+  public XWingParallelStrategy(final Grid sudoku) {
     super(sudoku);
     getCallables().add(new XWingColumnStrategy(sudoku));
     getCallables().add(new XWingRowStrategy(sudoku));

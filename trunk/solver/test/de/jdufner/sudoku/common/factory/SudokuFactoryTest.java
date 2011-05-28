@@ -27,7 +27,7 @@ package de.jdufner.sudoku.common.factory;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.SudokuSize;
 import de.jdufner.sudoku.common.misc.Examples;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
@@ -42,7 +42,7 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(SudokuFactoryTest.class);
 
   public void testBuildFilledNeun() {
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.NEUN);
+    Grid sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.NEUN);
     LOG.debug(sudoku.toLongString());
     LOG.debug(sudoku.toShortString());
     assertTrue(sudoku.isValid());
@@ -59,7 +59,7 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
   }
 
   public void testBuildFilledZehn() {
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.ZEHN);
+    Grid sudoku = SudokuFactory.INSTANCE.buildFilled(SudokuSize.ZEHN);
     LOG.debug(sudoku.toLongString());
     LOG.debug(sudoku.toShortString());
     assertTrue(sudoku.isValid());
@@ -77,15 +77,15 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
   }
 
   public void testBuildShuffled() {
-    Sudoku sudoku = SudokuFactory.INSTANCE.buildShuffled(SudokuSize.NEUN);
+    Grid sudoku = SudokuFactory.INSTANCE.buildShuffled(SudokuSize.NEUN);
     LOG.debug(sudoku);
   }
 
   public void testSudokuStringWithCandidates() {
-    final Sudoku sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.ING_DIBA);
+    final Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(Examples.ING_DIBA);
     final String sudokuAsStringWithCandidates = sudoku.toShortStringWithCandidates();
     LOG.debug(sudokuAsStringWithCandidates);
-    final Sudoku sudoku2 = SudokuFactory.INSTANCE.buildSudoku(sudokuAsStringWithCandidates);
+    final Grid sudoku2 = SudokuFactory.INSTANCE.buildSudoku(sudokuAsStringWithCandidates);
     assertEquals(sudoku, sudoku2);
     assertNotSame(sudoku, sudoku2);
   }

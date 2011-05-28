@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2010-01-15
  * @version $Revision$
@@ -39,23 +38,23 @@ public final class XsudokuUtils {
   private XsudokuUtils() {
   }
 
-  public static MainDiagonal buildMainDiagonal(final Sudoku sudoku) {
+  public static MainDiagonal buildMainDiagonal(final Grid sudoku) {
     final List<Cell> cells = new ArrayList<Cell>();
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
-      cells.add(sudoku.getCell(i, sudoku.getSize().getUnitSize() - 1 - i));
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
+      cells.add(sudoku.getCell(i, sudoku.getSize().getHouseSize() - 1 - i));
     }
     return new MainDiagonal(sudoku.getSize(), 0, cells);
   }
 
-  public static SecondaryDiagonal buildSecondaryDiagonal(final Sudoku sudoku) {
+  public static SecondaryDiagonal buildSecondaryDiagonal(final Grid sudoku) {
     final List<Cell> cells = new ArrayList<Cell>();
-    for (int i = 0; i < sudoku.getSize().getUnitSize(); i++) {
+    for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       cells.add(sudoku.getCell(i, i));
     }
     return new SecondaryDiagonal(sudoku.getSize(), 0, cells);
   }
 
-  public static boolean isXsudoku(final Sudoku sudoku) {
+  public static boolean isXsudoku(final Grid sudoku) {
     final MainDiagonal mainDiagonal = buildMainDiagonal(sudoku);
     if (!mainDiagonal.isSolved() || !mainDiagonal.isValid()) {
       return false;

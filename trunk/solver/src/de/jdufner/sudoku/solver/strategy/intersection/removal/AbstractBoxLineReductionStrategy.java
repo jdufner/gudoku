@@ -29,9 +29,9 @@ import java.util.Collection;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Block;
+import de.jdufner.sudoku.common.board.Box;
 import de.jdufner.sudoku.common.board.Cell;
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
@@ -45,7 +45,7 @@ public abstract class AbstractBoxLineReductionStrategy extends AbstractStrategy 
 
   private static final Logger LOG = Logger.getLogger(AbstractBoxLineReductionStrategy.class);
 
-  protected AbstractBoxLineReductionStrategy(final Sudoku sudoku) {
+  protected AbstractBoxLineReductionStrategy(final Grid sudoku) {
     super(sudoku);
   }
 
@@ -68,7 +68,7 @@ public abstract class AbstractBoxLineReductionStrategy extends AbstractStrategy 
    * @return
    */
   protected boolean areCellsInSameBlock(final Collection<Cell> cells) {
-    Block block = null;
+    Box block = null;
     for (Cell cell : cells) {
       if (block == null) {
         block = getSudoku().getBlock(cell.getBlockIndex());

@@ -36,51 +36,51 @@ import de.jdufner.sudoku.test.AbstractSolverTestCase;
 public final class BlockUtilsTest extends AbstractSolverTestCase {
 
   public void testIsFirstColumnInBlock() {
-    assertTrue(BlockUtils.isFirstColumnInBlock(0, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstColumnInBlock(1, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstColumnInBlock(2, SudokuSize.NEUN));
-    assertTrue(BlockUtils.isFirstColumnInBlock(3, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstColumnInBlock(4, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstColumnInBlock(5, SudokuSize.NEUN));
-    assertTrue(BlockUtils.isFirstColumnInBlock(6, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstColumnInBlock(7, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstColumnInBlock(8, SudokuSize.NEUN));
+    assertTrue(BoxUtils.isFirstColumnInBlock(0, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstColumnInBlock(1, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstColumnInBlock(2, SudokuSize.NEUN));
+    assertTrue(BoxUtils.isFirstColumnInBlock(3, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstColumnInBlock(4, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstColumnInBlock(5, SudokuSize.NEUN));
+    assertTrue(BoxUtils.isFirstColumnInBlock(6, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstColumnInBlock(7, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstColumnInBlock(8, SudokuSize.NEUN));
   }
 
   public void testIsFirstRowInBlock() {
-    assertTrue(BlockUtils.isFirstRowInBlock(0, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstRowInBlock(1, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstRowInBlock(2, SudokuSize.NEUN));
-    assertTrue(BlockUtils.isFirstRowInBlock(3, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstRowInBlock(4, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstRowInBlock(5, SudokuSize.NEUN));
-    assertTrue(BlockUtils.isFirstRowInBlock(6, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstRowInBlock(7, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isFirstRowInBlock(8, SudokuSize.NEUN));
+    assertTrue(BoxUtils.isFirstRowInBlock(0, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstRowInBlock(1, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstRowInBlock(2, SudokuSize.NEUN));
+    assertTrue(BoxUtils.isFirstRowInBlock(3, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstRowInBlock(4, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstRowInBlock(5, SudokuSize.NEUN));
+    assertTrue(BoxUtils.isFirstRowInBlock(6, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstRowInBlock(7, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isFirstRowInBlock(8, SudokuSize.NEUN));
   }
 
   public void testIsLastColumnInRow() {
-    assertFalse(BlockUtils.isLastColumnInRow(0, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastColumnInRow(1, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastColumnInRow(2, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastColumnInRow(3, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastColumnInRow(4, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastColumnInRow(5, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastColumnInRow(6, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastColumnInRow(7, SudokuSize.NEUN));
-    assertTrue(BlockUtils.isLastColumnInRow(8, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastColumnInRow(0, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastColumnInRow(1, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastColumnInRow(2, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastColumnInRow(3, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastColumnInRow(4, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastColumnInRow(5, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastColumnInRow(6, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastColumnInRow(7, SudokuSize.NEUN));
+    assertTrue(BoxUtils.isLastColumnInRow(8, SudokuSize.NEUN));
   }
 
   public void testIsLastRowInColumn() {
-    assertFalse(BlockUtils.isLastRowInColumn(0, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastRowInColumn(1, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastRowInColumn(2, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastRowInColumn(3, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastRowInColumn(4, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastRowInColumn(5, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastRowInColumn(6, SudokuSize.NEUN));
-    assertFalse(BlockUtils.isLastRowInColumn(7, SudokuSize.NEUN));
-    assertTrue(BlockUtils.isLastRowInColumn(8, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastRowInColumn(0, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastRowInColumn(1, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastRowInColumn(2, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastRowInColumn(3, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastRowInColumn(4, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastRowInColumn(5, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastRowInColumn(6, SudokuSize.NEUN));
+    assertFalse(BoxUtils.isLastRowInColumn(7, SudokuSize.NEUN));
+    assertTrue(BoxUtils.isLastRowInColumn(8, SudokuSize.NEUN));
   }
 
 }

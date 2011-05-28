@@ -25,7 +25,7 @@
  */
 package de.jdufner.sudoku.solver.strategy.naked;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
@@ -38,7 +38,7 @@ public final class NakedQuadSerialStrategy extends AbstractNakedSerialStrategy {
   public static final int SIZE = 4;
   public static final StrategyNameEnum STRATEGY_NAME = StrategyNameEnum.NAKED_QUAD;
 
-  public NakedQuadSerialStrategy(final Sudoku sudoku) {
+  public NakedQuadSerialStrategy(final Grid sudoku) {
     super(sudoku);
   }
 

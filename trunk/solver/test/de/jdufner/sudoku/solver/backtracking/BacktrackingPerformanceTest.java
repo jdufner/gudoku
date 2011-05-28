@@ -27,7 +27,7 @@ package de.jdufner.sudoku.solver.backtracking;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.board.Sudoku;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.factory.SudokuFactory;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
@@ -39,7 +39,7 @@ import de.jdufner.sudoku.test.AbstractSolverTestCase;
 public final class BacktrackingPerformanceTest extends AbstractSolverTestCase {
   private static final Logger LOG = Logger.getLogger(BacktrackingPerformanceTest.class);
 
-  private Sudoku sudoku = null;
+  private Grid sudoku = null;
   private long startTime = 0;
   private long endTime = 0;
 
@@ -53,7 +53,7 @@ public final class BacktrackingPerformanceTest extends AbstractSolverTestCase {
   public void testFirstSolution() {
     startTime = System.currentTimeMillis();
     Backtracking backtracking = new Backtracking(sudoku, 1);
-    Sudoku result1 = backtracking.firstSolution();
+    Grid result1 = backtracking.firstSolution();
     assertNotNull(result1);
     assertTrue(result1.isSolved());
     assertTrue(result1.isSolvedByCheckSum());
