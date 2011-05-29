@@ -49,7 +49,7 @@ public final class UnsetValueCommand extends AbstractSingleValueCommand {
   @Override
   public void executeCommand(final Grid sudoku) {
     if (sudoku.getCell(rowIndex, columnIndex).isFixed()) {
-      sudoku.getCell(rowIndex, columnIndex).setValue(Literal.EMPTY);
+      sudoku.getCell(rowIndex, columnIndex).setDigit(Literal.EMPTY);
       successfully = true;
     } else {
       successfully = false;
@@ -58,7 +58,7 @@ public final class UnsetValueCommand extends AbstractSingleValueCommand {
 
   @Override
   public void unexecuteCommand(final Grid sudoku) {
-    sudoku.getCell(rowIndex, columnIndex).setValue(value);
+    sudoku.getCell(rowIndex, columnIndex).setDigit(value);
   }
 
   @Override

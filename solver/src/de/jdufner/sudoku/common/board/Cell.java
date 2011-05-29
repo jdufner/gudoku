@@ -25,7 +25,6 @@
  */
 package de.jdufner.sudoku.common.board;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -53,7 +52,7 @@ public final class Cell implements Comparable<Cell> {
   private final transient int rowIndex;
   private final transient int columnIndex;
   private final transient int blockIndex;
-  private Literal value;
+  private Literal digit;
   private Candidates<Literal> candidates = new Candidates<Literal>();
 
   public Cell(final int rowIndex, final int columnIndex, final Literal value, final SudokuSize sudokuSize) {
@@ -61,7 +60,7 @@ public final class Cell implements Comparable<Cell> {
     this.columnIndex = columnIndex;
     this.blockIndex = BoxUtils.getBlockIndexByRowIndexAndColumnIndex(rowIndex, columnIndex, sudokuSize);
     this.sudokuSize = sudokuSize;
-    setValue(value, false);
+    setDigit(value, false);
   }
 
   public Cell(final Cell cell) {
@@ -69,7 +68,7 @@ public final class Cell implements Comparable<Cell> {
     this.columnIndex = cell.columnIndex;
     this.blockIndex = cell.blockIndex;
     this.sudokuSize = cell.sudokuSize;
-    this.value = cell.value;
+    this.digit = cell.digit;
     this.candidates.addAll(cell.candidates);
   }
 
@@ -80,16 +79,16 @@ public final class Cell implements Comparable<Cell> {
     this.sudokuSize = sudokuSize;
     if (value == null) {
       // if (candidates != null && candidates.length > 0) {
-      setValue(Literal.EMPTY, false);
+      setDigit(Literal.EMPTY, false);
       setCandidates(new Candidates<Literal>(candidates));
       // }
     } else {
-      setValue(value, false);
+      setDigit(value, false);
     }
   }
 
-  public Literal getValue() {
-    return value;
+  public Literal getDigit() {
+    return digit;
   }
 
   public Candidates<Literal> getCandidates() {
@@ -125,7 +124,7 @@ public final class Cell implements Comparable<Cell> {
       }
     }
     if (candidates.size() == 1) {
-      setValue(candidates.get(0));
+      setDigit(candidates.get(0));
       if (LOG.isInfoEnabled()) {
         LOG.info("Set " + this);
       }
@@ -137,26 +136,26 @@ public final class Cell implements Comparable<Cell> {
   /**
    * Setzt einen Wert in dieser Zelle und leert die Kandidaten.
    * 
-   * @param value
+   * @param digit
    *          Der Wert der gesetzt wird.
    * @param isInitialized
    *          <code>true</code>, wenn die Zelle bereits initialisiert ist.
    */
-  public void setValue(final Literal value, final boolean isInitialized) {
-    assert value != null : "Value in Cell.setValue() is null.";
-    assert value.getValue() >= 0 : value + " is lower or equals than 0.";
-    assert value.getValue() <= sudokuSize.getHouseSize() : value + " is greater or equals than "
+  public void setDigit(final Literal digit, final boolean isInitialized) {
+    assert digit != null : "Value in Cell.setValue() is null.";
+    assert digit.getValue() >= 0 : digit + " is lower or equals than 0.";
+    assert digit.getValue() <= sudokuSize.getHouseSize() : digit + " is greater or equals than "
         + sudokuSize.getHouseSize();
     // assert isAllowed(value) : value + " is " + this + " not allowed!";
-    if (value == null) {
-      LOG.warn("Tried to set " + value + " (null)");
+    if (digit == null) {
+      LOG.warn("Tried to set " + digit + " (null)");
     }
     if (LOG.isDebugEnabled()) {
-      LOG.debug("Set " + value + " to " + this);
+      LOG.debug("Set " + digit + " to " + this);
     }
-    this.value = value;
+    this.digit = digit;
     // sudoku.setNumberOfFixedDirty(true);
-    if (value.equals(Literal.EMPTY)) {
+    if (digit.equals(Literal.EMPTY)) {
       resetCandidates();
     } else {
       if (candidates == null) {
@@ -171,17 +170,17 @@ public final class Cell implements Comparable<Cell> {
   /**
    * Sets the value and clear candidates.
    * 
-   * @param value
+   * @param digit
    */
-  public void setValue(final Literal value) {
-    setValue(value, true);
+  public void setDigit(final Literal digit) {
+    setDigit(digit, true);
   }
 
   /**
    * @return <code>true</code> value is set, else <code>false</code>
    */
   public boolean isFixed() {
-    return value.getValue() > 0;
+    return digit.getValue() > 0;
   }
 
   /**
@@ -206,7 +205,7 @@ public final class Cell implements Comparable<Cell> {
 
   @Override
   public String toString() {
-    return String.valueOf(value + " (" + rowIndex + ", " + columnIndex + ", " + blockIndex + ") " + candidates);
+    return String.valueOf(digit + " (" + rowIndex + ", " + columnIndex + ", " + blockIndex + ") " + candidates);
   }
 
   /**
@@ -222,7 +221,7 @@ public final class Cell implements Comparable<Cell> {
     }
     if (other instanceof Cell) {
       final Cell that = (Cell) other;
-      if (getNumber() == that.getNumber() && getValue().equals(that.getValue())) {
+      if (getNumber() == that.getNumber() && getDigit().equals(that.getDigit())) {
         return true;
       }
     }
@@ -245,7 +244,7 @@ public final class Cell implements Comparable<Cell> {
    * Resets a cell to no fixed value and resets the candidates.
    */
   public void reset() {
-    value = Literal.getInstance(0);
+    digit = Literal.getInstance(0);
     resetCandidates();
   }
 
@@ -253,7 +252,7 @@ public final class Cell implements Comparable<Cell> {
    * Resets the candidates by inserting all literals in the list of candidates.
    */
   public void resetCandidates() {
-    if (value.getValue() <= 0 || value.getValue() > sudokuSize.getHouseSize()) {
+    if (digit.getValue() <= 0 || digit.getValue() > sudokuSize.getHouseSize()) {
       if (candidates == null) {
         candidates = new Candidates<Literal>(sudokuSize.getHouseSize());
       } else {
@@ -297,18 +296,6 @@ public final class Cell implements Comparable<Cell> {
     return false;
   }
 
-  /**
-   * @return
-   */
-  public Literal getRandomCandidate() {
-    assert candidates.size() > 0;
-    final int index = RANDOM.nextInt(candidates.size());
-    assert index >= 0 && index < candidates.size();
-    final Literal literal = candidates.get(index);
-    assert candidates.contains(literal);
-    return literal;
-  }
-
   public boolean isTop() {
     if (getRowIndex() % sudokuSize.getBoxHeight() == 0) {
       return true;
@@ -335,17 +322,6 @@ public final class Cell implements Comparable<Cell> {
       return true;
     }
     return false;
-  }
-
-  @Deprecated
-  public static List<Cell> filterByIsFixed(final List<Cell> felder, final boolean isFixed) {
-    final List<Cell> filteredList = new ArrayList<Cell>();
-    for (Cell cell : felder) {
-      if ((cell.isFixed() && isFixed) || (!cell.isFixed() && !isFixed)) {
-        filteredList.add(cell);
-      }
-    }
-    return filteredList;
   }
 
 }

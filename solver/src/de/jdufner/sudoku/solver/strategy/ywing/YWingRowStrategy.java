@@ -35,20 +35,18 @@ import org.apache.log4j.Logger;
 import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.commands.RemoveCandidatesCommand.RemoveCandidatesCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
+import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Literal;
 import de.jdufner.sudoku.common.board.Row;
 import de.jdufner.sudoku.common.board.RowHandler;
-import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
- * 
  * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 2010-02-20
  * @version $Revision$
- * 
  */
 public final class YWingRowStrategy extends AbstractYWingStrategy implements RowHandler, Callable<Collection<Command>> {
 
@@ -100,9 +98,11 @@ public final class YWingRowStrategy extends AbstractYWingStrategy implements Row
    * 
    * Erwartet zwei Zellen mit jeweils nur zwei Kandidaten.
    * 
-   * Identifiziere einen gemeinsamen Kandidaten und die jeweils unterschiedlichen Kandidaten.
+   * Identifiziere einen gemeinsamen Kandidaten und die jeweils
+   * unterschiedlichen Kandidaten.
    * 
-   * Suche Zelle mit den unterschiedlichen Kandidaten in den Reihe der übergebenen Zellen.
+   * Suche Zelle mit den unterschiedlichen Kandidaten in den Reihe der
+   * übergebenen Zellen.
    * 
    * @param firstCell
    * @param secondCell
@@ -129,7 +129,8 @@ public final class YWingRowStrategy extends AbstractYWingStrategy implements Row
   }
 
   /**
-   * Suche Schnittpunkt zwischen den Zellen einer Spalte und der neuen Zelle einer Reihe.
+   * Suche Schnittpunkt zwischen den Zellen einer Spalte und der neuen Zelle
+   * einer Reihe.
    * 
    * @param firstCell
    * @param secondCell
@@ -139,9 +140,8 @@ public final class YWingRowStrategy extends AbstractYWingStrategy implements Row
       final Collection<Literal> searchCandidates) {
     final Collection<Cell> cells1 = findCellsByCandidatesInColumn(searchCandidates, firstCell.getColumnIndex());
     if (cells1 != null && !cells1.isEmpty()) {
-      LOG
-          .debug("In der Spalte einer gefundenen Zellen wurden folgenden Zellen mit den unterschiedlichen Kandidaten gefunden: "
-              + cells1);
+      LOG.debug("In der Spalte einer gefundenen Zellen wurden folgenden Zellen mit den unterschiedlichen Kandidaten gefunden: "
+          + cells1);
       for (Cell cell : cells1) {
         final Cell foundCell = getSudoku().getCell(cell.getRowIndex(), secondCell.getColumnIndex());
         LOG.debug(foundCell);
@@ -159,8 +159,6 @@ public final class YWingRowStrategy extends AbstractYWingStrategy implements Row
   }
 
   /**
-   * TODO
-   * 
    * @param firstCell
    * @param secondCell
    * @param searchCandidates
@@ -172,16 +170,16 @@ public final class YWingRowStrategy extends AbstractYWingStrategy implements Row
     }
     final Collection<Cell> cells1 = findCellsByCandidatesInBlock(searchCandidates, firstCell.getBlockIndex());
     if (cells1 != null && !cells1.isEmpty()) {
-      LOG
-          .debug("In dem Block einer gefundenen Zellen wurden folgenden Zellen mit den unterschiedlichen Kandidaten gefunden: "
-              + cells1);
+      LOG.debug("In dem Block einer gefundenen Zellen wurden folgenden Zellen mit den unterschiedlichen Kandidaten gefunden: "
+          + cells1);
       for (Cell cell : cells1) {
         if (cell.getRowIndex() == firstCell.getRowIndex()) {
           continue;
         }
         final Literal removableCandidate = getCommonCandidate(cell, secondCell);
         LOG.debug("Entferne Kandidat: " + removableCandidate);
-        // Entferne in Block der firstCell in der Reihe der firstCell den Kandidaten
+        // Entferne in Block der firstCell in der Reihe der firstCell den
+        // Kandidaten
         createRemoveCommands(firstCell, cell, removableCandidate);
         // Entferne in Block der secondCell in der Reihe der cell den Kandidaten
         createRemoveCommands(cell, secondCell, removableCandidate);

@@ -158,7 +158,7 @@ public enum SudokuFactory {
         if (column < 0) {
           column += sudokuSize.getHouseSize();
         }
-        sudoku.getCell(i, column).setValue(Literal.getInstance(j + 1));
+        sudoku.getCell(i, column).setDigit(Literal.getInstance(j + 1));
       }
     }
     return sudoku;
@@ -170,7 +170,7 @@ public enum SudokuFactory {
     final int[] columnIndex = randomData.nextPermutation(sudokuSize.getHouseSize(), sudokuSize.getHouseSize());
     final int[] rowIndex = randomData.nextPermutation(sudokuSize.getHouseSize(), sudokuSize.getHouseSize());
     for (int i = 0; i < sudokuSize.getHouseSize(); i++) {
-      sudoku.getCell(rowIndex[i], columnIndex[i]).setValue(Literal.getInstance(literal[i] + 1));
+      sudoku.getCell(rowIndex[i], columnIndex[i]).setDigit(Literal.getInstance(literal[i] + 1));
     }
     return sudoku;
   }

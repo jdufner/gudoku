@@ -32,7 +32,7 @@ import de.jdufner.sudoku.common.board.Grid;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
- * Dieser Befehl setzt mittels {@link Cell#setValue(Literal)} einen festen Wert {@link Literal} in eine {@link Cell}.
+ * Dieser Befehl setzt mittels {@link Cell#setDigit(Literal)} einen festen Wert {@link Literal} in eine {@link Cell}.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
@@ -60,14 +60,14 @@ public final class SetValueCommand extends AbstractSingleValueCommand {
       successfully = false;
     } else {
       candidates = (Candidates<Literal>) getCell(sudoku).getCandidates().clone();
-      sudoku.getCell(rowIndex, columnIndex).setValue(value);
+      sudoku.getCell(rowIndex, columnIndex).setDigit(value);
       successfully = true;
     }
   }
 
   @Override
   public void unexecuteCommand(final Grid sudoku) {
-    sudoku.getCell(rowIndex, columnIndex).setValue(Literal.EMPTY);
+    sudoku.getCell(rowIndex, columnIndex).setDigit(Literal.EMPTY);
     sudoku.getCell(rowIndex, columnIndex).setCandidates(candidates);
   }
 

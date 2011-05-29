@@ -60,7 +60,7 @@ public final class PdfCellHandler implements CellHandler {
   public void handleCell(Cell cell) {
     PdfPCell pdfCell = null;
     if (cell.isFixed()) {
-      pdfCell = new PdfPCell(new Paragraph(cell.getValue().toString()));
+      pdfCell = new PdfPCell(new Paragraph(cell.getDigit().toString()));
     } else {
       if (Boolean.getBoolean(getPdfStyle().getProperty("sudoku.board.candidates.print"))) {
         pdfCell = new PdfPCell(buildCandidates());
