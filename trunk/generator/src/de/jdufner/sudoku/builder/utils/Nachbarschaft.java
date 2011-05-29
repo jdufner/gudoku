@@ -47,10 +47,10 @@ public final class Nachbarschaft {
   private Collection<Literal> nachbarn;
 
   public Nachbarschaft(Cell subjekt, Collection<Cell> nachbarn) {
-    this.subjekt = subjekt.getValue();
+    this.subjekt = subjekt.getDigit();
     this.nachbarn = new HashSet<Literal>();
     for (Cell cell : nachbarn) {
-      this.nachbarn.add(cell.getValue());
+      this.nachbarn.add(cell.getDigit());
     }
   }
 

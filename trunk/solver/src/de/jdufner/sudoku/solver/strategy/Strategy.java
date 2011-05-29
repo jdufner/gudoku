@@ -29,10 +29,8 @@ import de.jdufner.sudoku.commands.AbstractCommand;
 import de.jdufner.sudoku.common.misc.Level;
 
 /**
- * TODO
- * 
  * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
- * @since
+ * @since 2009-12-27
  * @version $Revision$
  */
 public interface Strategy {
@@ -50,8 +48,8 @@ public interface Strategy {
   StrategyResult execute();
 
   /**
-   * 
-   * @return <code>true</code>, wenn für das bearbeitete Sudoku genau ein Lösung existiert, sonst <code>false</code>.
+   * @return <code>true</code>, wenn für das bearbeitete Sudoku genau ein Lösung
+   *         existiert, sonst <code>false</code>.
    */
   boolean isSudokuUnique();
 

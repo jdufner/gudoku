@@ -77,11 +77,11 @@ public final class SymetricRandomEleminationBuilder extends EleminationBuilder {
               + cellCandidate2 + " erfolgreich geleert. Neues Sudoku: " + sudoku.toShortString());
         }
       } else {
-        sudoku.getCell(cellCandidate1.getRowIndex(), cellCandidate1.getColumnIndex()).setValue(
-            cellCandidate1.getValue());
+        sudoku.getCell(cellCandidate1.getRowIndex(), cellCandidate1.getColumnIndex()).setDigit(
+            cellCandidate1.getDigit());
         if (!cellCandidate1.equals(cellCandidate2)) {
-          sudoku.getCell(cellCandidate2.getRowIndex(), cellCandidate2.getColumnIndex()).setValue(
-              cellCandidate2.getValue());
+          sudoku.getCell(cellCandidate2.getRowIndex(), cellCandidate2.getColumnIndex()).setDigit(
+              cellCandidate2.getDigit());
         }
         if (LOG.isInfoEnabled()) {
           LOG.info("(" + eleminatedCellCounter + "/" + cellCounter + ") Zelle " + cellCandidate1 + " und "

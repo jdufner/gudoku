@@ -92,11 +92,11 @@ public final class TransformationUtil {
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (j == column1) {
-          newSudoku.getCell(i, column2).setValue(sudoku.getCell(i, column1).getValue());
+          newSudoku.getCell(i, column2).setDigit(sudoku.getCell(i, column1).getDigit());
         } else if (j == column2) {
-          newSudoku.getCell(i, column1).setValue(sudoku.getCell(i, column2).getValue());
+          newSudoku.getCell(i, column1).setDigit(sudoku.getCell(i, column2).getDigit());
         } else {
-          newSudoku.getCell(i, j).setValue(sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i, j).setDigit(sudoku.getCell(i, j).getDigit());
         }
       }
     }
@@ -164,11 +164,11 @@ public final class TransformationUtil {
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (i == row1) {
-          newSudoku.getCell(row2, j).setValue(sudoku.getCell(row1, j).getValue());
+          newSudoku.getCell(row2, j).setDigit(sudoku.getCell(row1, j).getDigit());
         } else if (i == row2) {
-          newSudoku.getCell(row1, j).setValue(sudoku.getCell(row2, j).getValue());
+          newSudoku.getCell(row1, j).setDigit(sudoku.getCell(row2, j).getDigit());
         } else {
-          newSudoku.getCell(i, j).setValue(sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i, j).setDigit(sudoku.getCell(i, j).getDigit());
         }
       }
     }
@@ -191,13 +191,13 @@ public final class TransformationUtil {
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (isColumnIndexInBlock(j, sudoku, columnBlock1)) {
-          newSudoku.getCell(i, j + (columnBlock2 - columnBlock1) * sudoku.getSize().getBoxWidth()).setValue(
-              sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i, j + (columnBlock2 - columnBlock1) * sudoku.getSize().getBoxWidth()).setDigit(
+              sudoku.getCell(i, j).getDigit());
         } else if (isColumnIndexInBlock(j, sudoku, columnBlock2)) {
-          newSudoku.getCell(i, j - (columnBlock2 - columnBlock1) * sudoku.getSize().getBoxWidth()).setValue(
-              sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i, j - (columnBlock2 - columnBlock1) * sudoku.getSize().getBoxWidth()).setDigit(
+              sudoku.getCell(i, j).getDigit());
         } else {
-          newSudoku.getCell(i, j).setValue(sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i, j).setDigit(sudoku.getCell(i, j).getDigit());
         }
       }
     }
@@ -232,13 +232,13 @@ public final class TransformationUtil {
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
         if (isRowIndexInBlock(i, sudoku, rowBlock1)) {
-          newSudoku.getCell(i + (rowBlock2 - rowBlock1) * sudoku.getSize().getBoxHeight(), j).setValue(
-              sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i + (rowBlock2 - rowBlock1) * sudoku.getSize().getBoxHeight(), j).setDigit(
+              sudoku.getCell(i, j).getDigit());
         } else if (isRowIndexInBlock(i, sudoku, rowBlock2)) {
-          newSudoku.getCell(i - (rowBlock2 - rowBlock1) * sudoku.getSize().getBoxHeight(), j).setValue(
-              sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i - (rowBlock2 - rowBlock1) * sudoku.getSize().getBoxHeight(), j).setDigit(
+              sudoku.getCell(i, j).getDigit());
         } else {
-          newSudoku.getCell(i, j).setValue(sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i, j).setDigit(sudoku.getCell(i, j).getDigit());
         }
       }
     }
@@ -344,7 +344,7 @@ public final class TransformationUtil {
     Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
-        newSudoku.getCell(j, sudoku.getSize().getHouseSize() - i - 1).setValue(sudoku.getCell(i, j).getValue());
+        newSudoku.getCell(j, sudoku.getSize().getHouseSize() - i - 1).setDigit(sudoku.getCell(i, j).getDigit());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -358,7 +358,7 @@ public final class TransformationUtil {
     Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
-        newSudoku.getCell(sudoku.getSize().getHouseSize() - j - 1, i).setValue(sudoku.getCell(i, j).getValue());
+        newSudoku.getCell(sudoku.getSize().getHouseSize() - j - 1, i).setDigit(sudoku.getCell(i, j).getDigit());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -372,8 +372,8 @@ public final class TransformationUtil {
     Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
-        newSudoku.getCell(sudoku.getSize().getHouseSize() - i - 1, sudoku.getSize().getHouseSize() - j - 1).setValue(
-            sudoku.getCell(i, j).getValue());
+        newSudoku.getCell(sudoku.getSize().getHouseSize() - i - 1, sudoku.getSize().getHouseSize() - j - 1).setDigit(
+            sudoku.getCell(i, j).getDigit());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -387,7 +387,7 @@ public final class TransformationUtil {
     Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
-        newSudoku.getCell(i, sudoku.getSize().getHouseSize() - j - 1).setValue(sudoku.getCell(i, j).getValue());
+        newSudoku.getCell(i, sudoku.getSize().getHouseSize() - j - 1).setDigit(sudoku.getCell(i, j).getDigit());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -401,7 +401,7 @@ public final class TransformationUtil {
     Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
-        newSudoku.getCell(sudoku.getSize().getHouseSize() - i - 1, j).setValue(sudoku.getCell(i, j).getValue());
+        newSudoku.getCell(sudoku.getSize().getHouseSize() - i - 1, j).setDigit(sudoku.getCell(i, j).getDigit());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -415,8 +415,8 @@ public final class TransformationUtil {
     Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
-        newSudoku.getCell(sudoku.getSize().getHouseSize() - j - 1, sudoku.getSize().getHouseSize() - i - 1).setValue(
-            sudoku.getCell(i, j).getValue());
+        newSudoku.getCell(sudoku.getSize().getHouseSize() - j - 1, sudoku.getSize().getHouseSize() - i - 1).setDigit(
+            sudoku.getCell(i, j).getDigit());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -430,7 +430,7 @@ public final class TransformationUtil {
     Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
-        newSudoku.getCell(j, i).setValue(sudoku.getCell(i, j).getValue());
+        newSudoku.getCell(j, i).setDigit(sudoku.getCell(i, j).getDigit());
       }
     }
     newSudoku.resetAndClearCandidatesOfNonFixed();
@@ -453,12 +453,12 @@ public final class TransformationUtil {
     Grid newSudoku = SudokuFactory.INSTANCE.buildEmpty(sudoku.getSize());
     for (int i = 0; i < sudoku.getSize().getHouseSize(); i++) {
       for (int j = 0; j < sudoku.getSize().getHouseSize(); j++) {
-        if (sudoku.getCell(i, j).getValue().equals(l1)) {
-          newSudoku.getCell(i, j).setValue(l2);
-        } else if (sudoku.getCell(i, j).getValue().equals(l2)) {
-          newSudoku.getCell(i, j).setValue(l1);
+        if (sudoku.getCell(i, j).getDigit().equals(l1)) {
+          newSudoku.getCell(i, j).setDigit(l2);
+        } else if (sudoku.getCell(i, j).getDigit().equals(l2)) {
+          newSudoku.getCell(i, j).setDigit(l1);
         } else {
-          newSudoku.getCell(i, j).setValue(sudoku.getCell(i, j).getValue());
+          newSudoku.getCell(i, j).setDigit(sudoku.getCell(i, j).getDigit());
         }
       }
     }

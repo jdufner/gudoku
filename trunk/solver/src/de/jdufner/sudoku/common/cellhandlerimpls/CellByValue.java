@@ -24,7 +24,7 @@ public final class CellByValue implements CellHandler {
 
   @Override
   public void handleCell(final Cell cell) {
-    if (cell.getValue().equals(literal)) {
+    if (cell.getDigit().equals(literal)) {
       cells.add(cell);
     }
   }

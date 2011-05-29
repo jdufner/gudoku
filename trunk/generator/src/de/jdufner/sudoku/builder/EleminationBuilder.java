@@ -119,7 +119,7 @@ public abstract class EleminationBuilder extends AbstractBuilder {
             + " erfolgreich geleert. Neues Sudoku: " + sudoku.toShortString());
       }
     } else {
-      sudoku.getCell(cellCandidate.getRowIndex(), cellCandidate.getColumnIndex()).setValue(cellCandidate.getValue());
+      sudoku.getCell(cellCandidate.getRowIndex(), cellCandidate.getColumnIndex()).setDigit(cellCandidate.getDigit());
       if (LOG.isInfoEnabled()) {
         LOG.info("(" + eleminatedCellCounter + "/" + cellCounter + ") Zelle " + cellCandidate
             + " konnte nicht geleert werden, setze deshalb zurück und mache weiter.");
