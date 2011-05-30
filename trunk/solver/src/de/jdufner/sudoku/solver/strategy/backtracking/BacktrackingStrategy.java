@@ -89,7 +89,7 @@ public final class BacktrackingStrategy extends AbstractStrategy implements Cell
   public void handleCell(final Cell cell) {
     if (!cell.isFixed()) {
       getCommands().add(
-          new SetValueCommandBuilder(getStrategyName(), cell, result.getCell(cell.getNumber()).getDigit()).build());
+          new SetValueCommandBuilder(getStrategyName(), cell, result.getCell(cell.getNumber()).getValue()).build());
     }
   }
 

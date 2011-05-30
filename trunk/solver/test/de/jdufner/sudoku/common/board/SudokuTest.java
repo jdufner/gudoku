@@ -52,7 +52,7 @@ public final class SudokuTest extends AbstractSolverTestCase {
     final int myFixed = 10;
 
     Grid sudoku = SudokuFactory.INSTANCE.buildSudoku(mySudoku);
-    assertEquals(1, sudoku.getCell(0, 0).getDigit().getValue());
+    assertEquals(1, sudoku.getCell(0, 0).getValue().getValue());
     assertEquals(0, sudoku.getCell(0, 0).getCandidates().size());
     assertEquals(myFixed, sudoku.getNumberOfFixed());
     LOG.debug(sudoku.getNumberOfCandidates());
@@ -82,14 +82,14 @@ public final class SudokuTest extends AbstractSolverTestCase {
     assertEquals(0, cell.getRowIndex());
     assertEquals(0, cell.getColumnIndex());
     assertEquals(0, cell.getBlockIndex());
-    assertEquals(3, cell.getDigit().getValue());
+    assertEquals(3, cell.getValue().getValue());
     assertEquals(0, cell.getCandidates().size());
 
     cell = sudoku.getCell(3, 4);
     assertEquals(3, cell.getRowIndex());
     assertEquals(4, cell.getColumnIndex());
     assertEquals(4, cell.getBlockIndex());
-    assertEquals(0, cell.getDigit().getValue());
+    assertEquals(0, cell.getValue().getValue());
     assertEquals(9, cell.getCandidates().size());
 
     assertEquals(myFixed, sudoku.getNumberOfFixed());
@@ -138,8 +138,8 @@ public final class SudokuTest extends AbstractSolverTestCase {
     Grid kopie = new Grid(original);
     assertNotSame(original, kopie);
     assertNotSame(original.getCell(0, 0), kopie.getCell(0, 0));
-    assertEquals(original.getCell(0, 0).getDigit(), kopie.getCell(0, 0).getDigit());
-    assertSame(original.getCell(0, 0).getDigit(), kopie.getCell(0, 0).getDigit());
+    assertEquals(original.getCell(0, 0).getValue(), kopie.getCell(0, 0).getValue());
+    assertSame(original.getCell(0, 0).getValue(), kopie.getCell(0, 0).getValue());
     if (original.getCell(0, 0).isFixed()) {
       assertEquals(original.getCell(0, 0).getCandidates(), kopie.getCell(0, 0).getCandidates());
     } else {
@@ -147,8 +147,8 @@ public final class SudokuTest extends AbstractSolverTestCase {
     }
     assertEquals(original.getCell(1, 0), kopie.getCell(1, 0));
     assertNotSame(original.getCell(1, 0), kopie.getCell(1, 0));
-    assertEquals(original.getCell(1, 0).getDigit(), kopie.getCell(1, 0).getDigit());
-    assertSame(original.getCell(1, 0).getDigit(), kopie.getCell(1, 0).getDigit());
+    assertEquals(original.getCell(1, 0).getValue(), kopie.getCell(1, 0).getValue());
+    assertSame(original.getCell(1, 0).getValue(), kopie.getCell(1, 0).getValue());
     if (original.getCell(1, 0).isFixed()) {
       assertSame(original.getCell(1, 0).getCandidates(), kopie.getCell(1, 0).getCandidates());
     } else {

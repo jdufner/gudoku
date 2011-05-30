@@ -47,15 +47,15 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
     LOG.debug(sudoku.toShortString());
     assertTrue(sudoku.isValid());
     assertTrue(sudoku.isSolvedByCheckSum());
-    assertEquals(1, sudoku.getCell(0, 0).getDigit().getValue());
-    assertEquals(4, sudoku.getCell(0, 3).getDigit().getValue());
-    assertEquals(7, sudoku.getCell(0, 6).getDigit().getValue());
-    assertEquals(9, sudoku.getCell(3, 0).getDigit().getValue());
-    assertEquals(3, sudoku.getCell(3, 3).getDigit().getValue());
-    assertEquals(6, sudoku.getCell(3, 6).getDigit().getValue());
-    assertEquals(8, sudoku.getCell(6, 0).getDigit().getValue());
-    assertEquals(2, sudoku.getCell(6, 3).getDigit().getValue());
-    assertEquals(5, sudoku.getCell(6, 6).getDigit().getValue());
+    assertEquals(1, sudoku.getCell(0, 0).getValue().getValue());
+    assertEquals(4, sudoku.getCell(0, 3).getValue().getValue());
+    assertEquals(7, sudoku.getCell(0, 6).getValue().getValue());
+    assertEquals(9, sudoku.getCell(3, 0).getValue().getValue());
+    assertEquals(3, sudoku.getCell(3, 3).getValue().getValue());
+    assertEquals(6, sudoku.getCell(3, 6).getValue().getValue());
+    assertEquals(8, sudoku.getCell(6, 0).getValue().getValue());
+    assertEquals(2, sudoku.getCell(6, 3).getValue().getValue());
+    assertEquals(5, sudoku.getCell(6, 6).getValue().getValue());
   }
 
   public void testBuildFilledZehn() {
@@ -64,16 +64,16 @@ public final class SudokuFactoryTest extends AbstractSolverTestCase {
     LOG.debug(sudoku.toShortString());
     assertTrue(sudoku.isValid());
     assertTrue(sudoku.isSolvedByCheckSum());
-    assertEquals(1, sudoku.getCell(0, 0).getDigit().getValue());
-    assertEquals(3, sudoku.getCell(0, 2).getDigit().getValue());
-    assertEquals(5, sudoku.getCell(0, 4).getDigit().getValue());
-    assertEquals(7, sudoku.getCell(0, 6).getDigit().getValue());
-    assertEquals(9, sudoku.getCell(0, 8).getDigit().getValue());
-    assertEquals(10, sudoku.getCell(5, 0).getDigit().getValue());
-    assertEquals(2, sudoku.getCell(5, 2).getDigit().getValue());
-    assertEquals(4, sudoku.getCell(5, 4).getDigit().getValue());
-    assertEquals(6, sudoku.getCell(5, 6).getDigit().getValue());
-    assertEquals(8, sudoku.getCell(5, 8).getDigit().getValue());
+    assertEquals(1, sudoku.getCell(0, 0).getValue().getValue());
+    assertEquals(3, sudoku.getCell(0, 2).getValue().getValue());
+    assertEquals(5, sudoku.getCell(0, 4).getValue().getValue());
+    assertEquals(7, sudoku.getCell(0, 6).getValue().getValue());
+    assertEquals(9, sudoku.getCell(0, 8).getValue().getValue());
+    assertEquals(10, sudoku.getCell(5, 0).getValue().getValue());
+    assertEquals(2, sudoku.getCell(5, 2).getValue().getValue());
+    assertEquals(4, sudoku.getCell(5, 4).getValue().getValue());
+    assertEquals(6, sudoku.getCell(5, 6).getValue().getValue());
+    assertEquals(8, sudoku.getCell(5, 8).getValue().getValue());
   }
 
   public void testBuildShuffled() {

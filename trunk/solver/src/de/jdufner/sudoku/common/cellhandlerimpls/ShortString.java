@@ -52,13 +52,13 @@ public final class ShortString implements CellHandler {
   @Override
   public void handleCell(final Cell cell) {
     if (groesse.equals(SudokuSize.DEFAULT)) {
-      if (cell.getDigit().getValue() == 0) {
+      if (cell.getValue().getValue() == 0) {
         stringBuilder.append(".");
       } else {
-        stringBuilder.append(cell.getDigit().getValue());
+        stringBuilder.append(cell.getValue().getValue());
       }
     } else {
-      stringBuilder.append(cell.getDigit().getValue());
+      stringBuilder.append(cell.getValue().getValue());
       if (!(cell.getRowIndex() >= groesse.getHouseSize() - 1 && cell.getColumnIndex() >= groesse.getHouseSize() - 1)) {
         stringBuilder.append(',');
       }

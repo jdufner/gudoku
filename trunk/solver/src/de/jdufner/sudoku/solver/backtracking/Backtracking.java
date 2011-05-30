@@ -182,7 +182,7 @@ public final class Backtracking {
         Cell nextCell = null;
         nextSudoku = new Grid(sudoku);
         nextCell = nextSudoku.getCell(cell.getNumber());
-        nextCell.setDigit(candidate);
+        nextCell.setValue(candidate);
         if (removeCandidate(nextSudoku, nextCell, candidate) && nextSudoku.isValid()) {
           // Zelle gesetzt
           // Sudoku gelöst

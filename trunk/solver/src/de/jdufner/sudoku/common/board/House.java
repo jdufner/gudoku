@@ -104,7 +104,7 @@ public abstract class House implements Comparable<House> {
     final Collection<Literal> fixedCellLiterals = new ArrayList<Literal>();
     for (Cell cell : cells) {
       if (cell.isFixed()) {
-        fixedCellLiterals.add(cell.getDigit());
+        fixedCellLiterals.add(cell.getValue());
       }
     }
     return fixedCellLiterals;
@@ -166,16 +166,16 @@ public abstract class House implements Comparable<House> {
         return false;
       }
       if (cell.isFixed()) {
-        if (fixedCounter.get(cell.getDigit()) == null) {
-          fixedCounter.put(cell.getDigit(), 0);
+        if (fixedCounter.get(cell.getValue()) == null) {
+          fixedCounter.put(cell.getValue(), 0);
         } else {
           // Einheit kann nicht gültig sein, wenn bereits eine
           // besetzte Zelle
           // mit diesem Wert vorhanden ist.
           return false;
         }
-        fixedCounter.put(cell.getDigit(), fixedCounter.get(cell.getDigit()).intValue() + 1);
-        candidates[cell.getDigit().getValue() - 1] = true;
+        fixedCounter.put(cell.getValue(), fixedCounter.get(cell.getValue()).intValue() + 1);
+        candidates[cell.getValue().getValue() - 1] = true;
       } else {
         for (Literal candidate : cell.getCandidates()) {
           candidates[candidate.getValue() - 1] = true;
@@ -198,7 +198,7 @@ public abstract class House implements Comparable<House> {
   public boolean isSolved() {
     int sum = 0;
     for (Cell cell : getFixed()) {
-      sum += cell.getDigit().getValue();
+      sum += cell.getValue().getValue();
     }
     if (sum == sudokuSize.getCheckSum()) {
       return true;

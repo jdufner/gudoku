@@ -91,7 +91,7 @@ public final class RemoveCandidatesCommand extends AbstractCommand {
   @Override
   public void unexecuteCommand(final Grid sudoku) {
     if (getCell(sudoku).isFixed()) {
-      getCell(sudoku).setDigit(Literal.EMPTY);
+      getCell(sudoku).setValue(Literal.EMPTY);
       getCell(sudoku).setCandidates(new Candidates<Literal>(this.candidates));
     } else {
       getCell(sudoku).getCandidates().addAll(candidates);
