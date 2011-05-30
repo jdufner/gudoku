@@ -54,7 +54,7 @@ public final class ShortStringWithCandidates implements CellHandler {
       stringBuilder.append(CELL_SEPARATOR);
     }
     if (cell.isFixed()) {
-      stringBuilder.append(cell.getDigit());
+      stringBuilder.append(cell.getValue());
     } else {
       stringBuilder.append(CANDIDATE_BEGIN);
       for (Literal candidate : cell.getCandidates()) {

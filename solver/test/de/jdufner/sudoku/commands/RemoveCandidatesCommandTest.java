@@ -59,7 +59,7 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
 
     assertEquals(9, cell.getCandidates().size());
 
-    Literal l = sudoku.getCell(0, 0).getDigit(); // 9
+    Literal l = sudoku.getCell(0, 0).getValue(); // 9
     Command rcc1 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(l).build();
     assertNull(rcc1.getFrozenString());
     rcc1.execute(sudoku);
@@ -83,9 +83,9 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
 
     // Kandidaten aus der Zeile
     Candidates<Literal> candidates1 = new Candidates<Literal>();
-    candidates1.add(sudoku.getCell(0, 1).getDigit()); // 5
-    candidates1.add(sudoku.getCell(0, 6).getDigit()); // 1
-    candidates1.add(sudoku.getCell(0, 7).getDigit()); // 8
+    candidates1.add(sudoku.getCell(0, 1).getValue()); // 5
+    candidates1.add(sudoku.getCell(0, 6).getValue()); // 1
+    candidates1.add(sudoku.getCell(0, 7).getValue()); // 8
     Command rcc2 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates1).build();
     assertNull(rcc2.getFrozenString());
     rcc2.execute(sudoku);
@@ -101,9 +101,9 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
 
     // Kandidaten aus der Spalte
     Candidates<Literal> candidates2 = new Candidates<Literal>();
-    candidates2.add(sudoku.getCell(5, 2).getDigit()); // 4
-    candidates2.add(sudoku.getCell(6, 2).getDigit()); // 5
-    candidates2.add(sudoku.getCell(8, 2).getDigit()); // 3
+    candidates2.add(sudoku.getCell(5, 2).getValue()); // 4
+    candidates2.add(sudoku.getCell(6, 2).getValue()); // 5
+    candidates2.add(sudoku.getCell(8, 2).getValue()); // 3
     Command rcc3 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates2).build();
     assertNull(rcc3.getFrozenString());
     rcc3.execute(sudoku);
@@ -117,11 +117,11 @@ public final class RemoveCandidatesCommandTest extends AbstractSolverTestCase {
 
     // Kandidaten aus dem Block
     Candidates<Literal> candidates3 = new Candidates<Literal>();
-    candidates3.add(sudoku.getCell(0, 0).getDigit()); // 9
-    candidates3.add(sudoku.getCell(0, 1).getDigit()); // 5
-    candidates3.add(sudoku.getCell(1, 0).getDigit()); // 8
-    candidates3.add(sudoku.getCell(2, 0).getDigit()); // 4
-    candidates3.add(sudoku.getCell(2, 1).getDigit()); // 7
+    candidates3.add(sudoku.getCell(0, 0).getValue()); // 9
+    candidates3.add(sudoku.getCell(0, 1).getValue()); // 5
+    candidates3.add(sudoku.getCell(1, 0).getValue()); // 8
+    candidates3.add(sudoku.getCell(2, 0).getValue()); // 4
+    candidates3.add(sudoku.getCell(2, 1).getValue()); // 7
 
     Command rcc4 = new RemoveCandidatesCommandBuilder(null, cell).addCandidate(candidates3).build();
     assertNull(rcc4.getFrozenString());
