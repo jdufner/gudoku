@@ -23,13 +23,14 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.common.collections;
+package de.jdufner.sudoku.common.board;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.log4j.Logger;
 
+import de.jdufner.sudoku.common.board.Kombination;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**

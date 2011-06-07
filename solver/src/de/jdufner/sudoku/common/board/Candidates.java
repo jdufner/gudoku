@@ -27,11 +27,9 @@ package de.jdufner.sudoku.common.board;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.SortedSet;
 
 import org.apache.log4j.Logger;
 
-import de.jdufner.sudoku.common.collections.SortedCandidates;
 
 /**
  * Die Klasse Candidates ist die normale Repräsentation der Kandidaten einer
@@ -49,7 +47,7 @@ import de.jdufner.sudoku.common.collections.SortedCandidates;
  * @see <a
  *      href="http://sudopedia.org/wiki/Candidate">http://sudopedia.org/wiki/Candidate</a>
  */
-public final class Candidates<T extends Comparable<? super T>> extends ArrayList<T> implements Cloneable {
+public final class Candidates<T extends Comparable<? super T>> extends ExtendedTreeSet<T> implements Cloneable {
 
   private static final Logger LOG = Logger.getLogger(Candidates.class);
 
@@ -66,15 +64,6 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
   }
 
   /**
-   * Erzeuge eine Kandidatenliste mit angegebener Anzahl Elementen.
-   * 
-   * @param initialCapacity
-   */
-  public Candidates(final int initialCapacity) {
-    super(initialCapacity);
-  }
-
-  /**
    * Konstruktor für eine Collection.
    * 
    * @param collection
@@ -82,14 +71,6 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
    */
   public Candidates(final Collection<T> collection) {
     super(collection);
-  }
-
-  /**
-   * 
-   * @return Gibt die Kandidaten als {@link SortedSet} zurück.
-   */
-  public SortedCandidates<T> getSorted() {
-    return new SortedCandidates<T>(this);
   }
 
   /**
@@ -141,15 +122,6 @@ public final class Candidates<T extends Comparable<? super T>> extends ArrayList
       }
     }
     return false;
-  }
-
-  @Override
-  public void add(final int index, final T element) {
-    if (contains(element)) {
-      LOG.info(this + " enthält bereits " + element + " und wird nicht erneut hinzugefügt.");
-    } else {
-      super.add(index, element);
-    }
   }
 
   @Override

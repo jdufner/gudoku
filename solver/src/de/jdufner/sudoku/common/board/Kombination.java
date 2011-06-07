@@ -23,7 +23,7 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.common.collections;
+package de.jdufner.sudoku.common.board;
 
 import java.util.ArrayList;
 import java.util.Collection;

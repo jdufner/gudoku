@@ -23,8 +23,9 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.common.collections;
+package de.jdufner.sudoku.common.board;
 
+import de.jdufner.sudoku.common.board.ExtendedTreeSet;
 import de.jdufner.sudoku.test.AbstractSolverTestCase;
 
 /**

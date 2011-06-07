@@ -33,15 +33,16 @@ import de.jdufner.sudoku.commands.Command;
 import de.jdufner.sudoku.commands.SetValueCommand.SetValueCommandBuilder;
 import de.jdufner.sudoku.common.board.Cell;
 import de.jdufner.sudoku.common.board.CellHandler;
-import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.board.Grid;
+import de.jdufner.sudoku.common.board.HandlerUtil;
 import de.jdufner.sudoku.common.misc.Level;
 import de.jdufner.sudoku.solver.strategy.AbstractStrategy;
 import de.jdufner.sudoku.solver.strategy.configuration.StrategyNameEnum;
 
 /**
- * Setzt einen einzelnen verbleibenden Kandidaten als festen Wert. Diese Strategie wird zur Zeit nicht benötigt, weil
- * das immer beim Entfernen automatisch geprüft und ggf. durchgeführt wird.
+ * Setzt einen einzelnen verbleibenden Kandidaten als festen Wert. Diese
+ * Strategie wird zur Zeit nicht benötigt, weil das immer beim Entfernen
+ * automatisch geprüft und ggf. durchgeführt wird.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 03.04.2010
@@ -58,7 +59,7 @@ public final class NakedSingleStrategy extends AbstractStrategy implements CellH
   @Override
   public void handleCell(final Cell cell) {
     if (!cell.isFixed() && cell.getCandidates().size() == 1) {
-      getCommands().add(new SetValueCommandBuilder(getStrategyName(), cell, cell.getCandidates().get(0)).build());
+      getCommands().add(new SetValueCommandBuilder(getStrategyName(), cell, cell.getCandidates().first()).build());
     }
   }
 
