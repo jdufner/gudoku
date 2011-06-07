@@ -23,7 +23,7 @@
  * Programm erhalten haben. Falls nicht, siehe <http://www.gnu.org/licenses/>.
  *
  */
-package de.jdufner.sudoku.common.collections;
+package de.jdufner.sudoku.common.board;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -32,8 +32,9 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * Das ist eine Erweiterung des Klasse {@link TreeSet} und bietet weitere Methoden an um Elemente aus einem TreeSet,
- * also einer sortierten Menge, zu holen.
+ * Das ist eine Erweiterung des Klasse {@link TreeSet} und bietet weitere
+ * Methoden an um Elemente aus einem TreeSet, also einer sortierten Menge, zu
+ * holen.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">Jürgen Dufner</a>
  * @since 0.1
@@ -66,8 +67,8 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * Gibt das nächstgrößere Element als das übergebene zurück. Wenn kein größeres Element existiert, wird
-   * <code>null</code> geliefert.
+   * Gibt das nächstgrößere Element als das übergebene zurück. Wenn kein
+   * größeres Element existiert, wird <code>null</code> geliefert.
    * 
    * @param searchElement
    * @return
@@ -98,8 +99,8 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * Liefert die ersten <code>size</code> Elemente. Wenn <code>smallerAllowed == TRUE</code>, dann wird eine kleine
-   * Menge geliefert.
+   * Liefert die ersten <code>size</code> Elemente. Wenn
+   * <code>smallerAllowed == TRUE</code>, dann wird eine kleine Menge geliefert.
    * 
    * @param size
    * @param smallerAllowed
@@ -131,8 +132,10 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * Gibt die <code>numberOfElements</code> nächstgrößeren Element nach <code>e</code> zurück. Wenn es weniger als die
-   * gewünschte Anzahl <code>numberOfElements</code> von Elementen gibt, wird <code>null</code> geliefert.
+   * Gibt die <code>numberOfElements</code> nächstgrößeren Element nach
+   * <code>e</code> zurück. Wenn es weniger als die gewünschte Anzahl
+   * <code>numberOfElements</code> von Elementen gibt, wird <code>null</code>
+   * geliefert.
    * 
    * @param searchElement
    * @param numberOfElements
@@ -155,7 +158,8 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * Gibt das größte Element, das kleiner ist als das übergebene Element <code>e</code> ist, zurück.
+   * Gibt das größte Element, das kleiner ist als das übergebene Element
+   * <code>e</code> ist, zurück.
    * 
    * @param searchElement
    * @return
@@ -169,17 +173,35 @@ public class ExtendedTreeSet<E extends Comparable<? super E>> extends TreeSet<E>
   }
 
   /**
-   * <code>TRUE</code>, wenn in der Menge mindestends ein Element enthalten ist, das größer sind als <code>e</code>.
+   * <code>TRUE</code>, wenn in der Menge mindestends ein Element enthalten ist,
+   * das größer sind als <code>e</code>.
    * 
    * @param searchElement
-   * @return <code>true</code>, wenn es mindestens ein Element existiert, das größer ist als das Übergebene, sonst
-   *         <code>false</code>.
+   * @return <code>true</code>, wenn es mindestens ein Element existiert, das
+   *         größer ist als das Übergebene, sonst <code>false</code>.
    */
   public boolean containsGreaterElementThan(final E searchElement) {
     if (last().compareTo(searchElement) > 0) {
       return true;
     }
     return false;
+  }
+
+  public E get(final int searchIndex) {
+    if (searchIndex < 0 || searchIndex >= size()) {
+      throw new IllegalArgumentException("Ungültiger Index " + searchIndex + " liegt nicht zwischen 0 (inklusiv) und "
+          + size() + " (exklusiv).");
+    }
+    final Iterator<E> iterator = iterator();
+    int index = 0;
+    while (iterator.hasNext()) {
+      final E type = iterator.next();
+      if (index == searchIndex) {
+        return type;
+      }
+      index++;
+    }
+    return null;
   }
 
 }

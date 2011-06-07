@@ -124,7 +124,7 @@ public final class Cell implements Comparable<Cell> {
       }
     }
     if (candidates.size() == 1) {
-      setValue(candidates.get(0));
+      setValue(candidates.first());
       if (LOG.isInfoEnabled()) {
         LOG.info("Set " + this);
       }
@@ -159,7 +159,7 @@ public final class Cell implements Comparable<Cell> {
       resetCandidates();
     } else {
       if (candidates == null) {
-        candidates = new Candidates<Literal>(sudokuSize.getHouseSize());
+        candidates = new Candidates<Literal>();
       } else {
         candidates.clear();
       }
@@ -254,7 +254,7 @@ public final class Cell implements Comparable<Cell> {
   public void resetCandidates() {
     if (value.getValue() <= 0 || value.getValue() > sudokuSize.getHouseSize()) {
       if (candidates == null) {
-        candidates = new Candidates<Literal>(sudokuSize.getHouseSize());
+        candidates = new Candidates<Literal>();
       } else {
         candidates.clear();
       }

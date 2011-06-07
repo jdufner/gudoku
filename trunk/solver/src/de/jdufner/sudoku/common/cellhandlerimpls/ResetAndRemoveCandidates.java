@@ -30,8 +30,9 @@ import de.jdufner.sudoku.common.board.CellHandler;
 import de.jdufner.sudoku.common.board.Grid;
 
 /**
- * Dieser {@link CellHandler} setzt alle ungesetzten Felder eines Sudokus zurück und entfernt die Kandidaten, die
- * bereits in gleichem Quadrant, Spalte oder Zeile gesetzt sind. Der {@link CellHandler} setzt nicht das Cell, auch wenn
+ * Dieser {@link CellHandler} setzt alle ungesetzten Felder eines Sudokus zurück
+ * und entfernt die Kandidaten, die bereits in gleichem Quadrant, Spalte oder
+ * Zeile gesetzt sind. Der {@link CellHandler} setzt nicht das Cell, auch wenn
  * nur ein Kandidat übrig bleibt.
  * 
  * @see Cell#resetCandidates()
@@ -41,7 +42,6 @@ import de.jdufner.sudoku.common.board.Grid;
  * @version $Revision$
  */
 public final class ResetAndRemoveCandidates implements CellHandler {
-  // TODO Die besetzten Zellen der Blöcke, Spalten und Zeilen zwischenspeichern.
 
   private Grid sudoku;
 
