@@ -31,8 +31,9 @@ import de.jdufner.sudoku.generator.service.PdfGeneratorConfiguration;
 import de.jdufner.sudoku.generator.service.PdfGeneratorService;
 
 /**
- * Applikation zum Starten des PdfGenerators. Die Klasse liest die Sudokus aus der Datenbank und erzeugt ein PDF mit den
- * Rätsel und den Lösungen. Nebenbei werden auch noch die Lösungswege in Textdateien gespeichert und komprimiert.
+ * Applikation zum Starten des PdfGenerators. Die Klasse liest die Sudokus aus
+ * der Datenbank und erzeugt ein PDF mit den Rätsel und den Lösungen. Nebenbei
+ * werden auch noch die Lösungswege in Textdateien gespeichert und komprimiert.
  * 
  * @author <a href="mailto:jdufner@users.sf.net">J&uuml;rgen Dufner</a>
  * @since 2010-02-26
@@ -52,12 +53,16 @@ public final class PdfGenerator extends AbstractMainClass {
   }
 
   /**
-   * Implementiert die Logik und ruft den Service und Laden und Erzeugen des PDFs auf.
+   * Implementiert die Logik und ruft den Service und Laden und Erzeugen des
+   * PDFs auf.
    */
   protected void run() throws Exception {
     PdfGeneratorService pdfGeneratorService = (PdfGeneratorService) GeneratorServiceFactory.INSTANCE
         .getBean(PdfGeneratorService.class);
-    pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().numberPerLevel(Level.LEICHT, 12)
-        .numberPerLevel(Level.MITTEL, 12).numberPerLevel(Level.SCHWER, 12).build());
+    // pdfGeneratorService.generate(new
+    // PdfGeneratorConfiguration.Builder().numberPerLevel(Level.LEICHT, 24)
+    // .numberPerLevel(Level.MITTEL, 24).numberPerLevel(Level.SCHWER,
+    // 24).build());
+    pdfGeneratorService.generate(new PdfGeneratorConfiguration.Builder().numberPerLevel(Level.LEICHT, 1).build());
   }
 }

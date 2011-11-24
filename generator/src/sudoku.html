@@ -152,7 +152,7 @@ div.candidateButtonOn {
       <div style="clear:both"></div>
     </div>
   </body>
-  <script language="javascript">
+  <script type="text/javascript" language="javascript">
 <!--
 var size = 9;
 var subSize = 3;
@@ -235,7 +235,6 @@ function command(cmdClass, cellNumber, candidateNumber) {
     } else if (cmdClass == "removeCandidate") {
       removeCandidateDo(cellNumber, candidateNumber);
     } else if (cmdClass == "setCell") {
-      this.candidateNumbers = getCandidateArray(cellNumber);
       promoteCandidateDo(cellNumber, candidateNumber);
     } else if (cmdClass == "unsetCell") {
       removeFixed(cellNumber, candidateNumber);
@@ -251,14 +250,6 @@ function command(cmdClass, cellNumber, candidateNumber) {
       createCandidateDo(cellNumber, candidateNumber);
     } else if (cmdClass == "setCell") {
       buildCandidates(getCellId(cellNumber));
-      var index = 0;
-      for (var i = 1; i <= size; i++) {
-        if (i == this.candidateNumbers[index]) {
-          index++;
-        } else {
-          removeCandidateDo(cellNumber, i);
-        }
-      }
     } else if (cmdClass == "unsetCell") {
       promoteCandidateDo(cellNumber, candidateNumber);
     } else {
@@ -635,7 +626,9 @@ function exitFixed() {
 }
 
 function enterCandidate() {
-  var value = getValue(this);
+  var candidateId = this.id;
+  candidateId.match(/cell(\d+)candidate(\d+)/g);
+  var value = parseInt(RegExp.$2);
   if (document.getElementById("highlightCandidates").checked) {
     this.className = addStyle(this.className, "highlight2");
   }
@@ -648,7 +641,9 @@ function enterCandidate() {
 }
 
 function exitCandidate() {
-  var value = getValue(this);
+  var candidateId = this.id;
+  candidateId.match(/cell(\d+)candidate(\d+)/g);
+  var value = parseInt(RegExp.$2);
   this.className = removeStyle(this.className, "highlight2");
   highlightCandidateOff(value, "highlight2");
   highlightFixedOff(value);
@@ -660,21 +655,17 @@ function removeCandidateDo(cellNumber, candidateNumber) {
     return;
   }
   candidate.className = removeStyle(candidate.className, "highlight1");
-  candidate.className = removeStyle(candidate.className, "highlight2");
-  candidate.onmouseover = null;
-  candidate.onmouseout = null;
-  //candidate.onclick = null;
-  //candidate.ondblclick = null;
+  //candidate.className = removeStyle(candidate.className, "highlight2");
   candidate.removeChild(candidate.firstChild);
+  highlightCandidateOff(candidateNumber, "highlight2");
+  highlightFixedOff(candidateNumber);
 }
 
 function createCandidateDo(cellNumber, candidateNumber) {
   var candidate = getCandidate(cellNumber, candidateNumber);
-  candidate.className = "candidate";
+  candidate.className = addStyle(candidate.className, "candidate");
   candidate.onmouseover = enterCandidate;
   candidate.onmouseout = exitCandidate;
-  //candidate.onclick = removeCandidate;
-  //candidate.ondblclick = promoteCandidate;
   if (isCandidateButtonOn(candidateNumber)) {
     candidate.className = addStyle(candidate.className, "highlight1");
   }
@@ -696,9 +687,6 @@ function promoteCandidateDo(cellNumber, candidateNumber) {
   buildFixed(cellNumber, candidateNumber);
   var cellId = getCellId(cellNumber)
   var cell = document.getElementById(cellId);
-  if (conflictsCandidate(cellNumber, candidateNumber)) {
-    cell.className = addStyle(cell.className, "conflict");
-  }
   cell.replaceChild(document.createTextNode(candidateNumber), cell.firstChild);
   cell.onclick = resetFixed;
   checkAllConflicts(cellNumber);
@@ -720,7 +708,13 @@ function promoteCandidate() {
   var candidateId = this.id;
   dblclick = true;
   candidateId.match(/cell(\d+)candidate(\d+)/g);
-  createAndExecuteCmd("setCell", parseInt(RegExp.$1), parseInt(RegExp.$2));
+  var cellNumber = parseInt(RegExp.$1);
+  var candidateNumber = parseInt(RegExp.$2);
+  var candidates = getCandidateArray(cellNumber);
+  for (var i = 0; i < candidates.length; i++) {
+    createAndExecuteCmd("removeCandidate", cellNumber, candidates[i]);
+  }
+  createAndExecuteCmd("setCell", cellNumber, candidateNumber);
   setTimeout(function() {
     dblclick = false;
   }, 250);

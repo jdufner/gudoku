@@ -88,7 +88,7 @@ public final class PdfPrinterImpl implements PdfPrinter {
     document.addCreationDate();
     document.addCreator("de.jdufner.sudoku.Generator");
     document.addKeywords("Sudoku");
-    document.addTitle("30 Sudokus in unterschiedlichen Schwierigkeitsgraden");
+    document.addTitle("Sudokus in unterschiedlichen Schwierigkeitsgraden");
     document.add(writePdfMetaTable(sudokus));
     document.close();
     return document;
@@ -102,8 +102,14 @@ public final class PdfPrinterImpl implements PdfPrinter {
     metaTable.setWidthPercentage(100);
     metaTable.setHorizontalAlignment(Element.ALIGN_CENTER);
 
+    int cells = 0;
     for (SudokuData sudoku : sudokus) {
       metaTable.addCell(writePdfTable(sudoku));
+      cells++;
+    }
+    final int rest = cells % 2;
+    for (int i = 0; i < rest; i++) {
+      metaTable.addCell("");
     }
 
     metaTable.setComplete(true);
@@ -205,7 +211,7 @@ public final class PdfPrinterImpl implements PdfPrinter {
       cell.setGrayFill(0.8f);
     }
     setBorder(cell, first, last);
-    //cell.setRotation(rotation);
+    // cell.setRotation(rotation);
     return cell;
   }
 
@@ -216,7 +222,7 @@ public final class PdfPrinterImpl implements PdfPrinter {
       cell.setGrayFill(0.8f);
     }
     setBorder(cell, first, last);
-    //cell.setRotation(rotation);
+    // cell.setRotation(rotation);
     return cell;
   }
 
